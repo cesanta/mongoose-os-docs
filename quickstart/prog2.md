@@ -100,12 +100,12 @@ enum mgos_app_init_result mgos_app_init(void) {
 
 Connect DHT sensor to pin 5. The sensor itself has following pins:
 
-![](/docs/media/dht22.png)
+![](dht22.png)
 
 This is an example with ESP8266 NodeMCU. Red connector is VCC 3.3 volts, black
 connector is ground GND, and yellow is data, connected to pin 5:
 
-![](/docs/media/dht.png)
+![](dht.png)
 
 Build, flash the firmware, and attach the
 console to see device logs. Assume we're working with ESP8266:

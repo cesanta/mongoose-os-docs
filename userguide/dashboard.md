@@ -19,7 +19,7 @@ functionality:
 
 This is how it looks like:
 
-![](/docs/media/dash1.png)
+![](dash1.png)
 
 ## How to add your device to the dashboard
 
@@ -36,7 +36,7 @@ That should give you a unique access token.
   `mos config-set dash.enable=true dash.token=ACCESS_TOKEN`
   or via the web UI:
 
-![](/docs/media/dash2.png)
+![](dash2.png)
 
 
 #### Option 2 - build your own app
@@ -88,7 +88,7 @@ your device to the dashboard, reserves some keys:
 The device shadow is displayed in the device list, and it is available for
 edit in the device panel (when clicked on the device name):
 
-![](/docs/media/dash7.png)
+![](dash7.png)
 
 Devices can update its shadow object using
 [C shadow API](/docs/api/mgos_shadow.h.html)
@@ -116,7 +116,7 @@ Example: see [example-shadow-js](https://github.com/mongoose-os-apps/example-sha
 Devices can send logs. Logs are stored permanently and can be
 downloaded. Real-time logs are also displayed in the log window:
 
-![](/docs/media/dash3.png)
+![](dash3.png)
 
 
 ### Device control commands
@@ -131,7 +131,7 @@ and the command arguments will be rendered in the arguments text input.
 Alter arguments as required, press Execute button - and see the command
 output in the logs window:
 
-![](/docs/media/dash2.gif)
+![](dash2.gif)
 
 You can update firmware over-the-air, reboot the device, manage files,
 manipulate GPIO, and so on.
