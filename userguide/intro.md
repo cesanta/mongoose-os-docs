@@ -186,7 +186,7 @@ RAM figures are measured after Mongoose OS is initialised, i.e. those numbers
 are what is available for the application code.
 
 | Name |  Code Size  | Free RAM | Notes |
-| -----| -------------- | ------------- | --------- | -------- |
+| -----| -------------- | ------------- | -------- |
 | minimal | 113k |  230k | An [example-no-libs-c](https://github.com/mongoose-os-apps/example-no-libs-c) app. Includes RTOS, TCP/UDP networking core, file system, configuration infrastructure, SNTP  |
 | minimal+mjs | 160k | 229k |  Minimal + [mJS JavaScript engine](https://github.com/cesanta/mjs) |
 | minimal+aws | 133k | 230k |  Minimal + AWS IoT support |
