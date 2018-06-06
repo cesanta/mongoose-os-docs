@@ -1,69 +1,92 @@
 # Device Management Dashboard
 
+<video controls="" class="float-right border w-50 ml-3 mb-3">
+    <source src="https://freshen.cc/images/dash_anim.mp4" type="video/mp4">
+</video>
+
 Mongoose OS provides an integrated service for device management.
 It is located at https://dash.mongoose-os.com/ , and provides the following
 functionality:
 
 - 24/7 access and monitoring for your devices in the field
-- Per-device cloud state object - a "device shadow". Ideal for implementing
-  mobile and web apps that talk to your devices
-- RESTful API for accessing your devices programmatically, e.g.
-  from mobile and web apps
-- Talk to your devices via the device shadow or directly via the RPC
-  (remote procedure calls)
-- Online/Offline status, current firmware, disconnection logs
-- Firmware update (OTA) - upload firmwares and perform individual or
-  bulk firmware updates with live status feedback
-- Store, view and export device logs
-- Configuration, file system, hardware peripherals management, and more
+- Full isolation. Other users cannot see traffic from your devices and cannot
+  access them
+- RESTful API and Web UI that provide:
+   * Online/offline status together with device metadata like
+   firmware version, build time, device architecture
+   * Full access to the devices' RPC services (remote management)
+   * Reliable OTA updates with manual or automatic commit
+   * Device twin (or, shadow) cloud object, semantically identical to AWS / Azure
+- Notification stream that lets you catch state changes, implement custom logging, etc
+- Notification logs stored persistently
+- A Web UI for device management: filesystem, shadow object, OTA,
+  device configuration, direct RPC calls
 
-This is how it looks like:
+<!-- This is how it looks like: -->
 
-![](images/dash1.png)
+<!-- ![](images/dash1.png) -->
 
 ## How to add your device to the dashboard
 
-#### Option 1 - using a pre-built `demo-js` app
+**Step 1.** Make sure that your app has a library `dash` listed
+in the `mos.yml` file. If you're using a pre-built `demo-js` Mongoose OS app,
+you can omit this step. Otherwise, edit `mos.yml`:
 
-- Install a `demo-js` Mongoose OS app on your device by following the
-instructions on [Mongoose OS download page](/software.html). As a result,
-you should have your device flashed and WiFi configured.
+```yaml
+libs:
+  ...
+  - origin: https://github.com/mongoose-os-libs/dash  # <-- Add this line!
+```
 
-- Login to the https://dash.mongoose-os.com/, register a new device.
-That should give you a unique access token.
+Then, `mos build` and `mos flash`.
 
-- Update the `dash` configuration section. Do it either via the command line:
-  `mos config-set dash.enable=true dash.token=ACCESS_TOKEN`
-  or via the web UI:
+**Step 2.** Congifure WiFi: `mos wifi NETWORK_NAME NETWORK_PASSWORD`
 
-![](images/dash2.png)
+**Step 3.** Login to the https://dash.mongoose-os.com/, register a new device.
+Click on a new device name, and copy the generated access token.
+
+**Step 4.** Configure device: `mos config-set dash.enable=true dash.token=GENERATED_TOKEN`
+
+Done! Now your device should appear "green" (online) on a dashboard.
 
 
-#### Option 2 - build your own app
 
-- Edit the `mos.yml` file of your app, include `dash` library:
+## Technical overview
 
-  ```yaml
-  libs:
-    ...
-    - origin: https://github.com/mongoose-os-libs/dash  # <-- Add this line!
-  ```
+A configured device connects to the dashboard over the secure Websocket,
+sending a `Authorization: Bearer GENERATED_TOKEN` handshake header.
+After the successful handshake, all communication is done via the
+JSON-RPC 2.0 protocol. Each RPC frame wrapped into the Websocket frame.
 
-- Rebuild your app, flash it, and configure WiFi:
+The RESTful API endpoints that the dashboard exports start with
+`/api/v2/`. The endpoints that for the individual device start with
+`/api/v2/devices/:id`, where `:id` is the unique device ID, generated at
+the device registration together with the access token. Note: you cannot
+provide your own token, but you can provide your own ID.
 
-  ```
-  mos build --arch ...
-  mos flash
-  mos wifi WIFI_NAME WIFI_PASSWORD
-  ```
-- Repeat the last 2 steps from the previous section.
+The dashboard gives a RESTful access to all RPC services exported by the device.
+Thus, the dashboard acts as a JSON-RPC / RESTful bridge. The device's
+RPC methods are mapped to `/api/v2/devices/:id/rpc/:method`  endpoints.
+If the RPC endpoint does not accept any parameters, you cat use `GET` HTTP
+method. If it does, `POST` must be used. The parameters should be a JSON
+string, and the `Content-Type: application/json` header must be set, e.g.:
 
+```
+curl \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer API_KEY' \
+  -d '{"pin": 2}' \
+  http://dash.mongoose-os.com/api/v2/devices/DEVICE_ID/rpc/GPIO.Toggle
+```
+
+When a device comes online, a dashboard sends `Sys.GetInfo` RPC call to
+the connected device in order to grab metadata (architecture, firmware version, etc).
 
 ### Device shadow
 
-Dashboard implements device shadow mechanism, similar to
-to the Azure device twin, Amazon IoT device shadow, or Google IoT Core
-state/config objects.
+Dashboard implements device shadow mechanism, semantically identical to
+to the Azure device twin and Amazon IoT device shadow. Google IoT Core
+state/config objects provide similar functionality, but implemented quite differently.
 
 Device shadow is a JSON object that is associated with a device. It
 lives on a cloud, keeps device state, and always available
@@ -73,8 +96,8 @@ has three top-level keys:
  - `desired` - this is the state you want your device to have.
  - `reported` - this is the state your device actually has.
  - `delta` - automatically generated by the cloud
-  every time the change is made to either `desired` or `reported`.
-  This  is the difference between `desired` and `reported`
+  every time `desired` or `reported` changes.
+  `delta` is the difference between `desired` and `reported`
   **only for keys that are present in** `desired`.
 
 The structure of the `desired` and `reported` subobjects is arbitrary -
@@ -83,17 +106,14 @@ your device to the dashboard, reserves some keys:
  
  - `reported.ota` - object that keeps firmware information and last OTA status
  - `reported.stats` - object that keeps device RAM statistics
- - `reported.online` - boolean field, whether device is online or offline
 
 The device shadow is displayed in the device list, and it is available for
 edit in the device panel (when clicked on the device name):
 
-![](images/dash7.png)
+<!-- ![](images/dash7.png) -->
 
-Devices can update its shadow object using
-[C shadow API](/docs/api/mgos_shadow.h.html)
-or [JS shadow API](/docs/api/api_shadow.js.html). Also shadow could be updated
-via the [RESTful API](https://dash.mongoose-os.com/#/apiref) provided by the dashboard.
+Devices can update their shadow using C API or JavaScript API,
+see [shadow library](https://github.com/mongoose-os-libs/shadow) for reference.
 
 In order to create new keys, send a shadow update with that new key and its
 value. In order to delete a key, send a shadow update where that key is set
@@ -111,68 +131,60 @@ The best practive for using shadow on the device side is this:
 Example: see [example-shadow-js](https://github.com/mongoose-os-apps/example-shadow-js) app.
 
 
-### Device logs
+### Notifications
 
-Devices can send logs. Logs are stored permanently and can be
-downloaded. Real-time logs are also displayed in the log window:
+The dashboard provides a special secure Websocket endpoint
+`wss://dash.mongoose-os.com/api/v2/notify`. This is a read-only notifications endpoint.
+Each notification is a JSON object with three keys:
 
-![](images/dash3.png)
+- `name`: notification name, e.g. "online", "offline", "rpc.in.GetInfo", "rpc.out.Log"
+- `id`: an ID of a device that generated the event
+- `data`: optional notification-specific data.
 
+The `online` and `offline` events are generated by the dashboard. The
+`rpc.out.*` events are generated by the device: these are JSON-RPC requests
+without an ID (notifications). For example, `dash` library forwards all
+device logs to the dashboard as `Log` RPC calls, thus generating `rpc.out.Log` events.
+RPC call to the device generate `rpc.in.*` events.
 
-### Device control commands
+The dashboard UI uses `/api/v2/notify` endpoint in order to catch state changes.
+Login to the dashboard and open the developer tools / network / WS panel to
+see it in action.
 
-Click on "manage" button to go the the device page. When it shows, it
-connects to the device and asks for a list of RPC services implemented by
-the device - both built-in services, provided by Mongoose OS, and custom
-RPC services, implemented by the app developer.
+You can implement your own service that attaches to the `/api/v2/notify`,
+for example in Node JS:
 
-That list is rendered in the dropdown menu. Select any RPC command,
-and the command arguments will be rendered in the arguments text input.
-Alter arguments as required, press Execute button - and see the command
-output in the logs window:
-
-![](images/dash2.gif)
-
-You can update firmware over-the-air, reboot the device, manage files,
-manipulate GPIO, and so on.
-
-### OTA firmware update
-
-Select devices you want to update, choose the firmware, click "Start OTA Update".
-That will change the device shadow state to
-
-```
-{"desired": {"ota": {"url": "url_of_your_firmware" }}}
+```javascript
+const Websocket = require('ws');
+const addr = 'wss://dash.mongoose-os.com/api/v2/notify';
+const headers = { Authorization : 'Bearer ' + API_TOKEN };
+const ws = new Websocket(addr, { origin: addr, headers: headers });
+ws.on('message', msg => console.log('Got message:', msg.toString()));
 ```
 
-From that point on, a device shadow mechanims sends a message to all
-affected devices. The [ota-shadow](https://github.com/mongoose-os-libs/ota-shadow)
-library catches the shadow event and triggers on OTA.
+<!-- ![](images/dash3.png) -->
 
-Note that this mechanism works the same way, with no changes, on AWS IoT as well.
+## REST API Reference
 
+| Method | Endpoint         | Params | Description |
+| ------ | ---------------- | ------ | ----------- |
+| GET    | /devices         | &nbsp; | List all registered devices |
+| POST   | /devices         | {"name": "x", "id": "y"} | Register new device. `id` is optional |
+| PUT    | /devices/:id     | {"name": "x"} | Change device name |
+| DELETE | /devices/:id     | &nbsp; | Delete device |
+| POST   | /devices/:id/rpc/:func | {...} | Call device's RPC function |
+| POST   | /devices/:id/ota | fw.zip | OTA: `curl -v -F file=@fw.zip URL` |
+| GET    | /devices/:id/shadow | &nbsp; | Get device shadow |
+| POST   | /devices/:id/shadow | {...} | Update device shadow |
+| GET    | /keys            | &nbsp; | List all API keys |
+| POST   | /keys            | &nbsp; | Create an API key |
+| DELETE | /keys/:id        | &nbsp; | Delete an API key |
+| GET    | /logs            | &nbsp; | Get stored notification logs |
 
-### Reporting data from the device
+Example:
 
-A device can send any arbitrary measurements to the device shadow,
-just like the `dash` library sends RAM statistics. Use shadow API and
-send your metrics like:
-
-`{"state": {"reported": {"myvalue": 1234}}}`
-
-
-### Device side configuration overview
-
-The `dash` library provides a couple of options for fine-tuning.
-To see full list of configuration options, do:
-
-<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-100"><code>mos config-get dash
-{
-  "ca_file": "ca.pem",        # CA certs file for secure cloud TLS connectivity
-  "enable": true,             # Enable management 
-  "stats_interval": 1,        # RAM stats report interval in seconds
-  "send_logs": true,          # Whether to send logs
-  "send_stats": true,         # Whether to send stats
-  "server": "wss://dash.mongoose-os.com/api/v1/rpc",  # Cloud server address
-  "token": "xxxxxxxxx"       # Device access token
-}</code></pre>
+<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-4"><code>curl -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer API_KEY' \
+  -d '{"pin": 2}' \
+  http://dash.mongoose-os.com/api/v2/devices/DEVICE_ID/rpc/GPIO.Toggle
+true</code></pre>
