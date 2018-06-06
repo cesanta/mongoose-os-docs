@@ -16,13 +16,13 @@ or JavaScript with the following properties:
 For example, an RPC request to set GPIO pin 2 to high voltage looks like this:
 
 ```json
-{"method": "GPIO.Write", "params": {"pin": 2, "value": 1}, "id": 1}
+{ "id": 1932, "method": "GPIO.Write", "params": {"pin": 2, "value": 1} }
 ```
 
 The reply from a device looks like this:
 
 ```json
-{"error": { "code": 400, "message": "error setting pin mode"} }
+{ "id": 1932, "error": { "code": 400, "message": "error setting pin mode"} }
 ```
 
 Note that the `"jsonrpc": "2.0"` attribute in the request frame can be omitted.
