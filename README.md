@@ -1,3 +1,5 @@
+# Mongoose OS documentation
+
 Mongoose OS is an firmware development framework for connected microcontrollers.
 
 Mongoose OS is created for developers who work on firmare for commercial
@@ -25,6 +27,5 @@ infrastructure.
    * ECC508A crypto element support
    * TLS 1.2 based on the ARM mbedTLS
    * low footprint tuning of the TLS stack
-
 
 This documentation is browseable online at https://mongoose-os.com/docs
