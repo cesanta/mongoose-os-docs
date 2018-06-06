@@ -10,8 +10,8 @@ or an "RPC service" that device implements, is a function written in C/C++
 or JavaScript with the following properties:
 
 - Has a name, for example `GPIO.Toggle`,
-- Takes a JSON object with function arguments,
-- Replies with JSON object with results.
+- Takes a `params` JSON object,
+- Returns a `result` JSON object.
 
 For example, an RPC request to set GPIO pin 2 to high voltage looks like this:
 
