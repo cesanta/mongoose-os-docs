@@ -1,13 +1,39 @@
 # RPC - Remote Procedure Calls
 
-RPC means Remote Procedure Call. Mongoose OS RPC (MG-RPC) service is simply a C
-or JavaScript function that:
+RPC means Remote Procedure Call. This is the way to send commands to devices
+and receive replies, i.e. call remote procedures.
+Mongoose OS uses
+[JSON-RPC 2.0](https://en.wikipedia.org/wiki/JSON-RPC).
+
+Since the RPC mechanism uses JSON-RPC, that means that the "procedure",
+or an "RPC service" that device implements, is a function written in C/C++
+or JavaScript with the following properties:
 
 - Has a name, for example `GPIO.Toggle`,
 - Takes a JSON object with function arguments,
-- Gives back a JSON object with results.
+- Replies with JSON object with results.
 
-These JSON messages could be carried out by many different channels:
+For example, an RPC request to set GPIO pin 2 to high voltage looks like this:
+
+```json
+{"method": "GPIO.Write", "params": {"pin": 2, "value": 1}, "id": 1}
+```
+
+The reply from a device looks like this:
+
+```json
+{"error": { "code": 400, "message": "error setting pin mode"} }
+```
+
+Note that the `"jsonrpc": "2.0"` attribute in the request frame can be omitted.
+
+Mongoose OS libraries implement a large set of ready-to-go RPC services,
+like managing hardware peripherals (GPIO, SPI, I2C), managing files,
+remote updates, etc. It is easy to add custom RPC services too,
+see "RPC Core" library in the
+[RPC Services](../api/rpc.md) section for more details.
+
+The JSON-RPC messages could be carried out by many different channels:
 serial (UART), HTTP/Restful, WebSocket, MQTT, Bluetooth. RPC API allows
 to add support for other channels. `mos` tool provides an easy way to call
 device's RPC services over the serial connection or over the network.
@@ -51,66 +77,6 @@ To see a list of all RPC services implemented by a device, call `RPC.List`:
   "I2C.ReadRegB",
   ...</code></pre>
 
-## MG-RPC frame format
-
-MG-RPC frame formats for request, successful and failed responses are
-documented below. Couple of notes to keep in mind:
-
-- The criteria of whether the call is successful or failed is the presense
-  of the `error` in the response. If `error` is present, it is a failure.
-  Otherwise, it is a success. Note that the `result` in the successful
-  response is optional - thus an empty response is a success.
-- Requests and responses are not necessarily go in the same order. For
-  example, a response to a call that takes long to compute, may arrive
-  later. An `id` is used to associate requests with responses.
-- It is possible to attach an arbitrary `tag` string to a request. MG-RPC
-  will repeat that string unchanged in the response.
-
-### Request
-
-```json
-{
-  "method": "Math.Add",     // Required. Function name to call.
-  "args": {                 // Optional. Function arguments
-    "a": 1,
-    "b": 2
-  },
-  "src": "joe/32efc823aa",  // Optional. Used with MQTT: response will be sent
-                            // to that topic followed by "/rpc", so in this
-                            // case it'll be "joe/32efc823aa/rpc".
-  "tag": "hey!",            // Optional. Any arbitrary string. Will be repeated in the response
-  "id": 1772                // Optional. Numeric frame ID.
-}
-```
-
-### Response - success
-
-```json
-{
-  "result": { ... },        // Optional. Call result
-  "tag": "hey!"             // Optional. Present if a request contained "tag"
-}
-```
-
-###  Response - failure
-
-```json
-{
-  "error": {
-    "code": 123,
-    "message": "oops"
-  }
-}
-```
-
-## MG-RPC API
-
-For the quick introduction, see
-[Mongoose OS quick start guide](https://mongoose-os.com/docs/quickstart/using-javascript.html)
-on how to add RPC service in JavaScript or C/C++.
-
-See [API reference](https://mongoose-os.com/docs/reference/api.html#rpc-common)
-for the C/C++ and JavaScript API spec.
 
 ## Remote management
 
