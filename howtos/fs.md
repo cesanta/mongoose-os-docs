@@ -70,7 +70,7 @@ Using port /dev/ttyUSB0
 README.md 991
 ```
 
-To make the device attach the file system atomatically at boot, let's configure the `sys.mount` section:
+To make the device attach the file system automatically at boot, let's configure the `sys.mount` section:
 
 ```
 $ mos config-set sys.mount.path=/mnt sys.mount.dev_type=sysflash sys.mount.fs_type=SPIFFS 'sys.mount.fs_opts={"addr": 3145728, "size": 524288}' && mos console
@@ -158,7 +158,11 @@ Using port /dev/ttyUSB0
 null
 ```
 
-See ESP8266 section above for how to mount the FS at boot, etc.
+To make the device attach the file system automatically at boot, let's configure the `sys.mount` section:
+
+```bash
+$ mos config-set sys.mount.path=/mnt sys.mount.dev_type=esp32part sys.mount.fs_type=SPIFFS 'sys.mount.dev_opts={"label": "fs_ext"}'
+```
 
 ### CC3200
 
