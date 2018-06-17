@@ -19,7 +19,13 @@ For example, an RPC request to set GPIO pin 2 to high voltage looks like this:
 { "id": 1932, "method": "GPIO.Write", "params": {"pin": 2, "value": 1} }
 ```
 
-The reply from a device looks like this:
+The successful reply from a device looks like this:
+
+```json
+{ "id": 1932, "result": true }
+```
+
+The failure reply looks like this:
 
 ```json
 { "id": 1932, "error": { "code": 400, "message": "error setting pin mode"} }
