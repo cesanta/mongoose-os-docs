@@ -89,7 +89,7 @@ static void timer_cb(void *dht) {
 }
 
 enum mgos_app_init_result mgos_app_init(void) {
-  struct mgos_dht *dht = mgos_dht_create(get_cfg()->app.pin, DHT22);
+  struct mgos_dht *dht = mgos_dht_create(mgos_sys_config_get_app_pin(), DHT22);
   mgos_set_timer(1000, true, timer_cb, dht);
   return MGOS_APP_INIT_SUCCESS;
 }
@@ -165,7 +165,7 @@ static void rpc_cb(struct mg_rpc_request_info *ri, void *cb_arg,
 }
 
 enum mgos_app_init_result mgos_app_init(void) {
-  struct mgos_dht *dht = mgos_dht_create(get_cfg()->app.pin, DHT22);
+  struct mgos_dht *dht = mgos_dht_create(mgos_sys_config_get_app_pin(), DHT22);
   mgos_set_timer(1000, true, timer_cb, dht);
   mg_rpc_add_handler(mgos_rpc_get_global(), "Temp.Read", "", rpc_cb, dht);
   return MGOS_APP_INIT_SUCCESS;
