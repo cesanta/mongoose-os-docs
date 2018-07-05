@@ -23,5 +23,25 @@ This tutorial demonstrates the following:
 
 ## Setup devices
 
+- Follow [mos tool setup instructions](/software.html) to install `mos` tool
 - Pick one of the supported devices. We suggest to choose from [recommended devboards](../quickstart/devboards.md)
+- Clone, build and flash the firmware:
 
+```bash
+git clone https://github.com/mongoose-os-apps/demo-js
+cd demo-js
+mos build --platform YOUR_PLATFORM  # e.g. stm32, esp32, esp8266, cc3220
+mos flash
+```
+
+- Configure WiFi on a device
+
+```
+mos wifi WIFI_NETWORK WIFI_PASSWORD
+```
+
+- Provision your device to Azure IoT
+
+```
+mos azure-iot-setup
+```
