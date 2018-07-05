@@ -5,6 +5,7 @@
 - [Starting with C/C++](/docs/quickstart/prog2.md)
 - [Advanced JavaScript](/docs/quickstart/prog3.md)
 - [Example apps](/docs/quickstart/apps.md)
+- [Recommended devboards](/docs/quickstart/devboards.md)
 
 **Cloud Tutorials**
 
