@@ -6,6 +6,10 @@
 - [Advanced JavaScript](/docs/quickstart/prog3.md)
 - [Example apps](/docs/quickstart/apps.md)
 
+**Cloud Tutorials**
+
+- [Azure IoT](/docs/cloud/azure.md)
+
 **User Guide**
 
 - [Introduction](/docs/userguide/intro.md)
