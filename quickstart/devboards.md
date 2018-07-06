@@ -38,4 +38,23 @@
     </div>
     <div class="card-footer"><a href="https://www.aliexpress.com/wholesale?SearchText=nodemcu">Buy on aliexpress.com</a></div>
   </div>
+  <div class="w-100"></div>
+  <div class="card my-3 shadow">
+    <div class="card-header font-weight-bold text-muted">ESP32 Devkit-C</div>
+    <div class="card-body">
+      <img class="img-fluid" src="images/esp32-devkitc.png" style="max-height: 140px;" />
+      WiFi, BT, 520k RAM, 4M Flash
+      <p>Demo app installation: <code>mos flash esp32</code></p>
+    </div>
+    <div class="card-footer"><a href="https://www.mouser.ie/All-Manufacturers/_/N-0?Keyword=esp32-devkit-c">Buy on mouser.com</a></div> 
+  </div>
+  <div class="card my-3 shadow">
+    <div class="card-header font-weight-bold text-muted">STM32 NUCLEO-F746ZG</div>
+    <div class="card-body">
+      <img class="img-fluid" src="images/nucleo-f746zg.png" style="max-height: 140px;" />
+      Ethernet, 320k RAM, 1M Flash
+      <p>Demo app installation: <code>mos flash stm32</code></p>
+    </div>
+    <div class="card-footer"><a href="https://www.mouser.ie/ProductDetail/STMicroelectronics/NUCLEO-F746ZG?qs=sGAEpiMZZMtw0nEwywcFgCOvL%2fCIMT%2f2w01SZnal1Ngwgxcd9gFiJw%3d%3d">Buy on mouser.com</a></div> 
+  </div>  
 </div>
