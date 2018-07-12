@@ -41,7 +41,7 @@ Then, `mos build` and `mos flash`.
 **Step 3.** Login to the https://dash.mongoose-os.com/, register a new device.
 Click on a new device name, and copy the generated access token:
 
-![](images/dash8.png)
+<img src="images/dash8.png" class="w-50 float-right" />
 
 **Step 4.** Configure device: `mos config-set dash.enable=true dash.token=GENERATED_TOKEN`
 
@@ -138,7 +138,7 @@ your device to the dashboard, reserves some keys:
 The device shadow is displayed in the device list, and it is available for
 edit in the device panel (when clicked on the device name):
 
-![](images/dash7.png)
+<img src="images/dash7.png" class="w-50 float-right">
 
 Devices can update their shadow using C API or JavaScript API,
 see [shadow library](https://github.com/mongoose-os-libs/shadow) for reference.
