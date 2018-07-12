@@ -1,10 +1,10 @@
 # Device Management Dashboard
 
 <video controls="" class="float-right border w-50 ml-3 mb-3">
-    <source src="https://freshen.cc/images/dash_anim.mp4" type="video/mp4">
+    <source src="images/dash1.mp4" type="video/mp4">
 </video>
 
-Mongoose OS provides an integrated service for device management.
+Mongoose OS provides an integrated service for device management called mDash.
 It is located at https://dash.mongoose-os.com/ , and provides the following
 functionality:
 
@@ -79,8 +79,39 @@ curl \
   http://dash.mongoose-os.com/api/v2/devices/DEVICE_ID/rpc/GPIO.Toggle
 ```
 
-When a device comes online, a dashboard sends `Sys.GetInfo` RPC call to
-the connected device in order to grab metadata (architecture, firmware version, etc).
+When a device comes online, the `dash` library that is responsible for the
+dashboard connection, sends a shadow update message with the information
+about the device: architecture, firmware version, etc.
+
+### Over-the-Air firmware updates
+
+<video controls="" class="float-right border w-50 ml-3 mb-3">
+    <source src="images/dash2.mp4" type="video/mp4">
+</video>
+
+If a device includes `rpc-service-ota` library, then it can be updated remotely.
+The three RPC functions that perform the OTA are `OTA.Begin`, `OTA.Write` and
+`OTA.End`.
+
+mDash provides a convenience RESTful handler for the OTA, where you can
+just `POST` the new firmware .zip file, and mDash will call `OTA.Begin`
+followed by a sequence of `OTA.Write` calls, finished by `OTA.End`.
+
+The OTA can be performed either via the Web UI, or programmatically
+using the REST API:
+
+<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-4"><code>curl -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer API_KEY' \
+  -v -F file=@fw.zip
+  http://dash.mongoose-os.com/api/v2/devices/DEVICE_ID/ota
+true</code></pre>
+
+Once the firmware is updated, the device reboots in the "dirty", uncommitted
+state. An `OTA.Commit` call must be done to bless the new firmware, otherwise
+it will rollback, thinking that the health check did not pass. You can
+call `OTA.Commit` as any other RPC method. mDash provides a handy
+commit button for the convenience, when it sees an uncommitted device.
+
 
 ### Device shadow
 
