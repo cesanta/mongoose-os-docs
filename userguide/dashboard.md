@@ -100,8 +100,7 @@ followed by a sequence of `OTA.Write` calls, finished by `OTA.End`.
 The OTA can be performed either via the Web UI, or programmatically
 using the REST API:
 
-<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-4"><code>curl \
-  -H 'Authorization: Bearer API_KEY' \
+<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-4"><code>curl -H 'Authorization: Bearer API_KEY' \
   -v -F file=@fw.zip
   http://dash.mongoose-os.com/api/v2/devices/DEVICE_ID/ota
 true</code></pre>
