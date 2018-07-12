@@ -22,10 +22,6 @@ functionality:
 - A Web UI for device management: filesystem, shadow object, OTA,
   device configuration, direct RPC calls
 
-<!-- This is how it looks like: -->
-
-<!-- ![](images/dash1.png) -->
-
 ## How to add your device to the dashboard
 
 **Step 1.** Make sure that your app has a library `dash` listed
@@ -43,7 +39,9 @@ Then, `mos build` and `mos flash`.
 **Step 2.** Congifure WiFi: `mos wifi NETWORK_NAME NETWORK_PASSWORD`
 
 **Step 3.** Login to the https://dash.mongoose-os.com/, register a new device.
-Click on a new device name, and copy the generated access token.
+Click on a new device name, and copy the generated access token:
+
+![](images/dash8.png)
 
 **Step 4.** Configure device: `mos config-set dash.enable=true dash.token=GENERATED_TOKEN`
 
@@ -140,7 +138,7 @@ your device to the dashboard, reserves some keys:
 The device shadow is displayed in the device list, and it is available for
 edit in the device panel (when clicked on the device name):
 
-<!-- ![](images/dash7.png) -->
+![](images/dash7.png)
 
 Devices can update their shadow using C API or JavaScript API,
 see [shadow library](https://github.com/mongoose-os-libs/shadow) for reference.
