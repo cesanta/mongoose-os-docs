@@ -15,6 +15,10 @@ This tutorial demonstrates the following:
 
 - Create an account on [portal.azure.com](http://portal.azure.com)
 - Install `az`, an Azure command line utility, by [following these instructions](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest")
+- Start command prompt (or terminal on UNIX/Mac), login and follow the instructions:
+```
+az login
+```
 - Create an IoT hub. Note:
    * Use EU-West region (this is important, since not all regions have IoT device configuration enabled)
    * Choose standard pricing tier
@@ -25,6 +29,7 @@ This tutorial demonstrates the following:
 
 - Follow [mos tool setup instructions](/software.html) to install `mos` tool
 - Pick one of the supported devices. We suggest to choose from [recommended devboards](../quickstart/devboards.md)
+- Connect your device to your workstation via USB
 - Clone, build and flash the firmware:
 
 ```bash
@@ -43,5 +48,5 @@ mos wifi WIFI_NETWORK WIFI_PASSWORD
 - Provision your device to Azure IoT
 
 ```
-mos azure-iot-setup
+mos azure-iot-setup --azure-hub-name YOUR_AZURE_HUB_NAME
 ```
