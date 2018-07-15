@@ -45,8 +45,61 @@ mos flash
 mos wifi WIFI_NETWORK WIFI_PASSWORD
 ```
 
-- Provision your device to Azure IoT
+- Provision your device to Azure IoT with a single command:
 
 ```
 mos azure-iot-setup --azure-hub-name YOUR_AZURE_HUB_NAME
+```
+
+A newly provisioned device must appear in the hub's device list. In the
+example, an ESP8266 board is used. You will get a different devie ID,
+according to the hardware platform you're using.
+
+![](images/azure2.png)
+
+## Controlling device using Azure device twin
+
+Click on the device ID shown in the device list, then click on a
+"Device twin" tab:
+
+![](images/azure3.png)
+
+That should bring us to the shadow editor:
+
+![](images/azure4.png)
+
+Start your favorite editor, create a file called `init.js`, copy-paste
+the following snippet and save:
+
+```javascript
+load('api_config.js');
+load('api_gpio.js');
+load('api_shadow.js');
+
+let led = Cfg.get('pins.led');  // Built-in LED GPIO number
+let state = {on: false};        // Device state - LED on/off status
+
+// Set up Shadow handler to synchronise device state with the shadow state
+Shadow.addHandler(function(event, obj) {
+  if (event === 'CONNECTED') {
+    // Connected to shadow - report our current state.
+    Shadow.update(0, state);
+  } else if (event === 'UPDATE_DELTA') {
+    // Got delta. Iterate over the delta keys, handle those we know about.
+    print('Got delta:', JSON.stringify(obj));
+    for (let key in obj) {
+      if (key === 'on') {
+        // Shadow wants us to change local state - do it.
+        state.on = obj.on;
+        GPIO.set_mode(led, GPIO.MODE_OUTPUT);
+        GPIO.write(led, state.on ? 1 : 0);
+        print('LED on ->', state.on);
+      } else {
+        print('Dont know how to handle key', key);
+      }
+    }
+    // Once we've done synchronising with the shadow, report our state.
+    Shadow.update(0, state);
+  }
+});
 ```
