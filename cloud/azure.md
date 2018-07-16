@@ -104,7 +104,11 @@ Shadow.addHandler(function(event, obj) {
 });
 ```
 
-This snippet makes a device controllable by the device twin.
+This snippet makes a device controllable by the device twin, by synchronising
+the `on` attribute in the device twin with the LED status: if `on` is `true`,
+the LED is turned on, and if `on` is `false`, it is turned off. That is done
+by handling `Shadow.UPDATE_DELTA` event, which is generated every time
+the `desired` attributes of the twin are different from the `reported` attributes.
 
 
 In the command prompt (or terminal on Linux/Mac), enter the following commands
@@ -115,3 +119,7 @@ mos put init.js
 mot call Sys.Reboot
 ```
 
+Edit the twin object in the Azure console by setting `on` to `true` and
+`false`, and observe how does that reflect on the LED state.
+This example demonstrates remote device control via twin, and could be
+applied to a broad range of use cases.
