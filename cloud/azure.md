@@ -11,8 +11,6 @@ This tutorial demonstrates the following:
 
 ## Setup Azure IoT
 
-<!-- <img class="w-50 float-right ml-3 pl-4" src="images/azure1.png" /> -->
-
 - Create an account on [portal.azure.com](http://portal.azure.com)
 - Install `az`, an Azure command line utility, by [following these instructions](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest")
 - Start command prompt (or terminal on UNIX/Mac), login and follow the instructions:
@@ -108,10 +106,18 @@ This snippet makes a device controllable by the device twin.
 
 
 In the command prompt (or terminal on Linux/Mac), enter the following commands
-to copy `init.js` to the device and reboot the device:
+to copy `init.js` to the device, reboot the device, and start monitoring
+serial output:
 
 ```
 mos put init.js
-mot call Sys.Reboot
+mos call Sys.Reboot
+mos console 
 ```
 
+In the device twin editor, add `desired.on` boolean key. Set it to `true` or
+`false`, and observe how the device reacts by switching the LED on/off:
+
+<video controls="" class="text-center border w-75 my-2">
+    <source src="images/azure5.mp4" type="video/mp4">
+</video>
