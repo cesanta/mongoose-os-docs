@@ -103,3 +103,15 @@ Shadow.addHandler(function(event, obj) {
   }
 });
 ```
+
+This snippet makes a device controllable by the device twin.
+
+
+In the command prompt (or terminal on Linux/Mac), enter the following commands
+to copy `init.js` to the device and reboot the device:
+
+```
+mos put init.js
+mot call Sys.Reboot
+```
+
