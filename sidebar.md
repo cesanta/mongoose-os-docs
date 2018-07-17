@@ -10,6 +10,8 @@
 **Cloud Tutorials**
 
 - [Azure IoT](/docs/cloud/azure.md)
+- [Google IoT Core](/docs/cloud/google.md)
+- [Private MQTT server](/docs/cloud/mqtt.md)
 
 **User Guide**
 
@@ -35,5 +37,4 @@
 
 - [List RPC services](/docs/howtos/rpc-list.md)
 - [Get device info](/docs/howtos/get-device-info.md)
-- [MQTT publish and subscribe](/docs/howtos/mqtt.md)
 - [Add filesystem](/docs/howtos/fs.md)

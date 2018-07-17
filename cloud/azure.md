@@ -1,4 +1,4 @@
-# Mongoose OS + Azure IoT tutorial
+# Mongoose OS + Azure IoT
 
 This tutorial demonstrates the following:
 
@@ -28,22 +28,30 @@ az login
 - Pick one of the supported devices. We suggest to choose from [recommended devboards](../quickstart/devboards.md)
 - Connect your device to your workstation via USB
 - Clone, build and flash the firmware:
-
 ```bash
 git clone https://github.com/mongoose-os-apps/demo-js
 cd demo-js
 mos build --platform YOUR_PLATFORM  # e.g. stm32, esp32, esp8266, cc3220
 mos flash
 ```
+NOTE: you can customise this firmware as you wish, or build a firmware
+from scratch using an [empty](https://github.com/mongoose-os-apps/empty) app.
+In this case, it is important to include
+[azure](https://github.com/mongoose-os-libs/azure) library in the `libs` section
+of the `mos.yml` file:
+```yaml
+libs:
+  ...
+  - origin: https://github.com/mongoose-os-libs/azure # <-- Add this!
+```
+
 
 - Configure WiFi on a device
-
 ```
 mos wifi WIFI_NETWORK WIFI_PASSWORD
 ```
 
 - Provision your device to Azure IoT with a single command:
-
 ```
 mos azure-iot-setup --azure-hub-name YOUR_AZURE_HUB_NAME
 ```
