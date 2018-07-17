@@ -6,8 +6,6 @@ This tutorial demonstrates the following:
 - How to reuse the code for different hardware platforms
 - How to control devices via Google IoT Core `config` object
 - How to report device state via Google IoT Core `state` object
-- How to report metrics (sensor settings, etc)
-- How to perform device OTA update
 
 See following video that repeats setup steps mentioned below:
 
@@ -54,17 +52,41 @@ gcloud beta iot registries create iot-registry --region europe-west1 --event-pub
 
 ## Setup device
 
-Get project ID of your new project:
+- Follow [mos tool setup instructions](/software.html) to install `mos` tool
+- Pick one of the supported devices. We suggest to choose from [recommended devboards](../quickstart/devboards.md)
+- Connect your device to your workstation via USB
+- Clone, build and flash the firmware:
+```bash
+git clone https://github.com/mongoose-os-apps/demo-js
+cd demo-js
+mos build --platform YOUR_PLATFORM  # e.g. stm32, esp32, esp8266, cc3220
+mos flash
+```
+NOTE: you can customise this firmware as you wish, or build a firmware
+from scratch using an [empty](https://github.com/mongoose-os-apps/empty) app.
+In this case, it is important to include
+[gcp](https://github.com/mongoose-os-libs/gcp) library in the `libs` section
+of the `mos.yml` file:
+```yaml
+libs:
+  ...
+  - origin: https://github.com/mongoose-os-libs/gcp # <-- Add this!
+```
 
+- Configure WiFi on a device
+```
+mos wifi WIFI_NETWORK WIFI_PASSWORD
+```
+
+- Get project ID of your new project:
 ```
 gcloud projects list
 ```
 
-Register device on Google IoT Core. If a device is already registered,
+- Register device on Google IoT Core. If a device is already registered,
 this command deletes it, then registers again. Note that this command is
 using `YOUR_PROJECT_ID` instead of `YOUR_PROJECT_NAME`. Take the project ID
 from the result of your previous command:
-
 ```
 mos gcp-iot-setup --gcp-project YOUR_PROJECT_ID --gcp-region europe-west1 --gcp-registry iot-registry
 ```

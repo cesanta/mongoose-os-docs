@@ -38,3 +38,4 @@
 - [List RPC services](/docs/howtos/rpc-list.md)
 - [Get device info](/docs/howtos/get-device-info.md)
 - [Add filesystem](/docs/howtos/fs.md)
+- [MakerFactory ESP32 board](/docs/howtos/maker-factory-esp32.md)
