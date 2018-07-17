@@ -8,7 +8,7 @@ products, and care about things like manageability, security, reliability.
 for many products regardless what they do. Mongoose OS provides such
 infrastructure.
 
-#### Features
+#### Quick Summary
 
 - Designed for commercial products, hence main focus is on
   features like cloud connectivity, built-in OTA, etc
@@ -27,5 +27,13 @@ infrastructure.
    * ECC508A crypto element support
    * TLS 1.2 based on the ARM mbedTLS
    * low footprint tuning of the TLS stack
+- Modular: [small core](https://github.com/cesanta/mongoose-os) and
+  [over hundred libraries](https://github.com/mongoose-os-libs/)
+
+#### Other resources
+
+- [Developer forum](https://forum.mongoose-os.com/)
+- [Developer chat](https://gitter.im/cesanta/mongoose-os)
+- [Youtube video tutorials](https://www.youtube.com/channel/UCZ9lQ7b-4bDbLOLpKwjpSAw/videos)
 
 This documentation is browseable online at https://mongoose-os.com/docs
