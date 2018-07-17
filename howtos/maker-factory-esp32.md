@@ -34,15 +34,15 @@ load('api_gpio.js');
 load('api_mqtt.js');
 load('api_neopixel.js');
 
-let pin = 5, numPixels = 4, colorOrder = NeoPixel.GRB;
-let strip = NeoPixel.create(pin, numPixels, colorOrder);
+let strip = NeoPixel.create(33, 2, NeoPixel.GRB);
+strip.clear();
 
 let topic = '/devices/' + Cfg.get('device.id') + '/config';
 MQTT.sub(topic, function(conn, topic, msg) {
   print('Topic:', topic, 'message:', msg);
   // Expected config format: {"led": 0, "r": 123, "g": 123, "b":123}
-  let obj = JSON.parse(msg); 
-  strip.setPixel(obj.led, obj.g, obj.r, obj.b);
+  let obj = JSON.parse(msg) || {};
+  strip.setPixel(0, obj.r || 0, obj.g || 0, obj.b || 0);
   strip.show();
 }, null);
 ```
@@ -59,4 +59,34 @@ serial output:
 ```
 mos put init.js
 mos call Sys.Reboot
+mos console
 ```
+
+<video controls="" class="float-right border w-50 p-3">
+    <source src="images/mf2.mp4" type="video/mp4">
+</video>
+
+
+Find a registered device in a Google IoT Core device registry.
+Click on "Update Config" button, and in the opened dialog, enter
+the following configuration and hit "SEND TO DEVICE":
+
+```json
+{"r": 50, "g": 0, "b": 0}
+```
+
+Note how one of the LEDs turns red. Enter
+
+```json
+{"r": 0, "g": 0, "b": 0}
+```
+
+Note how the LED turns off.
+
+Important thing to note: Google IoT Core send device config object
+each time device comes online or a config change is made. That means,
+that if you power cycle the device, it'll sync its LED state with the
+cloud as soon as it gets connected.
+
+
+## Sending metrics to Google IoT Core
