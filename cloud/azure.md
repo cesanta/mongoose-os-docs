@@ -22,7 +22,7 @@ az login
 
 ![](images/azure1.png)
 
-## Setup devices
+## Setup device
 
 - Follow [mos tool setup instructions](/software.html) to install `mos` tool
 - Pick one of the supported devices. We suggest to choose from [recommended devboards](../quickstart/devboards.md)
