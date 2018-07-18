@@ -88,7 +88,7 @@ that if you power cycle the device, it'll sync its LED state with the
 cloud as soon as it gets connected.
 
 
-## Sending metrics to Google IoT Core
+## Reporting state to Google IoT Core
 
 <img src="images/mf3.png" class="float-right p-2 w-25">
 
