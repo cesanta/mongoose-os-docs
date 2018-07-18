@@ -25,8 +25,7 @@ https://github.com/espressif/esptool/wiki/ESP8266-Boot-Mode-Selection#automatic-
 
 ## Controlling LED via Google IoT Core
 
-Start your favorite editor, create a file called `init.js`, copy-paste
-the following snippet and save:
+Open `fs/init.js` in your favorite editor, copy-paste the following snippet and save:
 
 ```javascript
 load('api_config.js');
@@ -57,7 +56,7 @@ to copy `init.js` to the device, reboot the device, and start monitoring
 serial output:
 
 ```
-mos put init.js
+mos put fs/init.js
 mos call Sys.Reboot
 mos console
 ```
@@ -90,3 +89,59 @@ cloud as soon as it gets connected.
 
 
 ## Sending metrics to Google IoT Core
+
+<img src="images/mf3.png" class="float-right p-2 w-25">
+
+We are going to connect a Grove DHT temperature sensor to the board,
+then modify `fs/init.js` to periodically read the temperature and send
+it over to the Google IoT Core.
+
+Get the Grove DHT sensor and connect it to the IO17 Grove connector
+on the board, as shown on the picture.
+
+The DHT driver is built-in to the `demo-js` app we're using, therefore
+we do not need to rebuild the firmware.
+
+Open `fs/init.js` in your favorite editor, copy-paste the following snippet and save:
+
+```javascript
+load('api_config.js');
+load('api_dht.js');
+load('api_mqtt.js');
+load('api_timer.js');
+
+let topic = '/devices/' + Cfg.get('device.id') + '/state';
+let pin = 17;  // GPIO pin which has a DHT sensor data wire connected
+let dht = DHT.create(pin, DHT.DHT11);  // Initialize DHT library
+
+Timer.set(3000 /* milliseconds */, Timer.REPEAT, function() {
+  let t = dht.getTemp();
+  let h = dht.getHumidity();
+  if (isNaN(h) || isNaN(t)) {
+    print('Failed to read data from sensor');
+  } else {
+    let msg = JSON.stringify({temperature: t, humidity: h});
+    print(topic, '->', msg);
+    MQTT.pub(topic, msg, 1);
+  }
+}, null);
+```
+
+<video controls="" class="float-right border w-50 m-3 p-0">
+    <source src="images/mf4.mp4" type="video/mp4">
+</video>
+
+
+In the command prompt (or terminal on Linux/Mac), enter the following commands
+to copy `init.js` to the device, reboot the device, and start monitoring
+serial output:
+
+```
+mos put fs/init.js
+mos call Sys.Reboot
+mos console
+```
+
+In the Google IoT Web console, click on the "Configuration and state history",
+and see how new state objects are arriving. Click on any state object,
+select "text" view, and check the JSON string that is sent by device.
