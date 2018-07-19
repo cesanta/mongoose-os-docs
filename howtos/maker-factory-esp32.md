@@ -8,6 +8,8 @@ control the board and report metrics.
 
 Please follow [Google IoT Core tutorial](../cloud/google.md)
 in order to setup the cloud side and provision your board to Google IoT Core.
+You need to complete **Setup Google IoT Core** and
+**Setup device** sections only. When done, continue on this tutorial.
 
 <video controls="" class="float-right border w-50 p-3">
     <source src="images/mf1.mp4" type="video/mp4">
