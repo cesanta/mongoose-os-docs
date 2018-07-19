@@ -100,7 +100,7 @@ it over to the Google IoT Core.
 
 Get the Grove DHT sensor and connect it to the IO17 Grove connector
 on the board, as shown on the picture. Make sure to enable IO17 via the
-switch:
+switch, as shown on the picture.
 
 The DHT driver is built-in to the `demo-js` app we're using, therefore
 we do not need to rebuild the firmware.
