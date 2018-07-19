@@ -56,8 +56,8 @@ mos wifi WIFI_NETWORK WIFI_PASSWORD
 mos azure-iot-setup --azure-hub-name YOUR_AZURE_HUB_NAME
 ```
 
-A newly provisioned device must appear in the hub's device list. In the
-example, an ESP8266 board is used. You will get a different devie ID,
+A newly provisioned device must appear in the hub's device list. On the
+picture, an ESP8266 board was used. You will get a different device ID,
 according to the hardware platform you're using.
 
 ![](images/azure2.png)
