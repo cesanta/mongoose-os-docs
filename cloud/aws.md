@@ -138,8 +138,88 @@ See device logs, and see how LED turns on and off. NOTE: on some boards,
 
 ## Reporting metrics to AWS IoT
 
-TBD
+We'll report free RAM metric using MQTT API. Note that AWS IoT has
+versatile rules engine, which allows to handle incoming MQTT messages in
+a various ways: store in Dynamo DB, forward to your Lambda function, etc etc.
+
+Again, create `init.js` file in your favorite editor with the following content:
+
+```javascript
+load('api_config.js');
+load('api_mqtt.js');
+load('api_sys.js');
+load('api_timer.js');
+
+let topic = 'metrics/' + Cfg.get('device.id');
+
+Timer.set(1000 /* milliseconds */, Timer.REPEAT, function() {
+  let msg = JSON.stringify({free: Sys.free_ram(), total: Sys.total_ram()});
+  print(topic, '->', msg);
+  MQTT.pub(topic, msg, 1);
+}, null);
+```
+
+<video controls="" class="float-right border w-50 m-3">
+    <source src="images/aws2.mp4" type="video/mp4">
+</video>
+
+In the command prompt (or terminal on Linux/Mac), enter the following commands
+to copy `init.js` to the device, reboot the device, and start monitoring
+serial output:
+
+```
+mos put init.js
+mos call Sys.Reboot
+mos console
+```
+
+In the AWS IoT console, click on "Test". Into the "Subscription topic" field,
+enter `metrics/#` and click "Subscribe to topic". See how messages are
+coming.
+
+
+## Direct device control via AWS IoT
+
+If you're using Bash shell, you can use this alias to talk to your
+device interactively via AWS IoT:
+
+<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="3-100"><code>alias mos1="mos --cert-file $(mos config-get mqtt.ssl_cert) --key-file $(mos config-get mqtt.ssl_key) --port mqtts://$(mos config-get mqtt.server)/$(mos config-get device.id)"
+mos1 ls -l
+init.js 330
+index.html 250
+...</code></pre>
+
+For more in-depth explanation, see
+[Secure remote device management with Mongoose OS](https://mongoose-os.com/blog/secure-remote-device-management-with-mongoose-os-and-aws-iot-for-esp32-esp8266-ti-cc3200-stm32/)
+blog post.
 
 ## OTA update via AWS IoT device shadow
 
 TBD
+
+
+## Using AWS IoT in your custom firmware
+
+The AWS IoT integration described above is implemented by the
+[aws](https://github.com/mongoose-os-libs/aws) Mongoose OS library.
+
+It provides device shadow API in both C/C++ and JavaScript, allowing
+developers to quickly prototype the device logic in JS before jumping to the
+C/C++ implementation.
+
+Also, MQTT API is available, also for both C/C++ and JavaScript.
+
+In order to have AWS IoT functionality in your custom application,
+just add `aws` library to your `mos.yml` file:
+
+```yaml
+libs:
+  ...
+  - origin: https://github.com/mongoose-os-libs/aws  # <-- Add this!
+```
+
+Then, rebuild your app:
+
+```
+mos build
+```
