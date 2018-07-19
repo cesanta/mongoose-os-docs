@@ -92,19 +92,22 @@ cloud as soon as it gets connected.
 
 ## Reporting state to Google IoT Core
 
-<img src="images/mf3.png" class="float-right p-2 w-25">
+<img src="images/mf3.png" class="float-right p-3 w-50">
 
 We are going to connect a Grove DHT temperature sensor to the board,
 then modify `fs/init.js` to periodically read the temperature and send
 it over to the Google IoT Core.
 
 Get the Grove DHT sensor and connect it to the IO17 Grove connector
-on the board, as shown on the picture.
+on the board, as shown on the picture. Make sure to enable IO17 via the
+switch:
 
 The DHT driver is built-in to the `demo-js` app we're using, therefore
 we do not need to rebuild the firmware.
 
 Open `fs/init.js` in your favorite editor, copy-paste the following snippet and save:
+
+<div class="clearfix"></div>
 
 ```javascript
 load('api_config.js');

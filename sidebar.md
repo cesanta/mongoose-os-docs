@@ -9,8 +9,9 @@
 
 **Cloud Tutorials**
 
-- [Azure IoT](/docs/cloud/azure.md)
+- [Amazon AWS IoT](/docs/cloud/aws.md)
 - [Google IoT Core](/docs/cloud/google.md)
+- [Microsoft Azure IoT](/docs/cloud/azure.md)
 - [Private MQTT server](/docs/cloud/mqtt.md)
 
 **User Guide**
