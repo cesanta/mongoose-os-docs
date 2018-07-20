@@ -207,7 +207,7 @@ ws.on('message', msg => console.log('Got message:', msg.toString()));
 | GET    | /keys            | &nbsp; | List all API keys |
 | POST   | /keys            | &nbsp; | Create an API key |
 | DELETE | /keys/:id        | &nbsp; | Delete an API key |
-| GET    | /logs            | &nbsp; | Get stored notification logs |
+| POST   | /logs            | {"start": 0} | Get stored notification logs |
 
 Example:
 
