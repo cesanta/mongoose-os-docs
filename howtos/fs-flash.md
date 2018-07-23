@@ -72,7 +72,7 @@ mos[.exe] --port <portname> console
 ```
 then you should see something like this scrolling in the terminals window:
 
-![Boot phase console log](/Users/mmspaeth/Desktop/start-small.svg)
+![Boot phase console log](https://github.com/mamuesp/mongoose-os-docs/blob/master/howtos/images/start-small.svg)
 
 The **red marked** entries are describing the filesystem you want to create an image from:
 
