@@ -5,7 +5,7 @@ Mongoose OS is a firmware development framework for microcontrollers.
 Mongoose OS was created for developers who work on commercial connected
 products, and care about things like manageability, security, and reliability.
 80-90% of the commercial firmware is around infrastructure, which is the same
-for many products regardless of what they do. Mongoose OS provides that
+for many products regardless of what they do. Mongoose OS provides such a
 reliable, field-tested infrastructure.
 
 #### Quick Summary
