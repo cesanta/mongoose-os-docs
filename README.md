@@ -1,17 +1,16 @@
 # Mongoose OS documentation
 
-Mongoose OS is an firmware development framework for connected microcontrollers.
+Mongoose OS is a firmware development framework for microcontrollers.
 
-Mongoose OS is created for developers who work on firmare for commercial
-products, and care about things like manageability, security, reliability.
+Mongoose OS was created for developers who work on commercial connected
+products, and care about things like manageability, security, and reliability.
 80-90% of the commercial firmware is around infrastructure, which is the same
-for many products regardless what they do. Mongoose OS provides such
-infrastructure.
+for many products regardless of what they do. Mongoose OS provides that
+reliable, field-tested infrastructure.
 
 #### Quick Summary
 
-- Designed for commercial products, hence main focus is on
-  features like cloud connectivity, built-in OTA, etc
+- Designed for commercial products
 - Reliable OTA
 - Support for major cloud services: AWS IoT, Microsoft Azure, Google
   IoT Core, IBM Watson, Samsung Artik
