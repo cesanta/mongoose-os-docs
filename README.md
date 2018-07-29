@@ -15,7 +15,7 @@ reliable, field-tested infrastructure.
 - Support for major cloud services: AWS IoT, Microsoft Azure, Google
   IoT Core, IBM Watson, Samsung Artik
 - Support for generic in-house MQTT, RESTful, Websocket servers
-- Networking core is based on mature
+- Networking core is based on the mature
   [Mongoose Networking Library](https://github.com/cesanta/mongoose)
 - RPC infrastructure for remote management:
    * JSON-RPC 2.0 framing
