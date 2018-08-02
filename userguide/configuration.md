@@ -219,7 +219,7 @@ _previous_ layer is in effect: when loading user settings,
 and for vendor settings the `conf_acl` value from the defaults is used.
 
 For example, to restrict users to only being able change WiFi and debug level
-settings, `"conf_acl": "wifi.*,debug.level"` should be set in `conf_vendor.json`.
+settings, `"conf_acl": "wifi.*,debug.level"` should be set in `conf{1-8}.json`.
 
 Negative entries allow for default-allow behaviour:
 `"conf_acl": "-debug.*,*"` allows changing all fields except anything under `debug`.
