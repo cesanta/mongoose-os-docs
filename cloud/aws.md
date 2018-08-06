@@ -33,7 +33,7 @@ mos flash YOUR_PLATFORM  # e.g. stm32, esp32, esp8266, cc3220
 ```
 mos wifi WIFI_NETWORK WIFI_PASSWORD
 ```
-- Provision your device to Azure IoT with a single command:
+- Provision your device to AWS IoT with a single command:
 ```
 mos aws-iot-setup --aws-region YOUR_AWS_REGION
 ```
