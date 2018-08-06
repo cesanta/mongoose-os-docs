@@ -31,7 +31,7 @@ Here is a high level overview of the OTA procedure:
    [periodic timer that polls well known location](https://github.com/mongoose-os-libs/ota-http-client),
    [AWS IoT device shadow change](https://github.com/mongoose-os-libs/ota-aws-shadow),
    an [`OTA.Update` RPC command](https://github.com/mongoose-os-libs/rpc-service-ota), or other.
-   You can create your method using an [OTA API](/docs/api/mgos_updater.h.html).
+   You can create your method using an [OTA API](https://github.com/mongoose-os-libs/ota-common/tree/master/include).
 2. A separate flash partition is created to hold a new firmware image - code
    and data (root filesystem).
 3. A new firmware image is downloaded to the new flash partition. Any failure
