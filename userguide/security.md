@@ -281,17 +281,17 @@ A connected device can be a network client, or network server, or both. For
 example, if a device provides a RESTful interface, it acts as a network
 server. If a device connects to an MQTT server, it acts as a network client.
 
-Avoid to make a device to be a network server for the following reasons:
+Avoid running a network server on your device for the following reasons:
 
 - It is easy to DoS the device by creading many network connections. Say,
   a device has 40k of free RAM, and each connection takes 10k, then 4
-  connections is enough to render the device unusable
+  connections is enough for the denial of service
 - A device must implement authentication and authorisation mechanisms that
   are potentially vulnerable
 - A network service code may be vulnerable
 - If TLS is used for communication, the connection setup time could be
-  large because of the slow CPU, leading to delays and bad user
-  experience
+  large because of the slow CPU, leading to delays and bad user experience
+- TLS certificate management for the local communication could be non-trivial
 
 On the other hand, when a device acts as a client, these problems disappear:
 
