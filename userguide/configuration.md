@@ -201,7 +201,7 @@ while providing a way for user to change settings, restrict certain fields
 or (better) specify which fields can be changed by the user.
 
 To facilitate that, the configuration system contains field access control,
-configured by the `field access control list` (ACL).
+configured by the **field access control list** (ACL).
 
 - ACL is a comma-delimited list of entries which are applied to full field
   names when loading config files at boot time.
