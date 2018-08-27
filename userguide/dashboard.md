@@ -192,13 +192,30 @@ ws.on('message', msg => console.log('Got message:', msg.toString()));
 
 <!-- ![](images/dash3.png) -->
 
+## Device sharing
+
+It is possible to share a device with other users. This is driven by the
+`shared_with` property of the device, which is a comma-separated
+string of user IDs to share device with. The `shared_with` property could be
+set via the API, or via the dashboard's "Info" panel:
+
+<!-- ![](images/dash9.png) -->
+
+Shared devices are marked with an alternate background in the device list:
+
+<!-- ![](images/dash10.png) -->
+
+In order to see your user ID, click on the Account tab:
+
+<!-- ![](images/dash11.png) -->
+
 ## REST API Reference
 
 | Method | Endpoint         | Params | Description |
 | ------ | ---------------- | ------ | ----------- |
 | GET    | /devices         | &nbsp; | List all registered devices |
-| POST   | /devices         | {"name": "x", "id": "y"} | Register new device. `id` is optional |
-| PUT    | /devices/:id     | {"name": "x"} | Change device name |
+| POST   | /devices         | {"name": "x"} | Register new device |
+| PUT    | /devices/:id     | {"name": "x", "shared_with": "github_user1"} | Change device properties |
 | DELETE | /devices/:id     | &nbsp; | Delete device |
 | POST   | /devices/:id/rpc/:func | {...} | Call device's RPC function |
 | POST   | /devices/:id/ota | fw.zip | OTA: `curl -v -F file=@fw.zip URL` |
