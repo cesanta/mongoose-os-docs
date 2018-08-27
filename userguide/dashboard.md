@@ -199,15 +199,15 @@ It is possible to share a device with other users. This is driven by the
 string of user IDs to share device with. The `shared_with` property could be
 set via the API, or via the dashboard's "Info" panel:
 
-<!-- ![](images/dash9.png) -->
+![](images/dash9.png)
 
 Shared devices are marked with an alternate background in the device list:
 
-<!-- ![](images/dash10.png) -->
+![](images/dash10.png)
 
 In order to see your user ID, click on the Account tab:
 
-<!-- ![](images/dash11.png) -->
+![](images/dash11.png)
 
 ## REST API Reference
 
