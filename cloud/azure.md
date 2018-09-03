@@ -84,17 +84,17 @@ load('api_shadow.js');
 let led = Cfg.get('pins.led');  // Built-in LED GPIO number
 let state = {on: false};        // Device state - LED on/off status
 
-// Set up Shadow handler to synchronise device state with the shadow state
-Shadow.addHandler(function(event, obj) {
+// Set up twin handler to synchronise device state with the shadow state
+Twin.addHandler(function(event, obj) {
   if (event === 'CONNECTED') {
     // Connected to shadow - report our current state.
-    Shadow.update(0, state);
+    Twin.update(0, state);
   } else if (event === 'UPDATE_DELTA') {
     // Got delta. Iterate over the delta keys, handle those we know about.
     print('Got delta:', JSON.stringify(obj));
     for (let key in obj) {
       if (key === 'on') {
-        // Shadow wants us to change local state - do it.
+        // Twin wants us to change local state - do it.
         state.on = obj.on;
         GPIO.set_mode(led, GPIO.MODE_OUTPUT);
         GPIO.write(led, state.on ? 1 : 0);
@@ -104,7 +104,7 @@ Shadow.addHandler(function(event, obj) {
       }
     }
     // Once we've done synchronising with the shadow, report our state.
-    Shadow.update(0, state);
+    Twin.update(0, state);
   }
 });
 ```
