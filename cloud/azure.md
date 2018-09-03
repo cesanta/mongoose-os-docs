@@ -125,7 +125,18 @@ mos call Sys.Reboot
 mos console 
 ```
 
-In the device twin editor, add `desired.on` boolean key. Set it to `true` or
+In the device twin editor, add `desired.on` boolean key:
+
+```javascript
+  ...
+  "desired": {
+    "on": true
+  },
+  "reported": {
+    ...
+```
+
+Set it to `true` or
 `false`, and observe how the device reacts by switching the LED on/off:
 
 <video controls="" class="text-center border w-75 my-2">
