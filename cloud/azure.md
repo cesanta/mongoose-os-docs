@@ -1,17 +1,17 @@
-# Mongoose OS + Azure IoT
+# Mongoose OS and Microsoft Azure IoT
 
 This tutorial demonstrates the following:
 
-- How to build a skeleton for a commercial smart device, managed by Azure IoT
+- How to build a skeleton for a commercial smart device, managed using Microsoft Azure IoT
 - How to reuse the code for different hardware platforms
-- How to control devices via Azure IoT device twin
-- How to perform bulk OTA updates using Azure IoT device configuration feature
+- How to configure devices via Azure IoT Hub device twin
+- How to perform bulk over-the-air (OTA) updates using [Azure IoT Hub automatic device management](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-auto-device-config)
 
 
-## Setup Azure IoT
+## Setup Azure IoT Hub
 
 - Create an account on [portal.azure.com](http://portal.azure.com)
-- Install `az`, an Azure command line utility, by [following these instructions](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest")
+- Install `az`, the Azure command line utility, by [following these instructions](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest")
 - Start command prompt (or terminal on UNIX/Mac), login and follow the instructions:
 ```
 az login
@@ -46,30 +46,30 @@ libs:
 ```
 
 
-- Configure WiFi on a device
+- Configure WiFi on a device using the mongoose OS command line tool `mos`
 ```
 mos wifi WIFI_NETWORK WIFI_PASSWORD
 ```
 
-- Provision your device to Azure IoT with a single command:
+- Provision your device to Azure IoT with a single command using the `mos` tool:
 ```
 mos azure-iot-setup --azure-hub-name YOUR_AZURE_HUB_NAME
 ```
 
-A newly provisioned device must appear in the hub's device list. On the
+A newly provisioned device will appear in the IoT hub's device list. On the
 picture, an ESP8266 board was used. You will get a different device ID,
-according to the hardware platform you're using.
+depending on the hardware platform you're using.
 
 ![](images/azure2.png)
 
-## Controlling device using Azure device twin
+## Configuraing the device using Azure IoT Hub device twin
 
-Click on the device ID shown in the device list, then click on a
+In the IoT Hub blade of the Azure portal, click on the device ID shown in the device list, then select the
 "Device twin" tab:
 
 ![](images/azure3.png)
 
-That should bring us to the shadow editor:
+That will bring up the device twin editor:
 
 ![](images/azure4.png)
 
@@ -132,20 +132,19 @@ In the device twin editor, add `desired.on` boolean key. Set it to `true` or
     <source src="images/azure5.mp4" type="video/mp4">
 </video>
 
-This example demonstrates remote device control via a device twin, and could be
+This example demonstrates remote device configuration using the device twin, and can be
 applied to a broad range of use cases.
 
 
-## Bulk OTA updates via the Azure device configuration service
+## Bulk OTA updates with the Azure IoT Hub automatic device management feature
 
-Register couple more devices on the Azure IoT, the same way the first
-one was registered:
+Register a couple more devices in the Azure IoT Hub, following the same steps as in the Setup Device section above:
 
 ```
 mos azure-iot-setup --azure-hub-name YOUR_AZURE_HUB_NAME
 ```
 
-For each device, edit the Device Twin by adding the following snippet:
+For each device, edit the Device Twin adding the following snippet:
 
 ```
 "tags": {
@@ -162,9 +161,9 @@ mos console
 ```
 
 This will generate a new firmware `build/fw.zip`. Upload this file to some
-web server under your control.
+web server of your choice.
 
-In Azure IoT, create a new device configuration:
+In the Azure IoT Hub blade go to the Automatic Device management section and create a new device configuration:
 
 ![](images/azure6.png)
 
@@ -210,6 +209,8 @@ where you can see various metrics:
 ```
 
 Note the `progress_percent` value. If you refresh the twin editor, it'll change
-to indicate OTA progress. When the update is over, the value of
+to indicate the OTA update progress. When the update is complete, the value of
 `ota.fw_id` changes to indicate the new timestamp of the firmware.
 Observe console statement, note the `hello new version` message.
+
+You have just performed an over-the-air firmware update accross multiple devices seamlesly leveraging Azure IoT.
