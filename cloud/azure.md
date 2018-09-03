@@ -130,7 +130,8 @@ In the device twin editor, add `desired.on` boolean key:
 ```javascript
   ...
   "desired": {
-    "on": true
+    "on": true,
+    ...
   },
   "reported": {
     ...
