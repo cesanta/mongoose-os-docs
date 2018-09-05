@@ -190,24 +190,22 @@ const ws = new Websocket(addr, { origin: addr, headers: headers });
 ws.on('message', msg => console.log('Got message:', msg.toString()));
 ```
 
-<!-- ![](images/dash3.png) -->
-
 ## Device sharing
+
+<img src="images/dash9.png" class="w-50 float-right">
 
 It is possible to share a device with other users. This is driven by the
 `shared_with` property of the device, which is a comma-separated
 string of user IDs to share device with. The `shared_with` property could be
 set via the API, or via the dashboard's "Info" panel:
 
-![](images/dash9.png)
-
+<div class="clearfix"></div>
+<img src="images/dash10.png" class="w-50 float-right">
 Shared devices are marked with an alternate background in the device list:
 
-![](images/dash10.png)
-
+<div class="clearfix"></div>
+<img src="images/dash11.png" class="w-50 float-right">
 In order to see your user ID, click on the Account tab:
-
-![](images/dash11.png)
 
 ## REST API Reference
 
@@ -233,3 +231,16 @@ Example:
   -d '{"pin": 2}' \
   http://dash.mongoose-os.com/api/v2/devices/DEVICE_ID/rpc/GPIO.Toggle
 true</code></pre>
+
+
+## Licesning and Contact
+
+mDash is distributed by Mongoose OS team as a standalone docker image that
+could be run on-premises, as well as a hosted service https://dash.mongoose-os.com.
+
+In order to run mDash on-premises, do `docker run mgos/dash`. Customisation
+can be done via the configuration. By default, there is a restriction on the
+maximum number of users (5 maximum) .
+
+Please [contact us](https://mongoose-os.com/contact.html) if you would like
+to use the mDash in your production setup.
