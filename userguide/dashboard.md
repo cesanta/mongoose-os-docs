@@ -176,7 +176,9 @@ The best practive for using shadow on the device side is this:
   to the device. If the state is changed,
   report and update to the `reported` key.
 
-Example: see [example-shadow-js](https://github.com/mongoose-os-apps/example-shadow-js) app.
+Example: see [example-shadow-js](https://github.com/mongoose-os-apps/example-shadow-js) app for the JavaScript
+example, and https://github.com/cesanta/mongoose-os-smart-light for C example.
+Both demostrate the canonical best practice mentioned above.
 
 
 ### Notifications
