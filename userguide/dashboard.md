@@ -48,6 +48,26 @@ Click on a new device name, and copy the generated access token.
 Done! Now your device should appear "green" (online) on a dashboard.
 
 
+## Using device simulator
+
+If you don't want to use a real device for some reason, there
+is a POSIX program for Linux/Mac/Windows that could be used to simulate
+the device. Clone it from
+[https://github.com/cesanta/mongoose-os-device-simulator](https://github.com/cesanta/mongoose-os-device-simulator).
+
+Then simply run `make`. You'll the the access token prompt:
+
+```
+$ make
+cc -W -Wall -g -O2 -D MG_ENABLE_CALLBACK_USERDATA=1 -D MG_ENABLE_SSL -DMG_SSL_IF=MG_SSL_IF_MBEDTLS -lmbedtls -lmbedcrypto -lmbedx509 main.c mongoose.c -o simulator
+./simulator
+Enter access token: 
+```
+
+Login to [dash.mongoose-os.com](https://dash.mongoose-os.com), choose some
+registered device, copy the
+access token to the clipboard, paste into the prompt and press enter.
+
 
 ## Technical overview
 
