@@ -41,6 +41,8 @@ Then, `mos build` and `mos flash`.
 **Step 3.** Login to the https://dash.mongoose-os.com/, register a new device.
 Click on a "Token" field for the new device to copy it to the clipboard.
 
+<img src="images/dash8.png" class="w-50 pb-3" />
+
 **Step 4.** Configure device: `mos config-set dash.enable=true dash.token=GENERATED_TOKEN`
 
 Done! Now your device should appear "green" (online) on a dashboard.
