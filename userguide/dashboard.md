@@ -39,9 +39,7 @@ Then, `mos build` and `mos flash`.
 **Step 2.** Congifure WiFi: `mos wifi NETWORK_NAME NETWORK_PASSWORD`
 
 **Step 3.** Login to the https://dash.mongoose-os.com/, register a new device.
-Click on a new device name, and copy the generated access token.
-
-<img src="images/dash8.png" class="w-50 pb-3" />
+Click on a "Token" field for the new device to copy it to the clipboard.
 
 **Step 4.** Configure device: `mos config-set dash.enable=true dash.token=GENERATED_TOKEN`
 
