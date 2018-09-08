@@ -253,7 +253,7 @@ Example:
 true</code></pre>
 
 
-## Licesning and Contact
+## Licensing and Contact
 
 mDash is distributed by Mongoose OS team as a standalone docker image that
 could be run on-premises, as well as a hosted service https://dash.mongoose-os.com.
