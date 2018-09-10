@@ -28,6 +28,18 @@ reliable, field-tested infrastructure.
    * low footprint tuning of the TLS stack
 - Modular: [small core](https://github.com/cesanta/mongoose-os) and
   [over a hundred libraries](https://github.com/mongoose-os-libs/)
+- Commercial friendly Apache 2.0 license
+
+#### Smart Light IoT product reference
+
+We have published an end-to-end IoT product reference,
+https://github.com/cesanta/mongoose-os-smart-light. It could be used as
+a baseline for your own commercial product! See usage guide video:
+
+<iframe src="https://www.youtube.com/embed/fNrIwCoiazI"
+ style="width:560px; height:315px;"
+ frameborder="0" allowfullscreen></iframe>
+
 
 #### Other resources
 
