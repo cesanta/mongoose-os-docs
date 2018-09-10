@@ -1,4 +1,6 @@
-all: apps
+all: sidebar.html # apps
+
+.PHONY: sidebar.html
 
 APPSMD = quickstart/apps.md
 TMP = /tmp/.tmp.mos.yml
@@ -26,3 +28,11 @@ userguide/api.md:
 		echo $$REPO ; \
 		echo "| [$${REPO#*/}](https://github.com/$$REPO) | $$(cat $(TMP) | perl -nle 'print $$1 if /^description: (.*)/') | $$(cat $(TMP) | perl -nle 'print $$1 if /^author: (.*)/') | " >> $@ ;\
 		done
+
+# process = echo '<div class="tree-toggler"><i class="fa fa-caret-down"></i>&nbsp;$(1)</div>'
+define gensidebar
+	perl -nle 'print "<div class=\"tree-toggler\"><i class=\"fa fa-caret-down\"></i>&nbsp;$$1</div>" if /\[(.+?)\]\((.+?)\)/' $2/index.md
+endef
+
+sidebar.html:
+	node gensidebar.js > $@

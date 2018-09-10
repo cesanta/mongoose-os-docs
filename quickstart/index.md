@@ -1,0 +1,2 @@
+- [mos tool setup & usage](setup.md)
+- [Starting with JavaScript](prog1.md)
