@@ -2,4 +2,4 @@
 - [Cloud Tutorials](cloud)
 - [User Guide](userguide)
 - [API Reference](api)
-- [HOWTOs](howto)
+- [HOWTOs](howtos)
