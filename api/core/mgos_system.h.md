@@ -6,7 +6,7 @@ These API need to be implemented for each hardware platform.
 ### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h) | [mgos_system.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_system.c) | [api_sys.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_sys.js)         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os)  | [mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h) | [mgos_system.c](https://github.com/cesanta/mongoose-os/tree/master/fw/include/../src/mgos_system.c) | [api_sys.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_sys.js)         |
 
 
 ### C/С++ API

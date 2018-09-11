@@ -7,7 +7,7 @@ for more information about UART.
 ### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h) | [mgos_uart.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_uart.c) | [api_uart.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_uart.js)         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os)  | [mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h) | [mgos_uart.c](https://github.com/cesanta/mongoose-os/tree/master/fw/include/../src/mgos_uart.c) | [api_uart.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_uart.js)         |
 
 
 ### C/С++ API

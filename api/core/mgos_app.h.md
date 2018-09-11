@@ -29,7 +29,7 @@ enum mgos_app_init_result mgos_app_init(void) {
 ### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_app.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_app.h) | [mgos_app.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_app.c) |          |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os)  | [mgos_app.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_app.h) | [mgos_app.c](https://github.com/cesanta/mongoose-os/tree/master/fw/include/../src/mgos_app.c) |          |
 
 
 ### C/С++ API

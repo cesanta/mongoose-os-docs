@@ -24,6 +24,10 @@ api/core:
 	@mkdir -p $@
 	@touch $@/index.md
 	@(cd $(INC) && ls *.h) | while read F; do node tools/genapi.js $(INC)/$$F $@/$$F.md $(MJS) >> $@/index.md; done
+	@node tools/genapi.js $(DEV)/frozen/frozen.h $@/frozen.h.md "" cesanta/frozen >> $@/index.md
+	@node tools/genapi.js $(DEV)/common/cs_dbg.h $@/cs_dbg.h.md >> $@/index.md
+	@node tools/genapi.js $(DEV)/common/mbuf.h $@/mbuf.h.md >> $@/index.md
+	@node tools/genapi.js $(DEV)/common/mg_str.h $@/mg_str.h.md >> $@/index.md
 
 sidebar.html: api/core
-	node tools/gensidebar.js > $@
+	@node tools/gensidebar.js > $@

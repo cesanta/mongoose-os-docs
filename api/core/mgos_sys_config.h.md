@@ -1,10 +1,10 @@
 
-# Configuration
+# Config
  
 ### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h) | [mgos_sys_config.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_sys_config.c) | [api_config.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_config.js)         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os)  | [mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h) | [mgos_sys_config.c](https://github.com/cesanta/mongoose-os/tree/master/fw/include/../src/mgos_sys_config.c) | [api_config.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_config.js)         |
 
 
 ### C/С++ API

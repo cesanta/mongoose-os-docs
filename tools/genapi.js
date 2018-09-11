@@ -9,6 +9,13 @@ const ignore = {
   'mgos_sys_debug.h': 1,
 };
 
+const titles = {
+  'frozen.h': 'JSON',
+  'cs_dbg.h': 'Logging',
+  'mbuf.h': 'Memory',
+  'mg_str.h': 'String',
+};
+
 const jsmap = {
   'mgos_bitbang.h': 'api_bitbang.js',
   'mgos_sys_config.h': 'api_config.js',
@@ -30,15 +37,19 @@ const stripComments = text =>
 const srcFile = process.argv[2];
 const dstFile = process.argv[3];
 const mjsPath = process.argv[4];
+const repo = process.argv[5] || 'cesanta/mongoose-os';
 const srcBase = srcFile.replace(/.+\//, '');
 
 if (ignore[srcBase]) process.exit(0);
 
+const hPath = srcFile.split('cesanta.com/')[1].replace(/\/[^/]+$/, '');
+
 const source = fs.readFileSync(srcFile, 'utf-8');
 const re = /^\s*(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))/;
-const urlBase = 'https://github.com/cesanta/mongoose-os/tree/master/fw';
+const repoURL = `https://github.com/${repo}`;
+const urlBase = `${repoURL}/tree/master/${hPath}`;
 const mjsBase = 'https://github.com/mongoose-os-libs/mjs/tree/master/fs';
-let menuTitle = srcBase;
+let menuTitle = titles[srcBase] || srcBase;
 
 let md = '';
 
@@ -51,10 +62,11 @@ if (m) {
   if (m2) menuTitle = m2[1];
 }
 
-const repolink = `[mongoose-os](${urlBase})`;
-const hlink = `[${srcBase}](${urlBase}/include/${srcBase})`;
+const repolink = `[${repo}](${repoURL})`;
+const hlink = `[${srcBase}](${urlBase}/${srcBase})`;
 const cName = srcBase.replace(/.h$/, '.c');
-const clink = `[${cName}](${urlBase}/src/${cName})`;
+const clink =
+    `[${cName}](${urlBase}/${titles[srcBase] ? '' : '../src'}/${cName})`;
 const jsFile = jsmap[srcBase];
 const jslink = jsFile ? `[${jsFile}](${mjsBase}/${jsFile})` : '';
 md += '### Github repo links\n';
@@ -86,14 +98,6 @@ if (jsFile) {
     md += `\n${backs}javascript\n${m2[1]}\n${backs}\n${m2[2]}\n`;
   }
 }
-
-// const boo =
-// rest.match(/(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))([\s\S]+?)\n/g); md +=
-// `\n## Foooo ----- ${backs}${JSON.stringify(boo, null, '  ')}${backs}\n`;
-
-// boo.forEach(m => {
-//   md += `\n##### heee\n${stripComments(m[1])}\n`;
-// });
 
 fs.writeFileSync(dstFile, md);
 console.log(`- [${menuTitle}](${dstFile.replace(/.*\//, '')})`);
