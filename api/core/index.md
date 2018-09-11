@@ -4,6 +4,7 @@
 - [Event](mgos_event.h.md)
 - [GPIO](mgos_gpio.h.md)
 - [Network](mgos_net.h.md)
+- [Configuration](mgos_sys_config.h.md)
 - [System](mgos_system.h.md)
 - [Time](mgos_time.h.md)
 - [Timers](mgos_timers.h.md)

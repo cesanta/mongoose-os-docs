@@ -24,11 +24,13 @@ void mgos_neopixel_show(struct mgos_neopixel *np) {
 }
 ```
  
-#### Github repo links
-| Github Repo | C Header | C source  | Javascript source |
+### Github repo links
+| Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_bitbang.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_bitbang.h) | [mgos_bitbang.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_bitbang.c) |          |
+| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_bitbang.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_bitbang.h) | [mgos_bitbang.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_bitbang.c) | [api_bitbang.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_bitbang.js)         |
 
+
+### C/С++ API
 #### mgos_bitbang_write_bits
 
 ```c
@@ -65,3 +67,16 @@ It has smaller number of arguments (less than 6) and therefore could be
 FFI-ed to JavaScript. Essentially, it just packs all time patterns
 into a single value `t`.
  
+
+### JS API
+#### BitBang.write
+
+```javascript
+BitBang.write(pin, delay_unit, t0h, t0l, t1h, t1l, ptr, len)
+```
+Write bits to a given `pin`. `delay_unit` is one of the:
+`BitBang.DELAY_MSEC`, `BitBang.DELAY_USEC`, `BitBang.DELAY_100NSEC`.
+`ptr, len` is a bit pattern to write. `t0h, t0l` is the time pattern
+for zero bit, `t1h, t1l` is the time pattern for 1. The time pattern
+specifies the number of time units to hold the pin high, and the number
+of units to hold the pin low. Return value: none.

@@ -4,11 +4,13 @@
 Mongoose OS provides a way to get a notification when certain event
 happens. Each event has an associated event data passed as `void *`.
  
-#### Github repo links
-| Github Repo | C Header | C source  | Javascript source |
+### Github repo links
+| Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h) | [mgos_event.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_event.c) |          |
+| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h) | [mgos_event.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_event.c) | [api_events.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_events.js)         |
 
+
+### C/С++ API
 #### MGOS_EVENT_BASE
 
 ```c
@@ -113,3 +115,105 @@ Both cb and userdata must match the initial add invocation.
 Returns true if a handler was found and removed, false if there was no
 such handler in the first place.
  
+
+### JS API
+#### Event.addHandler
+
+```javascript
+Event.addHandler(ev, callback, userdata)
+```
+Add a handler for the given event `ev`. Callback should look like:
+
+function(ev, evdata, userdata) { /* ... */ }
+
+Example:
+```javascript
+
+Event.addHandler(Event.REBOOT, function(ev, evdata, ud) {
+  print("Going to reboot!");
+}, null);
+```
+#### Event.addGroupHandler
+
+```javascript
+Event.addGroupHandler(evgrp, callback, userdata)
+```
+Like `Event.addHandler()`, but subscribes on all events in the given
+event group `evgrp`. Event group includes all events from `evgrp & ~0xff`
+to `evgrp | 0xff`.
+
+Example:
+```javascript
+
+Event.addGroupHandler(Event.SYS, function(ev, evdata, ud) {
+  print("Sys event:", ev);
+}, null);
+```
+#### Event.regBase
+
+```javascript
+Event.regBase(base_event_number, name)
+```
+Register a base event number in order to prevent event number conflicts.
+Use `Event.baseNumber(id)` to get `base_event_number`; `name` is an
+arbitrary event name.
+
+Example:
+```javascript
+let bn = Event.baseNumber("ABC");
+if (!Event.regBase(bn, "My module")) {
+  die("Failed to register base event number");
+}
+
+let MY_EVENT_FOO = bn + 0;
+let MY_EVENT_BAR = bn + 1;
+let MY_EVENT_BAZ = bn + 2;
+```
+#### Event.baseNumber
+
+```javascript
+Event.baseNumber(id)
+```
+Generates unique base event number (32-bit) by a 3-char string.
+LSB is always zero, and a library can use it to create up to 256 unique
+events.
+
+A library should call `Event.regBase()` in order to claim
+it and prevent event number conflicts. (see example there)
+#### Event.trigger
+
+```javascript
+Event.trigger(ev, evdata)
+```
+Trigger an event with the given id `ev` and event data `evdata`.
+#### Event.evdataLogStr
+
+```javascript
+Event.evdataLogStr(evdata)
+```
+Getter function for the `evdata` given to the event callback for the event
+`Event.LOG`, see `Event.addHandler()`.
+#### Event.LOG
+
+```javascript
+Event.LOG
+```
+System event which is triggered every time something is printed to the
+log.  In the callback, use `Event.evdataLogStr(evdata)` to get string
+which was printed.
+#### Event.REBOOT
+
+```javascript
+Event.REBOOT
+```
+System event which is triggered right before going to reboot. `evdata`
+is irrelevant for this event.
+#### Event.OTA_STATUS
+
+```javascript
+Event.OTA_STATUS
+```
+System event which is triggered when OTA status changes.
+
+In the callback, use `OTA.evdataOtaStatusMsg(evdata)` from `api_ota.js` to
+get the OTA status message.

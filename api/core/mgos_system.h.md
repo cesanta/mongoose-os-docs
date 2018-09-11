@@ -3,11 +3,13 @@
 
 These API need to be implemented for each hardware platform.
  
-#### Github repo links
-| Github Repo | C Header | C source  | Javascript source |
+### Github repo links
+| Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h) | [mgos_system.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_system.c) |          |
+| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h) | [mgos_system.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_system.c) | [api_sys.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_sys.js)         |
 
+
+### C/С++ API
 #### mgos_get_free_heap_size
 
 ```c
@@ -143,3 +145,61 @@ void mgos_runlock(struct mgos_rlock_type *l);
 void mgos_rlock_destroy(struct mgos_rlock_type *l);
 ```
  Destroy a recursive lock. 
+
+### JS API
+#### Sys._sbuf
+
+```javascript
+Sys._sbuf(len)
+```
+Helper function to allocate string of at least given length. Note that
+the resulting string is usually bigger than this, and it is always
+longer than 5 bytes; that's to guarantee that the string data is stored in
+a common buffer and not inlined into mjs_val_t, thus the buffer can be
+used as an "output" buffer: a string can be passed to some function which
+will alter the contents, and these changes will be visible to the caller.
+#### Sys.calloc
+
+```javascript
+Sys.calloc(nmemb, size)
+```
+Allocate a memory region.
+Note: currently memory allocated this way must be explicitly released with `free()`.
+#### Sys.total_ram
+
+```javascript
+Sys.total_ram()
+```
+Return total available RAM in bytes.
+#### Sys.free_ram
+
+```javascript
+Sys.free_ram()
+```
+Return free available RAM in bytes.
+#### Sys.reboot
+
+```javascript
+Sys.reboot(us)
+```
+Reboot the system after `us` microseconds. Return value: none.
+#### Sys.uptime
+
+```javascript
+Sys.uptime()
+```
+Return number of seconds since last reboot.
+#### Sys.usleep
+
+```javascript
+Sys.usleep(microseconds)
+```
+Sleep given number of microseconds.
+Return value: none.
+#### Sys.wdt_feed
+
+```javascript
+Sys.wdt_feed()
+```
+Feed the watchdog timer.
+Return value: none.

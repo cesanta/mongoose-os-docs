@@ -16,12 +16,14 @@ apps:
 		echo "| [$${REPO#*/}](https://github.com/$$REPO) | $$(cat $(TMP) | perl -nle 'print $$1 if /^description: (.*)/') | $$(cat $(TMP) | perl -nle 'print $$1 if /^author: (.*)/') | " >> $(APPSMD) ;\
 		done
 
-INC ?= ../cesanta.com/fw/include
+DEV ?= ../cesanta.com
+INC ?= $(DEV)/fw/include
+MJS ?= $(DEV)/mos_libs/mjs
 api/core:
 	@rm -rf $@
 	@mkdir -p $@
 	@touch $@/index.md
-	@(cd $(INC) && ls *.h) | while read F; do node tools/genapi.js $(INC)/$$F $@/$$F.md >> $@/index.md; done
+	@(cd $(INC) && ls *.h) | while read F; do node tools/genapi.js $(INC)/$$F $@/$$F.md $(MJS) >> $@/index.md; done
 
 sidebar.html: api/core
 	node tools/gensidebar.js > $@

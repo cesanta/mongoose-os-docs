@@ -35,11 +35,13 @@ enum mgos_app_init_result mgos_app_init(void) {
 }
 ```
  
-#### Github repo links
-| Github Repo | C Header | C source  | Javascript source |
+### Github repo links
+| Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_timers.h) | [mgos_timers.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_timers.c) |          |
+| [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_timers.h) | [mgos_timers.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_timers.c) | [api_timer.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_timer.js)         |
 
+
+### C/С++ API
 #### (*timer_callback)
 
 ```c
@@ -116,3 +118,51 @@ int mgos_strftime(char *s, int size, char *fmt, int time);
 Format `time` according to a `strftime()`-conformant format.
 Write the result into the `s,size` buffer. Return resulting string length.
  
+
+### JS API
+#### Timer.set
+
+```javascript
+Timer.set(milliseconds, flags, handler, userdata)
+```
+Setup timer with `milliseconds` timeout and `handler` as a callback.
+`flags` can be either 0 or `Timer.REPEAT`. In the latter case, the call
+will be repeated indefinitely (but can be cancelled with `Timer.del()`),
+otherwise it's a one-off.
+
+Return value: numeric timer ID.
+
+Example:
+```javascript
+// Call every second
+Timer.set(1000, Timer.REPEAT, function() {
+  let value = GPIO.toggle(2);
+  print(value ? 'Tick' : 'Tock');
+}, null);
+```
+#### Timer.now
+
+```javascript
+Timer.now()
+```
+Return current time as double value, UNIX epoch (seconds since 1970).
+#### Timer.del
+
+```javascript
+Timer.del(id)
+```
+Cancel previously installed timer.
+#### Timer.fmt
+
+```javascript
+Timer.fmt(fmt, time)
+```
+Formats the time 'time' according to the strftime-like format
+specification 'fmt'. The strftime reference can be found e.g.
+[here](http://www.cplusplus.com/reference/ctime/strftime/).
+Example:
+```javascript
+let now = Timer.now();
+let s = Timer.fmt("Now it's %I:%M%p.", now);
+print(s); // Example output: "Now it's 12:01AM."
+```
