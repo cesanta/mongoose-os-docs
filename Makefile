@@ -16,25 +16,12 @@ apps:
 		echo "| [$${REPO#*/}](https://github.com/$$REPO) | $$(cat $(TMP) | perl -nle 'print $$1 if /^description: (.*)/') | $$(cat $(TMP) | perl -nle 'print $$1 if /^author: (.*)/') | " >> $(APPSMD) ;\
 		done
 
-
-# userguide/api.md:
-# 	curl -s https://api.github.com/orgs/mongoose-os-libs/repos?per_page=200 |\
-# 		perl -nle 'print $$1 if /"full_name": "(.*)"/' > /tmp/repos.txt
-# 	echo '# API Reference' > $@
-# 	echo '|  Repo  | Description | Author |' >> $@
-# 	echo '|  ----  | ----------- | --- |' >> $@
-# 	sort /tmp/repos.txt | while read REPO ; do \
-# 		curl -s https://raw.githubusercontent.com/$$REPO/master/mos.yml > $(TMP); \
-# 		echo $$REPO ; \
-# 		echo "| [$${REPO#*/}](https://github.com/$$REPO) | $$(cat $(TMP) | perl -nle 'print $$1 if /^description: (.*)/') | $$(cat $(TMP) | perl -nle 'print $$1 if /^author: (.*)/') | " >> $@ ;\
-# 		done
-
 INC ?= ../cesanta.com/fw/include
 api/core:
 	@rm -rf $@
 	@mkdir -p $@
 	@touch $@/index.md
-	@(cd $(INC) && ls *.h) | while read F; do touch $@/$$F.md ; echo "- [$$F]($$F.md)" >> $@/index.md; done
+	@(cd $(INC) && ls *.h) | while read F; do node tools/genapi.js $(INC)/$$F $@/$$F.md >> $@/index.md; done
 
 sidebar.html: api/core
-	node gensidebar.js > $@
+	node tools/gensidebar.js > $@
