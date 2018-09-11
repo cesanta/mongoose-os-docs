@@ -1,11 +1,10 @@
 # Introduction
 
-This guide is about the design an internals of
-[Mongoose OS](https://mongoose-os.com), an firmware development framework for
-connected products on low power microcontrollers. If you are an embedded
-engineer who develop device firmware for IoT devices, Mongoose OS is for you.
+This guide is about the design of
+[Mongoose OS](https://mongoose-os.com), a firmware development framework for
+connected products. If you are an IoT firmware developer, Mongoose OS is for you.
 
-Here we share our vision and underlying rationale for the design decisions we made.
+Here we share our vision and the rationale for the design decisions we made.
 The vast majority of these decisions were driven by our work for our customers,
 when we developed device firmware to bring their IoT products to the market.
 
