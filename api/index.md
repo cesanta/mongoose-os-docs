@@ -1,4 +1,4 @@
-- [Core](core.md)
+- [Core](core)
 - [Networking & cloud services](net.md)
 - [Peripheral drivers](drivers.md)
 - [RPC services](rpc.md)

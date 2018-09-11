@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const f = (dir, depth) => {
-  const toggleLevel = 1;
+  const toggleLevel = 0;
   const st = depth >= toggleLevel + 1 ? 'display:none;' : '';
   let a = [`<ul class="tree" style="${st}">`];
   const md = fs.readFileSync(`${dir}/index.md`, 'utf-8');
@@ -13,7 +13,7 @@ const f = (dir, depth) => {
       a.push(`<li><a href="${link}/${m[2]}">${m[1]}</a></li>`);
     } else {
       const cls = depth >= toggleLevel ? 'fa-caret-right' : 'fa-caret-down';
-      const caret = `<i class="fa ${cls}"></i>`;
+      const caret = `<i class="fa fa-fw ${cls}"></i>`;
       a.push(`<div class="tree-toggler">${caret}&nbsp;${m[1]}`);
       a = a.concat(f(`${dir}/${m[2]}`, depth + 1));
       a.push('</div>');
