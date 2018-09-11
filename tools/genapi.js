@@ -8,7 +8,7 @@ const ignore = {
   'mgos_sys_config.h': 1,
   'mgos_init.h': 1,
   'mgos_sys_debug.h': 1,
-}
+};
 
 const stripComments = text =>
     (text.startsWith('/*') ?
@@ -23,7 +23,6 @@ const srcBase = srcFile.replace(/.+\//, '');
 
 if (ignore[srcBase]) process.exit(0);
 
-const backs = '\n```\n';
 const source = fs.readFileSync(srcFile, 'utf-8');
 const re = /^\s*(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))/;
 const urlBase = 'https://github.com/cesanta/mongoose-os/tree/master/fw';
@@ -40,7 +39,6 @@ if (m) {
   if (m2) menuTitle = m2[1];
 }
 
-
 const repolink = `[mongoose-os](${urlBase})`;
 const hlink = `[${srcBase}](${urlBase}/include/${srcBase})`;
 const cName = srcBase.replace(/.h$/, '.c');
@@ -49,10 +47,28 @@ const jslink = hlink;
 md += '#### Github repo links\n';
 md += '| Github Repo | C Header | C source  | Javascript source |\n';
 md += '| ----------- | -------- | --------  | ----------------- |\n';
-md += `| ${repolink}  | ${hlink} | ${clink} |          |\n`;
+md += `| ${repolink}  | ${hlink} | ${clink} |          |\n\n`;
 
-md += '\n#### C API reference\n';
-// md += `\n## Foooo ----- ${backs}${source}${backs}\n`;
+// md += '\n#### C API reference\n';
+
+const rest = source.replace(re, '').replace(re, '');
+const re2 = /(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))\s*([\s\S]+?)\n\n/g;
+let a;
+const backs = '```';
+while ((a = re2.exec(rest)) != null) {
+  const x = a[4].match(/^.*?\*?(\S+)\(/);
+  if (!x) continue;
+  md += `#### ${x[1]}\n`;
+  md += `\n${backs}c\n${a[4]}\n${backs}\n${stripComments(a[1])}\n`;
+}
+
+// const boo =
+// rest.match(/(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))([\s\S]+?)\n/g); md +=
+// `\n## Foooo ----- ${backs}${JSON.stringify(boo, null, '  ')}${backs}\n`;
+
+// boo.forEach(m => {
+//   md += `\n##### heee\n${stripComments(m[1])}\n`;
+// });
 
 fs.writeFileSync(dstFile, md);
 console.log(`- [${menuTitle}](${dstFile.replace(/.*\//, '')})`);

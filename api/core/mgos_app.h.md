@@ -31,4 +31,25 @@ enum mgos_app_init_result mgos_app_init(void) {
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os](https://github.com/cesanta/mongoose-os/tree/master/fw)  | [mgos_app.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_app.h) | [mgos_app.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_app.c) |          |
 
-#### C API reference
+#### mgos_app_init
+
+```c
+enum mgos_app_init_result mgos_app_init(void);
+```
+
+User app init function.
+A weak stub is provided in `mgos_app_init.c`, which can be overridden.
+ 
+#### mgos_app_preinit
+
+```c
+void mgos_app_preinit(void);
+```
+
+An early init hook, for apps that want to take control early
+in the init process. How early? very, very early. If the platform
+uses RTOS, it is not running yet. Dynamic memory allocation is not
+safe. Networking is not running. The only safe thing to do is to
+communicate to mg_app_init something via global variables or shut
+down the processor and go (back) to sleep.
+ 
