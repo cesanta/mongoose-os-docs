@@ -7,7 +7,7 @@ happens. Each event has an associated event data passed as `void *`.
 ### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os)  | [mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h) | [mgos_event.c](https://github.com/cesanta/mongoose-os/tree/master/fw/include/../src/mgos_event.c) | [api_events.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_events.js)         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h) | [mgos_event.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_event.c)  | [api_events.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_events.js)         |
 
 
 ### C/С++ API

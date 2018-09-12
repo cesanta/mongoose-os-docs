@@ -7,7 +7,7 @@ For general information about GPIO, see
 ### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os)  | [mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h) | [mgos_gpio.c](https://github.com/cesanta/mongoose-os/tree/master/fw/include/../src/mgos_gpio.c) | [api_gpio.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_gpio.js)         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h) | [mgos_gpio.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_gpio.c)  | [api_gpio.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_gpio.js)         |
 
 
 ### C/С++ API

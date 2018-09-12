@@ -1,7 +1,8 @@
+# String
 ### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os)  | [mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/common/mg_str.h) | [mg_str.c](https://github.com/cesanta/mongoose-os/tree/master/common//mg_str.c) |          |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h) | [mg_str.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mg_str.c)  |          |
 
 
 ### C/С++ API

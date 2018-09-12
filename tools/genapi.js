@@ -1,11 +1,11 @@
 const fs = require('fs');
 
-const srcFile = process.argv[2];
-const dstFile = process.argv[3];
-const mjsPath = process.argv[5];
-const srcBase = srcFile.replace(/.+\//, '');
-let menuTitle = process.argv[4] || srcBase;
-const repo = 'cesanta/mongoose-os';
+const dstFile = process.argv[2];     // Destination .md file
+const repoName = process.argv[3];    // Repo name, e.g. 'cesanta/mongoose-os'
+const hFile = process.argv[4];       // C header file
+let jsFile = process.argv[6] || '';  // JS source file
+const hBase = (hFile || '').replace(/.+\//, '');
+let menuTitle = hBase;
 
 const ignore = {
   'mgos.h': 1,
@@ -15,8 +15,9 @@ const ignore = {
   'mgos_init.h': 1,
   'mgos_sys_debug.h': 1,
 };
-if (ignore[srcBase]) process.exit(0);
+if (ignore[hBase]) process.exit(0);
 
+// Locations of the JS bindings for the core API
 const jsmap = {
   'mgos_bitbang.h': 'api_bitbang.js',
   'mgos_sys_config.h': 'api_config.js',
@@ -28,6 +29,14 @@ const jsmap = {
   'mgos_uart.h': 'api_uart.js',
 };
 
+const menuTitles = {
+  'frozen.h': 'JSON',
+  'cs_dbg.h': 'Logging',
+  'mbuf.h': 'Membuf',
+  'mg_str.h': 'String',
+};
+if (menuTitles[hBase]) menuTitle = menuTitles[hBase];
+
 const stripComments = text =>
     (text.startsWith('/*') ?
          text.replace(/^\/\*/, '')
@@ -35,18 +44,10 @@ const stripComments = text =>
              .replace(/\n\s*\* ?/g, '\n') :
          text.replace(/(^|\n)\s*\/\/ ?/g, '$1').replace(/^\s+|\s+$/, ''));
 
-// console.log('SRC::', srcFile);
-// process.exit(0);
-
-const hPath = srcFile.split('cesanta.com/')[1].replace(/\/[^/]+$/, '');
-const source = fs.readFileSync(srcFile, 'utf-8');
 const re = /^\s*(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))/;
-const repoURL = `https://github.com/${repo}`;
-const urlBase = `${repoURL}/tree/master/${hPath}`;
-const mjsBase = 'https://github.com/mongoose-os-libs/mjs/tree/master/fs';
+const source = fs.readFileSync(hFile, 'utf-8');
 
 let md = '';
-
 const m = source.replace(re, '').match(re);
 if (m) {
   const comment = stripComments(m[1]);
@@ -54,19 +55,34 @@ if (m) {
   md += '\n';
   const m2 = comment.match(/#\s*(.+)\n/);
   if (m2) menuTitle = m2[1];
+} else {
+  md += `# ${menuTitle}\n`;
 }
 
-const repolink = `[${repo}](${repoURL})`;
-const hlink = `[${srcBase}](${urlBase}/${srcBase})`;
-const cName = srcBase.replace(/.h$/, '.c');
-const clink =
-    `[${cName}](${urlBase}/${process.argv[4] ? '' : '../src'}/${cName})`;
-const jsFile = jsmap[srcBase];
-const jslink = jsFile ? `[${jsFile}](${mjsBase}/${jsFile})` : '';
+const repoURL = `https://github.com/${repoName}`;
+const repoLink = `[${repoName}](${repoURL})`;
+const mjsURL = 'http://github.com/mongoose-os-libs/mjs';
+let hLink = '', cLink = '', jsLink = '';
+
+if (repoName == 'cesanta/mongoose-os') {
+  const cBase = hBase.replace(/.h$/, '.c');
+  hLink = `[${hBase}](${repoURL}/tree/master/fw/include/${hBase})`;
+  cLink = `[${cBase}](${repoURL}/tree/master/fw/src/${cBase})`;
+  const jsBase = jsmap[hBase];
+  if (jsBase) {
+    jsLink = `[${jsBase}](${mjsURL}/tree/master/fs/${jsBase})`;
+    jsFile = `${hFile.replace(/[^\/]+$/, '')}../../mos_libs/mjs/fs/${jsBase}`;
+  }
+}
+if (repoName == 'cesanta/frozen') {
+  const cBase = hBase.replace(/.h$/, '.c');
+  hLink = `[${hBase}](${repoURL}/tree/master/${hBase})`;
+  cLink = `[${cBase}](${repoURL}/tree/master/${cBase})`;
+}
 md += '### Github repo links\n';
 md += '| Github Repo | C Header | C source  | JS source |\n';
 md += '| ----------- | -------- | --------  | ----------------- |\n';
-md += `| ${repolink}  | ${hlink} | ${clink} | ${jslink}         |\n\n`;
+md += `| ${repoLink} | ${hLink} | ${cLink}  | ${jsLink}         |\n\n`;
 
 md += '\n### C/С++ API\n';
 
@@ -83,7 +99,7 @@ while ((a = re2.exec(rest)) != null) {
 
 if (jsFile) {
   md += '\n### JS API\n';
-  const js = fs.readFileSync(`${mjsPath}/fs/${jsFile}`, 'utf-8');
+  const js = fs.readFileSync(jsFile, 'utf-8');
   var re3 = /((?:\s*\/\/.*\n)+)/g;
   while ((a = re3.exec(js)) !== null) {
     const m2 = stripComments(a[1]).match(/^[^`]+?`(.*)`.*?\n([\s\S]+)$/);

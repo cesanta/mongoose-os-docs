@@ -1,6 +1,6 @@
 all: sidebar.html # apps
 
-.PHONY: sidebar.html api/core api
+.PHONY: sidebar.html api/core # api
 
 APPSMD = quickstart/apps.md
 TMP = /tmp/.tmp.mos.yml
@@ -23,11 +23,11 @@ api/core:
 	@rm -rf $@
 	@mkdir -p $@
 	@touch $@/index.md
-	@(cd $(INC) && ls *.h) | while read F; do node tools/genapi.js $(INC)/$$F $@/$$F.md "" $(MJS) >> $@/index.md; done
-	@node tools/genapi.js $(DEV)/frozen/frozen.h $@/frozen.h.md JSON >> $@/index.md
-	@node tools/genapi.js $(DEV)/common/cs_dbg.h $@/cs_dbg.h.md Logging >> $@/index.md
-	@node tools/genapi.js $(DEV)/common/mbuf.h $@/mbuf.h.md Membuf >> $@/index.md
-	@node tools/genapi.js $(DEV)/common/mg_str.h $@/mg_str.h.md String >> $@/index.md
+	@(cd $(INC) && ls *.h) | while read F; do node tools/genapi.js $@/$$F.md cesanta/mongoose-os $(INC)/$$F $(INC)/../src/$$(echo $$F | sed 's,.h$$,.c,') >> $@/index.md; done
+	@node tools/genapi.js $@/frozen.h.md cesanta/frozen $(DEV)/frozen/frozen.h >> $@/index.md
+	@node tools/genapi.js $@/cs_dbg.h.md cesanta/mongoose-os $(DEV)/common/cs_dbg.h >> $@/index.md
+	@node tools/genapi.js $@/mbuf.h.md cesanta/mongoose-os $(DEV)/common/mbuf.h >> $@/index.md
+	@node tools/genapi.js $@/mg_str.h.md cesanta/mongoose-os $(DEV)/common/mg_str.h >> $@/index.md
 
 LIBS ?= /tmp/libs
 LIBSINDEX ?= /tmp/libs.txt

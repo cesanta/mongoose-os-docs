@@ -27,7 +27,7 @@ void mgos_neopixel_show(struct mgos_neopixel *np) {
 ### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os)  | [mgos_bitbang.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_bitbang.h) | [mgos_bitbang.c](https://github.com/cesanta/mongoose-os/tree/master/fw/include/../src/mgos_bitbang.c) | [api_bitbang.js](https://github.com/mongoose-os-libs/mjs/tree/master/fs/api_bitbang.js)         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_bitbang.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_bitbang.h) | [mgos_bitbang.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_bitbang.c)  | [api_bitbang.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_bitbang.js)         |
 
 
 ### C/С++ API
