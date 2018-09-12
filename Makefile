@@ -38,7 +38,7 @@ LIBSINDEX ?= /tmp/libs.txt
 api:
 	@test -f $(LIBSINDEX) || curl -s https://api.github.com/orgs/mongoose-os-libs/repos?per_page=200 | perl -nle 'print $$1 if /"full_name": "(.*)"/' | sort > $(LIBSINDEX)
 	@mkdir -p $(LIBS)
-	@cat $(LIBSINDEX) | head -5 | while read REPO ; \
+	@cat $(LIBSINDEX) | head -10 | while read REPO ; \
 		do echo $$REPO; \
 		BR=$$(basename $$REPO); \
 		if test -d $(DEV)/mos_libs/$$BR; then \
