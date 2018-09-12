@@ -17,7 +17,7 @@ apps:
 		done
 
 
-CATEGORIES ?= core cloud net drivers arduino rpc
+CATEGORIES ?= core cloud net drivers arduino rpc misc
 clean-generated:
 	@for C in $(CATEGORIES) ; do rm -rf api/$$C; mkdir api/$$C; touch api/$$C/index.md ; done
 
@@ -38,13 +38,17 @@ LIBSINDEX ?= /tmp/libs.txt
 api:
 	@test -f $(LIBSINDEX) || curl -s https://api.github.com/orgs/mongoose-os-libs/repos?per_page=200 | perl -nle 'print $$1 if /"full_name": "(.*)"/' | sort > $(LIBSINDEX)
 	@mkdir -p $(LIBS)
-	@cat $(LIBSINDEX) | head -2 | while read REPO ; \
+	@cat $(LIBSINDEX) | head -5 | while read REPO ; \
 		do echo $$REPO; \
 		BR=$$(basename $$REPO); \
-		R=$(LIBS)/$$BR; \
-		test -d $$R && (cd $$R && git pull --quiet) || git clone --quiet https://github.com/$$REPO $$R; \
+		if test -d $(DEV)/mos_libs/$$BR; then \
+			R=$(DEV)/mos_libs/$$BR; \
+		else \
+			R=$(LIBS)/$$BR; \
+			test -d $$R && (cd $$R && git pull --quiet) || git clone --quiet https://github.com/$$REPO $$R; \
+		fi; \
 		CATEGORY=$$(perl -ne 'print $$1 if /docs:(.+?):(.+?)/' $$R/mos.yml); \
-		test -z "$$CATEGORY" && CATEGORY=core; \
+		test -z "$$CATEGORY" && CATEGORY=misc; \
 		TITLE=$$(perl -ne 'print $$2 if /docs:(.+?):(.+?)\s*$$/' $$R/mos.yml); \
 		test -z "$$TITLE" && TITLE=$$BR; \
 		test -d $@/$$CATEGORY/index.md || mkdir -p $@/$$CATEGORY ; touch $@/$$CATEGORY/index.md; \

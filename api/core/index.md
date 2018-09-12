@@ -14,4 +14,4 @@
 - [Logging](cs_dbg.h.md)
 - [Membuf](mbuf.h.md)
 - [String](mg_str.h.md)
-- [adc](adc.md)
+- [ADC](adc.md)

@@ -1,1 +1,4 @@
 - [Adafruit ADS1015](arduino-adafruit-ads1x15.md)
+- [BME280](arduino-adafruit-bme280.md)
+- [Adafuit GFX](arduino-adafruit-gfx.md)
+- [Adafruit HTU21D-F](arduino-adafruit-htu21df.md)
