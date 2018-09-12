@@ -3,9 +3,9 @@ const fs = require('fs');
 const dstFile = process.argv[2];     // Destination .md file
 const repoName = process.argv[3];    // Repo name, e.g. 'cesanta/mongoose-os'
 const hFile = process.argv[4];       // C header file
-let jsFile = process.argv[6] || '';  // JS source file
+let jsFile = process.argv[5] || '';  // JS source file
 const hBase = (hFile || '').replace(/.+\//, '');
-let menuTitle = hBase;
+let menuTitle = process.argv[6] || hBase;
 
 const ignore = {
   'mgos.h': 1,
@@ -45,7 +45,7 @@ const stripComments = text =>
          text.replace(/(^|\n)\s*\/\/ ?/g, '$1').replace(/^\s+|\s+$/, ''));
 
 const re = /^\s*(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))/;
-const source = fs.readFileSync(hFile, 'utf-8');
+const source = hFile ? fs.readFileSync(hFile, 'utf-8') : '';
 
 let md = '';
 const m = source.replace(re, '').match(re);
@@ -62,7 +62,9 @@ if (m) {
 const repoURL = `https://github.com/${repoName}`;
 const repoLink = `[${repoName}](${repoURL})`;
 const mjsURL = 'http://github.com/mongoose-os-libs/mjs';
-let hLink = '', cLink = '', jsLink = '';
+let hLink = '&nbsp;';
+let cLink = '&nbsp;';
+let jsLink = '&nbsp;';
 
 if (repoName == 'cesanta/mongoose-os') {
   const cBase = hBase.replace(/.h$/, '.c');

@@ -2,7 +2,7 @@
 ### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h) | [cs_dbg.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/cs_dbg.c)  |          |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h) | [cs_dbg.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/cs_dbg.c)  | &nbsp;         |
 
 
 ### C/С++ API
