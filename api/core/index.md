@@ -12,5 +12,5 @@
 - [Utilities](mgos_utils.h.md)
 - [JSON](frozen.h.md)
 - [Logging](cs_dbg.h.md)
-- [Memory](mbuf.h.md)
+- [Membuf](mbuf.h.md)
 - [String](mg_str.h.md)

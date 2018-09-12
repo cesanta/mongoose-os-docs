@@ -1,5 +1,12 @@
 const fs = require('fs');
 
+const srcFile = process.argv[2];
+const dstFile = process.argv[3];
+const mjsPath = process.argv[5];
+const srcBase = srcFile.replace(/.+\//, '');
+let menuTitle = process.argv[4] || srcBase;
+const repo = 'cesanta/mongoose-os';
+
 const ignore = {
   'mgos.h': 1,
   'mgos_config_util.h': 1,
@@ -8,13 +15,7 @@ const ignore = {
   'mgos_init.h': 1,
   'mgos_sys_debug.h': 1,
 };
-
-const titles = {
-  'frozen.h': 'JSON',
-  'cs_dbg.h': 'Logging',
-  'mbuf.h': 'Memory',
-  'mg_str.h': 'String',
-};
+if (ignore[srcBase]) process.exit(0);
 
 const jsmap = {
   'mgos_bitbang.h': 'api_bitbang.js',
@@ -34,22 +35,15 @@ const stripComments = text =>
              .replace(/\n\s*\* ?/g, '\n') :
          text.replace(/(^|\n)\s*\/\/ ?/g, '$1').replace(/^\s+|\s+$/, ''));
 
-const srcFile = process.argv[2];
-const dstFile = process.argv[3];
-const mjsPath = process.argv[4];
-const repo = process.argv[5] || 'cesanta/mongoose-os';
-const srcBase = srcFile.replace(/.+\//, '');
-
-if (ignore[srcBase]) process.exit(0);
+// console.log('SRC::', srcFile);
+// process.exit(0);
 
 const hPath = srcFile.split('cesanta.com/')[1].replace(/\/[^/]+$/, '');
-
 const source = fs.readFileSync(srcFile, 'utf-8');
 const re = /^\s*(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))/;
 const repoURL = `https://github.com/${repo}`;
 const urlBase = `${repoURL}/tree/master/${hPath}`;
 const mjsBase = 'https://github.com/mongoose-os-libs/mjs/tree/master/fs';
-let menuTitle = titles[srcBase] || srcBase;
 
 let md = '';
 
@@ -66,7 +60,7 @@ const repolink = `[${repo}](${repoURL})`;
 const hlink = `[${srcBase}](${urlBase}/${srcBase})`;
 const cName = srcBase.replace(/.h$/, '.c');
 const clink =
-    `[${cName}](${urlBase}/${titles[srcBase] ? '' : '../src'}/${cName})`;
+    `[${cName}](${urlBase}/${process.argv[4] ? '' : '../src'}/${cName})`;
 const jsFile = jsmap[srcBase];
 const jslink = jsFile ? `[${jsFile}](${mjsBase}/${jsFile})` : '';
 md += '### Github repo links\n';

@@ -1,7 +1,7 @@
 ### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/frozen](https://github.com/cesanta/frozen)  | [frozen.h](https://github.com/cesanta/frozen/tree/master/frozen/frozen.h) | [frozen.c](https://github.com/cesanta/frozen/tree/master/frozen//frozen.c) |          |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os)  | [frozen.h](https://github.com/cesanta/mongoose-os/tree/master/frozen/frozen.h) | [frozen.c](https://github.com/cesanta/mongoose-os/tree/master/frozen//frozen.c) |          |
 
 
 ### C/С++ API
