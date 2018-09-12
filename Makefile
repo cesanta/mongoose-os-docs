@@ -43,9 +43,9 @@ api:
 		BR=$$(basename $$REPO); \
 		R=$(LIBS)/$$BR; \
 		test -d $$R && (cd $$R && git pull --quiet) || git clone --quiet https://github.com/$$REPO $$R; \
-		CATEGORY=$$(perl -ne 'print $$1 if /docs:(.+?):(.+)/' $$R/mos.yml); \
+		CATEGORY=$$(perl -ne 'print $$1 if /docs:(.+?):(.+?)/' $$R/mos.yml); \
 		test -z "$$CATEGORY" && CATEGORY=core; \
-		TITLE=$$(perl -ne 'print $$2 if /docs:(.+?):(.+)\s*$$/' $$R/mos.yml); \
+		TITLE=$$(perl -ne 'print $$2 if /docs:(.+?):(.+?)\s*$$/' $$R/mos.yml); \
 		test -z "$$TITLE" && TITLE=$$BR; \
 		test -d $@/$$CATEGORY/index.md || mkdir -p $@/$$CATEGORY ; touch $@/$$CATEGORY/index.md; \
 		node tools/genapi.js $@/$$CATEGORY/$$BR.md $$REPO \
