@@ -26,7 +26,7 @@ DEV ?= ../cesanta.com
 INC ?= $(DEV)/fw/include
 MJS ?= $(DEV)/mos_libs/mjs
 api/core: clean-generated
-	@(cd $(INC) && ls *.h) | while read F; do node tools/genapi.js $@/$$F.md cesanta/mongoose-os $(INC)/$$F $(INC)/../src/$$(echo $$F | sed 's,.h$$,.c,') >> $@/index.md; done
+	@(cd $(INC) && ls *.h) | while read F; do node tools/genapi.js $@/$$F.md cesanta/mongoose-os $(INC)/$$F >> $@/index.md; done
 	@node tools/genapi.js $@/frozen.h.md cesanta/frozen $(DEV)/frozen/frozen.h >> $@/index.md
 	@node tools/genapi.js $@/cs_dbg.h.md cesanta/mongoose-os $(DEV)/common/cs_dbg.h >> $@/index.md
 	@node tools/genapi.js $@/mbuf.h.md cesanta/mongoose-os $(DEV)/common/mbuf.h >> $@/index.md
@@ -43,9 +43,9 @@ api:
 		BR=$$(basename $$REPO); \
 		R=$(LIBS)/$$BR; \
 		test -d $$R && (cd $$R && git pull --quiet) || git clone --quiet https://github.com/$$REPO $$R; \
-		CATEGORY=$$(perl -ne 'print $1 if /docs:$(.+?):$(.+)/' $$R/mos.yml); \
+		CATEGORY=$$(perl -ne 'print $$1 if /docs:(.+?):(.+)/' $$R/mos.yml); \
 		test -z "$$CATEGORY" && CATEGORY=core; \
-		TITLE=$$(perl -ne 'print $1 if /docs:$(.+?):$(.+)/' $$R/mos.yml); \
+		TITLE=$$(perl -ne 'print $$2 if /docs:(.+?):(.+)\s*$$/' $$R/mos.yml); \
 		test -z "$$TITLE" && TITLE=$$BR; \
 		test -d $@/$$CATEGORY/index.md || mkdir -p $@/$$CATEGORY ; touch $@/$$CATEGORY/index.md; \
 		node tools/genapi.js $@/$$CATEGORY/$$BR.md $$REPO \

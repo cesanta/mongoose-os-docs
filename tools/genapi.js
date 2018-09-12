@@ -6,6 +6,7 @@ const hFile = process.argv[4];       // C header file
 let jsFile = process.argv[5] || '';  // JS source file
 const hBase = (hFile || '').replace(/.+\//, '');
 let menuTitle = process.argv[6] || hBase;
+const readmeMD = process.argv[7];
 
 const ignore = {
   'mgos.h': 1,
@@ -55,6 +56,9 @@ if (m) {
   md += '\n';
   const m2 = comment.match(/#\s*(.+)\n/);
   if (m2) menuTitle = m2[1];
+} else if (readmeMD) {
+  md += fs.readFileSync(readmeMD, 'utf-8');
+  md += '\n';
 } else {
   md += `# ${menuTitle}\n`;
 }
