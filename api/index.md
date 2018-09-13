@@ -3,5 +3,6 @@
 - [Networking](net)
 - [Drivers](drivers)
 - [Arduino compat](arduino)
-- [RPC Services](rpc)
+- [RPC](rpc)
+- [RPC Services](rpc-services)
 - [Misc](misc)

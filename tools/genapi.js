@@ -8,7 +8,7 @@ const hBase = (hFile || '').replace(/.+\//, '');
 let menuTitle = process.argv[6] || hBase;
 const readmeMD = process.argv[7];
 
-const ignore = {
+const ignoreHeaders = {
   'mgos.h': 1,
   'mgos_config_util.h': 1,
   'mgos_features.h': 1,
@@ -16,7 +16,14 @@ const ignore = {
   'mgos_init.h': 1,
   'mgos_sys_debug.h': 1,
 };
-if (ignore[hBase]) process.exit(0);
+const ignoreRepos = {
+  'json-store': 1,
+  'js-demo-bundle': 1,
+  'demo-bundle': 1,
+  core: 1,
+  empty: 1,
+};
+if (ignoreHeaders[hBase] || ignoreRepos[repoName]) process.exit(0);
 
 // Locations of the JS bindings for the core API
 const jsmap = {
