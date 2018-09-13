@@ -4,5 +4,4 @@
 - [Drivers](drivers)
 - [Arduino compat](arduino)
 - [RPC](rpc)
-- [RPC Services](rpc-services)
 - [Misc](misc)
