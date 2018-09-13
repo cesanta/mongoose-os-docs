@@ -2,7 +2,6 @@
 - [App](mgos_app.h.md)
 - [Bitbang](mgos_bitbang.h.md)
 - [Config](mgos_sys_config.h.md)
-- [Core meta-library](core.md)
 - [Debug](mgos_debug.h.md)
 - [Event](mgos_event.h.md)
 - [GPIO](mgos_gpio.h.md)

@@ -17,11 +17,11 @@ const ignoreHeaders = {
   'mgos_sys_debug.h': 1,
 };
 const ignoreRepos = {
-  'json-store': 1,
-  'js-demo-bundle': 1,
-  'demo-bundle': 1,
-  core: 1,
-  empty: 1,
+  'mongoose-os-libs/json-store': 1,
+  'mongoose-os-libs/js-demo-bundle': 1,
+  'mongoose-os-libs/demo-bundle': 1,
+  'mongoose-os-libs/core': 1,
+  'mongoose-os-libs/empty': 1,
 };
 if (ignoreHeaders[hBase] || ignoreRepos[repoName]) process.exit(0);
 
