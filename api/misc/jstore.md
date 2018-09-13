@@ -1,3 +1,8 @@
+# JSON store
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/jstore](https://github.com/mongoose-os-libs/jstore) | [mgos_jstore.h](https://github.com/mongoose-os-libs/jstore/tree/master/include/mgos_jstore.h) | &nbsp;  | &nbsp;         |
+
 # JSON Store
 
 JSON Store is a library which maintains a JSON file with order-preserving
@@ -11,13 +16,8 @@ is the order of insertion of items to the store.
 Refer to the [API documentation](https://mongoose-os.com/docs/api/mgos_jstore.h.html)
 for details.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/jstore](https://github.com/mongoose-os-libs/jstore) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### MGOS_JSTORE_REF_BY_ID
 
 ```c

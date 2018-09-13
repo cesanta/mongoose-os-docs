@@ -1,3 +1,8 @@
+# CCS811 I2C
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/ccs811-i2c](https://github.com/mongoose-os-libs/ccs811-i2c) | [mgos_ccs811.h](https://github.com/mongoose-os-libs/ccs811-i2c/tree/master/include/mgos_ccs811.h) | &nbsp;  | &nbsp;         |
+
 # CCS811 I2C Driver
 
 A Mongoose library for AMS CCS811 integrated circuit.
@@ -77,13 +82,8 @@ This project is not an official Google project. It is not supported by Google
 and Google specifically disclaims all warranties as to its quality,
 merchantability, or fitness for a particular purpose.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ccs811-i2c](https://github.com/mongoose-os-libs/ccs811-i2c) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### _read
 
 ```c

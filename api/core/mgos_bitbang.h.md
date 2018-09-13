@@ -1,5 +1,8 @@
-
 # Bitbang
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_bitbang.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_bitbang.h) | [mgos_bitbang.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_bitbang.c)  | [api_bitbang.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_bitbang.js)         |
+
 
 Bit banging is a technique to implement hardware protocols fully in
 software, by managing microcontroller pin states - including timing,
@@ -24,13 +27,8 @@ void mgos_neopixel_show(struct mgos_neopixel *np) {
 }
 ```
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_bitbang.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_bitbang.h) | [mgos_bitbang.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_bitbang.c)  | [api_bitbang.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_bitbang.js)         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_bitbang_write_bits
 
 ```c
@@ -69,6 +67,8 @@ into a single value `t`.
  
 
 ### JS API
+
+ --- 
 #### BitBang.write
 
 ```javascript

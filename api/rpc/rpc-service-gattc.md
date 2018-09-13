@@ -1,3 +1,8 @@
+# Service - GATT client
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/rpc-service-gattc](https://github.com/mongoose-os-libs/rpc-service-gattc) | [](https://github.com/mongoose-os-libs/rpc-service-gattc/tree/master/include/) | &nbsp;  | &nbsp;         |
+
 # GATT Client RPC service
 
 Provides [RPC service](https://mongoose-os.com/docs/overview/rpc.html) for
@@ -149,10 +154,5 @@ $ mos call GATTC.Write '{"conn_id": 0, "svc_uuid": "5f6d4f53-5f43-4647-5f53-5643
 null
 ```
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-gattc](https://github.com/mongoose-os-libs/rpc-service-gattc) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

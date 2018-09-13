@@ -57,10 +57,10 @@ api:
 			"$$(ls $$R/mjs_fs/*.js 2>/dev/null | head -1)" \
 			"$$TITLE" "$$R/README.md" >> $@/$$CATEGORY/index.md; \
 	done
-	@for C in $(CATEGORIES) ; do sort -o api/$$C/index.md api/$$C/index.md ; done
 
 
 sidebar.html: api/core api
+	@for C in $(CATEGORIES) ; do sort -o api/$$C/index.md api/$$C/index.md ; done
 	@node tools/gensidebar.js > $@
 
 clean:

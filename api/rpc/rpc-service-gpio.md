@@ -1,3 +1,8 @@
+# Service - GPIO
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/rpc-service-gpio](https://github.com/mongoose-os-libs/rpc-service-gpio) | [mgos_gpio_service.h](https://github.com/mongoose-os-libs/rpc-service-gpio/tree/master/include/mgos_gpio_service.h) | &nbsp;  | &nbsp;         |
+
 # RPC Service - GPIO
 
 This service provides an ability to manage GPIO on devices remotely.
@@ -76,13 +81,8 @@ Example usage:
 }</code></pre>
 -->
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-gpio](https://github.com/mongoose-os-libs/rpc-service-gpio) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_rpc_service_gpio_init
 
 ```c

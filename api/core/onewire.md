@@ -1,3 +1,8 @@
+# Onewire
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/onewire](https://github.com/mongoose-os-libs/onewire) | [mgos_onewire.h](https://github.com/mongoose-os-libs/onewire/tree/master/include/mgos_onewire.h) | &nbsp;  | &nbsp;         |
+
 # OneWire library for Mongoose OS
 
 This library provides support for
@@ -5,13 +10,8 @@ This library provides support for
 
 Refer to the [API documentation](https://mongoose-os.com/docs/api/mgos_onewire.h.html).
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/onewire](https://github.com/mongoose-os-libs/onewire) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_onewire_crc8
 
 ```c

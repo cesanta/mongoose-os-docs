@@ -1,3 +1,8 @@
+# VL53L0X
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/arduino-pololu-vl53l0x](https://github.com/mongoose-os-libs/arduino-pololu-vl53l0x) | [](https://github.com/mongoose-os-libs/arduino-pololu-vl53l0x/tree/master/include/) | &nbsp;  | [api_vl53l0x.js](https://github.com/mongoose-os-libs/arduino-pololu-vl53l0x/tree/master/mjs_fs/api_vl53l0x.js)         |
+
 # VL53L0X library for Mongoose OS
 
 Version: 1.0<br>
@@ -171,12 +176,9 @@ when storage and memory are less of an issue, consider using the VL53L0X API dir
 * 1.0 (2017 Nov 17): Original release.
 * 1.1 (2017 Nov 29): Avoid "unused-parameter" error.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-pololu-vl53l0x](https://github.com/mongoose-os-libs/arduino-pololu-vl53l0x) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 
 ### JS API
+
+ --- 

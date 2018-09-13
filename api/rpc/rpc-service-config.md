@@ -1,3 +1,8 @@
+# Service - Config
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/rpc-service-config](https://github.com/mongoose-os-libs/rpc-service-config) | [mgos_service_config.h](https://github.com/mongoose-os-libs/rpc-service-config/tree/master/include/mgos_service_config.h) | &nbsp;  | &nbsp;         |
+
 # RPC Service - Config
 
 This service provides an ability to manage device configuration remotely.
@@ -85,10 +90,5 @@ Example usage:
 
 <pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-6,8"><code>mos call Config.Save '{"reboot": true}'</code></pre>
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-config](https://github.com/mongoose-os-libs/rpc-service-config) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

@@ -1,3 +1,8 @@
+# Config over BLE GATT
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/bt-service-debug](https://github.com/mongoose-os-libs/bt-service-debug) | [](https://github.com/mongoose-os-libs/bt-service-debug/tree/master/include/) | &nbsp;  | &nbsp;         |
+
 # Debug over Bluetooth GATT Service
 
 ## Overview
@@ -17,10 +22,5 @@ At present, only one characteristic is defined:
 * `306d4f53-5f44-4247-5f6c-6f675f5f5f30 (0mOS_DBG_log___0)` - a read/notify attribute that returns last debug log record when read. It also sends notifications with log messages as they are printed.
    * _Note_: Reading large messages is supported, but for notificatiosn to be useful you will most likely want to set higher MTU.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/bt-service-debug](https://github.com/mongoose-os-libs/bt-service-debug) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

@@ -1,3 +1,8 @@
+# Service - I2C
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/rpc-service-i2c](https://github.com/mongoose-os-libs/rpc-service-i2c) | [mgos_i2c_service.h](https://github.com/mongoose-os-libs/rpc-service-i2c/tree/master/include/mgos_i2c_service.h) | &nbsp;  | &nbsp;         |
+
 # RPC Service - I2C
 
 This service provides an ability to manage I2C peripherals on devices remotely.
@@ -95,13 +100,8 @@ Same as `I2C.ReadRegB`, but read 2-byte (word) register value.
 ## I2C.WriteRegW
 Same as `I2C.WriteRegB`, but write 2-byte (word) register value.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-i2c](https://github.com/mongoose-os-libs/rpc-service-i2c) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_rpc_service_i2c_init
 
 ```c

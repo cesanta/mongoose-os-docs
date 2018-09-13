@@ -1,3 +1,8 @@
+# ILI9341 SPI
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/ili9341-spi](https://github.com/mongoose-os-libs/ili9341-spi) | [mgos_ili9341.h](https://github.com/mongoose-os-libs/ili9341-spi/tree/master/include/mgos_ili9341.h) | &nbsp;  | [api_ili9341_spi.js](https://github.com/mongoose-os-libs/ili9341-spi/tree/master/mjs_fs/api_ili9341_spi.js)         |
+
 # ILI9341 TFT Driver
 
 ## Introduction
@@ -216,13 +221,8 @@ This project is not an official Google project. It is not supported by Google
 and Google specifically disclaims all warranties as to its quality,
 merchantability, or fitness for a particular purpose.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ili9341-spi](https://github.com/mongoose-os-libs/ili9341-spi) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_ili9341_set_window
 
 ```c
@@ -274,3 +274,5 @@ void mgos_ili9341_drawDIF(uint16_t x0, uint16_t y0, char *fn);
 Images
 
 ### JS API
+
+ --- 

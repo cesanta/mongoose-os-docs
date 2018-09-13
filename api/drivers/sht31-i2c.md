@@ -1,3 +1,8 @@
+# SHT31 I2C
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/sht31-i2c](https://github.com/mongoose-os-libs/sht31-i2c) | [mgos_sht31.h](https://github.com/mongoose-os-libs/sht31-i2c/tree/master/include/mgos_sht31.h) | &nbsp;  | &nbsp;         |
+
 # SHT31 I2C Driver
 
 A Mongoose library for Sensirion's SHT31 integrated circuit.
@@ -70,13 +75,8 @@ This project is not an official Google project. It is not supported by Google
 and Google specifically disclaims all warranties as to its quality,
 merchantability, or fitness for a particular purpose.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/sht31-i2c](https://github.com/mongoose-os-libs/sht31-i2c) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### _read
 
 ```c

@@ -1,3 +1,16 @@
+# Amazon IoT
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/aws](https://github.com/mongoose-os-libs/aws) | [mgos_aws_greengrass.h](https://github.com/mongoose-os-libs/aws/tree/master/include/mgos_aws_greengrass.h) | &nbsp;  | [api_aws.js](https://github.com/mongoose-os-libs/aws/tree/master/mjs_fs/api_aws.js)         |
+
+# AWS IoT support for Mongoose OS
+
+This library implements integration of Mongoose OS with AWS IoT.
+
+See tutorial at https://mongoose-os.com/docs/cloud/aws.md
+
+
+ ----- 
 
 AWS GreenGrass API.
 
@@ -6,13 +19,8 @@ Enable GG in the configuration `aws.greengrass.enable=true` and magically
 the global MQTT connection goes to GG instead of AWS IoT.
 GG core bootstrapping is done transparently by the library.
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/aws](https://github.com/mongoose-os-libs/aws) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### aws_gg_net_ready
 
 ```c
@@ -27,6 +35,8 @@ void aws_gg_reconnect(void);
  Reconnect to GreenGrass. 
 
 ### JS API
+
+ --- 
 #### AWS.Shadow.setStateHandler
 
 ```javascript

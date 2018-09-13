@@ -1,3 +1,8 @@
+# RPC over BLE GATT
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/rpc-gatts](https://github.com/mongoose-os-libs/rpc-gatts) | [](https://github.com/mongoose-os-libs/rpc-gatts/tree/master/include/) | &nbsp;  | &nbsp;         |
+
 # RPC over GATT, Server
 
 ## Overview
@@ -19,10 +24,5 @@ Three attributes are defined:
 
  - `5f6d4f53-5f52-5043-5f72-785f63746c5f (_mOS_RPC_rx_ctl_)` - a read/notify attribute. It returns the length of the frame that device wishes to transmit as a big-endian 32-bit number. If this value is not zero, frame data will be returned in response to read requests of the data attribute. Read chunks will be up to MTU bytes in size. Client may subscribe to notifications on this attribute. Notification will be sent whenever a new frame is submitted for delivery and the notification body will contain length (the same value as returned by reading). Upon receiving notification client can proceed to read the data without reading `rx_ctl` again.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-gatts](https://github.com/mongoose-os-libs/rpc-gatts) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

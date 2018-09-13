@@ -1,3 +1,8 @@
+# Barometers
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/barometer](https://github.com/mongoose-os-libs/barometer) | [mgos_barometer.h](https://github.com/mongoose-os-libs/barometer/tree/master/include/mgos_barometer.h) | &nbsp;  | &nbsp;         |
+
 # Mongoose OS Barometer Library
 
 ## Introduction
@@ -16,13 +21,8 @@ This project is not an official Google project. It is not supported by Google
 and Google specifically disclaims all warranties as to its quality,
 merchantability, or fitness for a particular purpose.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/barometer](https://github.com/mongoose-os-libs/barometer) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### _read
 
 ```c

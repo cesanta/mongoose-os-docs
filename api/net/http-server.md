@@ -1,12 +1,12 @@
-# HTTP Server for Mongoose OS
-
-### Github repo links
+# HTTP server
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/http-server](https://github.com/mongoose-os-libs/http-server) | &nbsp; | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/http-server](https://github.com/mongoose-os-libs/http-server) | [mgos_http_server.h](https://github.com/mongoose-os-libs/http-server/tree/master/include/mgos_http_server.h) | &nbsp;  | &nbsp;         |
+
+# HTTP Server for Mongoose OS
 
 
-### C/С++ API
+ ----- 
 #### mgos_get_sys_http_server
 
 ```c

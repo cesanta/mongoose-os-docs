@@ -42,6 +42,18 @@ const menuTitles = {
   'cs_dbg.h': 'Logging',
   'mbuf.h': 'Membuf',
   'mg_str.h': 'String',
+  'mgos_app.h': 'App',
+  'mgos_bitbang.h': 'Bitbang',
+  'mgos_debug.h': 'Debug (UART)',
+  'mgos_event.h': 'Event',
+  'mgos_gpio.h': 'GPIO',
+  'mgos_net.h': 'Net events',
+  'mgos_sys_config.h': 'Config',
+  'mgos_system.h': 'System',
+  'mgos_time.h': 'Time',
+  'mgos_timers.h': 'Timers',
+  'mgos_uart.h': 'UART',
+  'mgos_utils.h': 'Utils',
 };
 if (menuTitles[hBase]) menuTitle = menuTitles[hBase];
 
@@ -56,20 +68,9 @@ const re = /^\s*(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))/;
 const source = hFile ? fs.readFileSync(hFile, 'utf-8') : '';
 
 let md = '';
-const m = source.replace(re, '').match(re);
-if (m) {
-  const comment = stripComments(m[1]);
-  md += comment;
-  md += '\n';
-  const m2 = comment.match(/#\s*(.+)\n/);
-  if (m2) menuTitle = m2[1];
-} else if (readmeMD) {
-  md += fs.readFileSync(readmeMD, 'utf-8');
-  md += '\n';
-} else {
-  md += `# ${menuTitle}\n`;
-}
+md += `# ${menuTitle}\n`;
 
+// ------------------------------------------------ Add GitHub links table
 const repoURL = `https://github.com/${repoName}`;
 const repoLink = `[${repoName}](${repoURL})`;
 const mjsURL = 'http://github.com/mongoose-os-libs/mjs';
@@ -86,32 +87,48 @@ if (repoName == 'cesanta/mongoose-os') {
     jsLink = `[${jsBase}](${mjsURL}/tree/master/fs/${jsBase})`;
     jsFile = `${hFile.replace(/[^\/]+$/, '')}../../mos_libs/mjs/fs/${jsBase}`;
   }
-}
-if (repoName == 'cesanta/frozen') {
+} else if (repoName == 'cesanta/frozen') {
   const cBase = hBase.replace(/.h$/, '.c');
   hLink = `[${hBase}](${repoURL}/tree/master/${hBase})`;
   cLink = `[${cBase}](${repoURL}/tree/master/${cBase})`;
+} else {
+  hLink = `[${hBase}](${repoURL}/tree/master/include/${hBase})`;
+  // const cBase = hBase.replace(/.h$/, '.c');
+  // cLink = `[src/](${repoURL}/tree/master/src/)`;
+  const jsBase = jsFile.replace(/.*\//, '');
+  if (jsBase) {
+    jsLink = `[${jsBase}](${repoURL}/tree/master/mjs_fs/${jsBase})`;
+  }
 }
-md += '### Github repo links\n';
+// md += '### Github repo links\n';
 md += '| Github Repo | C Header | C source  | JS source |\n';
 md += '| ----------- | -------- | --------  | ----------------- |\n';
 md += `| ${repoLink} | ${hLink} | ${cLink}  | ${jsLink}         |\n\n`;
 
-md += '\n### C/С++ API\n';
+// ------------------------------------------------  Add READM
+if (readmeMD) md += `${fs.readFileSync(readmeMD, 'utf-8')}\n\n ----- \n`;
+
+// ------------------------------------------------  Add C/C++ API
+
+const m = source.replace(re, '').match(re);
+if (m) md += `${stripComments(m[1])}\n\n ----- \n`;
 
 const rest = source.replace(re, '').replace(re, '');
 const re2 = /(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))\s*([\s\S]+?)\n\n/g;
 let a;
 const backs = '```';
 while ((a = re2.exec(rest)) != null) {
+  // console.error('----------', a[4], a[1]);
   const x = a[4].match(/^.*?\*?(\S+)\(/);
   if (!x) continue;
   md += `#### ${x[1]}\n`;
   md += `\n${backs}c\n${a[4]}\n${backs}\n${stripComments(a[1])}\n`;
 }
 
+// ------------------------------------------------  Add JS API
+
 if (jsFile) {
-  md += '\n### JS API\n';
+  md += '\n### JS API\n\n --- \n';
   const js = fs.readFileSync(jsFile, 'utf-8');
   var re3 = /((?:\s*\/\/.*\n)+)/g;
   while ((a = re3.exec(js)) !== null) {

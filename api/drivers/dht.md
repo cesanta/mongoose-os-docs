@@ -1,15 +1,22 @@
+# DHT temp sensor
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/dht](https://github.com/mongoose-os-libs/dht) | [mgos_dht.h](https://github.com/mongoose-os-libs/dht/tree/master/include/mgos_dht.h) | &nbsp;  | [api_dht.js](https://github.com/mongoose-os-libs/dht/tree/master/mjs_fs/api_dht.js)         |
+
+# A DHT Mongoose OS library
+
+## Overview
+
+This is a library for the DHT series of low cost temperature/humidity sensors.
+
+ ----- 
 
 DHT sensor API.
 
 See https://learn.adafruit.com/dht/overview for more information.
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/dht](https://github.com/mongoose-os-libs/dht) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_dht_create
 
 ```c
@@ -36,6 +43,8 @@ float mgos_dht_get_humidity(struct mgos_dht *dht);
  Return humidity in % or 'NAN' on failure. 
 
 ### JS API
+
+ --- 
 #### DHT.create
 
 ```javascript

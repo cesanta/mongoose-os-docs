@@ -1,3 +1,8 @@
+# IMU
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/imu](https://github.com/mongoose-os-libs/imu) | [mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h) | &nbsp;  | &nbsp;         |
+
 # Mongoose OS IMU Library
 
 This library provides a simple API that describes inertial measurement units.
@@ -229,13 +234,8 @@ This project is not an official Google project. It is not supported by Google
 and Google specifically disclaims all warranties as to its quality,
 merchantability, or fitness for a particular purpose.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/imu](https://github.com/mongoose-os-libs/imu) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_imu_gyroscope_destroy
 
 ```c

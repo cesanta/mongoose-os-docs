@@ -1,3 +1,8 @@
+# OTA via device shadow
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/ota-shadow](https://github.com/mongoose-os-libs/ota-shadow) | [](https://github.com/mongoose-os-libs/ota-shadow/tree/master/include/) | &nbsp;  | &nbsp;         |
+
 # OTA firmware update via the device shadow
 
 
@@ -62,10 +67,5 @@ AWS IoT handshake:
 
 ![](img3.gif)
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ota-shadow](https://github.com/mongoose-os-libs/ota-shadow) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

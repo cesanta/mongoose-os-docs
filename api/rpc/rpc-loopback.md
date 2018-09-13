@@ -1,3 +1,8 @@
+# RPC loopback
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/rpc-loopback](https://github.com/mongoose-os-libs/rpc-loopback) | [mg_rpc_channel_loopback.h](https://github.com/mongoose-os-libs/rpc-loopback/tree/master/include/mg_rpc_channel_loopback.h) | &nbsp;  | &nbsp;         |
+
 # Allows to call local RPC services - implements RPC Loopback channel
 
 This RPC service provides a way to call local RPC services - i.e. those
@@ -21,13 +26,8 @@ RPC.call(RPC.LOCAL, 'Config.Save', {reboot: true}, function (resp, ud) {
 }, null);
 ```
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-loopback](https://github.com/mongoose-os-libs/rpc-loopback) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mg_rpc_channel_loopback
 
 ```c

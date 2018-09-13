@@ -1,3 +1,8 @@
+# IBM Watson
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/watson](https://github.com/mongoose-os-libs/watson) | [mgos_watson.h](https://github.com/mongoose-os-libs/watson/tree/master/include/mgos_watson.h) | &nbsp;  | [api_watson.js](https://github.com/mongoose-os-libs/watson/tree/master/mjs_fs/api_watson.js)         |
+
 # IBM Warson IoT Platform support library for Mongoose OS
 
 This library provides [IBM Watson IoT Platform](https://internetofthings.ibmcloud.com/) support for Mongoose OS.
@@ -52,13 +57,8 @@ Invoked with no additional flags, as above, `mos` will use device type `mos` (wi
  * `--watson-api-host-name` - use this host name for API calls instead of `ORG_ID.internetofthings.ibmcloud.com`
  * `--watson-messaging-host-name` - use this host name for device connections instead of `ORG_ID.messaging.internetofthings.ibmcloud.com`
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/watson](https://github.com/mongoose-os-libs/watson) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_watson_send_event_jsonf
 
 ```c
@@ -74,3 +74,5 @@ The message should be an object with a "d" key and properties, e.g.:
  
 
 ### JS API
+
+ --- 

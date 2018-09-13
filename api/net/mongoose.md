@@ -1,16 +1,22 @@
+# Mongoose network lib
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/mongoose](https://github.com/mongoose-os-libs/mongoose) | [mgos_mongoose.h](https://github.com/mongoose-os-libs/mongoose/tree/master/include/mgos_mongoose.h) | &nbsp;  | &nbsp;         |
+
+# Mongoose Embedded Web Server Library
+
+See [here](https://github.com/cesanta/mongoose).
+
+
+ ----- 
 
 This file contains wrappers around low-level Mongoose Library calls.
 
 See https://mongoose-os.com/docs/book/intro.html#main-event-loop
 for the detailed explanation.
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/mongoose](https://github.com/mongoose-os-libs/mongoose) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mongoose_poll
 
 ```c

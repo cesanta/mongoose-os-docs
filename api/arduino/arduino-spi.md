@@ -1,3 +1,8 @@
+# SPI
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/arduino-spi](https://github.com/mongoose-os-libs/arduino-spi) | [SPI.h](https://github.com/mongoose-os-libs/arduino-spi/tree/master/include/SPI.h) | &nbsp;  | &nbsp;         |
+
 # Arduino SPI library for Mongoose OS
 
 This library provides an Arduino compatibility layer for SPI by providing
@@ -5,13 +10,8 @@ an `SPI.h` public header, so that one could pick an existing Arduino
 program which uses SPI, throw it into the Mongoose OS application sources,
 and ideally, it "just works".
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-spi](https://github.com/mongoose-os-libs/arduino-spi) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### begin
 
 ```c

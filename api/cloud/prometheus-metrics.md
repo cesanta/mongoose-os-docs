@@ -1,3 +1,8 @@
+# Prometheus metrics
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/prometheus-metrics](https://github.com/mongoose-os-libs/prometheus-metrics) | [mgos_prometheus_metrics.h](https://github.com/mongoose-os-libs/prometheus-metrics/tree/master/include/mgos_prometheus_metrics.h) | &nbsp;  | &nbsp;         |
+
 # prometheus-metrics
 
 A Mongoose OS Prometheus Metrics library.
@@ -186,13 +191,8 @@ This project is not an official Google project. It is not supported by Google
 and Google specifically disclaims all warranties as to its quality,
 merchantability, or fitness for a particular purpose.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/prometheus-metrics](https://github.com/mongoose-os-libs/prometheus-metrics) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_prometheus_metrics_printf
 
 ```c

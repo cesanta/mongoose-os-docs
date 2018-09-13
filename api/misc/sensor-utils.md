@@ -1,3 +1,8 @@
+# Sensor utilities
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/sensor-utils](https://github.com/mongoose-os-libs/sensor-utils) | [](https://github.com/mongoose-os-libs/sensor-utils/tree/master/include/) | &nbsp;  | &nbsp;         |
+
 # A Library of Utility Functions for Mongoose OS apps with Sensors
 
 
@@ -73,10 +78,5 @@ Executing the above JS code on an ESP32 typically gives the following output:
 
 ```
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/sensor-utils](https://github.com/mongoose-os-libs/sensor-utils) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

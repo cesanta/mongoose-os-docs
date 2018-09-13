@@ -1,3 +1,8 @@
+# IR (infrared)
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/ir](https://github.com/mongoose-os-libs/ir) | [mgos_ir.h](https://github.com/mongoose-os-libs/ir/tree/master/include/mgos_ir.h) | &nbsp;  | [api_ir.js](https://github.com/mongoose-os-libs/ir/tree/master/mjs_fs/api_ir.js)         |
+
 # IR protocol library
 
 ## Usage
@@ -38,13 +43,8 @@ let ir = IR.Receiver.NEC.create(14, function(code) {
 }, null);
 ```
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ir](https://github.com/mongoose-os-libs/ir) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_irrecv_nec_create
 
 ```c
@@ -68,6 +68,8 @@ Destroy an object instance of IR receiver for NEC protocol.
  
 
 ### JS API
+
+ --- 
 #### IR.Receiver.NEC.create
 
 ```javascript

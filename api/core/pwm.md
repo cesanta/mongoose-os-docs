@@ -1,17 +1,28 @@
+# PWM
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/pwm](https://github.com/mongoose-os-libs/pwm) | [mgos_pwm.h](https://github.com/mongoose-os-libs/pwm/tree/master/include/mgos_pwm.h) | &nbsp;  | [api_pwm.js](https://github.com/mongoose-os-libs/pwm/tree/master/mjs_fs/api_pwm.js)         |
+
+# PWM support for Mongoose OS
+
+This library provides PWM (pulse-width modulation) support for Mongoose OS.
+
+Refer to the API documentation: for
+[C](https://mongoose-os.com/docs/api/mgos_pwm.h.html) and [mJS](https://mongoose-os.com/docs/api/api_pwm.js.html).
+
+
+ ----- 
 
 PWM API.
 See https://en.wikipedia.org/wiki/Pulse-width_modulation for the
 background information.
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/pwm](https://github.com/mongoose-os-libs/pwm) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 
 ### JS API
+
+ --- 
 #### PWM.set
 
 ```javascript

@@ -1,3 +1,8 @@
+# OTA via HTTP POST
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/ota-http-server](https://github.com/mongoose-os-libs/ota-http-server) | [](https://github.com/mongoose-os-libs/ota-http-server/tree/master/include/) | &nbsp;  | &nbsp;         |
+
 # Implementation of Mongoose OS OTA HTTP server
 
 ## Overview
@@ -24,10 +29,5 @@ Connection: close
 Update applied, finalizing
 ```
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ota-http-server](https://github.com/mongoose-os-libs/ota-http-server) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

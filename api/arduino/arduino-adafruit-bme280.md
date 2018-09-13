@@ -1,12 +1,12 @@
-# Arduino Adafruit BME280 and BMP280 library for Mongoose OS
-
-### Github repo links
+# BME280
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-bme280](https://github.com/mongoose-os-libs/arduino-adafruit-bme280) | &nbsp; | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/arduino-adafruit-bme280](https://github.com/mongoose-os-libs/arduino-adafruit-bme280) | [Adafruit_BME280.h](https://github.com/mongoose-os-libs/arduino-adafruit-bme280/tree/master/include/Adafruit_BME280.h) | &nbsp;  | [api_arduino_bme280.js](https://github.com/mongoose-os-libs/arduino-adafruit-bme280/tree/master/mjs_fs/api_arduino_bme280.js)         |
+
+# Arduino Adafruit BME280 and BMP280 library for Mongoose OS
 
 
-### C/С++ API
+ ----- 
 #### readS16_LE
 
 ```c
@@ -15,6 +15,8 @@ int16_t   readS16_LE(byte reg); // little endian
 little endian
 
 ### JS API
+
+ --- 
 #### Adafruit_BME280.createI2C
 
 ```javascript

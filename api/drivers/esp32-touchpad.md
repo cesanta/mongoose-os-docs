@@ -1,3 +1,8 @@
+# ESP32 touch sensor
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/esp32-touchpad](https://github.com/mongoose-os-libs/esp32-touchpad) | [](https://github.com/mongoose-os-libs/esp32-touchpad/tree/master/include/) | &nbsp;  | [api_esp32_touchpad.js](https://github.com/mongoose-os-libs/esp32-touchpad/tree/master/mjs_fs/api_esp32_touchpad.js)         |
+
 # JS bindings for ESP32 touch pad sensor
 
 ## Overview
@@ -53,15 +58,12 @@ TouchPad.isrRegister(function(st) {
 TouchPad.intrEnable();
 ```
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/esp32-touchpad](https://github.com/mongoose-os-libs/esp32-touchpad) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 
 ### JS API
+
+ --- 
 #### TouchPad.GPIO
 
 ```javascript

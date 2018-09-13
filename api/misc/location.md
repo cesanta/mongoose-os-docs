@@ -1,3 +1,8 @@
+# Device location (lat/lon)
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/location](https://github.com/mongoose-os-libs/location) | [mgos_location.h](https://github.com/mongoose-os-libs/location/tree/master/include/mgos_location.h) | &nbsp;  | &nbsp;         |
+
 # Location library
 
 ## Overview
@@ -14,13 +19,8 @@ config_schema:
   - ["device.location.lon", -6.385785]
 ```
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/location](https://github.com/mongoose-os-libs/location) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_location_get
 
 ```c

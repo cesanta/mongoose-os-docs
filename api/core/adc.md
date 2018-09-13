@@ -1,16 +1,12 @@
-
-ADC API.
-
-See https://en.wikipedia.org/wiki/Analog-to-digital_converter for the
-backround information.
- 
-### Github repo links
+# ADC
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/adc](https://github.com/mongoose-os-libs/adc) | &nbsp; | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/adc](https://github.com/mongoose-os-libs/adc) | [mgos_adc.h](https://github.com/mongoose-os-libs/adc/tree/master/include/mgos_adc.h) | &nbsp;  | [api_adc.js](https://github.com/mongoose-os-libs/adc/tree/master/mjs_fs/api_adc.js)         |
+
+This library implements a [analog-to-digital conversion](https://en.wikipedia.org/wiki/Analog-to-digital_converter) for Mongoose OS.
 
 
-### C/С++ API
+ ----- 
 #### mgos_adc_read
 
 ```c
@@ -28,6 +24,8 @@ Returns voltage on the pin, in mV.
  
 
 ### JS API
+
+ --- 
 #### ADC.enable
 
 ```javascript

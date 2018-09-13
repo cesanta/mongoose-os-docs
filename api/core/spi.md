@@ -1,16 +1,26 @@
+# SPI
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/spi](https://github.com/mongoose-os-libs/spi) | [mgos_spi.h](https://github.com/mongoose-os-libs/spi/tree/master/include/mgos_spi.h) | &nbsp;  | [api_spi.js](https://github.com/mongoose-os-libs/spi/tree/master/mjs_fs/api_spi.js)         |
+
+# SPI library for Mongoose OS
+
+This library provides SPI support for Mongoose OS.
+
+Refer to the API documentation: for
+[C](https://mongoose-os.com/docs/api/mgos_spi.h.html) and
+[mJS](https://mongoose-os.com/docs/api/api_spi.js.html).
+
+
+ ----- 
 
 SPI API.
 
 See https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus
 for the background information.
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/spi](https://github.com/mongoose-os-libs/spi) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_spi_create
 
 ```c
@@ -48,6 +58,8 @@ struct mgos_spi *mgos_spi_get_global(void);
  Return global SPI bus handle which is configured via sysconfig. 
 
 ### JS API
+
+ --- 
 #### SPI.get
 
 ```javascript

@@ -1,13 +1,22 @@
+# Device Shadow
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/shadow](https://github.com/mongoose-os-libs/shadow) | [mgos_shadow.h](https://github.com/mongoose-os-libs/shadow/tree/master/include/mgos_shadow.h) | &nbsp;  | [api_shadow.js](https://github.com/mongoose-os-libs/shadow/tree/master/mjs_fs/api_shadow.js)         |
+
+# A cross-cloud device shadow API
+
+## Overview
+
+This library provides a device shadow interface to manage
+device metadata on the cloud.
+
+
+ ----- 
 
 Cross-cloud device cloud state API.
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/shadow](https://github.com/mongoose-os-libs/shadow) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### MGOS_EVENT_BASE
 
 ```c
@@ -52,6 +61,8 @@ bool mgos_shadow_update(double version, const char *state_json);
  "Simple" version of mgos_shadow_updatef, primarily for FFI.  
 
 ### JS API
+
+ --- 
 #### Shadow.addHandler
 
 ```javascript

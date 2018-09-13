@@ -1,12 +1,12 @@
-# Arduino Adafruit SSD1306 library for Mongoose OS
-
-### Github repo links
+# Adafuit SSD1306
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-ssd1306](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306) | &nbsp; | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/arduino-adafruit-ssd1306](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306) | [Adafruit_SSD1306.h](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306/tree/master/include/Adafruit_SSD1306.h) | &nbsp;  | [api_arduino_ssd1306.js](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306/tree/master/mjs_fs/api_arduino_ssd1306.js)         |
+
+# Arduino Adafruit SSD1306 library for Mongoose OS
 
 
-### C/С++ API
+ ----- 
 #### defined
 
 ```c
@@ -26,6 +26,8 @@
 not supported
 
 ### JS API
+
+ --- 
 #### Colors
 
 ```javascript

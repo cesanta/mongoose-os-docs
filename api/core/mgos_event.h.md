@@ -1,16 +1,14 @@
-
 # Event
-
-Mongoose OS provides a way to get a notification when certain event
-happens. Each event has an associated event data passed as `void *`.
- 
-### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
 | [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h) | [mgos_event.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_event.c)  | [api_events.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_events.js)         |
 
 
-### C/С++ API
+Mongoose OS provides a way to get a notification when certain event
+happens. Each event has an associated event data passed as `void *`.
+ 
+
+ ----- 
 #### MGOS_EVENT_BASE
 
 ```c
@@ -117,6 +115,8 @@ such handler in the first place.
  
 
 ### JS API
+
+ --- 
 #### Event.addHandler
 
 ```javascript

@@ -1,3 +1,8 @@
+# BLE
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/bt-common](https://github.com/mongoose-os-libs/bt-common) | [mgos_bt.h](https://github.com/mongoose-os-libs/bt-common/tree/master/include/mgos_bt.h) | &nbsp;  | &nbsp;         |
+
 # Low level Bluetooth support
 
 Currently contains only GATT server implmenetation for ESP32.
@@ -31,13 +36,8 @@ A better idea is to set `bt.gatts.require_pairing` to true, `bt.allow_pairing` t
 Raising `bt.gatts.min_sec_level` to at least 1 is also advisable.
 _Note_: At present, level 2 (MITM protection) is not usable as it requires device to have at least output capability during pairing, and there's no API for displaying the pairing code yet.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/bt-common](https://github.com/mongoose-os-libs/bt-common) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### (sizeof
 
 ```c

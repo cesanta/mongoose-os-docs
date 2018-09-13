@@ -1,3 +1,8 @@
+# Miscrosoft Azure IoT
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/azure](https://github.com/mongoose-os-libs/azure) | [mgos_azure.h](https://github.com/mongoose-os-libs/azure/tree/master/include/mgos_azure.h) | &nbsp;  | [api_azure.js](https://github.com/mongoose-os-libs/azure/tree/master/mjs_fs/api_azure.js)         |
+
 # Azure IoT Hub support library for Mongoose OS
 
 This library provides [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/) support for Mongoose OS.
@@ -47,13 +52,8 @@ $ mos config-set azure.enable=true azure.host_name=my-hub.azure-devices.net azur
 
 _Note:_ It is possible to store private key in a cryptochip, such as [ATECC508A](http://www.microchip.com/wwwproducts/en/ATECC508A) (for example, as described [here](https://mongoose-os.com/blog/mongoose-os-google-iot-ecc508a/) for Google IoT Core). Just specify `azure.key=ATCA:0` to use private key in slot 0 of the chip. [mos azure-iot-setup] supports ATECC508 key storage - just add `--use-atca` to the setup command above.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/azure](https://github.com/mongoose-os-libs/azure) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_azure_send_d2c_msg
 
 ```c
@@ -110,3 +110,5 @@ bool mgos_azure_dm_responsef(int64_t id, int status, const char *json_fmt, ...);
  Respond to a Direct Method call with a JSON message. 
 
 ### JS API
+
+ --- 

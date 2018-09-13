@@ -1,3 +1,8 @@
+# Service - FS
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/rpc-service-fs](https://github.com/mongoose-os-libs/rpc-service-fs) | [mgos_service_filesystem.h](https://github.com/mongoose-os-libs/rpc-service-fs/tree/master/include/mgos_service_filesystem.h) | &nbsp;  | &nbsp;         |
+
 # RPC Service - Filesystem
 
 This service provides an ability to manage device files remotely.
@@ -148,10 +153,5 @@ Unmout filesystem. Arguments:
 
 <pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-100"><code>mos call FS.Mount '{"path": "/mnt"}'</code></pre>
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-fs](https://github.com/mongoose-os-libs/rpc-service-fs) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

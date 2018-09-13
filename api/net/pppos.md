@@ -1,3 +1,8 @@
+# PPPoS
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/pppos](https://github.com/mongoose-os-libs/pppos) | [](https://github.com/mongoose-os-libs/pppos/tree/master/include/) | &nbsp;  | &nbsp;         |
+
 # PPPoS / cellullar modem support
 
 This library provides IP over serial port. Encapsulation is PPP.
@@ -38,10 +43,5 @@ Here's an example for Vodafone Ireland:
 }
 ```
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/pppos](https://github.com/mongoose-os-libs/pppos) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

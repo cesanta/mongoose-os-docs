@@ -1,12 +1,12 @@
-# Arduino Adafruit GFX library for Mongoose OS
-
-### Github repo links
+# Adafuit GFX
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-gfx](https://github.com/mongoose-os-libs/arduino-adafruit-gfx) | &nbsp; | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/arduino-adafruit-gfx](https://github.com/mongoose-os-libs/arduino-adafruit-gfx) | [Adafruit_GFX.h](https://github.com/mongoose-os-libs/arduino-adafruit-gfx/tree/master/include/Adafruit_GFX.h) | &nbsp;  | &nbsp;         |
+
+# Arduino Adafruit GFX library for Mongoose OS
 
 
-### C/С++ API
+ ----- 
 #### drawPixel
 
 ```c

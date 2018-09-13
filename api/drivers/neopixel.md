@@ -1,12 +1,12 @@
-# Neopixel driver for Mongoose OS
-
-### Github repo links
+# Neopixel
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/neopixel](https://github.com/mongoose-os-libs/neopixel) | &nbsp; | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/neopixel](https://github.com/mongoose-os-libs/neopixel) | [mgos_neopixel.h](https://github.com/mongoose-os-libs/neopixel/tree/master/include/mgos_neopixel.h) | &nbsp;  | [api_neopixel.js](https://github.com/mongoose-os-libs/neopixel/tree/master/mjs_fs/api_neopixel.js)         |
+
+# Neopixel driver for Mongoose OS
 
 
-### C/С++ API
+ ----- 
 #### mgos_neopixel_create
 
 ```c
@@ -64,6 +64,8 @@ Free neopixel instance.
  
 
 ### JS API
+
+ --- 
 #### NeoPixel.create
 
 ```javascript

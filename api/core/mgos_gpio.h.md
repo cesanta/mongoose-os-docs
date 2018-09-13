@@ -1,16 +1,8 @@
-
 # GPIO
-
-For general information about GPIO, see
-[article](https://en.wikipedia.org/wiki/General-purpose_input/output).
- 
-### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
 | [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h) | [mgos_gpio.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_gpio.c)  | [api_gpio.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_gpio.js)         |
 
-
-### C/С++ API
 #### (*mgos_gpio_int_handler_f)
 
 ```c
@@ -139,6 +131,8 @@ const char *mgos_gpio_str(int pin_def, char buf[8]);
 Will return "PA5" or "PK3" for platforms that have port banks. 
 
 ### JS API
+
+ --- 
 #### GPIO.set_mode
 
 ```javascript

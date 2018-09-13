@@ -1,12 +1,12 @@
-# DNS-SD protocol
-
-### Github repo links
+# DNS-SD
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/dns-sd](https://github.com/mongoose-os-libs/dns-sd) | &nbsp; | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/dns-sd](https://github.com/mongoose-os-libs/dns-sd) | [mgos_dns_sd.h](https://github.com/mongoose-os-libs/dns-sd/tree/master/include/mgos_dns_sd.h) | &nbsp;  | &nbsp;         |
+
+# DNS-SD protocol
 
 
-### C/С++ API
+ ----- 
 #### mgos_dns_sd_get_host_name
 
 ```c

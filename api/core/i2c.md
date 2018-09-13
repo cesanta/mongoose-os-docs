@@ -1,15 +1,31 @@
+# I2C
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/i2c](https://github.com/mongoose-os-libs/i2c) | [mgos_i2c.h](https://github.com/mongoose-os-libs/i2c/tree/master/include/mgos_i2c.h) | &nbsp;  | [api_i2c.js](https://github.com/mongoose-os-libs/i2c/tree/master/mjs_fs/api_i2c.js)         |
+
+# I2C support
+
+This library adds I2C master support for the Mongoose OS. See default pin
+mapping in the yml file for your platform:
+
+- [esp8266](mos_esp8266.yml)
+- [esp32](mos_esp32.yml)
+- [cc3200](mos_cc3200.yml)
+- [cc3220](mos_cc3220.yml)
+
+Refer to the API documentation: for
+[C](https://mongoose-os.com/docs/api/mgos_i2c.h.html) and
+[mJS](https://mongoose-os.com/docs/api/api_i2c.js.html).
+
+
+ ----- 
 
 I2C API.
 
 See https://en.wikipedia.org/wiki/I%C2%B2C for the background information.
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/i2c](https://github.com/mongoose-os-libs/i2c) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_i2c_create
 
 ```c
@@ -168,6 +184,8 @@ struct mgos_i2c *mgos_i2c_get_global(void);
  Return i2c bus handle that is set up via the sysconfig. 
 
 ### JS API
+
+ --- 
 #### I2C.get
 
 ```javascript

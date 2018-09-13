@@ -1,11 +1,8 @@
 # JSON
-### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
 | [cesanta/frozen](https://github.com/cesanta/frozen) | [frozen.h](https://github.com/cesanta/frozen/tree/master/frozen.h) | [frozen.c](https://github.com/cesanta/frozen/tree/master/frozen.c)  | &nbsp;         |
 
-
-### C/С++ API
 #### (*json_walk_callback_t)
 
 ```c

@@ -1,3 +1,51 @@
+# Blynk
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/blynk](https://github.com/mongoose-os-libs/blynk) | [mgos_blynk.h](https://github.com/mongoose-os-libs/blynk/tree/master/include/mgos_blynk.h) | &nbsp;  | [api_blynk.js](https://github.com/mongoose-os-libs/blynk/tree/master/mjs_fs/api_blynk.js)         |
+
+# Blynk integration for Mongoose OS
+
+This Mongoose OS library allows your device remote control via
+the Blynk platform. Device side logic could be implemented in either
+C/C++ or JavaScript.
+
+Blynk is a platform with iOS and Android apps to control Arduino,
+Raspberry Pi and the likes over the Internet.
+
+See example video at:
+
+<iframe src="https://www.youtube.com/embed/9lTIN_WRWMs"
+  width="560" height="315"  frameborder="0" allowfullscreen></iframe>
+
+## How to use this library
+
+In your Mongoose OS app, edit `mos.yml` file and add a reference to this
+library. See an [example blynk app](https://github.com/mongoose-os-apps/blynk)
+that does that.
+
+## Device configuration
+
+This library adds `blynk` configuration section to the device:
+
+```bash
+mos config-get blynk
+{
+  "auth": "YOUR_BLYNK_AUTH_TOKEN",
+  "enable": true,
+  "server": "blynk-cloud.com:8442"
+}
+```
+
+In order for your device to authenticate with Blynk cloud, either use
+Web UI to change the `blynk.auth` value, or in a terminal:
+
+```bash
+mos config-set blynk.auth=YOUR_BLYNK_AUTH_TOKEN
+```
+
+
+
+ ----- 
 
 Blynk API.
 
@@ -5,13 +53,8 @@ This library supports only a subset of Blynk protocol - namely, virtual
 pin reading and virtual pin writing. That is enough to implement a very
 wide class of applications.
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/blynk](https://github.com/mongoose-os-libs/blynk) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### (*blynk_handler_t)
 
 ```c
@@ -47,6 +90,8 @@ void blynk_virtual_write(struct mg_connection *c, int pin, float val, int id);
  Send a virtual write command 
 
 ### JS API
+
+ --- 
 #### Blynk.send
 
 ```javascript

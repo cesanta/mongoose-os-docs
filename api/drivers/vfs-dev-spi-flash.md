@@ -1,3 +1,8 @@
+# VFS (SPI NOR Flash)
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/vfs-dev-spi-flash](https://github.com/mongoose-os-libs/vfs-dev-spi-flash) | [mgos_vfs_dev_spi_flash.h](https://github.com/mongoose-os-libs/vfs-dev-spi-flash/tree/master/include/mgos_vfs_dev_spi_flash.h) | &nbsp;  | &nbsp;         |
+
 # SPI Flash VFS Driver
 
 This driver supports external SPI flash chips and makes them avauilable for use with the mOS VFS subsystem.
@@ -19,10 +24,5 @@ Example of console output when this driver is used:
 [Jul 28 14:35:20.714] mgos_vfs_mkfs        Create SPIFFS (dev 0x3ffb47f0, opts {"size": 262144, "force": true})
 ```
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/vfs-dev-spi-flash](https://github.com/mongoose-os-libs/vfs-dev-spi-flash) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

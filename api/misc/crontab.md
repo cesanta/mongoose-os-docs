@@ -1,3 +1,40 @@
+# Crontab
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/crontab](https://github.com/mongoose-os-libs/crontab) | [mgos_crontab.h](https://github.com/mongoose-os-libs/crontab/tree/master/include/mgos_crontab.h) | &nbsp;  | &nbsp;         |
+
+# Crontab
+
+Crontab wraps [cron core](https://github.com/mongoose-os-libs/cron) and
+maintains a persisted set of cron jobs. Crontab file is simply a JSON file
+(actually managed by [jstore](https://github.com/mongoose-os-libs/jstore))
+which looks like this:
+
+```javascript
+{"items":[
+  ["1", {
+    "at": "0 0 7 * * MON-FRI",
+    "enable": true,
+    "action": "foo",
+    "payload": {"a": 1, "b": 2}
+  }],
+  ["2", {
+    "at": "0 */2 1-4 * * *",
+    "enable": true,
+    "action": "bar"
+  }]
+]}
+```
+
+This file is maintained by a set of API functions, see [API
+documentation](https://mongoose-os.com/docs/api/mgos_crontab.h.html) for more
+details.
+
+For the cron expression syntax, see [cron
+core](https://github.com/mongoose-os-libs/cron) docs.
+
+
+ ----- 
 
 Crontab wraps [cron core](https://github.com/mongoose-os-libs/cron) and
 maintains a persisted set of cron jobs. Crontab file is simply a JSON file
@@ -51,13 +88,8 @@ mgos_crontab_register_handler("foo", my_foo_cb, NULL);
 
 The code above maps action `foo` in the JSON to the callback `my_foo_cb`.
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/crontab](https://github.com/mongoose-os-libs/crontab) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### (
 
 ```c

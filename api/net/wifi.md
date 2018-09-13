@@ -1,3 +1,8 @@
+# WiFi
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/wifi](https://github.com/mongoose-os-libs/wifi) | [mgos_wifi.h](https://github.com/mongoose-os-libs/wifi/tree/master/include/mgos_wifi.h) | &nbsp;  | [api_wifi.js](https://github.com/mongoose-os-libs/wifi/tree/master/mjs_fs/api_wifi.js)         |
+
 # WiFi support
 
 This library provides common WiFi API.
@@ -66,13 +71,8 @@ Setting `sta_connect_timeout` to 0 disables this logic.
 ```
 
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/wifi](https://github.com/mongoose-os-libs/wifi) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_wifi_setup_sta
 
 ```c
@@ -275,6 +275,8 @@ Internal: implementation of mJS `Wifi.scan()`; available if only
  
 
 ### JS API
+
+ --- 
 #### Wifi.scan
 
 ```javascript

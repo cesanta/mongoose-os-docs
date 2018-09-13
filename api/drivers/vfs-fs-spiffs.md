@@ -1,12 +1,12 @@
-# VFS interface for SPIFFS
-
-### Github repo links
+# VFS (SPIFFS)
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/vfs-fs-spiffs](https://github.com/mongoose-os-libs/vfs-fs-spiffs) | &nbsp; | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/vfs-fs-spiffs](https://github.com/mongoose-os-libs/vfs-fs-spiffs) | [mgos_vfs_fs_spiffs.h](https://github.com/mongoose-os-libs/vfs-fs-spiffs/tree/master/include/mgos_vfs_fs_spiffs.h) | &nbsp;  | &nbsp;         |
+
+# VFS interface for SPIFFS
 
 
-### C/С++ API
+ ----- 
 #### mgos_vfs_fs_spiffs_enc_name
 
 ```c

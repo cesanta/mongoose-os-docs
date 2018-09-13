@@ -1,3 +1,8 @@
+# Service - WiFi
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/rpc-service-wifi](https://github.com/mongoose-os-libs/rpc-service-wifi) | [](https://github.com/mongoose-os-libs/rpc-service-wifi/tree/master/include/) | &nbsp;  | &nbsp;         |
+
 # RPC Service - WiFi
 
 ## Wifi.Scan
@@ -21,10 +26,5 @@ Example usage:
 ]
 </code></pre>
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-wifi](https://github.com/mongoose-os-libs/rpc-service-wifi) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

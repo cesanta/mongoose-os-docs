@@ -1,3 +1,8 @@
+# HTU21D(F) I2C
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/htu21df-i2c](https://github.com/mongoose-os-libs/htu21df-i2c) | [mgos_htu21df.h](https://github.com/mongoose-os-libs/htu21df-i2c/tree/master/include/mgos_htu21df.h) | &nbsp;  | &nbsp;         |
+
 # HTU21D(F) I2C Driver
 
 A Mongoose library for Measurement Specialities HTU21D(F) integrated circuit.
@@ -82,13 +87,8 @@ This project is not an official Google project. It is not supported by Google
 and Google specifically disclaims all warranties as to its quality,
 merchantability, or fitness for a particular purpose.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/htu21df-i2c](https://github.com/mongoose-os-libs/htu21df-i2c) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### _read
 
 ```c

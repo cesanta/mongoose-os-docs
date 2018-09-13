@@ -1,18 +1,16 @@
+# Membuf
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h) | [mbuf.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mbuf.c)  | &nbsp;         |
 
-=== Memory Buffers
 
 Mbufs are mutable/growing memory buffers, like C++ strings.
 Mbuf can append data to the end of a buffer or insert data into arbitrary
 position in the middle of a buffer. The buffer grows automatically when
 needed.
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h) | [mbuf.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mbuf.c)  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mbuf_init
 
 ```c

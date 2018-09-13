@@ -1,5 +1,8 @@
+# Net events
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_net.h) | [mgos_net.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_net.c)  | [api_net.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_net.js)         |
 
-# Network
 
 Low-level network configuration API.
 
@@ -7,13 +10,8 @@ Contains definitions of the configuration state. Allows to set up an
 event handler that tracks state changes: when the network connectivity
 is lost, established, etc.
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_net.h) | [mgos_net.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_net.c)  | [api_net.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_net.js)         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_net_get_ip_info
 
 ```c
@@ -62,6 +60,8 @@ in case of no DNS.
  
 
 ### JS API
+
+ --- 
 #### Net.ctos
 
 ```javascript

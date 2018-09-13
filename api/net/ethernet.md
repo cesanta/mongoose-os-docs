@@ -1,3 +1,8 @@
+# Ethernet
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/ethernet](https://github.com/mongoose-os-libs/ethernet) | [](https://github.com/mongoose-os-libs/ethernet/tree/master/include/) | &nbsp;  | &nbsp;         |
+
 # Ethernet support
 
 ## ESP32
@@ -50,10 +55,5 @@ See example definitions for NUCLEO and Discovery boards [here](mos_stm32.yml).
 Note: the defaults match the EVB-ESP32 board, so if you use that,
 you won't need to adjust anything except setting `eth.enable` to `true`.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ethernet](https://github.com/mongoose-os-libs/ethernet) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

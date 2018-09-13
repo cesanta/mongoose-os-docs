@@ -1,3 +1,8 @@
+# Config over BLE GATT
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/bt-service-config](https://github.com/mongoose-os-libs/bt-service-config) | [](https://github.com/mongoose-os-libs/bt-service-config/tree/master/include/) | &nbsp;  | &nbsp;         |
+
 # System Configuration over Bluetooth GATT Service
 
 ## Overview
@@ -51,10 +56,5 @@ which provides a GATT service that acts as an RPC channel. It accepts incoming
 RPC frames and can send them as well - or rather,
 makes them available for collection.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/bt-service-config](https://github.com/mongoose-os-libs/bt-service-config) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

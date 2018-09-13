@@ -1,3 +1,8 @@
+# RPC over MQTT
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/rpc-mqtt](https://github.com/mongoose-os-libs/rpc-mqtt) | [mgos_rpc_channel_mqtt.h](https://github.com/mongoose-os-libs/rpc-mqtt/tree/master/include/mgos_rpc_channel_mqtt.h) | &nbsp;  | &nbsp;         |
+
 # Implementation of Mongoose OS RPC over MQTT protocol
 
 ## Overview
@@ -10,13 +15,8 @@ the config of a remote device:
 mos --port mqtt://iot.eclipse.org:1883/esp8266_DA7E15 call Config.Get
 ```
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-mqtt](https://github.com/mongoose-os-libs/rpc-mqtt) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mg_rpc_channel_mqtt
 
 ```c

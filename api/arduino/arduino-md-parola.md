@@ -1,3 +1,8 @@
+# Parola for MAX 7219
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/arduino-md-parola](https://github.com/mongoose-os-libs/arduino-md-parola) | [MD_Parola.h](https://github.com/mongoose-os-libs/arduino-md-parola/tree/master/include/MD_Parola.h) | &nbsp;  | &nbsp;         |
+
 # Library for modular scrolling LED matrix text displays
 
 [Version 1.0 Video](http://www.youtube.com/watch?v=JgzVCSFaz3I)
@@ -23,13 +28,8 @@ Parola discussion on the [Arduino forum](http://forum.arduino.cc/index.php?topic
 
 Additional information also at [my blog](http://arduinoplusplus.wordpress.com).
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-md-parola](https://github.com/mongoose-os-libs/arduino-md-parola) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### begin
 
 ```c

@@ -1,16 +1,14 @@
-
 # UART
-
-See https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter
-for more information about UART.
- 
-### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
 | [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h) | [mgos_uart.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_uart.c)  | [api_uart.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_uart.js)         |
 
 
-### C/С++ API
+See https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter
+for more information about UART.
+ 
+
+ ----- 
 #### mgos_uart_configure
 
 ```c
@@ -150,6 +148,8 @@ const struct mgos_uart_stats *mgos_uart_get_stats(int uart_no);
  Get UART statistics 
 
 ### JS API
+
+ --- 
 #### UART.setConfig
 
 ```javascript

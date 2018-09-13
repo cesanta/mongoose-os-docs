@@ -1,3 +1,8 @@
+# Onewire
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/arduino-onewire](https://github.com/mongoose-os-libs/arduino-onewire) | [OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h) | &nbsp;  | [api_arduino_onewire.js](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/mjs_fs/api_arduino_onewire.js)         |
+
 # Arduino OneWire library for Mongoose OS
 
 This library provides an Arduino compatibility layer for onewire by providing
@@ -9,13 +14,8 @@ Additionally, a mgos-specific API is available: for
 [C](https://mongoose-os.com/docs/api/mgos_arduino_onewire.h.html) and
 [mJS](https://mongoose-os.com/docs/api/api_arduino_onewire.js.html).
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-onewire](https://github.com/mongoose-os-libs/arduino-onewire) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### reset
 
 ```c
@@ -111,6 +111,8 @@ Compute a Dallas Semiconductor 8 bit CRC, these are used in the
 ROM and scratchpad registers.
 
 ### JS API
+
+ --- 
 #### OneWire.create
 
 ```javascript

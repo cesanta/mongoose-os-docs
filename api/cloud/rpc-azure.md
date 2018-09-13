@@ -1,3 +1,8 @@
+# Microsoft Azure RPC
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/rpc-azure](https://github.com/mongoose-os-libs/rpc-azure) | [](https://github.com/mongoose-os-libs/rpc-azure/tree/master/include/) | &nbsp;  | &nbsp;         |
+
 # RPC support for Azure
 
 ## Direct Method RPC channel
@@ -16,10 +21,5 @@ Unlike DM, it could be bi-directional, with device initiating the request.
 
 This is no implemented yet.
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-azure](https://github.com/mongoose-os-libs/rpc-azure) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 

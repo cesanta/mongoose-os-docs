@@ -1,3 +1,8 @@
+# Adafruit PWM servo
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/arduino-adafruit-pwm-servo](https://github.com/mongoose-os-libs/arduino-adafruit-pwm-servo) | [](https://github.com/mongoose-os-libs/arduino-adafruit-pwm-servo/tree/master/include/) | &nbsp;  | [api_pwm_servo.js](https://github.com/mongoose-os-libs/arduino-adafruit-pwm-servo/tree/master/mjs_fs/api_pwm_servo.js)         |
+
 Arduino Adafruit - 16-Channel 12-bit PWM/Servo Driver - I2C interface - PCA9685 library for Mongoose OS
 =========
 
@@ -50,15 +55,12 @@ main.c, add:
 * Board 3: Address = 0x43 Offset = binary 00011 (bridge A0 & A1) 
 * ...
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-pwm-servo](https://github.com/mongoose-os-libs/arduino-adafruit-pwm-servo) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 
 ### JS API
+
+ --- 
 #### Adafruit_PWMServoDriver.create
 
 ```javascript

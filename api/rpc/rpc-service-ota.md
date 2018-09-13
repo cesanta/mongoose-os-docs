@@ -1,3 +1,8 @@
+# Service - OTA
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/rpc-service-ota](https://github.com/mongoose-os-libs/rpc-service-ota) | [mgos_rpc_service_ota.h](https://github.com/mongoose-os-libs/rpc-service-ota/tree/master/include/mgos_rpc_service_ota.h) | &nbsp;  | &nbsp;         |
+
 # RPC Service - OTA (Over The Air updates)
 
 This service provides an ability to manage OTA on devices remotely.
@@ -88,13 +93,8 @@ Get current boot state. Arguments: see `OTA.GetBootState` reply section.
 Example usage:
 <pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-100"><code>mos call OTA.SetBootState '{"revert_slot": 1}'</code></pre>
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-ota](https://github.com/mongoose-os-libs/rpc-service-ota) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### mgos_rpc_service_ota_init
 
 ```c

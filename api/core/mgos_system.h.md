@@ -1,15 +1,13 @@
-
 # System
-
-These API need to be implemented for each hardware platform.
- 
-### Github repo links
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
 | [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h) | [mgos_system.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_system.c)  | [api_sys.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_sys.js)         |
 
 
-### C/С++ API
+HAL that needs to be implemented for each hardware platform.
+ 
+
+ ----- 
 #### mgos_get_free_heap_size
 
 ```c
@@ -147,6 +145,8 @@ void mgos_rlock_destroy(struct mgos_rlock_type *l);
  Destroy a recursive lock. 
 
 ### JS API
+
+ --- 
 #### Sys._sbuf
 
 ```javascript

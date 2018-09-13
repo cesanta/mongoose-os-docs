@@ -1,5 +1,8 @@
-
 # Timers
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_timers.h) | [mgos_timers.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_timers.c)  | [api_timer.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_timer.js)         |
+
 
 Mongoose OS supports two types of timers: software timers and hardware
 timers.
@@ -35,13 +38,8 @@ enum mgos_app_init_result mgos_app_init(void) {
 }
 ```
  
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_timers.h) | [mgos_timers.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_timers.c)  | [api_timer.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_timer.js)         |
 
-
-### C/С++ API
+ ----- 
 #### (*timer_callback)
 
 ```c
@@ -120,6 +118,8 @@ Write the result into the `s,size` buffer. Return resulting string length.
  
 
 ### JS API
+
+ --- 
 #### Timer.set
 
 ```javascript

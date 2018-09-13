@@ -1,3 +1,8 @@
+# Onewire RMT
+| Github Repo | C Header | C source  | JS source |
+| ----------- | -------- | --------  | ----------------- |
+| [mongoose-os-libs/onewire-rmt](https://github.com/mongoose-os-libs/onewire-rmt) | [OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h) | &nbsp;  | &nbsp;         |
+
 # Onewire library for Mongoose OS using theESP32's RMT device
 Based on https://github.com/nodemcu/nodemcu-firmware/blob/dev-esp32/components/platform/onewire.c
 
@@ -14,13 +19,8 @@ OnewireRmt(uint8_t pin,uint8_t rmt_rx,uint8_t rmt_tx);
 
 
 
-### Github repo links
-| Github Repo | C Header | C source  | JS source |
-| ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/onewire-rmt](https://github.com/mongoose-os-libs/onewire-rmt) | &nbsp; | &nbsp;  | &nbsp;         |
 
-
-### C/С++ API
+ ----- 
 #### reset
 
 ```c
