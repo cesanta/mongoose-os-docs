@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/dash](https://github.com/mongoose-os-libs/dash) | [mgos_dash.h](https://github.com/mongoose-os-libs/dash/tree/master/include/mgos_dash.h) | &nbsp;  | &nbsp;         |
 
-# Support library for the device management dashboard
+
 
 ## Overview
 

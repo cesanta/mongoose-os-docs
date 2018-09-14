@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/bt-service-debug](https://github.com/mongoose-os-libs/bt-service-debug) | [](https://github.com/mongoose-os-libs/bt-service-debug/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# Debug over Bluetooth GATT Service
+
 
 ## Overview
 

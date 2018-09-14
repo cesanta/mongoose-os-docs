@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/veml6075-i2c](https://github.com/mongoose-os-libs/veml6075-i2c) | [mgos_veml6075.h](https://github.com/mongoose-os-libs/veml6075-i2c/tree/master/include/mgos_veml6075.h) | &nbsp;  | &nbsp;         |
 
-# VEML6075 I2C Driver
+
 
 A Mongoose library for Vishay Technologies UVA/UVB intensity sensor.
 

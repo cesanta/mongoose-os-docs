@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/blynk](https://github.com/mongoose-os-libs/blynk) | [mgos_blynk.h](https://github.com/mongoose-os-libs/blynk/tree/master/include/mgos_blynk.h) | &nbsp;  | [api_blynk.js](https://github.com/mongoose-os-libs/blynk/tree/master/mjs_fs/api_blynk.js)         |
 
-# Blynk integration for Mongoose OS
+
 
 This Mongoose OS library allows your device remote control via
 the Blynk platform. Device side logic could be implemented in either

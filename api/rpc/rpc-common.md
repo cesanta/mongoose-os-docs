@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/rpc-common](https://github.com/mongoose-os-libs/rpc-common) | [mgos_rpc.h](https://github.com/mongoose-os-libs/rpc-common/tree/master/include/mgos_rpc.h) | &nbsp;  | [api_rpc.js](https://github.com/mongoose-os-libs/rpc-common/tree/master/mjs_fs/api_rpc.js)         |
 
-# RPC - Remote Procedure Calls
+
 
 See [MG-RPC in Mongoose OS book](https://mongoose-os.com/docs/book/rpc.html)
 for detailed documentation.

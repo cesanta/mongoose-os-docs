@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/mjs](https://github.com/mongoose-os-libs/mjs) | [mos_mjs.h](https://github.com/mongoose-os-libs/mjs/tree/master/include/mos_mjs.h) | &nbsp;  | &nbsp;         |
 
-# Embedded JavaScript engine
+
 
 This library brings an [mJS: restricted JavaScript-like
 Engine](https://github.com/cesanta/mjs).

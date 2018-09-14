@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/file-logger](https://github.com/mongoose-os-libs/file-logger) | [](https://github.com/mongoose-os-libs/file-logger/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# File-logger
+
 
 File-logger is a library which implements log file rotation: it maintains max X
 log files of max size Y, so that you always have latest logs from the device

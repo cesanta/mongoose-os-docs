@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/arduino-md-max72xx](https://github.com/mongoose-os-libs/arduino-md-max72xx) | [MD_MAX72xx.h](https://github.com/mongoose-os-libs/arduino-md-max72xx/tree/master/include/MD_MAX72xx.h) | &nbsp;  | &nbsp;         |
 
-# MAX72xx LED Matrix Display Library
+
 
 <i>IMPORTANT NOTE: Please make sure that you find and read the html documentation that comes with the library (open "docs/index.html") or use the link below. <b>You will need to edit the MAX72xx.h file to configure the type of matrix you are using</b>. This is the most asked support question so avoid frustration and READ THE MANUAL in the docs subfolder.</i>
 

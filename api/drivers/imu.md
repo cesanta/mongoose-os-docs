@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/imu](https://github.com/mongoose-os-libs/imu) | [mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h) | &nbsp;  | &nbsp;         |
 
-# Mongoose OS IMU Library
+
 
 This library provides a simple API that describes inertial measurement units.
 It implements various popular I2C and SPI IMUs behind that API. Callers of

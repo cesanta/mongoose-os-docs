@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/arduino-adafruit-ssd1306](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306) | [Adafruit_SSD1306.h](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306/tree/master/include/Adafruit_SSD1306.h) | &nbsp;  | [api_arduino_ssd1306.js](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306/tree/master/mjs_fs/api_arduino_ssd1306.js)         |
 
-# Arduino Adafruit SSD1306 library for Mongoose OS
+
 
 
  ----- 

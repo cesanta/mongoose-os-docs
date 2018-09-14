@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/bt-common](https://github.com/mongoose-os-libs/bt-common) | [mgos_bt.h](https://github.com/mongoose-os-libs/bt-common/tree/master/include/mgos_bt.h) | &nbsp;  | &nbsp;         |
 
-# Low level Bluetooth support
+
 
 Currently contains only GATT server implmenetation for ESP32.
 

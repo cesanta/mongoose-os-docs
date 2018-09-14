@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/dallas-rmt](https://github.com/mongoose-os-libs/dallas-rmt) | [DallasRmt.h](https://github.com/mongoose-os-libs/dallas-rmt/tree/master/include/DallasRmt.h) | &nbsp;  | [api_dallas_rmt.js](https://github.com/mongoose-os-libs/dallas-rmt/tree/master/mjs_fs/api_dallas_rmt.js)         |
 
-# Library to read Dallas temperature sensor using ESP32's RMT device
+
 The library uses the `onewire-rmt` library. 
 A pullup resistor (4.7k) must be connected between the data line of the sensor and Vcc.
 

@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/sensor-utils](https://github.com/mongoose-os-libs/sensor-utils) | [](https://github.com/mongoose-os-libs/sensor-utils/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# A Library of Utility Functions for Mongoose OS apps with Sensors
+
 
 
 ## Overview

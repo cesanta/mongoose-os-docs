@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/rpc-azure](https://github.com/mongoose-os-libs/rpc-azure) | [](https://github.com/mongoose-os-libs/rpc-azure/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# RPC support for Azure
+
 
 ## Direct Method RPC channel
 

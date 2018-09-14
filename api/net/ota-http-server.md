@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/ota-http-server](https://github.com/mongoose-os-libs/ota-http-server) | [](https://github.com/mongoose-os-libs/ota-http-server/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# Implementation of Mongoose OS OTA HTTP server
+
 
 ## Overview
 

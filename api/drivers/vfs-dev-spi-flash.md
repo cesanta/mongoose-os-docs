@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/vfs-dev-spi-flash](https://github.com/mongoose-os-libs/vfs-dev-spi-flash) | [mgos_vfs_dev_spi_flash.h](https://github.com/mongoose-os-libs/vfs-dev-spi-flash/tree/master/include/mgos_vfs_dev_spi_flash.h) | &nbsp;  | &nbsp;         |
 
-# SPI Flash VFS Driver
+
 
 This driver supports external SPI flash chips and makes them avauilable for use with the mOS VFS subsystem.
 

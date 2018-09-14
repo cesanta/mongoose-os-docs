@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/barometer](https://github.com/mongoose-os-libs/barometer) | [mgos_barometer.h](https://github.com/mongoose-os-libs/barometer/tree/master/include/mgos_barometer.h) | &nbsp;  | &nbsp;         |
 
-# Mongoose OS Barometer Library
+
 
 ## Introduction
 This library provides a simple API that describes barometer sensors. It

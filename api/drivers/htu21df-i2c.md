@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/htu21df-i2c](https://github.com/mongoose-os-libs/htu21df-i2c) | [mgos_htu21df.h](https://github.com/mongoose-os-libs/htu21df-i2c/tree/master/include/mgos_htu21df.h) | &nbsp;  | &nbsp;         |
 
-# HTU21D(F) I2C Driver
+
 
 A Mongoose library for Measurement Specialities HTU21D(F) integrated circuit.
 

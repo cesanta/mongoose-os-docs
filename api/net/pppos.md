@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/pppos](https://github.com/mongoose-os-libs/pppos) | [](https://github.com/mongoose-os-libs/pppos/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# PPPoS / cellullar modem support
+
 
 This library provides IP over serial port. Encapsulation is PPP.
 

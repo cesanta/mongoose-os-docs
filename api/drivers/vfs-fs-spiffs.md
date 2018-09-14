@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/vfs-fs-spiffs](https://github.com/mongoose-os-libs/vfs-fs-spiffs) | [mgos_vfs_fs_spiffs.h](https://github.com/mongoose-os-libs/vfs-fs-spiffs/tree/master/include/mgos_vfs_fs_spiffs.h) | &nbsp;  | &nbsp;         |
 
-# VFS interface for SPIFFS
+
 
 
  ----- 

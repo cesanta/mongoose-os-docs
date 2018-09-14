@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/arduino-onewire](https://github.com/mongoose-os-libs/arduino-onewire) | [OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h) | &nbsp;  | [api_arduino_onewire.js](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/mjs_fs/api_arduino_onewire.js)         |
 
-# Arduino OneWire library for Mongoose OS
+
 
 This library provides an Arduino compatibility layer for onewire by providing
 an `OneWire.h` public header, so that one could pick an existing Arduino

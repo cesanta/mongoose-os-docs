@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/ethernet](https://github.com/mongoose-os-libs/ethernet) | [](https://github.com/mongoose-os-libs/ethernet/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# Ethernet support
+
 
 ## ESP32
 

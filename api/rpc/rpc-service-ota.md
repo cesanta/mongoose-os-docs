@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/rpc-service-ota](https://github.com/mongoose-os-libs/rpc-service-ota) | [mgos_rpc_service_ota.h](https://github.com/mongoose-os-libs/rpc-service-ota/tree/master/include/mgos_rpc_service_ota.h) | &nbsp;  | &nbsp;         |
 
-# RPC Service - OTA (Over The Air updates)
+
 
 This service provides an ability to manage OTA on devices remotely.
 It is possible to call this service programmatically via serial, HTTP/RESTful,

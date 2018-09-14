@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/rpc-mqtt](https://github.com/mongoose-os-libs/rpc-mqtt) | [mgos_rpc_channel_mqtt.h](https://github.com/mongoose-os-libs/rpc-mqtt/tree/master/include/mgos_rpc_channel_mqtt.h) | &nbsp;  | &nbsp;         |
 
-# Implementation of Mongoose OS RPC over MQTT protocol
+
 
 ## Overview
 

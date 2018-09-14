@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/rpc-service-fs](https://github.com/mongoose-os-libs/rpc-service-fs) | [mgos_service_filesystem.h](https://github.com/mongoose-os-libs/rpc-service-fs/tree/master/include/mgos_service_filesystem.h) | &nbsp;  | &nbsp;         |
 
-# RPC Service - Filesystem
+
 
 This service provides an ability to manage device files remotely.
 It is required by the `mos ls`, `mos get`, `mos put`, `mos rm` commands.

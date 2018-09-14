@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/arduino-dallas-temperature](https://github.com/mongoose-os-libs/arduino-dallas-temperature) | [DallasTemperature.h](https://github.com/mongoose-os-libs/arduino-dallas-temperature/tree/master/include/DallasTemperature.h) | &nbsp;  | [api_arduino_dallas_temp.js](https://github.com/mongoose-os-libs/arduino-dallas-temperature/tree/master/mjs_fs/api_arduino_dallas_temp.js)         |
 
-# Arduino DallasTemperature library for Mongoose OS
+
 
 
  ----- 

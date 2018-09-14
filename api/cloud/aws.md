@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/aws](https://github.com/mongoose-os-libs/aws) | [mgos_aws_greengrass.h](https://github.com/mongoose-os-libs/aws/tree/master/include/mgos_aws_greengrass.h) | &nbsp;  | [api_aws.js](https://github.com/mongoose-os-libs/aws/tree/master/mjs_fs/api_aws.js)         |
 
-# AWS IoT support for Mongoose OS
+
 
 This library implements integration of Mongoose OS with AWS IoT.
 

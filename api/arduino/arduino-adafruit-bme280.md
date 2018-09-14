@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/arduino-adafruit-bme280](https://github.com/mongoose-os-libs/arduino-adafruit-bme280) | [Adafruit_BME280.h](https://github.com/mongoose-os-libs/arduino-adafruit-bme280/tree/master/include/Adafruit_BME280.h) | &nbsp;  | [api_arduino_bme280.js](https://github.com/mongoose-os-libs/arduino-adafruit-bme280/tree/master/mjs_fs/api_arduino_bme280.js)         |
 
-# Arduino Adafruit BME280 and BMP280 library for Mongoose OS
+
 
 
  ----- 

@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/cron](https://github.com/mongoose-os-libs/cron) | [mgos_cron.h](https://github.com/mongoose-os-libs/cron/tree/master/include/mgos_cron.h) | &nbsp;  | &nbsp;         |
 
-# A Cron Mongoose OS library
+
 
 ## Overview
 

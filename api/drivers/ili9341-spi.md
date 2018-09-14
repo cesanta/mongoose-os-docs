@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/ili9341-spi](https://github.com/mongoose-os-libs/ili9341-spi) | [mgos_ili9341.h](https://github.com/mongoose-os-libs/ili9341-spi/tree/master/include/mgos_ili9341.h) | &nbsp;  | [api_ili9341_spi.js](https://github.com/mongoose-os-libs/ili9341-spi/tree/master/mjs_fs/api_ili9341_spi.js)         |
 
-# ILI9341 TFT Driver
+
 
 ## Introduction
 This library is a native implementation of a graphics chip for small TFT

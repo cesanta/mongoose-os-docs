@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/rpc-service-i2c](https://github.com/mongoose-os-libs/rpc-service-i2c) | [mgos_i2c_service.h](https://github.com/mongoose-os-libs/rpc-service-i2c/tree/master/include/mgos_i2c_service.h) | &nbsp;  | &nbsp;         |
 
-# RPC Service - I2C
+
 
 This service provides an ability to manage I2C peripherals on devices remotely.
 It is possible to call this service programmatically via serial, HTTP/RESTful,

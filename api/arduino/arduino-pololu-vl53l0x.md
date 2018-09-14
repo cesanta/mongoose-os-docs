@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/arduino-pololu-vl53l0x](https://github.com/mongoose-os-libs/arduino-pololu-vl53l0x) | [](https://github.com/mongoose-os-libs/arduino-pololu-vl53l0x/tree/master/include/) | &nbsp;  | [api_vl53l0x.js](https://github.com/mongoose-os-libs/arduino-pololu-vl53l0x/tree/master/mjs_fs/api_vl53l0x.js)         |
 
-# VL53L0X library for Mongoose OS
+
 
 Version: 1.0<br>
 Release date: 2017 Nov 17<br>

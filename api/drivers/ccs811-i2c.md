@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/ccs811-i2c](https://github.com/mongoose-os-libs/ccs811-i2c) | [mgos_ccs811.h](https://github.com/mongoose-os-libs/ccs811-i2c/tree/master/include/mgos_ccs811.h) | &nbsp;  | &nbsp;         |
 
-# CCS811 I2C Driver
+
 
 A Mongoose library for AMS CCS811 integrated circuit.
 

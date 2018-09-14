@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/azure](https://github.com/mongoose-os-libs/azure) | [mgos_azure.h](https://github.com/mongoose-os-libs/azure/tree/master/include/mgos_azure.h) | &nbsp;  | [api_azure.js](https://github.com/mongoose-os-libs/azure/tree/master/mjs_fs/api_azure.js)         |
 
-# Azure IoT Hub support library for Mongoose OS
+
 
 This library provides [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/) support for Mongoose OS.
 

@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/rpc-service-config](https://github.com/mongoose-os-libs/rpc-service-config) | [mgos_service_config.h](https://github.com/mongoose-os-libs/rpc-service-config/tree/master/include/mgos_service_config.h) | &nbsp;  | &nbsp;         |
 
-# RPC Service - Config
+
 
 This service provides an ability to manage device configuration remotely.
 It is required by the `mos config-get` and `mos config-set` commands.

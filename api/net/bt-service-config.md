@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/bt-service-config](https://github.com/mongoose-os-libs/bt-service-config) | [](https://github.com/mongoose-os-libs/bt-service-config/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# System Configuration over Bluetooth GATT Service
+
 
 ## Overview
 

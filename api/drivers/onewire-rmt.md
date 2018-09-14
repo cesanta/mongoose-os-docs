@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/onewire-rmt](https://github.com/mongoose-os-libs/onewire-rmt) | [OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h) | &nbsp;  | &nbsp;         |
 
-# Onewire library for Mongoose OS using theESP32's RMT device
+
 Based on https://github.com/nodemcu/nodemcu-firmware/blob/dev-esp32/components/platform/onewire.c
 
 It uses 2 RMT channels, one for RX and one for TX.

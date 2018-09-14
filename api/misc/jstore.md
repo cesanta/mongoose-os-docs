@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/jstore](https://github.com/mongoose-os-libs/jstore) | [mgos_jstore.h](https://github.com/mongoose-os-libs/jstore/tree/master/include/mgos_jstore.h) | &nbsp;  | &nbsp;         |
 
-# JSON Store
+
 
 JSON Store is a library which maintains a JSON file with order-preserving
 mappings from arbitrary strings to any kind of JSON values (a string, an

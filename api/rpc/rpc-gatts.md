@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/rpc-gatts](https://github.com/mongoose-os-libs/rpc-gatts) | [](https://github.com/mongoose-os-libs/rpc-gatts/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# RPC over GATT, Server
+
 
 ## Overview
 

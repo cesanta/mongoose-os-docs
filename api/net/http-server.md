@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/http-server](https://github.com/mongoose-os-libs/http-server) | [mgos_http_server.h](https://github.com/mongoose-os-libs/http-server/tree/master/include/mgos_http_server.h) | &nbsp;  | &nbsp;         |
 
-# HTTP Server for Mongoose OS
+
 
 
  ----- 

@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/watson](https://github.com/mongoose-os-libs/watson) | [mgos_watson.h](https://github.com/mongoose-os-libs/watson/tree/master/include/mgos_watson.h) | &nbsp;  | [api_watson.js](https://github.com/mongoose-os-libs/watson/tree/master/mjs_fs/api_watson.js)         |
 
-# IBM Warson IoT Platform support library for Mongoose OS
+
 
 This library provides [IBM Watson IoT Platform](https://internetofthings.ibmcloud.com/) support for Mongoose OS.
 

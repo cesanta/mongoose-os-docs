@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/sntp](https://github.com/mongoose-os-libs/sntp) | [](https://github.com/mongoose-os-libs/sntp/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# SNTP library for Mongoose OS
+
 
 When included to a Mongoose OS application, this library fetches the current
 time from the SNTP server (by default, `time.google.com` is used) every time

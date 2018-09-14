@@ -103,7 +103,10 @@ md += '| ----------- | -------- | --------  | ----------------- |\n';
 md += `| ${repoLink} | ${hLink} | ${cLink}  | ${jsLink}         |\n\n`;
 
 // ------------------------------------------------  Add READM
-if (readmeMD) md += `${fs.readFileSync(readmeMD, 'utf-8')}\n\n ----- \n`;
+if (readmeMD) {
+  const text = fs.readFileSync(readmeMD, 'utf-8').replace(/^#.*/, '');
+  md += `${text}\n\n ----- \n`;
+}
 
 // ------------------------------------------------  Add C/C++ API
 const re = /^\s*(((\s*\/\/.*\n)+)|(\/\*([^\*]|\*[^\/])*\*\/))/;

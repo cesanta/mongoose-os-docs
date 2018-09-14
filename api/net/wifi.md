@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/wifi](https://github.com/mongoose-os-libs/wifi) | [mgos_wifi.h](https://github.com/mongoose-os-libs/wifi/tree/master/include/mgos_wifi.h) | &nbsp;  | [api_wifi.js](https://github.com/mongoose-os-libs/wifi/tree/master/mjs_fs/api_wifi.js)         |
 
-# WiFi support
+
 
 This library provides common WiFi API.
 

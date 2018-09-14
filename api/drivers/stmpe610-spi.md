@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/stmpe610-spi](https://github.com/mongoose-os-libs/stmpe610-spi) | [mgos_stmpe610.h](https://github.com/mongoose-os-libs/stmpe610-spi/tree/master/include/mgos_stmpe610.h) | &nbsp;  | &nbsp;         |
 
-# STMP610E
+
 Mongoose native SPI driver for STMP610E
 
 ## Introduction

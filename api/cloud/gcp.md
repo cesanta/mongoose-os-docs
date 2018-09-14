@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/gcp](https://github.com/mongoose-os-libs/gcp) | [](https://github.com/mongoose-os-libs/gcp/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# Google IoT Core integration for Mongoose OS
+
 
 This library implements integration of Mongoose OS with Google IoT Core.
 

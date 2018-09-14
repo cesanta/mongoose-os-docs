@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/rpc-service-wifi](https://github.com/mongoose-os-libs/rpc-service-wifi) | [](https://github.com/mongoose-os-libs/rpc-service-wifi/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# RPC Service - WiFi
+
 
 ## Wifi.Scan
 

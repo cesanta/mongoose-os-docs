@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/sht31-i2c](https://github.com/mongoose-os-libs/sht31-i2c) | [mgos_sht31.h](https://github.com/mongoose-os-libs/sht31-i2c/tree/master/include/mgos_sht31.h) | &nbsp;  | &nbsp;         |
 
-# SHT31 I2C Driver
+
 
 A Mongoose library for Sensirion's SHT31 integrated circuit.
 

@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/dns-sd](https://github.com/mongoose-os-libs/dns-sd) | [mgos_dns_sd.h](https://github.com/mongoose-os-libs/dns-sd/tree/master/include/mgos_dns_sd.h) | &nbsp;  | &nbsp;         |
 
-# DNS-SD protocol
+
 
 
  ----- 

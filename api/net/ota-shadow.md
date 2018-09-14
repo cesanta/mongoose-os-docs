@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/ota-shadow](https://github.com/mongoose-os-libs/ota-shadow) | [](https://github.com/mongoose-os-libs/ota-shadow/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# OTA firmware update via the device shadow
+
 
 
 ## Overview

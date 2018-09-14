@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/dht](https://github.com/mongoose-os-libs/dht) | [mgos_dht.h](https://github.com/mongoose-os-libs/dht/tree/master/include/mgos_dht.h) | &nbsp;  | [api_dht.js](https://github.com/mongoose-os-libs/dht/tree/master/mjs_fs/api_dht.js)         |
 
-# A DHT Mongoose OS library
+
 
 ## Overview
 

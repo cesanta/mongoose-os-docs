@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/location](https://github.com/mongoose-os-libs/location) | [mgos_location.h](https://github.com/mongoose-os-libs/location/tree/master/include/mgos_location.h) | &nbsp;  | &nbsp;         |
 
-# Location library
+
 
 ## Overview
 

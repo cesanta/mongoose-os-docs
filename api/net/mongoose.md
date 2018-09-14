@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/mongoose](https://github.com/mongoose-os-libs/mongoose) | [mgos_mongoose.h](https://github.com/mongoose-os-libs/mongoose/tree/master/include/mgos_mongoose.h) | &nbsp;  | &nbsp;         |
 
-# Mongoose Embedded Web Server Library
+
 
 See [here](https://github.com/cesanta/mongoose).
 

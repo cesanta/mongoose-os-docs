@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/bt-service-time](https://github.com/mongoose-os-libs/bt-service-time) | [](https://github.com/mongoose-os-libs/bt-service-time/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# Bluetooth Current Time Service implementation
+
 
 Implements the [Current Time GATT service](https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.service.current_time.xml).
 

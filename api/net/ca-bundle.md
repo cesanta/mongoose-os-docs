@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/ca-bundle](https://github.com/mongoose-os-libs/ca-bundle) | [](https://github.com/mongoose-os-libs/ca-bundle/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# Certificate Authority bundle
+
 
 ## Overview
 

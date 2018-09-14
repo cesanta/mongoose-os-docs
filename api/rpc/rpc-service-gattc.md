@@ -3,7 +3,7 @@
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/rpc-service-gattc](https://github.com/mongoose-os-libs/rpc-service-gattc) | [](https://github.com/mongoose-os-libs/rpc-service-gattc/tree/master/include/) | &nbsp;  | &nbsp;         |
 
-# GATT Client RPC service
+
 
 Provides [RPC service](https://mongoose-os.com/docs/overview/rpc.html) for
 [GATT](https://learn.adafruit.com/introduction-to-bluetooth-low-energy/gatt)
