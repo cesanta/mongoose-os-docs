@@ -64,9 +64,6 @@ const stripComments = text =>
              .replace(/\n\s*\* ?/g, '\n') :
          text.replace(/(^|\n)\s*\/\/ ?/g, '$1').replace(/^\s+|\s+$/, ''));
 
-const re = /^\s*(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))/;
-const source = hFile ? fs.readFileSync(hFile, 'utf-8') : '';
-
 let md = '';
 md += `# ${menuTitle}\n`;
 
@@ -109,20 +106,22 @@ md += `| ${repoLink} | ${hLink} | ${cLink}  | ${jsLink}         |\n\n`;
 if (readmeMD) md += `${fs.readFileSync(readmeMD, 'utf-8')}\n\n ----- \n`;
 
 // ------------------------------------------------  Add C/C++ API
-
+const re = /^\s*(((\s*\/\/.*\n)+)|(\/\*([^\*]|\*[^\/])*\*\/))/;
+const source = hFile ? fs.readFileSync(hFile, 'utf-8') : '';
 const m = source.replace(re, '').match(re);
 if (m) md += `${stripComments(m[1])}\n\n ----- \n`;
 
 const rest = source.replace(re, '').replace(re, '');
-const re2 = /(((?:\s*\/\/.*\n)+)|(\/\*[\s\S]+?\*\/))\s*([\s\S]+?)\n\n/g;
+const re2 =
+    /(((\s*\/\/.*\n)+)|(\/\*([^\*]|\*[^\/])*\*\/))\s+(?![\s\/])([\s\S]+?)\n\n/g;
 let a;
 const backs = '```';
 while ((a = re2.exec(rest)) != null) {
-  // console.error('----------', a[4], a[1]);
-  const x = a[4].match(/^.*?\*?(\S+)\(/);
+  const x = a[6].match(/^.*?\*?(\S+)\(/);
+  // console.error('----------', a[6]);
   if (!x) continue;
   md += `#### ${x[1]}\n`;
-  md += `\n${backs}c\n${a[4]}\n${backs}\n${stripComments(a[1])}\n`;
+  md += `\n${backs}c\n${a[6]}\n${backs}\n${stripComments(a[1])}\n`;
 }
 
 // ------------------------------------------------  Add JS API

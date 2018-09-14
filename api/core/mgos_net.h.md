@@ -12,6 +12,30 @@ is lost, established, etc.
  
 
  ----- 
+#### MGOS_EVENT_BASE
+
+```c
+#define MGOS_EVENT_GRP_NET MGOS_EVENT_BASE('N', 'E', 'T')
+```
+
+Event group which should be given to `mgos_event_add_group_handler()`
+in order to subscribe to network events.
+
+Example:
+```c
+static void my_net_ev_handler(int ev, void *evd, void *arg) {
+  if (ev == MGOS_NET_EV_IP_ACQUIRED) {
+    LOG(LL_INFO, ("Just got IP!"));
+    // Fetch something very useful from somewhere
+  }
+  (void) evd;
+  (void) arg;
+}
+
+// Somewhere else:
+mgos_event_add_group_handler(MGOS_EVENT_GRP_NET, my_net_ev_handler, NULL);
+```
+ 
 #### mgos_net_get_ip_info
 
 ```c

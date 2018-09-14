@@ -92,3 +92,11 @@ Example usage:
 
 
  ----- 
+#### mgos_rpc_service_config_init
+
+```c
+bool mgos_rpc_service_config_init(void);
+```
+
+Initialises mg_rpc handlers for Config commands
+ 

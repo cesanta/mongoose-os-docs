@@ -7,23 +7,6 @@
 
 
  ----- 
-#### defined
-
-```c
-#elif defined(ESP8266) || defined(ESP32) || defined(ARDUINO_STM32_FEATHER) || defined(__arc__)
-  typedef volatile uint32_t PortReg;
-  typedef uint32_t PortMask;
-#elif defined(__AVR__)
-  typedef volatile uint8_t PortReg;
-  typedef uint8_t PortMask;
-  #define HAVE_PORTREG
-#else
-  // chances are its 32 bit so assume that
-  typedef volatile uint32_t PortReg;
-  typedef uint32_t PortMask;
-#endif
-```
-not supported
 
 ### JS API
 

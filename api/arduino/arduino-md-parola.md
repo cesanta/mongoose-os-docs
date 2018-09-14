@@ -54,6 +54,19 @@ Class Destructor.
 Release allocated memory and does the necessary to clean up once the object is
 no longer required.
    
+#### zoneAnimate
+
+```c
+bool zoneAnimate(void);
+```
+*
+Animate the zone.
+
+Animate using the currently specified text and animation parameters.
+This method is invoked from the main Parola object.
+
+\return bool	true if the zone animation has completed, false otherwise.
+   
 #### getStatus
 
 ```c
@@ -566,6 +579,26 @@ Class Destructor.
 Release allocated memory and does the necessary to clean up once the object is
 no longer required.
    
+#### displayAnimate
+
+```c
+bool displayAnimate(void);
+```
+*
+Animate the display.
+
+Animate all the zones in the display using the currently specified text and
+animation parameters. This method needs to be invoked as often as possible
+to ensure smooth animation. The animation is governed by a time tick that
+is set by the setSpeed() method and it will pause between entry and exit using
+the time set by the setPause() method.
+
+The calling program should monitor the return value for 'true' in order to either
+reset the zone animation or supply another string for display. A 'true' return
+value means that one or more zones have completed their animation.
+
+\return bool	true if at least one zone animation has completed, false otherwise.
+   
 #### getZoneStatus
 
 ```c
@@ -690,6 +723,25 @@ Zones should not overlap or unexpected results will occur.
 \param moduleStart	the first module number for the zone [0..numZones-1].
 \param moduleEnd	the last module number for the zone [0..numZones-1].
 \return true if set, false otherwise.
+   
+#### displayScroll
+
+```c
+inline void displayScroll(char *pText, textPosition_t align, textEffect_t effect, uint16_t speed)
+    { displayZoneText(0, pText, align, speed, 0, effect, effect); };
+```
+*
+Easy start for a scrolling text display.
+
+This method is a convenient way to set up a scrolling display. All the data
+necessary for setup is passed through as parameters and the display animation
+is started. Assumes one zone only (zone 0).
+
+\param pText	parameter suitable for the setTextBuffer() method.
+\param align	parameter suitable for the the setTextAlignment() method.
+\param effect	parameter suitable for the the setTextEffect() method.
+\param speed	parameter suitable for the setSpeed() method.
+\return No return value.
    
 #### displayText
 

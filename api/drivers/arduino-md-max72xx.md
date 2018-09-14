@@ -84,6 +84,25 @@ no longer required.
 #### control
 
 ```c
+bool control(uint8_t dev, controlRequest_t mode, int value);
+```
+*
+Set the control status of the specified parameter for the specified device.
+
+The device has a number of control parameters that can be set through this method.
+The type of control action required is passed through the mode parameter and
+should be one of the control actions defined by controlRequest_t. The value that
+needs to be supplied on the control action required is one of the defined
+actions in controlValue_t or a numeric parameter suitable for the control action.
+
+\param dev			address of the device to control [0..getDeviceCount()-1].
+\param mode		one of the defined control requests.
+\param value		parameter value or one of the control status defined.
+\return false if parameter errors, true otherwise.
+   
+#### control
+
+```c
 inline void control(controlRequest_t mode, int value) { control(0, getDeviceCount()-1, mode, value); };
 ```
 *
@@ -180,6 +199,16 @@ function the type of shifting being executed
 
 \param cb	the address of the function to be called from the library.
 \return No return data
+   
+#### clear
+
+```c
+inline void clear(void) { clear(0, getDeviceCount()-1); };
+```
+*
+Clear all the display data on all the display devices.
+
+\return No return value.
    
 #### clear
 
@@ -442,6 +471,17 @@ This function is a convenience wrapper for the more general control() function c
 \param mode	one of the types in controlValue_t (ON/OFF).
 \return No return value.
    
+#### clear
+
+```c
+bool clear(uint8_t buf);
+```
+*
+Clear all display data in the specified buffer.
+
+\param buf		address of the buffer to clear [0..getDeviceCount()-1].
+\return false if parameter errors, true otherwise.
+   
 #### getColumn
 
 ```c
@@ -540,6 +580,26 @@ Note that control() messages are not buffered but cause immediate action.
 
 \param buf	address of the display [0..getBufferCount()-1].
 \return No return value.
+   
+#### getChar
+
+```c
+uint8_t getChar(uint8_t c, uint8_t size, uint8_t *buf);
+```
+*
+Load a character from the font data into a user buffer.
+
+Copy the bitmap for a library font character (current font set by setFont()) and
+return it in the data area passed by the user. If the user buffer is not large
+enough, only the first size elements are copied to the buffer.
+
+NOTE: This function is only available if the library defined value
+USE_LOCAL_FONT is set to 1.
+
+\param c		the character to retrieve.
+\param size	the size of the user buffer in unit8_t units.
+\param buf		address of the user buffer supplied.
+\return width (in columns) of the character, 0 if parameter errors.
    
 #### setChar
 

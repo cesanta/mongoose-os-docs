@@ -17,6 +17,12 @@ for the detailed explanation.
  
 
  ----- 
+#### mgos_get_mgr
+
+```c
+struct mg_mgr *mgos_get_mgr(void);
+```
+ Return global event manager 
 #### mongoose_poll
 
 ```c

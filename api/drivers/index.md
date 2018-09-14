@@ -26,3 +26,4 @@
 - [VFS (RAM)](vfs-dev-ram.md)
 - [VFS (SPI NOR Flash)](vfs-dev-spi-flash.md)
 - [VFS (SPIFFS)](vfs-fs-spiffs.md)
+- [VFS](vfs-common.md)

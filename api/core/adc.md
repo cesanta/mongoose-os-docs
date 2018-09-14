@@ -7,6 +7,12 @@ This library implements a [analog-to-digital conversion](https://en.wikipedia.or
 
 
  ----- 
+#### mgos_adc_enable
+
+```c
+bool mgos_adc_enable(int pin);
+```
+ Configure and enable ADC 
 #### mgos_adc_read
 
 ```c

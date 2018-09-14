@@ -12,6 +12,18 @@ happens. Each event has an associated event data passed as `void *`.
 #### MGOS_EVENT_BASE
 
 ```c
+#define MGOS_EVENT_BASE(a, b, c) ((a) << 24 | (b) << 16 | (c) << 8)
+```
+
+Macro to generate unique base event number.
+A library can use the last byte (LSB) to create up to 256 unique
+events (see enum below on how Mongoose OS core defines its events).
+A library should call mgos_event_register_base() in order to claim
+it and prevent event number conflicts.
+ 
+#### MGOS_EVENT_BASE
+
+```c
 #define MGOS_EVENT_SYS MGOS_EVENT_BASE('M', 'O', 'S')
 ```
 

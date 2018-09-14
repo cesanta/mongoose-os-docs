@@ -42,22 +42,3 @@ void analogWriteRange(uint32_t range);
 #endif
 ```
 int atexit(void (*func)()) __attribute__((weak));
-#### min
-
-```c
-#define min(a, b) ((a) < (b) ? (a) : (b))
-#define max(a, b) ((a) > (b) ? (a) : (b))
-#endif
-```
-arduino is not compatible with std::vector
-#### random
-
-```c
-long random(long);
-long random(long, long);
-void randomSeed(unsigned long);
-long secureRandom(long);
-long secureRandom(long, long);
-long map(long, long, long, long, long);
-```
-WMath prototypes

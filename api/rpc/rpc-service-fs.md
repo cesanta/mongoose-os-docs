@@ -155,3 +155,11 @@ Unmout filesystem. Arguments:
 
 
  ----- 
+#### mgos_rpc_service_fs_init
+
+```c
+bool mgos_rpc_service_fs_init(void);
+```
+
+Initialises mg_rpc handlers for FS commands
+ 

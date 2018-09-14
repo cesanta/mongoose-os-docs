@@ -223,55 +223,12 @@ merchantability, or fitness for a particular purpose.
 
 
  ----- 
-#### mgos_ili9341_set_window
+#### swap
 
 ```c
-void mgos_ili9341_set_window(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
-void mgos_ili9341_set_fgcolor(uint8_t r, uint8_t g, uint8_t b);
-void mgos_ili9341_set_bgcolor(uint8_t r, uint8_t g, uint8_t b);
-uint16_t mgos_ili9341_color565(uint8_t r, uint8_t g, uint8_t b);
-void mgos_ili9341_set_fgcolor565(uint16_t rgb);
-void mgos_ili9341_set_bgcolor565(uint16_t rgb);
-void mgos_ili9341_set_orientation(uint8_t madctl, uint16_t width, uint16_t height);
-void mgos_ili9341_set_dimensions(uint16_t width, uint16_t height);
-void mgos_ili9341_set_rotation(enum mgos_ili9341_rotation_t rotation);
-void mgos_ili9341_set_inverted(bool inverted);
-uint16_t mgos_ili9341_get_screenWidth();
-uint16_t mgos_ili9341_get_screenHeight();
+#define swap(a, b)    { int16_t t = a; a = b; b = t; }
 ```
-Externally callable functions:
-#### mgos_ili9341_drawPixel
-
-```c
-void mgos_ili9341_drawPixel(uint16_t x0, uint16_t y0);
-void mgos_ili9341_drawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
-```
-Geometric shapes:
-#### mgos_ili9341_set_font
-
-```c
-bool mgos_ili9341_set_font(GFXfont *f);
-void mgos_ili9341_print(uint16_t x0, uint16_t y0, const char *s);
-void mgos_ili9341_printf(uint16_t x0, uint16_t y0, const char *fmt, ...);
-uint16_t mgos_ili9341_getStringWidth(const char *string);
-uint16_t mgos_ili9341_getStringHeight(const char *string);
-int mgos_ili9341_get_max_font_width(void);
-int mgos_ili9341_get_max_font_height(void);
-```
-Fonts and Printing:
-#### mgos_ili9341_line
-
-```c
-uint16_t mgos_ili9341_line(int n);
-```
-Returns Y position for line N for the currently selected font.
-If n is negative, returns N-th line from the bottom.
-#### mgos_ili9341_drawDIF
-
-```c
-void mgos_ili9341_drawDIF(uint16_t x0, uint16_t y0, char *fn);
-```
-Images
+LCD Horizontal Refresh Right-Left
 
 ### JS API
 

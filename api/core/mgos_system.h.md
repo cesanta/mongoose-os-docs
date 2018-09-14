@@ -8,6 +8,12 @@ HAL that needs to be implemented for each hardware platform.
  
 
  ----- 
+#### mgos_get_heap_size
+
+```c
+size_t mgos_get_heap_size(void);
+```
+ Get system memory size. 
 #### mgos_get_free_heap_size
 
 ```c
