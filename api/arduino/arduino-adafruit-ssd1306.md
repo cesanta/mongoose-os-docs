@@ -16,14 +16,17 @@
 ```javascript
 Colors
 ```
+<div class="apidescr">
 - `Adafruit_SSD1306.BLACK`
 - `Adafruit_SSD1306.WHITE`
 - `Adafruit_SSD1306.INVERSE`
+</div>
 #### Adafruit_SSD1306.create_i2c
 
 ```javascript
 Adafruit_SSD1306.create_i2c(rst, res)
 ```
+<div class="apidescr">
 Create an SSD1306 object for I2C. `rst` is a number of reset pin,
 `res` is the resolution, one of the:
 - `Adafruit_SSD1306.RES_96_16`
@@ -35,11 +38,13 @@ Example:
 ```javascript
 Adafruit_SSD1306.create_i2c(12, Adafruit_SSD1306.RES_128_32);
 ```
+</div>
 #### Adafruit_SSD1306.create_spi
 
 ```javascript
 Adafruit_SSD1306.create_spi(dc, rst, cs, res)
 ```
+<div class="apidescr">
 Create an SSD1306 object for SPI.
 `dc` is a number of data command pin, `rst` is a number of reset pin,
 `cs` is a number of chip select pin, `res` is the resolution, one of the:
@@ -52,17 +57,21 @@ Example:
 ```javascript
 Adafruit_SSD1306.create_spi(10, 12, 11, Adafruit_SSD1306.RES_128_32);
 ```
+</div>
 #### mySSD1306.close
 
 ```javascript
 mySSD1306.close()
 ```
+<div class="apidescr">
 Close Adafruit_SSD1306 instance. Return value: none.
+</div>
 #### mySSD1306.begin
 
 ```javascript
 mySSD1306.begin(vccst, i2caddr, reset)
 ```
+<div class="apidescr">
 Initialize the display. `vccst` is a VCC state, one of those:
 - `Adafruit_SSD1306.EXTERNALVCC`
 - `Adafruit_SSD1306.SWITCHCAPVCC`
@@ -73,87 +82,111 @@ Example:
 ```javascript
 mySSD1306.begin(Adafruit_SSD1306.EXTERNALVCC, 0x42, true);
 ```
+</div>
 #### mySSD1306.ssd1306_command
 
 ```javascript
 mySSD1306.ssd1306_command(cmd)
 ```
+<div class="apidescr">
 Send an arbitrary command `cmd`, which must be a number from 0 to 255.
 Return value: none.
+</div>
 #### mySSD1306.clearDisplay
 
 ```javascript
 mySSD1306.clearDisplay()
 ```
+<div class="apidescr">
 Clear display. Return value: none.
+</div>
 #### mySSD1306.invertDisplay
 
 ```javascript
 mySSD1306.invertDisplay(i)
 ```
+<div class="apidescr">
 Set invert mode: 0 - don't invert; 1 - invert. Return value: none.
+</div>
 #### mySSD1306.display
 
 ```javascript
 mySSD1306.display()
 ```
+<div class="apidescr">
 Put image data to the display. Return value: none.
+</div>
 #### mySSD1306.startScrollRight
 
 ```javascript
 mySSD1306.startScrollRight()
 ```
+<div class="apidescr">
 Activate a right handed scroll for rows from `start` to `stop`.
 Return value: none.
+</div>
 #### mySSD1306.startScrollLeft
 
 ```javascript
 mySSD1306.startScrollLeft()
 ```
+<div class="apidescr">
 Activate a left handed scroll for rows from `start` to `stop`.
 Return value: none.
+</div>
 #### mySSD1306.startScrollDiagRight
 
 ```javascript
 mySSD1306.startScrollDiagRight()
 ```
+<div class="apidescr">
 Activate a diagonal scroll for rows from `start` to `stop`.
 Return value: none.
+</div>
 #### mySSD1306.startScrollDiagLeft
 
 ```javascript
 mySSD1306.startScrollDiagLeft()
 ```
+<div class="apidescr">
 Activate a diagonal scroll for rows from `start` to `stop`.
 Return value: none.
+</div>
 #### mySSD1306.stopScroll
 
 ```javascript
 mySSD1306.stopScroll()
 ```
+<div class="apidescr">
 Stop scrolling. Return value: none.
+</div>
 #### mySSD1306.dim
 
 ```javascript
 mySSD1306.dim(dim)
 ```
+<div class="apidescr">
 Set dim mode:
 `dim` is 1: display is dimmed;
 `dim` is 0: display is normal.
 Return value: none.
+</div>
 #### mySSD1306.drawPixel
 
 ```javascript
 mySSD1306.drawPixel(x, y, color)
 ```
+<div class="apidescr">
 Set a single pixel with coords `x`, `y` to have the given `color`. See
 available colors above.
 Return value: none.
+</div>
 #### mySSD1306.drawFastVLine
 
 ```javascript
 mySSD1306.drawFastVLine(x, y, h, color)
 ```
+<div class="apidescr">
 Draw a vertical line with height `h` starting from `x`, `y`, with color
 `color`. See available colors above.
 Return value: none.
@@ -161,11 +194,13 @@ Example:
 ```javascript
 mySSD1306.drawFastVLine(10, 5, 15, Adafruit_SSD1306.WHITE);
 ```
+</div>
 #### mySSD1306.drawFastHLine
 
 ```javascript
 mySSD1306.drawFastHLine(x, y, w, color)
 ```
+<div class="apidescr">
 Draw a horizontal line of width `w` starting from `x`, `y`, with color
 `color`. See available colors above.
 Return value: none.
@@ -173,11 +208,13 @@ Example:
 ```javascript
 mySSD1306.drawFastHLine(10, 10, 20, Adafruit_SSD1306.WHITE);
 ```
+</div>
 #### mySSD1306.drawCircle
 
 ```javascript
 mySSD1306.drawCircle(x, y, r, color)
 ```
+<div class="apidescr">
 Draw a circle with the radius `r`, centered at from `x`, `y`, with color
 `color`. See available colors above.
 Return value: none.
@@ -185,11 +222,13 @@ Example:
 ```javascript
 mySSD1306.drawCircle(10, 10, 20, 10, 3, Adafruit_SSD1306.WHITE);
 ```
+</div>
 #### mySSD1306.fillCircle
 
 ```javascript
 mySSD1306.fillCircle(x, y, r, color)
 ```
+<div class="apidescr">
 Draw a filled circle with the radius `r`, centered at from `x`, `y`,
 with color `color`. See available colors above.
 Return value: none.
@@ -197,11 +236,13 @@ Example:
 ```javascript
 mySSD1306.fillCircle(10, 10, 5, Adafruit_SSD1306.WHITE);
 ```
+</div>
 #### mySSD1306.drawTriangle
 
 ```javascript
 mySSD1306.drawTriangle(x0, y0, x1, y1, x2, y2, color)
 ```
+<div class="apidescr">
 Draw a triangle at the given coordinates, with color `color`. See
 available colors above.
 Return value: none.
@@ -209,11 +250,13 @@ Example:
 ```javascript
 mySSD1306.drawTriangle(10, 0, 20, 20, 0, 20, Adafruit_SSD1306.WHITE);
 ```
+</div>
 #### mySSD1306.drawRoundRect
 
 ```javascript
 mySSD1306.drawRoundRect(x0, y0, w, h, radius, color)
 ```
+<div class="apidescr">
 Draw a rectangle with round corners; `x0`, `y0` are the coords of the
 left-top corner, `w` is width, `h` is height, `radius` is the corners
 radius, with color `color`. See available colors above.
@@ -222,11 +265,13 @@ Example:
 ```javascript
 mySSD1306.drawRoundRect(10, 10, 20, 10, 3, Adafruit_SSD1306.WHITE);
 ```
+</div>
 #### mySSD1306.drawRoundRect
 
 ```javascript
 mySSD1306.drawRoundRect(x0, y0, w, h, radius, color)
 ```
+<div class="apidescr">
 Draw a filled rectangle with round corners; `x0`, `y0` are the coords of
 the left-top corner, `w` is width, `h` is height, `radius` is the
 corners radius, with color `color`. See available colors above.
@@ -235,11 +280,13 @@ Example:
 ```javascript
 mySSD1306.fillRoundRect(10, 10, 20, 10, 3, Adafruit_SSD1306.WHITE);
 ```
+</div>
 #### mySSD1306.drawChar
 
 ```javascript
 mySSD1306.drawChar(x, y, c, color, bg, size)
 ```
+<div class="apidescr">
 Draw a character `c` starting at the point `x`, `y`, with the color
 `color` (see available colors above). If `bg` is different from `color`,
 then the background is filled with `bg`; otherwise bacground is left
@@ -254,58 +301,70 @@ Example:
 mySSD1306.drawChar(10, 10, 'a',
                    Adafruit_SSD1306.WHITE, Adafruit_SSD1306.WHITE, 1);
 ```
+</div>
 #### mySSD1306.setCursor
 
 ```javascript
 mySSD1306.setCursor(x, y)
 ```
+<div class="apidescr">
 Set text cursor for the following calls to `mySSD1306.write()`.
 See example for `write()` below.
 Return value: none.
+</div>
 #### mySSD1306.setTextColor
 
 ```javascript
 mySSD1306.setTextColor(color)
 ```
+<div class="apidescr">
 Set text color for the following calls to `mySSD1306.write()`. See
 available colors above.
 See example for `write()` below.
 Return value: none.
+</div>
 #### mySSD1306.setTextColorBg
 
 ```javascript
 mySSD1306.setTextColorBg(color, bg)
 ```
+<div class="apidescr">
 Set text color and background color for the following calls to
 `mySSD1306.write()`. If `bg` is equal to the `color`, then the
 background will be left intact while drawing characters.
 See example for `write()` below.
 Return value: none.
+</div>
 #### mySSD1306.setTextSize
 
 ```javascript
 mySSD1306.setTextSize(size)
 ```
+<div class="apidescr">
 Set text color for the following calls to `mySSD1306.write()`. There is
 only one font (to save space) and it's meant to be 5x8 pixels, but an
 optional `size` parameter which scales the font by this factor (e.g.
 size=2 will render the text at 10x16 pixels per character).
 See example for `write()` below.
 Return value: none.
+</div>
 #### mySSD1306.setTextWrap
 
 ```javascript
 mySSD1306.setTextWrap(wrap)
 ```
+<div class="apidescr">
 Set text wrap mode (true or false) for the following calls to
 `mySSD1306.write()`.
 See example for `write()` below.
 Return value: none.
+</div>
 #### mySSD1306.write
 
 ```javascript
 mySSD1306.write(str)
 ```
+<div class="apidescr">
 Write given string `str` using the parameters set before (`setCursor()`,
 `setTextColor()`, `setTextColorBg()`, `setTextSize()`, `setTextWrap()`)
 Return value: 1.
@@ -317,43 +376,56 @@ mySSD1306.setTextSize(2);
 mySSD1306.setTextWrap(true);
 mySSD1306.write("Hello world!");
 ```
+</div>
 #### mySSD1306.height
 
 ```javascript
 mySSD1306.height()
 ```
+<div class="apidescr">
 Return display height in pixels.
+</div>
 #### mySSD1306.width
 
 ```javascript
 mySSD1306.width()
 ```
+<div class="apidescr">
 Return display width in pixels.
+</div>
 #### mySSD1306.setRotation
 
 ```javascript
 mySSD1306.setRotation(rot)
 ```
+<div class="apidescr">
 Set display rotation:
 - 0: no rotation
 - 1: rotated at 90 degrees
 - 2: rotated at 180 degrees
 - 3: rotated at 270 degrees
+</div>
 #### mySSD1306.getRotation
 
 ```javascript
 mySSD1306.getRotation()
 ```
+<div class="apidescr">
 Return rotation previously set with `setRotation()`
+</div>
 #### mySSD1306.getCursorX
 
 ```javascript
 mySSD1306.getCursorX()
 ```
+<div class="apidescr">
 Return cursor X coordinate, previously set with `setCursor()`.
+</div>
 #### mySSD1306.getCursorY
 
 ```javascript
 mySSD1306.getCursorY()
 ```
+<div class="apidescr">
 Return cursor Y coordinate, previously set with `setCursor()`.
+</div>

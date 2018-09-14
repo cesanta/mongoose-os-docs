@@ -18,7 +18,9 @@ and ideally, it "just works".
 void begin();
   void end();
 ```
+<div class="apidescr">
  Arduino interface 
+</div>
 #### setBitOrder
 
 ```c
@@ -27,7 +29,9 @@ void setBitOrder(uint8_t bitOrder);
   void setFrequency(uint32_t freq);
   // void setClockDivider(uint32_t clockDiv);
 ```
+<div class="apidescr">
 void setHwCs(bool use);
+</div>
 #### write
 
 ```c
@@ -36,4 +40,6 @@ void write(uint8_t data);
   void write32(uint32_t data);
   void writeBytes(const uint8_t *data, uint32_t size);
 ```
+<div class="apidescr">
 void transferBits(uint32_t data, uint32_t * out, uint8_t bits);
+</div>

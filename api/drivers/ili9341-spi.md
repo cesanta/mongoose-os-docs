@@ -228,7 +228,9 @@ merchantability, or fitness for a particular purpose.
 ```c
 #define swap(a, b)    { int16_t t = a; a = b; b = t; }
 ```
+<div class="apidescr">
 LCD Horizontal Refresh Right-Left
+</div>
 
 ### JS API
 

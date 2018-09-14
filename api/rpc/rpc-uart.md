@@ -12,4 +12,6 @@
 ```c
 struct mg_rpc_channel *mg_rpc_channel_uart(int uart_no);
 ```
+<div class="apidescr">
  __cplusplus 
+</div>

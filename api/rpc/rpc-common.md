@@ -19,55 +19,71 @@ struct mg_rpc_cfg *mgos_rpc_cfg_from_sys(const struct mgos_config *scfg);
 void mgos_rpc_channel_ws_out_cfg_from_sys(
     const struct mgos_config *scfg, struct mg_rpc_channel_ws_out_cfg *chcfg);
 ```
+<div class="apidescr">
  __cplusplus 
+</div>
 #### (*mgos_rpc_eh_t)
 
 ```c
 typedef void (*mgos_rpc_eh_t)(struct mg_rpc_request_info *ri, const char *args,
                               const char *src, void *user_data);
 ```
+<div class="apidescr">
  FFI-able signature of the function that receives RPC request 
+</div>
 #### (*mgos_rpc_result_cb_t)
 
 ```c
 typedef void (*mgos_rpc_result_cb_t)(const char *result, int error_code,
                                      const char *error_msg, void *cb_arg);
 ```
+<div class="apidescr">
  FFI-able signature of the function that receives response to a request. 
+</div>
 #### mgos_rpc_add_handler
 
 ```c
 void mgos_rpc_add_handler(const char *method, mgos_rpc_eh_t cb, void *cb_arg);
 ```
+<div class="apidescr">
 
 FFI-able function to add an RPC handler
  
+</div>
 #### mgos_rpc_send_response
 
 ```c
 bool mgos_rpc_send_response(struct mg_rpc_request_info *ri,
                             const char *response_json);
 ```
+<div class="apidescr">
  FFI-able function to send response from an RPC handler 
+</div>
 #### mgos_rpc_call
 
 ```c
 bool mgos_rpc_call(const char *dst, const char *method, const char *args_json,
                    mgos_rpc_result_cb_t cb, void *cb_arg);
 ```
+<div class="apidescr">
  FFI-able function to perform an RPC call 
+</div>
 #### mgos_print_sys_info
 
 ```c
 int mgos_print_sys_info(struct json_out *out);
 ```
+<div class="apidescr">
  Print system info JSON object. Return number of bytes written. 
+</div>
 #### MGOS_EVENT_BASE
 
 ```c
 #define MGOS_RPC_EVENT_BASE MGOS_EVENT_BASE('R', 'P', 'C')
 ```
+<div class="apidescr">
  RPC events 
+</div>
 
 ### JS API
 
@@ -77,6 +93,7 @@ int mgos_print_sys_info(struct json_out *out);
 ```javascript
 RPC.addHandler(name, handler)
 ```
+<div class="apidescr">
 Add RPC handler. `name` is a string like `'MyMethod'`, `handler`
 is a callback function which takes `args` arguments object.
 If a handler returns an object with a numeric `error` attribute and
@@ -95,11 +112,13 @@ RPC.addHandler('Sum', function(args) {
   }
 });
 ```
+</div>
 #### RPC.call
 
 ```javascript
 RPC.call(dst, method, args, callback)
 ```
+<div class="apidescr">
 Call remote or local RPC service.
 Return value: true in case of success, false otherwise.
 
@@ -113,3 +132,4 @@ RPC.call(RPC.LOCAL, 'Config.Save', {reboot: true}, function (resp, ud) {
   print('Response:', JSON.stringify(resp));
 }, null);
 ```
+</div>

@@ -17,6 +17,7 @@ is lost, established, etc.
 ```c
 #define MGOS_EVENT_GRP_NET MGOS_EVENT_BASE('N', 'E', 'T')
 ```
+<div class="apidescr">
 
 Event group which should be given to `mgos_event_add_group_handler()`
 in order to subscribe to network events.
@@ -36,52 +37,63 @@ static void my_net_ev_handler(int ev, void *evd, void *arg) {
 mgos_event_add_group_handler(MGOS_EVENT_GRP_NET, my_net_ev_handler, NULL);
 ```
  
+</div>
 #### mgos_net_get_ip_info
 
 ```c
 bool mgos_net_get_ip_info(enum mgos_net_if_type if_type, int if_instance,
                           struct mgos_net_ip_info *ip_info);
 ```
+<div class="apidescr">
 
 Retrieve IP configuration of the provided interface type and instance
 number, and fill provided `ip_info` with it. Returns `true` in case of
 success, false otherwise.
  
+</div>
 #### mgos_net_ip_to_str
 
 ```c
 char *mgos_net_ip_to_str(const struct sockaddr_in *sin, char *out);
 ```
+<div class="apidescr">
 
 Converts address to dotted-quad NUL-terminated string.
 `out` must be at least 16 bytes long.
 Returns the out pointer.
  
+</div>
 #### mgos_net_str_to_ip
 
 ```c
 bool mgos_net_str_to_ip(const char *ips, struct sockaddr_in *sin);
 ```
+<div class="apidescr">
 
 Parses dotted-quad NUL-terminated string into an IPv4 address.
  
+</div>
 #### mgos_net_str_to_ip_n
 
 ```c
 bool mgos_net_str_to_ip_n(const struct mg_str ips, struct sockaddr_in *sin);
 ```
+<div class="apidescr">
 
 Parses dotted-quad NUL-terminated string into an IPv4 address.
  
+</div>
 #### mgos_get_nameserver
 
 ```c
 char *mgos_get_nameserver(void);
 ```
+<div class="apidescr">
 
 Returns nameserver address. The caller should `free()` it. Returns NULL
 in case of no DNS.
  
+</div>
 
 ### JS API
 
@@ -91,24 +103,29 @@ in case of no DNS.
 ```javascript
 Net.ctos(conn, local, ip, port)
 ```
+<div class="apidescr">
 Convert address of a connection `conn` to string. Set `local` to
 `true` to stringify local address, otherwise `false` to stringify remote.
 Set `ip` to `true` to stringify IP, `port` to stringify port. Example:
 ```javascript
 print('Connection from:', Net.ctos(conn, false, true, true));
 ```
+</div>
 #### Net.discard
 
 ```javascript
 Net.discard(conn, len)
 ```
+<div class="apidescr">
 Remove initial `len` bytes of data from the connection's `conn`
 receive buffer in order to discard that data and reclaim RAM to the system.
+</div>
 #### Net.serve
 
 ```javascript
 Net.serve(options)
 ```
+<div class="apidescr">
 Start TCP or UDP server. `options` is an object:
 ```javascript
 {
@@ -138,11 +155,13 @@ Net.serve({
   },
 });
 ```
+</div>
 #### Net.connect
 
 ```javascript
 Net.connect(options)
 ```
+<div class="apidescr">
 Connect to a remote host. `options` is the same as for the `Net.serve`.
 The addr format is `[PROTO://]HOST:PORT`. `PROTO` could be `tcp` or
 `udp`. `HOST` could be an IP address or a host name. If `HOST` is a name,
@@ -150,29 +169,36 @@ it will be resolved asynchronously.
 
 Examples of valid addresses: `google.com:80`, `udp://1.2.3.4:53`,
 `10.0.0.1:443`, `[::1]:80`.
+</div>
 #### Net.close
 
 ```javascript
 Net.close(conn)
 ```
+<div class="apidescr">
 Send all pending data to the remote peer,
 and disconnect when all data is sent.
 Return value: none.
+</div>
 #### Net.send
 
 ```javascript
 Net.send(conn, data)
 ```
+<div class="apidescr">
 Send data to the remote peer. `data` is an mJS string.
 Return value: none.
+</div>
 #### Net.EVENT_GRP
 
 ```javascript
 Net.EVENT_GRP
 ```
+<div class="apidescr">
 Net events group, to be used with `Event.addGroupHandler()`. Possible
 events are:
 - `Net.STATUS_DISCONNECTED`
 - `Net.STATUS_CONNECTING`
 - `Net.STATUS_CONNECTED`
 - `Net.STATUS_GOT_IP`
+</div>

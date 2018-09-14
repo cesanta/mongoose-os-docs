@@ -243,41 +243,53 @@ bool mgos_imu_gyroscope_destroy(struct mgos_imu *imu);
 bool mgos_imu_accelerometer_destroy(struct mgos_imu *imu);
 bool mgos_imu_magnetometer_destroy(struct mgos_imu *imu);
 ```
+<div class="apidescr">
  TODO(pim): Add SPI adders
 bool mgos_imu_gyroscope_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_gyro_type type);
 bool mgos_imu_accelerometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_acc_type type);
 bool mgos_imu_magnetometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_mag_type type);
 
+</div>
 #### mgos_imu_read
 
 ```c
 bool mgos_imu_read(struct mgos_imu *imu);
 ```
+<div class="apidescr">
  Read all available imu data from the IMU 
+</div>
 #### mgos_imu_accelerometer_get
 
 ```c
 bool mgos_imu_accelerometer_get(struct mgos_imu *imu, float *x, float *y, float *z);
 ```
+<div class="apidescr">
  Return accelerometer data in units of m/s/s 
+</div>
 #### mgos_imu_gyroscope_get
 
 ```c
 bool mgos_imu_gyroscope_get(struct mgos_imu *imu, float *x, float *y, float *z);
 ```
+<div class="apidescr">
  Return accelerometer data in units of deg/sec rotation rate 
+</div>
 #### mgos_imu_magnetometer_get
 
 ```c
 bool mgos_imu_magnetometer_get(struct mgos_imu *imu, float *x, float *y, float *z);
 ```
+<div class="apidescr">
  Return magnetometer data in units of microtesla (1 microtesla = 10 milligauss) 
+</div>
 #### mgos_imu_get_compass_heading
 
 ```c
 bool mgos_imu_get_compass_heading(struct mgos_imu *imu, uint16_t *heading);
 ```
+<div class="apidescr">
  Return compass heading based on magnetometer data, from [0..359] 
+</div>
 #### mgos_imu_gyroscope_get_name
 
 ```c
@@ -285,12 +297,16 @@ const char *mgos_imu_gyroscope_get_name(struct mgos_imu *imu);
 const char *mgos_imu_magnetometer_get_name(struct mgos_imu *imu);
 const char *mgos_imu_accelerometer_get_name(struct mgos_imu *imu);
 ```
+<div class="apidescr">
  String representation of the sensor types, guaranteed to be le 10 characters. 
+</div>
 #### mgos_imu_init
 
 ```c
 bool mgos_imu_init(void);
 ```
+<div class="apidescr">
 
 Initialization function for MGOS -- currently a noop.
  
+</div>

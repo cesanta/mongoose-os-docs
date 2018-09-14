@@ -21,6 +21,7 @@ JavaScript based apps do - they do not contain C code at all.
 ```c
 enum mgos_app_init_result mgos_app_init(void);
 ```
+<div class="apidescr">
 
 User app init function.
 A weak stub is provided in `mgos_app_init.c`, which can be overridden.
@@ -39,11 +40,13 @@ enum mgos_app_init_result mgos_app_init(void) {
 }
 ```
  
+</div>
 #### mgos_app_preinit
 
 ```c
 void mgos_app_preinit(void);
 ```
+<div class="apidescr">
 
 An early init hook, for apps that want to take control early
 in the init process. How early? very, very early. If the platform
@@ -52,3 +55,4 @@ safe. Networking is not running. The only safe thing to do is to
 communicate to mg_app_init something via global variables or shut
 down the processor and go (back) to sleep.
  
+</div>

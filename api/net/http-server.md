@@ -12,15 +12,18 @@
 ```c
 struct mg_connection *mgos_get_sys_http_server(void);
 ```
+<div class="apidescr">
 
 Return global listening connection
  
+</div>
 #### mgos_register_http_endpoint
 
 ```c
 void mgos_register_http_endpoint(const char *uri_path,
                                  mg_event_handler_t handler, void *user_data);
 ```
+<div class="apidescr">
 
 Register HTTP endpoint handler `handler` on URI `uri_path`
 
@@ -42,6 +45,7 @@ static void foo_handler(struct mg_connection *c, int ev, void *p,
 mgos_register_http_endpoint("/foo/", foo_handler, NULL);
 ```
  
+</div>
 #### mgos_register_http_endpoint_opt
 
 ```c
@@ -49,16 +53,20 @@ void mgos_register_http_endpoint_opt(const char *uri_path,
                                      mg_event_handler_t handler,
                                      struct mg_http_endpoint_opts opts);
 ```
+<div class="apidescr">
 
 Like `mgos_register_http_endpoint()`, but additionally takes `struct
 mg_http_endpoint_opts opts`
  
+</div>
 #### mgos_http_server_set_document_root
 
 ```c
 void mgos_http_server_set_document_root(const char *document_root);
 ```
+<div class="apidescr">
 
 Set document root to serve static content from. Setting it to NULL disables
 static server (404 will be returned).
  
+</div>

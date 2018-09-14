@@ -97,6 +97,8 @@ Example usage:
 ```c
 bool mgos_rpc_service_config_init(void);
 ```
+<div class="apidescr">
 
 Initialises mg_rpc handlers for Config commands
  
+</div>

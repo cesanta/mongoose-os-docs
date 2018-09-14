@@ -12,6 +12,7 @@ This library provides PWM ([pulse-width modulation](https://en.wikipedia.org/wik
 ```c
 bool mgos_pwm_set(int pin, int freq, float duty);
 ```
+<div class="apidescr">
 
 
  Set and control the PWM.
@@ -30,6 +31,7 @@ bool mgos_pwm_set(int pin, int freq, float duty);
  If we already have timer running at the specified frequency,
  we use it instead of assigning a new one.
  
+</div>
 
 ### JS API
 
@@ -39,6 +41,7 @@ bool mgos_pwm_set(int pin, int freq, float duty);
 ```javascript
 PWM.set(pin, freq, duty)
 ```
+<div class="apidescr">
 Set and control the PWM. `pin` is a GPIO pin number, `freq` is
 frequency, in Hz. `freq` 0 disables PWM on the pin. `duty` specifies
 which fraction of the cycle is spent in "1" state: 0 is always off,
@@ -54,3 +57,4 @@ on ESP32 we use 8 channels and 4 timers.
 Each `PWM.set()` call with new pin number assigns a new channel.
 If we already have a timer running at the specified frequency,
 we use it instead of assigning a new one.
+</div>

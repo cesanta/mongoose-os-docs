@@ -71,72 +71,91 @@ main.c, add:
 ```javascript
 Adafruit_ADS1015.create(i2cAddress)
 ```
+<div class="apidescr">
 Create an ADS1015 instance: an object with the methods described below.
 `i2cAddress` is an I2C address of the ADS1015.
+</div>
 #### Adafruit_ADS1115.create
 
 ```javascript
 Adafruit_ADS1115.create(i2cAddress)
 ```
+<div class="apidescr">
 Create an ADS1115 instance: an object with the methods described below.
 `i2cAddress` is an I2C address of the ADS1115.
+</div>
 #### myADS.close
 
 ```javascript
 myADS.close()
 ```
+<div class="apidescr">
 Close an instance; no methods can be called on this instance after that.
 Return value: none.
+</div>
 #### myADS.begin
 
 ```javascript
 myADS.begin()
 ```
+<div class="apidescr">
 Set up the ADS1015/ADS1115 hardware
+</div>
 #### myADS.readADC_SingleEnded
 
 ```javascript
 myADS.readADC_SingleEnded(channel)
 ```
+<div class="apidescr">
 Get a single-ended ADC reading from the given `channel`.
+</div>
 #### myADS.readADC_Differential_0_1
 
 ```javascript
 myADS.readADC_Differential_0_1()
 ```
+<div class="apidescr">
 Read the conversion results, measuring the difference between the P
 (AIN0) and N (AIN1) input. Returns a signed value since the difference
 can be either positive or negative.
+</div>
 #### myADS.readADC_Differential_0_1
 
 ```javascript
 myADS.readADC_Differential_0_1()
 ```
+<div class="apidescr">
 Read the conversion results, measuring the difference between the P
 (AIN2) and N (AIN3) input. Returns a signed value since the difference
 can be either positive or negative.
+</div>
 #### myADS.startComparator_SingleEnded
 
 ```javascript
 myADS.startComparator_SingleEnded(channel, threshold)
 ```
+<div class="apidescr">
 Set up the comparator to operate in basic mode, causing the ALERT/RDY
 pin to assert (go from high to low) when the ADC value exceeds the
 specified `threshold`.
 Return value: none.
+</div>
 #### myADS.getLastConversionResults
 
 ```javascript
 myADS.getLastConversionResults()
 ```
+<div class="apidescr">
 In order to clear the comparator, we need to read the conversion
 results.  This function reads the last conversion results without
 changing the config value.
+</div>
 #### myADS.setGain
 
 ```javascript
 myADS.setGain(gain)
 ```
+<div class="apidescr">
 Set the gain and input voltage range; one of the following:
 
 - `Adafruit_ADS1015.GAIN_TWOTHIRDS`
@@ -147,3 +166,4 @@ Set the gain and input voltage range; one of the following:
 - `Adafruit_ADS1015.GAIN_SIXTEEN`
 
 Return value: none.
+</div>

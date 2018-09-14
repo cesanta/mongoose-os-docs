@@ -45,13 +45,16 @@ enum mgos_app_init_result mgos_app_init(void) {
 ```c
 typedef void (*timer_callback)(void *param);
 ```
+<div class="apidescr">
  Timer callback 
+</div>
 #### mgos_set_timer
 
 ```c
 mgos_timer_id mgos_set_timer(int msecs, int flags, timer_callback cb,
                              void *cb_arg);
 ```
+<div class="apidescr">
 
 Setup a timer with `msecs` timeout and `cb` as a callback.
 
@@ -77,12 +80,14 @@ enum mgos_app_init_result mgos_app_init(void) {
 }
 ```
  
+</div>
 #### mgos_set_hw_timer
 
 ```c
 mgos_timer_id mgos_set_hw_timer(int usecs, int flags, timer_callback cb,
                                 void *cb_arg);
 ```
+<div class="apidescr">
 
 Setup a hardware timer with `usecs` timeout and `cb` as a callback.
 
@@ -93,29 +98,36 @@ Number of hardware timers is limited (ESP8266: 1, ESP32: 4, CC32xx: 4).
 
 Callback is executed in ISR context, with all the implications of that.
  
+</div>
 #### mgos_clear_timer
 
 ```c
 void mgos_clear_timer(mgos_timer_id id);
 ```
+<div class="apidescr">
 
 Disable timer with a given timer ID.
  
+</div>
 #### mgos_uptime
 
 ```c
 double mgos_uptime(void);
 ```
+<div class="apidescr">
  Get number of seconds since last reboot 
+</div>
 #### mgos_strftime
 
 ```c
 int mgos_strftime(char *s, int size, char *fmt, int time);
 ```
+<div class="apidescr">
 
 Format `time` according to a `strftime()`-conformant format.
 Write the result into the `s,size` buffer. Return resulting string length.
  
+</div>
 
 ### JS API
 
@@ -125,6 +137,7 @@ Write the result into the `s,size` buffer. Return resulting string length.
 ```javascript
 Timer.set(milliseconds, flags, handler, userdata)
 ```
+<div class="apidescr">
 Setup timer with `milliseconds` timeout and `handler` as a callback.
 `flags` can be either 0 or `Timer.REPEAT`. In the latter case, the call
 will be repeated indefinitely (but can be cancelled with `Timer.del()`),
@@ -140,23 +153,29 @@ Timer.set(1000, Timer.REPEAT, function() {
   print(value ? 'Tick' : 'Tock');
 }, null);
 ```
+</div>
 #### Timer.now
 
 ```javascript
 Timer.now()
 ```
+<div class="apidescr">
 Return current time as double value, UNIX epoch (seconds since 1970).
+</div>
 #### Timer.del
 
 ```javascript
 Timer.del(id)
 ```
+<div class="apidescr">
 Cancel previously installed timer.
+</div>
 #### Timer.fmt
 
 ```javascript
 Timer.fmt(fmt, time)
 ```
+<div class="apidescr">
 Formats the time 'time' according to the strftime-like format
 specification 'fmt'. The strftime reference can be found e.g.
 [here](http://www.cplusplus.com/reference/ctime/strftime/).
@@ -166,3 +185,4 @@ let now = Timer.now();
 let s = Timer.fmt("Now it's %I:%M%p.", now);
 print(s); // Example output: "Now it's 12:01AM."
 ```
+</div>

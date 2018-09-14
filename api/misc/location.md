@@ -26,8 +26,10 @@ config_schema:
 ```c
 bool mgos_location_get(struct mgos_location_lat_lon *loc);
 ```
+<div class="apidescr">
 
 Fills provided `loc` with the device location data (currently device just
 uses values from the config), see `struct mgos_location_lat_lon`. Returns
 `true` on success, `false` otherwise.
  
+</div>

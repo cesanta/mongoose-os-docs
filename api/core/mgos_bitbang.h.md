@@ -36,6 +36,7 @@ void mgos_bitbang_write_bits(int gpio, enum mgos_delay_unit delay_unit, int t0h,
                              int t0l, int t1h, int t1l, const uint8_t *data,
                              size_t len);
 ```
+<div class="apidescr">
 
 Bit bang GPIO pin `gpio`. `len` bytes from `data` are sent to the specified
 pin bit by bit. Sending each bit consists of a "high" and "low" phases,
@@ -53,18 +54,21 @@ length of which is determined by the specified timing parameters.
 `t1h` and `t1l` specify the same for the case where the bit is 1.
 If any of these is < 0, the corresponding phase is skipped.
  
+</div>
 #### mgos_bitbang_write_bits_js
 
 ```c
 void mgos_bitbang_write_bits_js(int gpio, enum mgos_delay_unit delay_unit,
                                 uint32_t t, const uint8_t *data, size_t len);
 ```
+<div class="apidescr">
 
 This function is a wrapper for `mgos_bitbang_write_bits()`.
 It has smaller number of arguments (less than 6) and therefore could be
 FFI-ed to JavaScript. Essentially, it just packs all time patterns
 into a single value `t`.
  
+</div>
 
 ### JS API
 
@@ -74,9 +78,11 @@ into a single value `t`.
 ```javascript
 BitBang.write(pin, delay_unit, t0h, t0l, t1h, t1l, ptr, len)
 ```
+<div class="apidescr">
 Write bits to a given `pin`. `delay_unit` is one of the:
 `BitBang.DELAY_MSEC`, `BitBang.DELAY_USEC`, `BitBang.DELAY_100NSEC`.
 `ptr, len` is a bit pattern to write. `t0h, t0l` is the time pattern
 for zero bit, `t1h, t1l` is the time pattern for 1. The time pattern
 specifies the number of time units to hold the pin high, and the number
 of units to hold the pin low. Return value: none.
+</div>

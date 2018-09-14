@@ -8,10 +8,14 @@
 ```c
 void mgos_system_restart_after(int delay_ms);
 ```
+<div class="apidescr">
  Restart system after the specified number of milliseconds 
+</div>
 #### mgos_rand_range
 
 ```c
 float mgos_rand_range(float from, float to);
 ```
+<div class="apidescr">
  Return random number in a given range. 
+</div>

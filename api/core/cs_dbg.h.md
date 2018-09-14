@@ -8,15 +8,18 @@
 ```c
 void cs_log_set_level(enum cs_log_level level);
 ```
+<div class="apidescr">
 
 Set max log level to print; messages with the level above the given one will
 not be printed.
  
+</div>
 #### cs_log_set_filter
 
 ```c
 void cs_log_set_filter(const char *pattern);
 ```
+<div class="apidescr">
 
 Set log filter. NULL (a default) logs everything.
 Otherwise, function name and file name will be tested against the given
@@ -49,12 +52,14 @@ void test(void) {
 }
 ```
  
+</div>
 #### cs_log_print_prefix
 
 ```c
 int cs_log_print_prefix(enum cs_log_level level, const char *func,
                         const char *filename);
 ```
+<div class="apidescr">
 
 Helper function which prints message prefix with the given `level`, function
 name `func` and `filename`. If message should be printed (accordingly to the
@@ -63,23 +68,28 @@ returns 0.
 
 Clients should typically just use `LOG()` macro.
  
+</div>
 #### cs_log_set_file
 
 ```c
 void cs_log_set_file(FILE *file);
 ```
+<div class="apidescr">
 
 Set file to write logs into. If `NULL`, logs go to `stderr`.
  
+</div>
 #### cs_log_printf
 
 ```c
 void cs_log_printf(const char *fmt, ...) PRINTF_LIKE(1, 2);
 ```
+<div class="apidescr">
 
 Prints log to the current log file, appends "\n" in the end and flushes the
 stream.
  
+</div>
 #### LOG
 
 ```c
@@ -88,6 +98,7 @@ stream.
     if (cs_log_print_prefix(l, __func__, __FILE__)) cs_log_printf x; \
   } while (0)
 ```
+<div class="apidescr">
 
 Format and print message `x` with the given level `l`. Example:
 
@@ -96,24 +107,31 @@ LOG(LL_INFO, ("my info message: %d", 123));
 LOG(LL_DEBUG, ("my debug message: %d", 123));
 ```
  
+</div>
 #### DBG
 
 ```c
 #define DBG(x) LOG(LL_VERBOSE_DEBUG, x)
 ```
+<div class="apidescr">
 
 Shortcut for `LOG(LL_VERBOSE_DEBUG, (...))`
  
+</div>
 #### DBG
 
 ```c
 #define DBG(x)
 ```
+<div class="apidescr">
  NDEBUG 
+</div>
 #### LOG
 
 ```c
 #define LOG(l, x)
 #define DBG(x)
 ```
+<div class="apidescr">
  CS_ENABLE_STDIO 
+</div>

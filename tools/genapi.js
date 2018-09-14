@@ -35,6 +35,7 @@ const jsmap = {
   'mgos_system.h': 'api_sys.js',
   'mgos_timers.h': 'api_timer.js',
   'mgos_uart.h': 'api_uart.js',
+  'mgos_debug.h': 'api_log.js',
 };
 
 const menuTitles = {
@@ -119,12 +120,13 @@ const re2 =
     /(((\s*\/\/.*\n)+)|(\/\*([^\*]|\*[^\/])*\*\/))\s+(?![\s\/])([\s\S]+?)\n\n/g;
 let a;
 const backs = '```';
+const dd = '\n<div class="apidescr">\n';
 while ((a = re2.exec(rest)) != null) {
   const x = a[6].match(/^.*?\*?(\S+)\(/);
   // console.error('----------', a[6]);
   if (!x) continue;
   md += `#### ${x[1]}\n`;
-  md += `\n${backs}c\n${a[6]}\n${backs}\n${stripComments(a[1])}\n`;
+  md += `\n${backs}c\n${a[6]}\n${backs}${dd}${stripComments(a[1])}\n</div>\n`;
 }
 
 // ------------------------------------------------  Add JS API
@@ -137,7 +139,7 @@ if (jsFile) {
     const m2 = stripComments(a[1]).match(/^[^`]+?`(.*)`.*?\n([\s\S]+)$/);
     if (!m2) continue;
     md += `#### ${m2[1].replace(/\(.*/, '')}\n`;
-    md += `\n${backs}javascript\n${m2[1]}\n${backs}\n${m2[2]}\n`;
+    md += `\n${backs}javascript\n${m2[1]}\n${backs}${dd}${m2[2]}\n</div>\n`;
   }
 }
 

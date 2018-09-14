@@ -47,33 +47,43 @@ Enjoy!
 ```javascript
 myHTU.begin()
 ```
+<div class="apidescr">
 Initialize sensor and make it ready for use.
 Return value: 1 if sensor is ready, 0 otherwise.
+</div>
 #### myHTU.readTemperature
 
 ```javascript
 myHTU.readTemperature()
 ```
+<div class="apidescr">
 Read the current temperature.
 Return value: current temperature value in Celsius as a double.
+</div>
 #### myHTU.readHumidity
 
 ```javascript
 myHTU.readHumidity()
 ```
+<div class="apidescr">
 Read the current relative humidity as a percentage.
 Return value: current humidity value as a double.
+</div>
 #### myHTU.reset
 
 ```javascript
 myHTU.reset()
 ```
+<div class="apidescr">
 Reset the sensor - sends the sensor-specific command to reset.
 Return value: none
+</div>
 #### Adafruit_HTU21DF.create
 
 ```javascript
 Adafruit_HTU21DF.create()
 ```
+<div class="apidescr">
 Create an Adafruit_HTU21DF instance on I2C bus (address = 0x40).
 Return value: an object with the methods defined in _proto: {...} (above).
+</div>

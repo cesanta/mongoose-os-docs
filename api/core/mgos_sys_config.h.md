@@ -19,6 +19,7 @@ the programmatic API for the device configuration.
 ```c
 bool save_cfg(const struct mgos_config *cfg, char **msg);
 ```
+<div class="apidescr">
 
 Save config. Performs diff against defaults and only saves diffs.
 Reboot is required to reload the config.
@@ -26,24 +27,29 @@ If return value is false, a message may be provided in *msg.
 If non-NULL, it must be free()d.
 It is safe to pass a NULL `msg`
  
+</div>
 #### load_config_defaults
 
 ```c
 bool load_config_defaults(struct mgos_config *cfg);
 ```
+<div class="apidescr">
 
 Reset all config values to defaults.
  
+</div>
 #### mgos_config_reset
 
 ```c
 void mgos_config_reset(int level);
 ```
+<div class="apidescr">
 
 Reset config down to and including |level|.
 0 - defaults, 1-8 - vendor levels, 9 - user.
 mgos_config_reset(MGOS_CONFIG_LEVEL_USER) will wipe user settings.
  
+</div>
 #### (*mgos_config_validator_fn)
 
 ```c
@@ -51,6 +57,7 @@ typedef bool (*mgos_config_validator_fn)(const struct mgos_config *cfg,
                                          char **msg);
 void mgos_register_config_validator(mgos_config_validator_fn fn);
 ```
+<div class="apidescr">
 
 Register a config validator.
 Validators will be invoked before saving config and if any of them
@@ -58,30 +65,38 @@ returns false, config will not be saved.
 An error message may be *msg may be set to error message.
 Note: if non-NULL, *msg will be freed. Remember to use strdup and asprintf.
  
+</div>
 #### mgos_expand_mac_address_placeholders
 
 ```c
 void mgos_expand_mac_address_placeholders(char *str);
 ```
+<div class="apidescr">
  Expands question marks in "str" with digits from the MAC address. 
+</div>
 #### mgos_config_apply
 
 ```c
 bool mgos_config_apply(const char *sys_config_subset_json, bool save);
 ```
+<div class="apidescr">
  Apply a subset of system configuration. Return true on success. 
+</div>
 #### mgos_config_apply_s
 
 ```c
 bool mgos_config_apply_s(const struct mg_str, bool save);
 ```
+<div class="apidescr">
  Same as mgos_config_apply but uses mg_str 
+</div>
 #### mgos_sys_config_parse_sub
 
 ```c
 bool mgos_sys_config_parse_sub(const struct mg_str json, const char *section,
                                void *cfg);
 ```
+<div class="apidescr">
 
 Parse a subsection of sys config, e.g. just "spi".
 cfg must point to the subsection's struct.
@@ -93,6 +108,7 @@ Example:
   mgos_sys_config_parse_sub(json_cfg, "spi", cfg);
 ```
  
+</div>
 
 ### JS API
 
@@ -102,6 +118,7 @@ Example:
 ```javascript
 Cfg.get(path)
 ```
+<div class="apidescr">
 Get the config value by the configuration variable. Currently, only
 simple types are returned: strings, ints, booleans, doubles. Objects
 are not yet supported.
@@ -113,11 +130,13 @@ Cfg.get('device.id');        // returns a string
 Cfg.get('debug.level');      // returns an integer
 Cfg.get('wifi.sta.enable');  // returns a boolean
 ```
+</div>
 #### Cfg.set
 
 ```javascript
 Cfg.set(obj, opt_save)
 ```
+<div class="apidescr">
 Set the configuration. `obj` must be a subset of the whole configuation
 tree. `save` is boolean flag that indicating whether the change should
 be saved - it could be omitted, in which case it defaults to `true`.
@@ -127,3 +146,4 @@ load('api_config.js');
 Cfg.set({wifi: {ap: {enable: false}}});  // Disable WiFi AP mode
 Cfg.set({debug: {level: 3}});            // Set debug level to 3
 ```
+</div>

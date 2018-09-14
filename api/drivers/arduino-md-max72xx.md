@@ -22,6 +22,7 @@ The library still retains flexibility for device level control, should the devel
 ```c
 MD_MAX72XX(uint8_t dataPin, uint8_t clkPin, uint8_t csPin, uint8_t numDevices=1);
 ```
+<div class="apidescr">
 *
 Class Constructor - arbitrary digital interface.
 
@@ -36,11 +37,13 @@ but they should not share the same hardware CS pin (SPI interface).
                    Memory for device buffers is dynamically allocated based
                    on this parameter.
    
+</div>
 #### MD_MAX72XX
 
 ```c
 MD_MAX72XX(uint8_t csPin, uint8_t numDevices=1);
 ```
+<div class="apidescr">
 *
 Class Constructor - SPI hardware interface.
 
@@ -55,11 +58,13 @@ The dataPin and the clockPin are defined by the Arduino hardware definition
                    Memory for device buffers is dynamically allocated based
                    on this parameter.
    
+</div>
 #### begin
 
 ```c
 void begin(void);
 ```
+<div class="apidescr">
 *
 Initialize the object.
 
@@ -70,22 +75,26 @@ The LED hardware is initialized to the middle intensity value, all rows showing,
 and all LEDs cleared (off). Test, shutdown and decode modes are off. Display updates
 are on and wraparound is off.
    
+</div>
 #### ~MD_MAX72XX
 
 ```c
 ~MD_MAX72XX();
 ```
+<div class="apidescr">
 *
 Class Destructor.
 
 Released allocated memory and does the necessary to clean up once the object is
 no longer required.
    
+</div>
 #### control
 
 ```c
 bool control(uint8_t dev, controlRequest_t mode, int value);
 ```
+<div class="apidescr">
 *
 Set the control status of the specified parameter for the specified device.
 
@@ -100,11 +109,13 @@ actions in controlValue_t or a numeric parameter suitable for the control action
 \param value		parameter value or one of the control status defined.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### control
 
 ```c
 inline void control(controlRequest_t mode, int value) { control(0, getDeviceCount()-1, mode, value); };
 ```
+<div class="apidescr">
 *
 Set the control status of the specified parameter for all devices.
 
@@ -115,11 +126,13 @@ control(startDev, endDev, ...) methods, see the documentation for that method.
 \param value		parameter value or one of the control status defined.
 \return No return value.
    
+</div>
 #### control
 
 ```c
 bool control(uint8_t startDev, uint8_t endDev, controlRequest_t mode, int value);
 ```
+<div class="apidescr">
 *
 Set the control status of the specified parameter for contiguous subset of devices.
 
@@ -132,31 +145,37 @@ See documentation for the control() method.
 \param value		parameter value or one of the control status defined.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### getDeviceCount
 
 ```c
 uint8_t getDeviceCount(void) { return(_maxDevices); };
 ```
+<div class="apidescr">
 *
 Gets the number of devices attached to this class instance.
 
 \return uint8_t representing the number of devices attached to this object.
    
+</div>
 #### getColumnCount
 
 ```c
 uint16_t getColumnCount(void) { return(_maxDevices*COL_SIZE); };
 ```
+<div class="apidescr">
 *
 Gets the maximum number of columns for devices attached to this class instance.
 
 \return uint16_t representing the number of columns.
    
+</div>
 #### setShiftDataInCallback
 
 ```c
 void setShiftDataInCallback(uint8_t (*cb)(uint8_t dev, transformType_t t)) { _cbShiftDataIn = cb; };
 ```
+<div class="apidescr">
 *
 Set the Shift Data In callback function.
 
@@ -176,11 +195,13 @@ The return value is the data for the column to be shifted into the display.
 \param cb	the address of the function to be called from the library.
 \return No return data
    
+</div>
 #### setShiftDataOutCallback
 
 ```c
 void setShiftDataOutCallback(void (*cb)(uint8_t dev, transformType_t t, uint8_t colData)) { _cbShiftDataOut = cb; };
 ```
+<div class="apidescr">
 *
 Set the Shift Data Out callback function.
 
@@ -200,21 +221,25 @@ function the type of shifting being executed
 \param cb	the address of the function to be called from the library.
 \return No return data
    
+</div>
 #### clear
 
 ```c
 inline void clear(void) { clear(0, getDeviceCount()-1); };
 ```
+<div class="apidescr">
 *
 Clear all the display data on all the display devices.
 
 \return No return value.
    
+</div>
 #### clear
 
 ```c
 void clear(uint8_t startDev, uint8_t endDev);
 ```
+<div class="apidescr">
 *
 Clear all the display data on a subset of devices.
 
@@ -224,11 +249,13 @@ endDev must be greater than or equal to startDev.
 \param endDev		the last device to clear [0..getDeviceCount()-1]
 \return No return value.
    
+</div>
 #### drawLine
 
 ```c
 bool drawLine(uint8_t r1, uint16_t c1, uint8_t r2, uint16_t c2, bool state);
 ```
+<div class="apidescr">
 *
 Draw a line between two points on the display
 
@@ -244,11 +271,13 @@ as a continuous pixel field.
 \param state	true - switch on; false - switch off.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### getBuffer
 
 ```c
 bool getBuffer(uint16_t col, uint8_t size, uint8_t *pd);
 ```
+<div class="apidescr">
 *
 Load a bitmap from the display buffers to a user buffer.
 
@@ -262,11 +291,13 @@ contain the returned data.
 \param *pd		Pointer to a data buffer [0..size-1].
 \return false if parameter errors, true otherwise. If true, data will be in the buffer at *pd.
    
+</div>
 #### getColumn
 
 ```c
 uint8_t getColumn(uint8_t c) { return getColumn((c / COL_SIZE), c % COL_SIZE); };
 ```
+<div class="apidescr">
 *
 Get the LEDS status for the specified column.
 
@@ -279,11 +310,13 @@ number (ie, the device number is inferred from the column).
 \param c		column which is to be set [0..getColumnCount()-1].
 \return uint8_t value with each bit set to 1 if the corresponding LED is lit. 0 is returned for parameter error.
    
+</div>
 #### getPoint
 
 ```c
 bool getPoint(uint8_t r, uint16_t c);
 ```
+<div class="apidescr">
 *
 Get the status of a single LED, addressed as a pixel.
 
@@ -296,11 +329,13 @@ continuous pixel field.
 \param c		column coordinate for the point [0..getColumnCount()-1].
 \return true if LED is on, false if off or parameter errors.
    
+</div>
 #### setBuffer
 
 ```c
 bool setBuffer(uint16_t col, uint8_t size, uint8_t *pd);
 ```
+<div class="apidescr">
 *
 Load a bitfield from the user buffer to a display buffer.
 
@@ -314,11 +349,13 @@ the bitmap.
 \param *pd		Pointer to a data buffer [0..size-1].
 \return false if parameter errors, true otherwise.
    
+</div>
 #### setColumn
 
 ```c
 bool setColumn(uint8_t c, uint8_t value) { return setColumn((c / COL_SIZE), c % COL_SIZE, value); };
 ```
+<div class="apidescr">
 *
 Set all LEDs in a specific column to a new state.
 
@@ -333,11 +370,13 @@ The least significant bit of the value is the lowest row number.
 \param value	each bit set to 1 will light up the corresponding LED.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### setPoint
 
 ```c
 bool setPoint(uint8_t r, uint16_t c, bool state);
 ```
+<div class="apidescr">
 *
 Set the status of a single LED, addressed as a pixel.
 
@@ -352,11 +391,13 @@ continuous pixel field.
 \param state	true - switch on; false - switch off.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### setRow
 
 ```c
 inline bool setRow(uint8_t r, uint8_t value) { return setRow(0, getDeviceCount()-1, r, value); };
 ```
+<div class="apidescr">
 *
 Set all LEDs in a row to a new state on all devices.
 
@@ -369,11 +410,13 @@ The least significant bit of the value is the lowest column number.
 \param value  each bit set to 1 will light up the corresponding LED on each device.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### setRow
 
 ```c
 bool setRow(uint8_t startDev, uint8_t endDev, uint8_t r, uint8_t value);
 ```
+<div class="apidescr">
 *
 Set all LEDs in a row to a new state on contiguous subset of devices.
 
@@ -389,11 +432,13 @@ The least significant bit of the value is the lowest column number.
 \param value		each bit set to 1 will light up the corresponding LED on each device.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### transform
 
 ```c
 inline bool transform(transformType_t ttype) { return transform(0, getDeviceCount()-1, ttype); };
 ```
+<div class="apidescr">
 *
 Apply a transformation to the data in all the devices.
 
@@ -404,11 +449,13 @@ device boundaries (ie, there is overflow to an adjacent devices if appropriate).
 \param ttype  one of the transformation types in transformType_t.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### transform
 
 ```c
 bool transform(uint8_t startDev, uint8_t endDev, transformType_t ttype);
 ```
+<div class="apidescr">
 *
 Apply a transformation to the data in contiguous subset of devices.
 
@@ -422,11 +469,13 @@ endDev must be greater than or equal to startDev.
 \param ttype		one of the transformation types in transformType_t.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### update
 
 ```c
 void update(controlValue_t mode) { control(UPDATE, mode); };
 ```
+<div class="apidescr">
 *
 Turn auto display updates on or off.
 
@@ -439,11 +488,13 @@ This function is a convenience wrapper for the more general control() function c
 \param mode	one of the types in controlValue_t (ON/OFF).
 \return No return value.
    
+</div>
 #### update
 
 ```c
 void update(void) { flushBufferAll(); };
 ```
+<div class="apidescr">
 *
 Force an update of all devices
 
@@ -453,12 +504,14 @@ all the connected devices.
 
 \return no return value.
    
+</div>
 #### wraparound
 
 ```c
 void wraparound(controlValue_t mode) { control(WRAPAROUND, mode); };
   /** @} */
 ```
+<div class="apidescr">
 *
 Turn display wraparound on or off.
 
@@ -471,22 +524,26 @@ This function is a convenience wrapper for the more general control() function c
 \param mode	one of the types in controlValue_t (ON/OFF).
 \return No return value.
    
+</div>
 #### clear
 
 ```c
 bool clear(uint8_t buf);
 ```
+<div class="apidescr">
 *
 Clear all display data in the specified buffer.
 
 \param buf		address of the buffer to clear [0..getDeviceCount()-1].
 \return false if parameter errors, true otherwise.
    
+</div>
 #### getColumn
 
 ```c
 uint8_t getColumn(uint8_t buf, uint8_t c);
 ```
+<div class="apidescr">
 *
 Get the state of the LEDs in a specific column.
 
@@ -497,11 +554,13 @@ the LEDs in the column.
 \param c		column which is to be set [0..COL_SIZE-1].
 \return uint8_t value with each bit set to 1 if the corresponding LED is lit. 0 is returned for parameter error.
    
+</div>
 #### getRow
 
 ```c
 uint8_t getRow(uint8_t buf, uint8_t r);
 ```
+<div class="apidescr">
 *
 Get the state of the LEDs in a specified row.
 
@@ -512,11 +571,13 @@ the LEDs in the row.
 \param r		row which is to be set [0..ROW_SIZE-1].
 \return uint8_t value with each bit set to 1 if the corresponding LED is lit. 0 is returned for parameter error.
    
+</div>
 #### setColumn
 
 ```c
 bool setColumn(uint8_t buf, uint8_t c, uint8_t value);
 ```
+<div class="apidescr">
 *
 Set all LEDs in a column to a new state.
 
@@ -530,11 +591,13 @@ The least significant bit of the value is the lowest column number.
 \param value   each bit set to 1 will light up the	corresponding LED.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### setRow
 
 ```c
 bool setRow(uint8_t buf, uint8_t r, uint8_t value);
 ```
+<div class="apidescr">
 *
 Set all LEDs in a row to a new state.
 
@@ -548,11 +611,13 @@ The least significant bit of the value is the lowest row number.
 \param value   each bit set to 1 within this byte will light up the corresponding LED.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### transform
 
 ```c
 bool transform(uint8_t buf, transformType_t ttype);
 ```
+<div class="apidescr">
 *
 Apply a transformation to the data in the specified device.
 
@@ -564,12 +629,14 @@ nominated device buffer only (ie, there is no overflow to an adjacent device).
 \param ttype  one of the transformation types in transformType_t.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### update
 
 ```c
 void update(uint8_t buf) { flushBuffer(buf); };
   /** @} */
 ```
+<div class="apidescr">
 *
 Force an update of one buffer.
 
@@ -581,11 +648,13 @@ Note that control() messages are not buffered but cause immediate action.
 \param buf	address of the display [0..getBufferCount()-1].
 \return No return value.
    
+</div>
 #### getChar
 
 ```c
 uint8_t getChar(uint8_t c, uint8_t size, uint8_t *buf);
 ```
+<div class="apidescr">
 *
 Load a character from the font data into a user buffer.
 
@@ -601,11 +670,13 @@ USE_LOCAL_FONT is set to 1.
 \param buf		address of the user buffer supplied.
 \return width (in columns) of the character, 0 if parameter errors.
    
+</div>
 #### setChar
 
 ```c
 uint8_t setChar(uint16_t col, uint8_t c);
 ```
+<div class="apidescr">
 *
 Load a character from the font data starting at a specific column.
 
@@ -619,11 +690,13 @@ USE_LOCAL_FONT is set to 1.
 \param c		the character to display.
 \return width (in columns) of the character, 0 if parameter errors.
    
+</div>
 #### setFont
 
 ```c
 bool setFont(fontType_t *f);
 ```
+<div class="apidescr">
 *
 Set the current font table.
 
@@ -642,11 +715,13 @@ USE_LOCAL_FONT is set to 1.
 \param f	fontType_t pointer to the table of font data in PROGMEM or nullptr.
 \return false if parameter errors, true otherwise.
    
+</div>
 #### getMaxFontWidth
 
 ```c
 uint8_t getMaxFontWidth(void);
 ```
+<div class="apidescr">
 *
 Get the maximum width character for the font.
 
@@ -659,6 +734,7 @@ USE_LOCAL_FONT is set to 1.
 
 \return number of columns (width) for the widest character.
   
+</div>
 #### getFont
 
 ```c
@@ -666,6 +742,7 @@ fontType_t *getFont(void) { return(_fontData); };
 #endif // USE_LOCAL_FONT
   /** @} */
 ```
+<div class="apidescr">
 *
 Get the pointer to current font table.
 
@@ -677,20 +754,25 @@ USE_LOCAL_FONT is set to 1.
 
 \return pointer to the start of the font table in PROGMEM.
    
+</div>
 #### (*_cbShiftDataIn)
 
 ```c
 uint8_t	(*_cbShiftDataIn)(uint8_t dev, transformType_t t);
   void		(*_cbShiftDataOut)(uint8_t dev, transformType_t t, uint8_t colData);
 ```
+<div class="apidescr">
 User callback function for shifting operations
+</div>
 #### buildFontIndex
 
 ```c
 void		buildFontIndex(void);			// build a font index
 #endif
 ```
+<div class="apidescr">
 find the character in the font data
+</div>
 #### spiInit
 
 ```c
@@ -701,23 +783,31 @@ void spiInit(void);			    // do the actual physical communications task
   void controlHardware(uint8_t dev, controlRequest_t mode, int value);	// set hardware control commands
   void controlLibrary(controlRequest_t mode, int value);	// set internal control commands
 ```
+<div class="apidescr">
 Private functions
+</div>
 #### flushBufferAll
 
 ```c
 void flushBufferAll();			  // determine what needs to be sent for all devices and transmit
 ```
+<div class="apidescr">
 determine what needs to be sent for one device and transmit
+</div>
 #### transformBuffer
 
 ```c
 bool transformBuffer(uint8_t buf, transformType_t ttype);	// internal transform function
 ```
+<div class="apidescr">
 reverse the order of bits in the byte
+</div>
 #### copyColumn
 
 ```c
 bool copyColumn(uint8_t buf, uint8_t cSrc, uint8_t cDest);// copy a row from Src to Dest
 };
 ```
+<div class="apidescr">
 copy a row from Src to Dest
+</div>

@@ -99,44 +99,53 @@ uint32_t read;                 // calls to _read()
   double   read_success_usecs;   // time spent in successful uncached _read()
 };
 ```
+<div class="apidescr">
 value of mg_time() upon last call to _read()
+</div>
 #### mgos_htu21df_create
 
 ```c
 struct mgos_htu21df *mgos_htu21df_create(struct mgos_i2c *i2c, uint8_t i2caddr);
 ```
+<div class="apidescr">
 
 Initialize a HTU21DF on the I2C bus `i2c` at address specified in `i2caddr`
 parameter (default HTU21DF is on address 0x40). The sensor will be polled for
 validity, upon success a new `struct mgos_htu21df` is allocated and
 returned. If the device could not be found, NULL is returned.
  
+</div>
 #### mgos_htu21df_destroy
 
 ```c
 void mgos_htu21df_destroy(struct mgos_htu21df **sensor);
 ```
+<div class="apidescr">
 
 Destroy the data structure associated with a HTU21DF device. The reference
 to the pointer of the `struct mgos_htu21df` has to be provided, and upon
 successful destruction, its associated memory will be freed and the pointer
 set to NULL.
  
+</div>
 #### mgos_htu21df_read
 
 ```c
 bool mgos_htu21df_read(struct mgos_htu21df *sensor);
 ```
+<div class="apidescr">
 
 The sensor will be polled for its temperature and humidity data. If the poll
 has occured in the last `MGOS_HTU21DF_READ_DELAY` seconds, the cached data is
 used (so as not to repeatedly poll the bus upon subsequent calls).
  
+</div>
 #### mgos_htu21df_getTemperature
 
 ```c
 float mgos_htu21df_getTemperature(struct mgos_htu21df *sensor);
 ```
+<div class="apidescr">
 
 The sensor will be polled for its temperature and humidity data. If the poll
 has occured in the last `MGOS_HTU21DF_READ_DELAY` seconds, the cached data is
@@ -145,11 +154,13 @@ used (so as not to repeatedly poll the bus upon subsequent calls).
 The return value is the temperature of the sensor in Celsius, or NAN if no
 data was found.
  
+</div>
 #### mgos_htu21df_getHumidity
 
 ```c
 float mgos_htu21df_getHumidity(struct mgos_htu21df *sensor);
 ```
+<div class="apidescr">
 
 The sensor will be polled for its temperature and humidity data. If the poll
 has occured in the last `MGOS_HTU21DF_READ_DELAY` seconds, the cached data is
@@ -158,11 +169,13 @@ used (so as not to repeatedly poll the bus upon subsequent calls).
 The return value is the humidity of the sensor in percent relative humidity,
 or NAN if no data was found.
  
+</div>
 #### mgos_htu21df_getStats
 
 ```c
 bool mgos_htu21df_getStats(struct mgos_htu21df *sensor, struct mgos_htu21df_stats *stats);
 ```
+<div class="apidescr">
 
 Returns the running statistics on the sensor interaction, the user provides
 a pointer to a `struct mgos_htu21df_stats` object, which is filled in by
@@ -171,11 +184,14 @@ this call.
 Upon success, true is returned. Otherwise, false is returned, in which case
 the contents of `stats` is undetermined.
  
+</div>
 #### mgos_htu21df_i2c_init
 
 ```c
 bool mgos_htu21df_i2c_init(void);
 ```
+<div class="apidescr">
 
 Initialization function for MGOS -- currently a noop.
  
+</div>

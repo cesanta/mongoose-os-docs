@@ -95,9 +95,11 @@ The code above maps action `foo` in the JSON to the callback `my_foo_cb`.
 ```c
 #define MGOS_CRONTAB_INVALID_JOB_ID ((mgos_crontab_job_id_t) 0)
 ```
+<div class="apidescr">
 
 Invalid value for the crontab job id.
  
+</div>
 #### (*mgos_crontab_iterate_cb)
 
 ```c
@@ -106,20 +108,24 @@ typedef void (*mgos_crontab_iterate_cb)(mgos_crontab_job_id_t id,
                                         struct mg_str action,
                                         struct mg_str payload, void *userdata);
 ```
+<div class="apidescr">
 
 Callback for `mgos_crontab_iterate()`; all string data is invalidated when
 the callback returns.
  
+</div>
 #### (*mgos_crontab_cb)
 
 ```c
 typedef void (*mgos_crontab_cb)(struct mg_str action, struct mg_str payload,
                                 void *userdata);
 ```
+<div class="apidescr">
 
 Prototype for a job handler to be registered with
 `mgos_crontab_register_handler()`.
  
+</div>
 #### mgos_crontab_job_add
 
 ```c
@@ -127,6 +133,7 @@ bool mgos_crontab_job_add(struct mg_str at, bool enable, struct mg_str action,
                           struct mg_str payload, mgos_crontab_job_id_t *pid,
                           char **perr);
 ```
+<div class="apidescr">
 
 Add a new job. Passed string data is not retained. If `pid` is not NULL,
 resulting job id is written there.
@@ -136,6 +143,7 @@ Returns true in case of success, false otherwise.
 If `perr` is not NULL, the error message will be written there (or NULL
 in case of success). The caller should free the error message.
  
+</div>
 #### mgos_crontab_job_edit
 
 ```c
@@ -143,6 +151,7 @@ bool mgos_crontab_job_edit(mgos_crontab_job_id_t id, struct mg_str at,
                            bool enable, struct mg_str action,
                            struct mg_str payload, char **perr);
 ```
+<div class="apidescr">
 
 Edit a job by its id. Passed string data is not retained.
 
@@ -151,11 +160,13 @@ Returns true in case of success, false otherwise.
 If `perr` is not NULL, the error message will be written there (or NULL
 in case of success). The caller should free the error message.
  
+</div>
 #### mgos_crontab_job_remove
 
 ```c
 bool mgos_crontab_job_remove(mgos_crontab_job_id_t id, char **perr);
 ```
+<div class="apidescr">
 
 Remove a job by its id.
 
@@ -164,6 +175,7 @@ Returns true in case of success, false otherwise.
 If `perr` is not NULL, the error message will be written there (or NULL
 in case of success). The caller should free the error message.
  
+</div>
 #### mgos_crontab_job_get
 
 ```c
@@ -171,6 +183,7 @@ bool mgos_crontab_job_get(mgos_crontab_job_id_t id, struct mg_str *at,
                           bool *enable, struct mg_str *action,
                           struct mg_str *payload, char **perr);
 ```
+<div class="apidescr">
 
 Get job details by the job id. All output pointers (`at`, `enable`, `action`,
 `payload`) are optional (allowed to be NULL). For non-NULL string outputs
@@ -182,12 +195,14 @@ Returns true in case of success, false otherwise.
 If `perr` is not NULL, the error message will be written there (or NULL
 in case of success). The caller should free the error message.
  
+</div>
 #### mgos_crontab_iterate
 
 ```c
 bool mgos_crontab_iterate(mgos_crontab_iterate_cb cb, void *userdata,
                           char **perr);
 ```
+<div class="apidescr">
 
 Iterate over all jobs in crontab, see `mgos_crontab_iterate_cb` for details.
 
@@ -196,12 +211,14 @@ Returns true in case of success, false otherwise.
 If `perr` is not NULL, the error message will be written there (or NULL
 in case of success). The caller should free the error message.
  
+</div>
 #### mgos_crontab_register_handler
 
 ```c
 void mgos_crontab_register_handler(struct mg_str action, mgos_crontab_cb cb,
                                    void *userdata);
 ```
+<div class="apidescr">
 
 Add a handler for the given string action
 
@@ -222,3 +239,4 @@ mgos_crontab_register_handler("foo", my_foo_cb, NULL);
 
 The code above maps action `foo` in the JSON to the callback `my_foo_cb`.
  
+</div>

@@ -35,6 +35,7 @@ Additional information also at [my blog](http://arduinoplusplus.wordpress.com).
 ```c
 void begin(MD_MAX72XX *p);
 ```
+<div class="apidescr">
 *
 Initialize the object.
 
@@ -43,22 +44,26 @@ new data for the class that cannot be done during the object creation.
 
 \param p	pointer to the parent object for this zone.
    
+</div>
 #### ~MD_PZone
 
 ```c
 ~MD_PZone(void);
 ```
+<div class="apidescr">
 *
 Class Destructor.
 
 Release allocated memory and does the necessary to clean up once the object is
 no longer required.
    
+</div>
 #### zoneAnimate
 
 ```c
 bool zoneAnimate(void);
 ```
+<div class="apidescr">
 *
 Animate the zone.
 
@@ -67,11 +72,13 @@ This method is invoked from the main Parola object.
 
 \return bool	true if the zone animation has completed, false otherwise.
    
+</div>
 #### getStatus
 
 ```c
 bool getStatus(void) { return (_fsmState == END); }
 ```
+<div class="apidescr">
 *
 Get the completion status.
 
@@ -81,11 +88,13 @@ See comments for the MD_Parola getZoneStatus() method.
 
 \return bool	true if the zone animation is completed
    
+</div>
 #### zoneClear
 
 ```c
 void zoneClear(void) { _MX->clear(_zoneStart, _zoneEnd); if (_inverted) _MX->transform(_zoneStart, _zoneEnd, MD_MAX72XX::TINV); };
 ```
+<div class="apidescr">
 *
 Clear the zone.
 
@@ -93,11 +102,13 @@ See comments for the MD_Parola namesake method.
 
 \return No return value.
    
+</div>
 #### zoneReset
 
 ```c
 inline void zoneReset(void) { _fsmState = INITIALISE; };
 ```
+<div class="apidescr">
 *
 Reset the current zone animation to restart.
 
@@ -105,11 +116,13 @@ See comments for the MD_Parola namesake method.
 
 \return No return value.
    
+</div>
 #### zoneShutdown
 
 ```c
 void zoneShutdown(bool b) { _MX->control(_zoneStart, _zoneEnd, MD_MAX72XX::SHUTDOWN, b ? MD_MAX72XX::ON : MD_MAX72XX::OFF); };
 ```
+<div class="apidescr">
 *
 Sshutdown or resume zone hardware.
 
@@ -118,11 +131,13 @@ See comments for the MD_Parola namesake method.
 \param b	boolean value to shutdown (true) or resume (false).
 \return No return value.
   
+</div>
 #### zoneSuspend
 
 ```c
 inline void zoneSuspend(bool b) { _suspend = b; };
 ```
+<div class="apidescr">
 *
 Suspend or resume zone updates.
 
@@ -131,11 +146,13 @@ See comments for the MD_Parola namesake method.
 \param b	boolean value to suspend (true) or resume (false).
 \return No return value.
    
+</div>
 #### setZone
 
 ```c
 inline void setZone(uint8_t zStart, uint8_t zEnd) { _zoneStart = zStart; _zoneEnd = zEnd; };
 ```
+<div class="apidescr">
 *
 Set the start and end parameters for a zone.
 
@@ -144,21 +161,25 @@ See comments for the MD_Parola namesake method.
 \param zStart	the first module number for the zone [0..numZones-1].
 \param zEnd	the last module number for the zone [0..numZones-1].
    
+</div>
 #### getCharSpacing
 
 ```c
 inline uint8_t getCharSpacing(void) { return _charSpacing; };
 ```
+<div class="apidescr">
 *
 Get the zone inter-character spacing in columns.
 
 \return the current setting for the space between characters in columns.
    
+</div>
 #### getIntensity
 
 ```c
 inline uint8_t getIntensity() { return _intensity; };
 ```
+<div class="apidescr">
 *
 Get the zone brightness.
 
@@ -166,11 +187,13 @@ Get the intensity (brightness) of the display.
 
 \return The intensity setting.
   
+</div>
 #### getInvert
 
 ```c
 inline bool getInvert(void) { return _inverted; };
 ```
+<div class="apidescr">
 *
 Get the zone current invert state.
 
@@ -178,11 +201,13 @@ See the setInvert() method.
 
 \return the inverted boolean value.
    
+</div>
 #### getPause
 
 ```c
 inline uint16_t getPause(void) { return _pauseTime; };
 ```
+<div class="apidescr">
 *
 Get the zone pause time.
 
@@ -190,11 +215,13 @@ See the setPause() method.
 
 \return the pause value in milliseconds.
    
+</div>
 #### getScrollSpacing
 
 ```c
 inline uint16_t getScrollSpacing(void) { return _scrollDistance; };
 ```
+<div class="apidescr">
 *
 Get the horizontal Scroll spcing.
 
@@ -202,11 +229,13 @@ See the setScrollSpacing() method
 
 \return the space between message in columns.
    
+</div>
 #### getSpeed
 
 ```c
 inline uint16_t getSpeed(void) { return _tickTime; };
 ```
+<div class="apidescr">
 *
 Get the zone animation speed.
 
@@ -214,11 +243,13 @@ See the setSpeed() method
 
 \return the speed value.
    
+</div>
 #### getSynchTime
 
 ```c
 inline uint32_t getSynchTime(void) { return _lastRunTime; }
 ```
+<div class="apidescr">
 *
 Get the zone animation start time.
 
@@ -226,21 +257,25 @@ See the setSynchTime() method
 
 \return the internal time reference.
   
+</div>
 #### getTextAlignment
 
 ```c
 inline textPosition_t getTextAlignment(void) { return _textAlignment; };
 ```
+<div class="apidescr">
 *
 Get the current text alignment specification.
 
 \return the current text alignment setting
    
+</div>
 #### getZoneEffect
 
 ```c
 boolean getZoneEffect(zoneEffect_t ze);
 ```
+<div class="apidescr">
 *
 Get the value of specified display effect.
 
@@ -250,11 +285,13 @@ true if the attribute is set, false if the attribute is not set.
 \param ze	the required text alignment.
 \return true if the value is set, false otherwise.
    
+</div>
 #### setCharSpacing
 
 ```c
 inline void setCharSpacing(uint8_t cs) { _charSpacing = cs; allocateFontBuffer(); };
 ```
+<div class="apidescr">
 *
 Set the zone inter-character spacing in columns.
 
@@ -263,11 +300,13 @@ Set the number of blank columns between characters when they are displayed.
 \param cs	space between characters in columns.
 \return No return value.
    
+</div>
 #### setIntensity
 
 ```c
 inline void setIntensity(uint8_t intensity) { _intensity = intensity; _MX->control(_zoneStart, _zoneEnd, MD_MAX72XX::INTENSITY, _intensity); };
 ```
+<div class="apidescr">
 *
 Set the zone brightness.
 
@@ -276,11 +315,13 @@ Set the intensity (brightness) of the display.
 \param intensity	the intensity to set the display (0-15).
 \return No return value.
    
+</div>
 #### setInvert
 
 ```c
 inline void setInvert(uint8_t invert) { _inverted = invert; };
 ```
+<div class="apidescr">
 *
 Invert the zone display.
 
@@ -289,11 +330,13 @@ Set the display to inverted (ON LED turns OFF and vice versa).
 \param invert	true for inverted display, false for normal display
 \return No return value.
    
+</div>
 #### setPause
 
 ```c
 inline void setPause(uint16_t pause) { _pauseTime = pause; };
 ```
+<div class="apidescr">
 *
 Set the pause between ENTER and EXIT animations for this zone.
 
@@ -304,11 +347,13 @@ this should be set to the same value as the display speed.
 \param pause	the time, in milliseconds, between animations.
 \return No return value.
    
+</div>
 #### setScrollSpacing
 
 ```c
 inline void setScrollSpacing(uint16_t space) { _scrollDistance = space; };
 ```
+<div class="apidescr">
 *
 Set the horizontal scrolling distance between messages.
 
@@ -320,11 +365,13 @@ Set to zero for default behavior.
 \param space	the spacing, in columns, between messages; zero for default behaviour..
 \return No return value.
    
+</div>
 #### setSpeed
 
 ```c
 inline void setSpeed(uint16_t speed) { _tickTime = speed; };
 ```
+<div class="apidescr">
 *
 Set the zone animation frame speed.
 
@@ -334,11 +381,13 @@ the faster the animation; set it to zero to run as fast as possible.
 \param speed	the time, in milliseconds, between animation frames.
 \return No return value.
    
+</div>
 #### setSynchTime
 
 ```c
 inline void setSynchTime(uint32_t zt) { _lastRunTime = zt; }
 ```
+<div class="apidescr">
 *
 Set the zone animation start time.
 
@@ -352,11 +401,13 @@ will result in irregular behaviour.
 \param zt	the required start time.
 \return No return value.
   
+</div>
 #### setTextAlignment
 
 ```c
 inline void setTextAlignment(textPosition_t ta) { _textAlignment = ta; };
 ```
+<div class="apidescr">
 *
 Set the text alignment within the zone.
 
@@ -365,11 +416,13 @@ Text alignment is specified as one of the values in textPosition_t.
 \param ta	the required text alignment.
 \return No return value.
    
+</div>
 #### setTextBuffer
 
 ```c
 inline void setTextBuffer(char *pb) { _pText = pb; };
 ```
+<div class="apidescr">
 *
 Set the pointer to the text buffer for this zone.
 
@@ -379,11 +432,13 @@ See the comments for the namesake method in MD_Parola.
 \param pb	pointer to the text buffer to be used.
 \return No return value.
    
+</div>
 #### setTextEffect
 
 ```c
 inline void setTextEffect(textEffect_t effectIn, textEffect_t effectOut) { _effectIn = effectIn, _effectOut = effectOut; };
 ```
+<div class="apidescr">
 *
 Set the entry and exit text effects for the zone.
 
@@ -393,11 +448,13 @@ See the comments for the namesake method in MD_Parola.
 \param	effectOut	the exit effect, one of the textEffect_t enumerated values.
 \return No return value.
    
+</div>
 #### setZoneEffect
 
 ```c
 void setZoneEffect(boolean b, zoneEffect_t ze);
 ```
+<div class="apidescr">
 *
 Set the zone display effect.
 
@@ -409,11 +466,13 @@ modified as per the required effect.
 \param ze	the required text alignment.
 \return No return value.
    
+</div>
 #### addChar
 
 ```c
 bool addChar(uint8_t code, uint8_t *data);
 ```
+<div class="apidescr">
 *
 Add a user defined character to the replacement list.
 
@@ -430,11 +489,13 @@ be reflected in the library.
 \param data	pointer to the character data.
 \return true of the character was inserted in the substitution list.
    
+</div>
 #### delChar
 
 ```c
 bool delChar(uint8_t code);
 ```
+<div class="apidescr">
 *
 Delete a user defined character to the replacement list.
 
@@ -445,12 +506,14 @@ an actual string.
 \param code	ASCII code for the character data.
 \return true of the character was found in the substitution list.
    
+</div>
 #### setZoneFont
 
 ```c
 void setZoneFont(MD_MAX72XX::fontType_t *fontDef) { _fontDef = fontDef; _MX->setFont(_fontDef); allocateFontBuffer(); };
   /** @} */
 ```
+<div class="apidescr">
 *
 Set the display font.
 
@@ -459,19 +522,24 @@ See comments for the namesake Parola method.
 \param fontDef	Pointer to the font definition to be used.
 \return No return value.
    
+</div>
 #### getTextWidth
 
 ```c
 uint16_t  getTextWidth(char *p);      // width of text in columns
   bool      calcTextLimits(char *p);    // calculate the right and left limits for the text
 ```
+<div class="apidescr">
 set up initial conditions for an effect
+</div>
 #### getNextChar
 
 ```c
 uint8_t getNextChar(void);      // put the next Text char into the char buffer
 ```
+<div class="apidescr">
 put the first Text char into the char buffer
+</div>
 #### findChar
 
 ```c
@@ -480,13 +548,17 @@ uint8_t   findChar(uint8_t code, uint8_t size, uint8_t *cBuf);	// look for user 
   void      reverseBuf(uint8_t *p, uint8_t size); // reverse the elements of the buffer
   void      invertBuf(uint8_t *p, uint8_t size);  // invert the elements of the buffer
 ```
+<div class="apidescr">
 allocate _cBuf based on the size of the largest font characters
+</div>
 #### state2string
 
 ```c
 char *state2string(fsmState_t s);
 ```
+<div class="apidescr">
 Debugging aid
+</div>
 #### commonPrint
 
 ```c
@@ -523,12 +595,15 @@ void  commonPrint(void);
 //#endif // ENA_GROW
 };
 ```
+<div class="apidescr">
 Effect functions
+</div>
 #### MD_Parola
 
 ```c
 MD_Parola(uint8_t csPin, uint8_t numDevices=1);
 ```
+<div class="apidescr">
 *
 Class Constructor - SPI hardware interface.
 
@@ -540,11 +615,13 @@ See documentation for the MD_MAX72XX library for detailed explanation of paramet
 \param csPin		output for selecting the device.
 \param numDevices	number of devices connected. Default is 1 if not supplied.
    
+</div>
 #### begin
 
 ```c
 void begin(void) { begin(1); };
 ```
+<div class="apidescr">
 *
 Initialize the object.
 
@@ -552,11 +629,13 @@ Initialise the object data. This needs to be called during setup() to initialise
 data for the class that cannot be done during the object creation. This form of the
 method is for backward compatibility and creates one zone for the entire display.
    
+</div>
 #### begin
 
 ```c
 void begin(uint8_t numZones);
 ```
+<div class="apidescr">
 *
 Initialize the object.
 
@@ -568,22 +647,26 @@ limits for the zones need to be initialized separately using setZone().
 
 \param numZones	maximum number of zones [1..MAX_ZONES]
    
+</div>
 #### ~MD_Parola
 
 ```c
 ~MD_Parola(void);
 ```
+<div class="apidescr">
 *
 Class Destructor.
 
 Release allocated memory and does the necessary to clean up once the object is
 no longer required.
    
+</div>
 #### displayAnimate
 
 ```c
 bool displayAnimate(void);
 ```
+<div class="apidescr">
 *
 Animate the display.
 
@@ -599,11 +682,13 @@ value means that one or more zones have completed their animation.
 
 \return bool	true if at least one zone animation has completed, false otherwise.
    
+</div>
 #### getZoneStatus
 
 ```c
 bool getZoneStatus(uint8_t z) { if (z < _numZones) return(_Z[z].getStatus()); };
 ```
+<div class="apidescr">
 *
 Get the completion status for a zone.
 
@@ -617,11 +702,13 @@ value means that the zone has completed its animation cycle.
 \param z		specified zone
 \return bool	true if the zone animation has completed, false otherwise.
    
+</div>
 #### displayClear
 
 ```c
 void displayClear(void) { for (uint8_t i=0; i<_numZones; i++) _Z[i].zoneClear(); };
 ```
+<div class="apidescr">
 *
 Clear the display.
 
@@ -629,11 +716,13 @@ Clear all the zones in the current display.
 
 \return No return value.
    
+</div>
 #### displayClear
 
 ```c
 void displayClear(uint8_t z) { if (z < _numZones) _Z[z].zoneClear(); };
 ```
+<div class="apidescr">
 *
 Clear one zone in the display.
 
@@ -642,11 +731,13 @@ Clear the specified zone in the current display.
 \param z		specified zone
 \return No return value.
    
+</div>
 #### displayReset
 
 ```c
 void displayReset(void) { for (uint8_t i=0; i<_numZones; i++) _Z[i].zoneReset(); };
 ```
+<div class="apidescr">
 *
 Reset the current animation to restart for all zones.
 
@@ -657,11 +748,13 @@ animation needs to be started (or restarted).
 
 \return No return value.
    
+</div>
 #### displayReset
 
 ```c
 void displayReset(uint8_t z) { if (z < _numZones) _Z[z].zoneReset(); };
 ```
+<div class="apidescr">
 *
 Reset the current animation to restart for the specified zone.
 
@@ -670,11 +763,13 @@ See the comments for the 'all zones' variant of this method.
 \param z	specified zone
 \return No return value.
    
+</div>
 #### displayShutdown
 
 ```c
 void displayShutdown(bool b) { for (uint8_t i=0; i<_numZones; i++) _Z[i].zoneShutdown(b); };
 ```
+<div class="apidescr">
 *
 Shutdown or restart display hardware.
 
@@ -687,11 +782,13 @@ To reset the animation back to the beginning, use the displayReset() method.
 \param b	boolean value to shutdown (true) or resume (false).
 \return No return value.
    
+</div>
 #### displaySuspend
 
 ```c
 void displaySuspend(bool b) { for (uint8_t i = 0; i<_numZones; i++) _Z[i].zoneSuspend(b); };
 ```
+<div class="apidescr">
 *
 Suspend or resume display updates.
 
@@ -703,11 +800,13 @@ displayReset() method.
 \param b	boolean value to suspend (true) or resume (false).
 \return No return value.
   
+</div>
 #### setZone
 
 ```c
 bool setZone(uint8_t z, uint8_t moduleStart, uint8_t moduleEnd);
 ```
+<div class="apidescr">
 *
 Define the module limits for a zone.
 
@@ -724,12 +823,14 @@ Zones should not overlap or unexpected results will occur.
 \param moduleEnd	the last module number for the zone [0..numZones-1].
 \return true if set, false otherwise.
    
+</div>
 #### displayScroll
 
 ```c
 inline void displayScroll(char *pText, textPosition_t align, textEffect_t effect, uint16_t speed)
     { displayZoneText(0, pText, align, speed, 0, effect, effect); };
 ```
+<div class="apidescr">
 *
 Easy start for a scrolling text display.
 
@@ -743,12 +844,14 @@ is started. Assumes one zone only (zone 0).
 \param speed	parameter suitable for the setSpeed() method.
 \return No return value.
    
+</div>
 #### displayText
 
 ```c
 inline void displayText(char *pText, textPosition_t align, uint16_t speed, uint16_t pause, textEffect_t effectIn, textEffect_t effectOut = PA_NO_EFFECT)
     { displayZoneText(0, pText, align, speed, pause, effectIn, effectOut); };
 ```
+<div class="apidescr">
 *
 Easy start for a non-scrolling text display.
 
@@ -764,11 +867,13 @@ is started. Assumes one zone only (zone 0).
 \param	effectOut	parameter suitable for the setTextEffect() method.
 \return No return value.
    
+</div>
 #### displayZoneText
 
 ```c
 void displayZoneText(uint8_t z, char *pText, textPosition_t align, uint16_t speed, uint16_t pause, textEffect_t effectIn, textEffect_t effectOut = PA_NO_EFFECT);
 ```
+<div class="apidescr">
 *
 Easy start for a non-scrolling zone text display.
 
@@ -785,32 +890,38 @@ parameters and the display animation is started.
 \param	effectOut	parameter suitable for the setTextEffect() method.
 \return No return value.
    
+</div>
 #### getCharSpacing
 
 ```c
 inline uint8_t getCharSpacing(void) { return _Z[0].getCharSpacing(); };
 ```
+<div class="apidescr">
 *
 Get the inter-character spacing in columns.
 
 \return the current setting for the space between characters in columns. Assumes one zone only.
    
+</div>
 #### getCharSpacing
 
 ```c
 inline uint8_t getCharSpacing(uint8_t z) { return (z < _numZones ? _Z[z].getCharSpacing() : 0); };
 ```
+<div class="apidescr">
 *
 Get the inter-character spacing in columns for a specific zone.
 
 \param z		zone number.
 \return the current setting for the space between characters in columns.
    
+</div>
 #### getInvert
 
 ```c
 inline bool getInvert(void) { return _Z[0].getInvert(); };
 ```
+<div class="apidescr">
 *
 Get the current display invert state.
 
@@ -818,11 +929,13 @@ See the setInvert() method.
 
 \return true if the display is inverted. Assumes one zone only.
    
+</div>
 #### getInvert
 
 ```c
 inline bool getInvert(uint8_t z) { return (z < _numZones ? _Z[z].getInvert() : false); };
 ```
+<div class="apidescr">
 *
 Get the current display invert state for a specific zone.
 
@@ -831,11 +944,13 @@ See the setInvert() method.
 \param z		zone number.
 \return the inverted boolean value for the specified zone.
    
+</div>
 #### getPause
 
 ```c
 inline uint16_t getPause(void) { return _Z[0].getPause(); };
 ```
+<div class="apidescr">
 *
 Get the current pause time.
 
@@ -843,11 +958,13 @@ See the setPause() method. Assumes one zone only.
 
 \return the pause value in milliseconds.
    
+</div>
 #### getPause
 
 ```c
 inline uint16_t getPause(uint8_t z) { return (z < _numZones ? _Z[z].getPause() : 0); };
 ```
+<div class="apidescr">
 *
 Get the current pause time for a specific zone.
 
@@ -856,11 +973,13 @@ See the setPause() method.
 \param z		zone number.
 \return the pause value in milliseconds for the specified zone.
    
+</div>
 #### getScrollSpacing
 
 ```c
 inline uint16_t getScrollSpacing(void) { return _Z[0].getScrollSpacing(); };
 ```
+<div class="apidescr">
 *
 Get the horizontal scrolling spacing.
 
@@ -868,11 +987,13 @@ See the setScrollSpacing() method. Assumes one zone only
 
 \return the speed value.
    
+</div>
 #### getSpeed
 
 ```c
 inline uint16_t getSpeed(void) { return _Z[0].getSpeed(); };
 ```
+<div class="apidescr">
 *
 Get the current animation speed.
 
@@ -880,11 +1001,13 @@ See the setSpeed() method. Assumes one zone only
 
 \return the speed value.
    
+</div>
 #### getSpeed
 
 ```c
 inline uint16_t getSpeed(uint8_t z) { return (z < _numZones ? _Z[z].getSpeed() : 0); };
 ```
+<div class="apidescr">
 *
 Get the current animation speed for the specified zone.
 
@@ -893,11 +1016,13 @@ See the setSpeed() method.
 \param z		zone number.
 \return the speed value for the specified zone.
    
+</div>
 #### getTextAlignment
 
 ```c
 inline textPosition_t getTextAlignment(void) { return _Z[0].getTextAlignment(); };
 ```
+<div class="apidescr">
 *
 Get the current text alignment specification.
 
@@ -905,22 +1030,26 @@ Assumes one zone only.
 
 \return the current text alignment setting.
    
+</div>
 #### getTextAlignment
 
 ```c
 inline textPosition_t getTextAlignment(uint8_t z) { return (z < _numZones ? _Z[z].getTextAlignment() : PA_CENTER); };
 ```
+<div class="apidescr">
 *
 Get the current text alignment specification for the specified zone.
 
 \param z		zone number.
 \return the current text alignment setting for the specified zone.
    
+</div>
 #### getZoneEffect
 
 ```c
 inline boolean getZoneEffect(uint8_t z, zoneEffect_t ze) { return (z < _numZones ? _Z[z].getZoneEffect(ze) : false); };
 ```
+<div class="apidescr">
 *
 Get the value of specified display effect.
 
@@ -931,11 +1060,13 @@ true if the attribute is set, false if the attribute is not set.
 \param ze  the required text alignment.
 \return true if the value is set, false otherwise.
    
+</div>
 #### setCharSpacing
 
 ```c
 void setCharSpacing(uint8_t cs) { for (uint8_t i=0; i<_numZones; i++) _Z[i].setCharSpacing(cs); };
 ```
+<div class="apidescr">
 *
 Set the inter-character spacing in columns for all zones.
 
@@ -944,11 +1075,13 @@ Set the number of blank columns between characters when they are displayed.
 \param cs	space between characters in columns.
 \return No return value.
    
+</div>
 #### setCharSpacing
 
 ```c
 inline void setCharSpacing(uint8_t z, uint8_t cs) { if (z < _numZones) _Z[z].setCharSpacing(cs); };
 ```
+<div class="apidescr">
 *
 Set the inter-character spacing in columns for the specified zone.
 
@@ -958,11 +1091,13 @@ See comments for the 'all zones' variant of this method.
 \param cs	space between characters in columns.
 \return No return value.
    
+</div>
 #### setIntensity
 
 ```c
 void setIntensity(uint8_t intensity) { for (uint8_t i=0; i<_numZones; i++) _Z[i].setIntensity(intensity); };
 ```
+<div class="apidescr">
 *
 Set the display brightness for all the zones.
 
@@ -971,11 +1106,13 @@ Set the intensity (brightness) of the display.
 \param intensity	the intensity to set the display (0-15).
 \return No return value.
    
+</div>
 #### setIntensity
 
 ```c
 inline void setIntensity(uint8_t z, uint8_t intensity) { if (z < _numZones) _Z[z].setIntensity(intensity); };
 ```
+<div class="apidescr">
 *
 Set the display brightness for the specified zone.
 
@@ -985,11 +1122,13 @@ See comments for the 'all zones' variant of this method.
 \param intensity	the intensity to set the display (0-15).
 \return No return value.
    
+</div>
 #### setInvert
 
 ```c
 void setInvert(uint8_t invert) { for (uint8_t i=0; i<_numZones; i++) _Z[i].setInvert(invert); };
 ```
+<div class="apidescr">
 *
 Invert the display in all the zones.
 
@@ -998,11 +1137,13 @@ Set the display to inverted (ON LED turns OFF and vice versa).
 \param invert	true for inverted display, false for normal display
 \return No return value.
    
+</div>
 #### setInvert
 
 ```c
 inline void setInvert(uint8_t z, uint8_t invert) { if (z < _numZones) _Z[z].setInvert(invert); };
 ```
+<div class="apidescr">
 *
 Invert the display in the specified zone.
 
@@ -1012,11 +1153,13 @@ See comments for the 'all zones' variant of this method.
 \param invert	true for inverted display, false for normal display
 \return No return value.
    
+</div>
 #### setPause
 
 ```c
 void setPause(uint16_t pause) { for (uint8_t i=0; i<_numZones; i++) _Z[i].setPause(pause); };
 ```
+<div class="apidescr">
 *
 Set the pause between ENTER and EXIT animations for all zones.
 
@@ -1027,11 +1170,13 @@ this should be set to the same value as the display speed.
 \param pause	the time, in milliseconds, between animations.
 \return No return value.
    
+</div>
 #### setPause
 
 ```c
 void setPause(uint8_t z, uint16_t pause) { if (z < _numZones) _Z[z].setPause(pause); };
 ```
+<div class="apidescr">
 *
 Set the pause between ENTER and EXIT animations for the specified zone.
 
@@ -1041,11 +1186,13 @@ See comments for the 'all zones' variant of this method.
 \param pause	the time, in milliseconds, between animations.
 \return No return value.
    
+</div>
 #### setScrollSpacing
 
 ```c
 void setScrollSpacing(uint16_t space) { for (uint8_t i=0; i<_numZones; i++) _Z[i].setScrollSpacing(space); };
 ```
+<div class="apidescr">
 *
 Set the horizontal scrolling distance between messages for all the zones.
 
@@ -1057,11 +1204,13 @@ Set to zero for default behavior.
 \param space	the spacing, in columns, between messages; zero for default behaviour..
 \return No return value.
    
+</div>
 #### setSpeed
 
 ```c
 void setSpeed(uint16_t speed) { for (uint8_t i=0; i<_numZones; i++) _Z[i].setSpeed(speed); };
 ```
+<div class="apidescr">
 *
 Set the animation frame speed for all zones.
 
@@ -1071,11 +1220,13 @@ the faster the animation; set it to zero to run as fast as possible.
 \param speed	the time, in milliseconds, between animation frames.
 \return No return value.
    
+</div>
 #### setSpeed
 
 ```c
 inline void setSpeed(uint8_t z, uint16_t speed) { if (z < _numZones) _Z[z].setSpeed(speed); };
 ```
+<div class="apidescr">
 *
 Set the animation frame speed for the specified zone.
 
@@ -1085,11 +1236,13 @@ See comments for the 'all zones' variant of this method.
 \param speed	the time, in milliseconds, between animation frames.
 \return No return value.
    
+</div>
 #### setTextAlignment
 
 ```c
 void setTextAlignment(textPosition_t ta) { for (uint8_t i=0; i<_numZones; i++) _Z[i].setTextAlignment(ta); };
 ```
+<div class="apidescr">
 *
 Set the text alignment for all zones.
 
@@ -1098,11 +1251,13 @@ Text alignment is specified as one of the values in textPosition_t.
 \param ta	the required text alignment.
 \return No return value.
    
+</div>
 #### setTextAlignment
 
 ```c
 inline void setTextAlignment(uint8_t z, textPosition_t ta) { if (z < _numZones) _Z[z].setTextAlignment(ta); };
 ```
+<div class="apidescr">
 *
 Set the text alignment for the specified zone.
 
@@ -1112,11 +1267,13 @@ See comments for the 'all zones' variant of this method.
 \param ta	the required text alignment.
 \return No return value.
    
+</div>
 #### setTextBuffer
 
 ```c
 void setTextBuffer(char *pb) { /*for (uint8_t i = 0; i<_numZones; i++) */_Z[0].setTextBuffer(pb); };
 ```
+<div class="apidescr">
 *
 Set the pointer to the text buffer.
 
@@ -1133,11 +1290,13 @@ This form of the method assumes one zone only.
 \param pb	pointer to the text buffer to be used.
 \return No return value.
    
+</div>
 #### setTextBuffer
 
 ```c
 inline void setTextBuffer(uint8_t z, char *pb) { if (z < _numZones) _Z[z].setTextBuffer(pb); };
 ```
+<div class="apidescr">
 *
 Set the pointer to the text buffer for the specified zone.
 
@@ -1147,11 +1306,13 @@ See comments for the single zone version of this method.
 \param pb	pointer to the text buffer to be used.
 \return No return value.
    
+</div>
 #### setTextEffect
 
 ```c
 void setTextEffect(textEffect_t effectIn, textEffect_t effectOut) { for (uint8_t i = 0; i < _numZones; i++) _Z[i].setTextEffect(effectIn, effectOut); };
 ```
+<div class="apidescr">
 *
 Set the entry and exit text effects for all zones.
 
@@ -1164,11 +1325,13 @@ the entry effect is sufficient.
 \param	effectOut	the exit effect, one of the textEffect_t enumerated values.
 \return No return value.
    
+</div>
 #### setTextEffect
 
 ```c
 inline void setTextEffect(uint8_t z, textEffect_t effectIn, textEffect_t effectOut) { if (z < _numZones) _Z[z].setTextEffect(effectIn, effectOut); };
 ```
+<div class="apidescr">
 *
 Set the entry and exit text effects for a specific zone.
 
@@ -1179,11 +1342,13 @@ See comments for the 'all zones' variant of this method.
 \param	effectOut	the exit effect, one of the textEffect_t enumerated values.
 \return No return value.
    
+</div>
 #### setZoneEffect
 
 ```c
 inline void setZoneEffect(uint8_t z, boolean b, zoneEffect_t ze) { if (z < _numZones) _Z[z].setZoneEffect(b, ze); };
 ```
+<div class="apidescr">
 *
 Set the display effect for the specified zone.
 
@@ -1196,11 +1361,13 @@ modified as per the required effect.
 \param ze  the required text alignment.
 \return No return value.
    
+</div>
 #### synchZoneStart
 
 ```c
 void synchZoneStart(void) { for (uint8_t i = 1; i < _numZones; i++) _Z[i].setSynchTime(_Z[0].getSynchTime()); }
 ```
+<div class="apidescr">
 *
 Synchronise the start of zone animations.
 
@@ -1211,11 +1378,13 @@ this method will ensure that all the zones start at the same instant.
 
 \return No return value.
   
+</div>
 #### addChar
 
 ```c
 void addChar(uint8_t code, uint8_t *data) { for (uint8_t i=0; i<_numZones; i++) _Z[i].addChar(code, data); };
 ```
+<div class="apidescr">
 *
 Add a user defined character to the replacement list for all zones.
 
@@ -1233,11 +1402,13 @@ library. The data must also remain in scope while it is being used.
 \param data	pointer to the character data.
 \return No return value.
    
+</div>
 #### addChar
 
 ```c
 inline bool addChar(uint8_t z, uint8_t code, uint8_t *data) { return(z < _numZones ? _Z[z].addChar(code, data) : false); };
 ```
+<div class="apidescr">
 *
 Add a user defined character to the replacement specified zone.
 
@@ -1248,11 +1419,13 @@ See the comments for the 'all zones' variant of this method
 \param data	pointer to the character data.
 \return true of the character was inserted in the substitution list.
    
+</div>
 #### delChar
 
 ```c
 void delChar(uint8_t code) { for (uint8_t i=0; i<_numZones; i++) _Z[i].delChar(code); };
 ```
+<div class="apidescr">
 *
 Delete a user defined character to the replacement list for all zones.
 
@@ -1261,11 +1434,13 @@ Delete a reference to a replacement character in the user defined list.
 \param code	ASCII code for the character data.
 \return No return value.
    
+</div>
 #### delChar
 
 ```c
 inline bool delChar(uint8_t z, uint8_t code) { return(z < _numZones ? _Z[z].delChar(code) : false); };
 ```
+<div class="apidescr">
 *
 Delete a user defined character to the replacement list for the specified zone.
 
@@ -1275,11 +1450,13 @@ See the comments for the 'all zones' variant of this method.
 \param code	ASCII code for the character data.
 \return true of the character was found in the substitution list.
    
+</div>
 #### setFont
 
 ```c
 void setFont(MD_MAX72XX::fontType_t *fontDef) { for (uint8_t i=0; i<_numZones; i++) _Z[i].setZoneFont(fontDef); };
 ```
+<div class="apidescr">
 *
 Set the display font for all zones.
 
@@ -1290,11 +1467,13 @@ Passing nullptr resets to the library default font.
 \param fontDef	Pointer to the font definition to be used.
 \return No return value.
    
+</div>
 #### setFont
 
 ```c
 inline void setFont(uint8_t z, MD_MAX72XX::fontType_t *fontDef) { if (z < _numZones) _Z[z].setZoneFont(fontDef); };
 ```
+<div class="apidescr">
 *
 Set the display font for a specific zone.
 
@@ -1306,11 +1485,13 @@ Passing nullptr resets to the library default font.
 \param fontDef	Pointer to the font definition to be used.
 \return No return value.
    
+</div>
 #### write
 
 ```c
 virtual size_t write(uint8_t c) { char sz[2]; sz[0] = c; sz[1] = '\0'; write(sz); return(1); }
 ```
+<div class="apidescr">
 *
 Write a single character to the output display
 
@@ -1323,11 +1504,13 @@ single the character.
 \param c	ASCII code for the character to write.
 \return the number of characters written.
   
+</div>
 #### write
 
 ```c
 virtual size_t write(const char *str);
 ```
+<div class="apidescr">
 *
 Write a nul terminated string to the output display.
 
@@ -1341,11 +1524,13 @@ one iteration of the wait loop.
 \param str	Pointer to the nul terminated char array.
 \return the number of characters written.
   
+</div>
 #### write
 
 ```c
 virtual size_t write(const uint8_t *buffer, size_t size);
 ```
+<div class="apidescr">
 *
 Write a character buffer to the output display.
 
@@ -1358,3 +1543,4 @@ in this method to copy the string.
 \param size The number of bytes to write.
 \return the number of bytes written.
   
+</div>

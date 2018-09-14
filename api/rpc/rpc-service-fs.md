@@ -160,6 +160,8 @@ Unmout filesystem. Arguments:
 ```c
 bool mgos_rpc_service_fs_init(void);
 ```
+<div class="apidescr">
 
 Initialises mg_rpc handlers for FS commands
  
+</div>

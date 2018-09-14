@@ -87,44 +87,53 @@ uint32_t read;                 // calls to _read()
   double   read_success_usecs;   // time spent in successful uncached _read()
 };
 ```
+<div class="apidescr">
 value of mg_time() upon last call to _read()
+</div>
 #### mgos_sht31_create
 
 ```c
 struct mgos_sht31 *mgos_sht31_create(struct mgos_i2c *i2c, uint8_t i2caddr);
 ```
+<div class="apidescr">
 
 Initialize a SHT31 on the I2C bus `i2c` at address specified in `i2caddr`
 parameter (default SHT31 is on address 0x44). The sensor will be polled for
 validity, upon success a new `struct mgos_sht31` is allocated and
 returned. If the device could not be found, NULL is returned.
  
+</div>
 #### mgos_sht31_destroy
 
 ```c
 void mgos_sht31_destroy(struct mgos_sht31 **sensor);
 ```
+<div class="apidescr">
 
 Destroy the data structure associated with a SHT31 device. The reference
 to the pointer of the `struct mgos_sht31` has to be provided, and upon
 successful destruction, its associated memory will be freed and the pointer
 set to NULL.
  
+</div>
 #### mgos_sht31_read
 
 ```c
 bool mgos_sht31_read(struct mgos_sht31 *sensor);
 ```
+<div class="apidescr">
 
 The sensor will be polled for its temperature and humidity data. If the poll
 has occured in the last `MGOS_SHT31_READ_DELAY` seconds, the cached data is
 used (so as not to repeatedly poll the bus upon subsequent calls).
  
+</div>
 #### mgos_sht31_getTemperature
 
 ```c
 float mgos_sht31_getTemperature(struct mgos_sht31 *sensor);
 ```
+<div class="apidescr">
 
 The sensor will be polled for its temperature and humidity data. If the poll
 has occured in the last `MGOS_SHT31_READ_DELAY` seconds, the cached data is
@@ -133,11 +142,13 @@ used (so as not to repeatedly poll the bus upon subsequent calls).
 The return value is the temperature of the sensor in Celsius, or NAN if no
 data was found.
  
+</div>
 #### mgos_sht31_getHumidity
 
 ```c
 float mgos_sht31_getHumidity(struct mgos_sht31 *sensor);
 ```
+<div class="apidescr">
 
 The sensor will be polled for its temperature and humidity data. If the poll
 has occured in the last `MGOS_SHT31_READ_DELAY` seconds, the cached data is
@@ -146,11 +157,13 @@ used (so as not to repeatedly poll the bus upon subsequent calls).
 The return value is the humidity of the sensor in percent relative humidity,
 or NAN if no data was found.
  
+</div>
 #### mgos_sht31_getStats
 
 ```c
 bool mgos_sht31_getStats(struct mgos_sht31 *sensor, struct mgos_sht31_stats *stats);
 ```
+<div class="apidescr">
 
 Returns the running statistics on the sensor interaction, the user provides
 a pointer to a `struct mgos_sht31_stats` object, which is filled in by this
@@ -159,11 +172,14 @@ call.
 Upon success, true is returned. Otherwise, false is returned, in which case
 the contents of `stats` is undetermined.
  
+</div>
 #### mgos_sht31_i2c_init
 
 ```c
 bool mgos_sht31_i2c_init(void);
 ```
+<div class="apidescr">
 
 Initialization function for MGOS -- currently a noop.
  
+</div>

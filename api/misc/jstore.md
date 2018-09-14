@@ -26,9 +26,11 @@ for details.
       .type = MGOS_JSTORE_REF_TYPE_BY_ID, .data = {.id = (x)}, \
   })
 ```
+<div class="apidescr">
 
 Constructs reference to an item by the given struct mg_str id.
  
+</div>
 #### MGOS_JSTORE_REF_BY_INDEX
 
 ```c
@@ -37,9 +39,11 @@ Constructs reference to an item by the given struct mg_str id.
       .type = MGOS_JSTORE_REF_TYPE_BY_INDEX, .data = {.index = (x)}, \
   })
 ```
+<div class="apidescr">
 
 Constructs reference to an item by the given int index.
  
+</div>
 #### MGOS_JSTORE_REF_BY_HND
 
 ```c
@@ -48,15 +52,18 @@ Constructs reference to an item by the given int index.
       .type = MGOS_JSTORE_REF_TYPE_BY_HND, .data = {.hnd = (x)}, \
   })
 ```
+<div class="apidescr">
 
 Constructs reference to an item by the given opaque handler
 mgos_jstore_item_hnd_t hnd.
  
+</div>
 #### mgos_jstore_create
 
 ```c
 struct mgos_jstore *mgos_jstore_create(const char *json_path, char **perr);
 ```
+<div class="apidescr">
 
 Create jstore from the JSON file `json_path`. If file does not exist or
 is empty, it's not an error and will just result in an empty jstore.
@@ -64,6 +71,7 @@ is empty, it's not an error and will just result in an empty jstore.
 If `perr` is not NULL, the error message will be written there (or NULL
 in case of success). The caller should free the error message.
  
+</div>
 #### (*mgos_jstore_cb)
 
 ```c
@@ -72,6 +80,7 @@ typedef bool (*mgos_jstore_cb)(struct mgos_jstore *store, int idx,
                                const struct mg_str *id,
                                const struct mg_str *data, void *userdata);
 ```
+<div class="apidescr">
 
 Callback for `mgos_jstore_iterate`, called for each item in the jstore.
 `idx` is a zero-based index of the item, `hnd` is an opaque item's
@@ -80,12 +89,14 @@ the item by the id.
 
 The callback should return true to continue iteration, or false to stop.
  
+</div>
 #### mgos_jstore_iterate
 
 ```c
 bool mgos_jstore_iterate(struct mgos_jstore *store, mgos_jstore_cb cb,
                          void *userdata);
 ```
+<div class="apidescr">
 
 Call provided callback for each item in the store; see `mgos_jstore_cb` for
 details.
@@ -93,6 +104,7 @@ details.
 Returns false if the callback has returned false at least once. Returns true
 if callback never returned false.
  
+</div>
 #### mgos_jstore_item_add
 
 ```c
@@ -103,6 +115,7 @@ struct mg_str mgos_jstore_item_add(struct mgos_jstore *store, struct mg_str id,
                                    mgos_jstore_item_hnd_t *phnd, int *pindex,
                                    char **perr);
 ```
+<div class="apidescr">
 
 Add a new item to the store. If `id` contains some data (`id.p` is not NULL),
 the provided id will be used; otherwise, the id will be randomly generated.
@@ -127,6 +140,7 @@ Returns the id of a new item. In case of an error, that id will be empty.
 If `perr` is not NULL, the error message will be written there (or NULL
 in case of success). The caller should free the error message.
  
+</div>
 #### mgos_jstore_item_edit
 
 ```c
@@ -134,6 +148,7 @@ bool mgos_jstore_item_edit(struct mgos_jstore *store,
                            const struct mgos_jstore_ref ref, struct mg_str data,
                            enum mgos_jstore_ownership data_own, char **perr);
 ```
+<div class="apidescr">
 
 Edit item by the reference (see `MGOS_JSTORE_REF_BY_...()` macros above)
 
@@ -142,12 +157,14 @@ Returns true in case of success, false otherwise.
 If `perr` is not NULL, the error message will be written there (or NULL
 in case of success). The caller should free the error message.
  
+</div>
 #### mgos_jstore_item_remove
 
 ```c
 bool mgos_jstore_item_remove(struct mgos_jstore *store,
                              const struct mgos_jstore_ref ref, char **perr);
 ```
+<div class="apidescr">
 
 Remove item by the reference (see `MGOS_JSTORE_REF_BY_...()` macros above)
 
@@ -156,6 +173,7 @@ Returns true in case of success, false otherwise.
 If `perr` is not NULL, the error message will be written there (or NULL
 in case of success). The caller should free the error message.
  
+</div>
 #### mgos_jstore_item_get
 
 ```c
@@ -164,6 +182,7 @@ bool mgos_jstore_item_get(struct mgos_jstore *store,
                           struct mg_str *data, mgos_jstore_item_hnd_t *phnd,
                           int *pindex, char **perr);
 ```
+<div class="apidescr">
 
 Get item details by the given reference (see `MGOS_JSTORE_REF_BY_...()`
 macros above). All output pointers (`id`, `data`, `phnd`, `pindex`) are
@@ -174,12 +193,14 @@ Returns true in case of success, false otherwise.
 If `perr` is not NULL, the error message will be written there (or NULL
 in case of success). The caller should free the error message.
  
+</div>
 #### mgos_jstore_save
 
 ```c
 bool mgos_jstore_save(struct mgos_jstore *store, const char *json_path,
                       char **perr);
 ```
+<div class="apidescr">
 
 Save jstore to the JSON file `json_path`.
 
@@ -188,19 +209,24 @@ Returns true in case of success, false otherwise.
 If `perr` is not NULL, the error message will be written there (or NULL
 in case of success). The caller should free the error message.
  
+</div>
 #### mgos_jstore_items_cnt
 
 ```c
 int mgos_jstore_items_cnt(struct mgos_jstore *store);
 ```
+<div class="apidescr">
 
 Get number of items in a jstore.
  
+</div>
 #### mgos_jstore_free
 
 ```c
 void mgos_jstore_free(struct mgos_jstore *store);
 ```
+<div class="apidescr">
 
 Free memory occupied by jstore and all its items.
  
+</div>
