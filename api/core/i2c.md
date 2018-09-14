@@ -13,157 +13,157 @@ mapping in the yml file for your platform: `mos_<PLATFORM>.yml`.
 ```c
 struct mgos_i2c *mgos_i2c_create(const struct mgos_config_i2c *cfg);
 ```
-
-Initialize I2C master with the given params. Typically clients don't need to
-do that manually: mgos has a global I2C instance created with the params
-given in system config, use `mgos_i2c_get_global()` to get the global
-instance.
-
-Example:
-```c
-const struct mgos_config_i2c cfg = {
-  .enable: true,
-  .freq: 400,
-  .debug: 0,
-  .sda_gpio: 13,
-  .scl_gpio: 12,
-};
-struct mgos_i2c *myi2c = mgos_i2c_create(&cfg);
-```
- 
+> 
+> Initialize I2C master with the given params. Typically clients don't need to
+> do that manually: mgos has a global I2C instance created with the params
+> given in system config, use `mgos_i2c_get_global()` to get the global
+> instance.
+> 
+> Example:
+> ```c
+> const struct mgos_config_i2c cfg = {
+>   .enable: true,
+>   .freq: 400,
+>   .debug: 0,
+>   .sda_gpio: 13,
+>   .scl_gpio: 12,
+> };
+> struct mgos_i2c *myi2c = mgos_i2c_create(&cfg);
+> ```
+>  
 #### (
 
 ```c
 #define MGOS_I2C_ADDR_CONTINUE ((uint16_t) -1)
 ```
- If this special address is passed to read or write, START is not generated
-and address is not put on the bus. It is assumed that this is a continuation
-of a previous operation which (after read or write with stop = false). 
+>  If this special address is passed to read or write, START is not generated
+> and address is not put on the bus. It is assumed that this is a continuation
+> of a previous operation which (after read or write with stop = false). 
 #### mgos_i2c_read
 
 ```c
 bool mgos_i2c_read(struct mgos_i2c *i2c, uint16_t addr, void *data, size_t len,
                    bool stop);
 ```
-
-Read specified number of bytes from the specified address.
-Address should not include the R/W bit. If addr is -1, START is not
-performed.
-If |stop| is true, then at the end of the operation bus will be released.
- 
+> 
+> Read specified number of bytes from the specified address.
+> Address should not include the R/W bit. If addr is -1, START is not
+> performed.
+> If |stop| is true, then at the end of the operation bus will be released.
+>  
 #### mgos_i2c_write
 
 ```c
 bool mgos_i2c_write(struct mgos_i2c *i2c, uint16_t addr, const void *data,
                     size_t len, bool stop);
 ```
-
-Write specified number of bytes from the specified address.
-Address should not include the R/W bit. If addr is -1, START is not
-performed.
-If |stop| is true, then at the end of the operation bus will be released.
- 
+> 
+> Write specified number of bytes from the specified address.
+> Address should not include the R/W bit. If addr is -1, START is not
+> performed.
+> If |stop| is true, then at the end of the operation bus will be released.
+>  
 #### mgos_i2c_stop
 
 ```c
 void mgos_i2c_stop(struct mgos_i2c *i2c);
 ```
-
-Release the bus (when left unreleased after read or write).
- 
+> 
+> Release the bus (when left unreleased after read or write).
+>  
 #### mgos_i2c_get_freq
 
 ```c
 int mgos_i2c_get_freq(struct mgos_i2c *i2c);
 ```
-
-Get I2C interface frequency.
- 
+> 
+> Get I2C interface frequency.
+>  
 #### mgos_i2c_set_freq
 
 ```c
 bool mgos_i2c_set_freq(struct mgos_i2c *i2c, int freq);
 ```
-
-Set I2C interface frequency.
- 
+> 
+> Set I2C interface frequency.
+>  
 #### mgos_i2c_read_reg_b
 
 ```c
 int mgos_i2c_read_reg_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg);
 ```
-
-Helper for reading 1-byte register `reg` from a device at address `addr`.
-In case of success return a numeric byte value from 0x00 to 0xff; otherwise
-return -1.
- 
+> 
+> Helper for reading 1-byte register `reg` from a device at address `addr`.
+> In case of success return a numeric byte value from 0x00 to 0xff; otherwise
+> return -1.
+>  
 #### mgos_i2c_read_reg_w
 
 ```c
 int mgos_i2c_read_reg_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg);
 ```
-
-Helper for reading 2-byte register `reg` from a device at address `addr`.
-In case of success returns a numeric big-endian value: e.g. if 0x01, 0x02
-was read from a device, 0x0102 will be returned.
-
-In case of error returns -1.
- 
+> 
+> Helper for reading 2-byte register `reg` from a device at address `addr`.
+> In case of success returns a numeric big-endian value: e.g. if 0x01, 0x02
+> was read from a device, 0x0102 will be returned.
+> 
+> In case of error returns -1.
+>  
 #### mgos_i2c_read_reg_n
 
 ```c
 bool mgos_i2c_read_reg_n(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
                          size_t n, uint8_t *buf);
 ```
-
-Helper for reading `n`-byte register value from a device. Returns true on
-success, false on error. Data is written to `buf`, which should be large
-enough.
- 
+> 
+> Helper for reading `n`-byte register value from a device. Returns true on
+> success, false on error. Data is written to `buf`, which should be large
+> enough.
+>  
 #### mgos_i2c_write_reg_b
 
 ```c
 bool mgos_i2c_write_reg_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
                           uint8_t value);
 ```
-
-Helper for writing 1-byte register `reg` to a device at address `addr`.
-Returns `true` in case of success, `false` otherwise.
- 
+> 
+> Helper for writing 1-byte register `reg` to a device at address `addr`.
+> Returns `true` in case of success, `false` otherwise.
+>  
 #### mgos_i2c_write_reg_w
 
 ```c
 bool mgos_i2c_write_reg_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
                           uint16_t value);
 ```
-
-Helper for writing 2-byte register `reg` to a device at address `addr`.
-The value is big-endian: e.g. if `value` is `0x0102`, then `0x01, 0x02`
-will be written.
-Returns `true` in case of success, `false` otherwise.
- 
+> 
+> Helper for writing 2-byte register `reg` to a device at address `addr`.
+> The value is big-endian: e.g. if `value` is `0x0102`, then `0x01, 0x02`
+> will be written.
+> Returns `true` in case of success, `false` otherwise.
+>  
 #### mgos_i2c_write_reg_n
 
 ```c
 bool mgos_i2c_write_reg_n(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
                           size_t n, const uint8_t *buf);
 ```
-
-Helper for writing `n`-byte register `reg` to a device at address `addr`.
-Returns `true` in case of success, `false` otherwise.
- 
+> 
+> Helper for writing `n`-byte register `reg` to a device at address `addr`.
+> Returns `true` in case of success, `false` otherwise.
+>  
 #### mgos_i2c_close
 
 ```c
 void mgos_i2c_close(struct mgos_i2c *conn);
 ```
- Close i2c connection and free resources. 
+>  Close i2c connection and free resources. 
 #### mgos_i2c_get_global
 
 ```c
 struct mgos_i2c *mgos_i2c_get_global(void);
 ```
- Return i2c bus handle that is set up via the sysconfig. 
+>  Return i2c bus handle that is set up via the sysconfig. 
 
 ### JS API
 

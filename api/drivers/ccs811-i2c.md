@@ -94,101 +94,101 @@ uint32_t read;                 // calls to _read()
   double   read_success_usecs;   // time spent in successful uncached _read()
 };
 ```
-value of mg_time() upon last call to _read()
+> value of mg_time() upon last call to _read()
 #### mgos_ccs811_create
 
 ```c
 struct mgos_ccs811 *mgos_ccs811_create(struct mgos_i2c *i2c, uint8_t i2caddr);
 ```
-
-Initialize a CCS811 on the I2C bus `i2c` at address specified in `i2caddr`
-parameter (default CCS811 is on address 0x5A). The sensor will be polled for
-validity, upon success a new `struct mgos_ccs811` is allocated and
-returned. If the device could not be found, NULL is returned.
- 
+> 
+> Initialize a CCS811 on the I2C bus `i2c` at address specified in `i2caddr`
+> parameter (default CCS811 is on address 0x5A). The sensor will be polled for
+> validity, upon success a new `struct mgos_ccs811` is allocated and
+> returned. If the device could not be found, NULL is returned.
+>  
 #### mgos_ccs811_destroy
 
 ```c
 void mgos_ccs811_destroy(struct mgos_ccs811 **sensor);
 ```
-
-Destroy the data structure associated with a CCS811 device. The reference
-to the pointer of the `struct mgos_ccs811` has to be provided, and upon
-successful destruction, its associated memory will be freed and the pointer
-set to NULL.
- 
+> 
+> Destroy the data structure associated with a CCS811 device. The reference
+> to the pointer of the `struct mgos_ccs811` has to be provided, and upon
+> successful destruction, its associated memory will be freed and the pointer
+> set to NULL.
+>  
 #### mgos_ccs811_read
 
 ```c
 bool mgos_ccs811_read(struct mgos_ccs811 *sensor);
 ```
-
-The sensor will be polled for its temperature and humidity data. If the poll
-has occured in the last `MGOS_CCS811_READ_DELAY` seconds, the cached data is
-used (so as not to repeatedly poll the bus upon subsequent calls).
- 
+> 
+> The sensor will be polled for its temperature and humidity data. If the poll
+> has occured in the last `MGOS_CCS811_READ_DELAY` seconds, the cached data is
+> used (so as not to repeatedly poll the bus upon subsequent calls).
+>  
 #### mgos_ccs811_setDriveMode
 
 ```c
 bool mgos_ccs811_setDriveMode(struct mgos_ccs811 *sensor, enum mgos_ccs811_drive_mode_t mode);
 ```
-
-Set the drive mode of the CCS811 sensor based on the `mode` argument
-Returns true on success, false otherwise.
- 
+> 
+> Set the drive mode of the CCS811 sensor based on the `mode` argument
+> Returns true on success, false otherwise.
+>  
 #### mgos_ccs811_getDriveMode
 
 ```c
 bool mgos_ccs811_getDriveMode(struct mgos_ccs811 *sensor, uint8_t *mode);
 ```
-
-Retrieve the current drive mode (which will be one of `enum mgos_ccs811_drive_mode_t`
-values into the byte pointed to by `mode`.
-Returns true on success, false otherwise.
- 
+> 
+> Retrieve the current drive mode (which will be one of `enum mgos_ccs811_drive_mode_t`
+> values into the byte pointed to by `mode`.
+> Returns true on success, false otherwise.
+>  
 #### mgos_ccs811_get_eco2
 
 ```c
 float mgos_ccs811_get_eco2(struct mgos_ccs811 *sensor);
 ```
-
-The sensor will be polled for its effective CO2 data. If the poll
-has occured in the last `MGOS_CCS811_READ_DELAY` seconds, the cached data is
-used (so as not to repeatedly poll the bus upon subsequent calls).
-
-Returns a value in eCO2 parts per million on success, NAN otherwise.
- 
+> 
+> The sensor will be polled for its effective CO2 data. If the poll
+> has occured in the last `MGOS_CCS811_READ_DELAY` seconds, the cached data is
+> used (so as not to repeatedly poll the bus upon subsequent calls).
+> 
+> Returns a value in eCO2 parts per million on success, NAN otherwise.
+>  
 #### mgos_ccs811_get_tvoc
 
 ```c
 float mgos_ccs811_get_tvoc(struct mgos_ccs811 *sensor);
 ```
-
-The sensor will be polled for its Volatile Organic Compounds (TVOC) data.
-If the poll has occured in the last `MGOS_CCS811_READ_DELAY` seconds, the
-cached data is used (so as not to repeatedly poll the bus upon subsequent
-calls).
-
-Returns a value in TVOC parts per billion on success, NAN otherwise.
- 
+> 
+> The sensor will be polled for its Volatile Organic Compounds (TVOC) data.
+> If the poll has occured in the last `MGOS_CCS811_READ_DELAY` seconds, the
+> cached data is used (so as not to repeatedly poll the bus upon subsequent
+> calls).
+> 
+> Returns a value in TVOC parts per billion on success, NAN otherwise.
+>  
 #### mgos_ccs811_getStats
 
 ```c
 bool mgos_ccs811_getStats(struct mgos_ccs811 *sensor, struct mgos_ccs811_stats *stats);
 ```
-
-Returns the running statistics on the sensor interaction, the user provides
-a pointer to a `struct mgos_ccs811_stats` object, which is filled in by this
-call.
-
-Upon success, true is returned. Otherwise, false is returned, in which case
-the contents of `stats` is undetermined.
- 
+> 
+> Returns the running statistics on the sensor interaction, the user provides
+> a pointer to a `struct mgos_ccs811_stats` object, which is filled in by this
+> call.
+> 
+> Upon success, true is returned. Otherwise, false is returned, in which case
+> the contents of `stats` is undetermined.
+>  
 #### mgos_ccs811_i2c_init
 
 ```c
 bool mgos_ccs811_i2c_init(void);
 ```
-
-Initialization function for MGOS -- currently a noop.
- 
+> 
+> Initialization function for MGOS -- currently a noop.
+>  

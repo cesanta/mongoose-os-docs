@@ -12,24 +12,24 @@ This library provides PWM ([pulse-width modulation](https://en.wikipedia.org/wik
 ```c
 bool mgos_pwm_set(int pin, int freq, float duty);
 ```
-
-
- Set and control the PWM.
-
- Params:
- pin:    GPIO number.
- freq:   Frequency, in Hz. 0 disables PWM on the pin.
- duty:   Specifies which fraction of the cycle is spent in "1" state:
-         0 is always off, 0.5 is a square wave, 1 is always on.
- Return:
- true - SUCCESS, false - FAIL.
-
- Note:
- On esp32 we use 8 channels and 4 timers.
- Each `mgos_set_pwm` call with new pin number assigns a new channel.
- If we already have timer running at the specified frequency,
- we use it instead of assigning a new one.
- 
+> 
+> 
+>  Set and control the PWM.
+> 
+>  Params:
+>  pin:    GPIO number.
+>  freq:   Frequency, in Hz. 0 disables PWM on the pin.
+>  duty:   Specifies which fraction of the cycle is spent in "1" state:
+>          0 is always off, 0.5 is a square wave, 1 is always on.
+>  Return:
+>  true - SUCCESS, false - FAIL.
+> 
+>  Note:
+>  On esp32 we use 8 channels and 4 timers.
+>  Each `mgos_set_pwm` call with new pin number assigns a new channel.
+>  If we already have timer running at the specified frequency,
+>  we use it instead of assigning a new one.
+>  
 
 ### JS API
 

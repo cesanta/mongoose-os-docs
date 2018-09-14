@@ -33,7 +33,7 @@ RPC.call(RPC.LOCAL, 'Config.Save', {reboot: true}, function (resp, ud) {
 ```c
 struct mg_rpc_channel *mg_rpc_channel_loopback(void);
 ```
-
-Creates a new loopback channel. Should be called for each incoming loopback
-request; `nc` is an incoming connection.
- 
+> 
+> Creates a new loopback channel. Should be called for each incoming loopback
+> request; `nc` is an incoming connection.
+>  

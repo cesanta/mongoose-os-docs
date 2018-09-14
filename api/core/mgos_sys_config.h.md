@@ -19,31 +19,31 @@ the programmatic API for the device configuration.
 ```c
 bool save_cfg(const struct mgos_config *cfg, char **msg);
 ```
-
-Save config. Performs diff against defaults and only saves diffs.
-Reboot is required to reload the config.
-If return value is false, a message may be provided in *msg.
-If non-NULL, it must be free()d.
-It is safe to pass a NULL `msg`
- 
+> 
+> Save config. Performs diff against defaults and only saves diffs.
+> Reboot is required to reload the config.
+> If return value is false, a message may be provided in *msg.
+> If non-NULL, it must be free()d.
+> It is safe to pass a NULL `msg`
+>  
 #### load_config_defaults
 
 ```c
 bool load_config_defaults(struct mgos_config *cfg);
 ```
-
-Reset all config values to defaults.
- 
+> 
+> Reset all config values to defaults.
+>  
 #### mgos_config_reset
 
 ```c
 void mgos_config_reset(int level);
 ```
-
-Reset config down to and including |level|.
-0 - defaults, 1-8 - vendor levels, 9 - user.
-mgos_config_reset(MGOS_CONFIG_LEVEL_USER) will wipe user settings.
- 
+> 
+> Reset config down to and including |level|.
+> 0 - defaults, 1-8 - vendor levels, 9 - user.
+> mgos_config_reset(MGOS_CONFIG_LEVEL_USER) will wipe user settings.
+>  
 #### (*mgos_config_validator_fn)
 
 ```c
@@ -51,48 +51,48 @@ typedef bool (*mgos_config_validator_fn)(const struct mgos_config *cfg,
                                          char **msg);
 void mgos_register_config_validator(mgos_config_validator_fn fn);
 ```
-
-Register a config validator.
-Validators will be invoked before saving config and if any of them
-returns false, config will not be saved.
-An error message may be *msg may be set to error message.
-Note: if non-NULL, *msg will be freed. Remember to use strdup and asprintf.
- 
+> 
+> Register a config validator.
+> Validators will be invoked before saving config and if any of them
+> returns false, config will not be saved.
+> An error message may be *msg may be set to error message.
+> Note: if non-NULL, *msg will be freed. Remember to use strdup and asprintf.
+>  
 #### mgos_expand_mac_address_placeholders
 
 ```c
 void mgos_expand_mac_address_placeholders(char *str);
 ```
- Expands question marks in "str" with digits from the MAC address. 
+>  Expands question marks in "str" with digits from the MAC address. 
 #### mgos_config_apply
 
 ```c
 bool mgos_config_apply(const char *sys_config_subset_json, bool save);
 ```
- Apply a subset of system configuration. Return true on success. 
+>  Apply a subset of system configuration. Return true on success. 
 #### mgos_config_apply_s
 
 ```c
 bool mgos_config_apply_s(const struct mg_str, bool save);
 ```
- Same as mgos_config_apply but uses mg_str 
+>  Same as mgos_config_apply but uses mg_str 
 #### mgos_sys_config_parse_sub
 
 ```c
 bool mgos_sys_config_parse_sub(const struct mg_str json, const char *section,
                                void *cfg);
 ```
-
-Parse a subsection of sys config, e.g. just "spi".
-cfg must point to the subsection's struct.
-Example:
-```
-  struct mgos_config_spi cfg;
-  const struct mg_str json_cfg = MG_MK_STR("{\"unit_no\": 1}");
-  memset(&cfg, 0, sizeof(cfg));
-  mgos_sys_config_parse_sub(json_cfg, "spi", cfg);
-```
- 
+> 
+> Parse a subsection of sys config, e.g. just "spi".
+> cfg must point to the subsection's struct.
+> Example:
+> ```
+>   struct mgos_config_spi cfg;
+>   const struct mg_str json_cfg = MG_MK_STR("{\"unit_no\": 1}");
+>   memset(&cfg, 0, sizeof(cfg));
+>   mgos_sys_config_parse_sub(json_cfg, "spi", cfg);
+> ```
+>  
 
 ### JS API
 

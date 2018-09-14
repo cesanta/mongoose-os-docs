@@ -61,33 +61,33 @@ wide class of applications.
 typedef void (*blynk_handler_t)(struct mg_connection *, const char *cmd,
                                 int pin, int val, int id, void *user_data);
 ```
- Blynk event handler signature. 
+>  Blynk event handler signature. 
 #### blynk_set_handler
 
 ```c
 void blynk_set_handler(blynk_handler_t func, void *user_data);
 ```
- Set Blynk event handler. 
+>  Set Blynk event handler. 
 #### blynk_send
 
 ```c
 void blynk_send(struct mg_connection *c, uint8_t type, uint16_t id,
                 const void *data, uint16_t len);
 ```
- Send data to the Blynk server. `data`, `len` holds a message to send. 
+>  Send data to the Blynk server. `data`, `len` holds a message to send. 
 #### blynk_printf
 
 ```c
 void blynk_printf(struct mg_connection *c, uint8_t type, uint16_t id,
                   const char *fmt, ...);
 ```
- Same as as `blynk_send()`, formats message using `printf()` semantics. 
+>  Same as as `blynk_send()`, formats message using `printf()` semantics. 
 #### blynk_virtual_write
 
 ```c
 void blynk_virtual_write(struct mg_connection *c, int pin, float val, int id);
 ```
- Send a virtual write command 
+>  Send a virtual write command 
 
 ### JS API
 

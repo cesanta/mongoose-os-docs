@@ -78,153 +78,153 @@ Setting `sta_connect_timeout` to 0 disables this logic.
 ```c
 bool mgos_wifi_setup_sta(const struct mgos_config_wifi_sta *cfg);
 ```
-
-Setup wifi station; `struct mgos_config_wifi_sta` looks as follows:
-
-```c
-struct mgos_config_wifi_sta {
-  int enable;
-  char *ssid;
-  char *pass;
-  char *user;
-  char *anon_identity;
-  char *cert;
-  char *key;
-  char *ca_cert;
-  char *ip;
-  char *netmask;
-  char *gw;
-  char *nameserver;
-  char *dhcp_hostname;
-};
-```
-
-If `cfg->enable` is true, also calls `mgos_wifi_connect()`.
- 
+> 
+> Setup wifi station; `struct mgos_config_wifi_sta` looks as follows:
+> 
+> ```c
+> struct mgos_config_wifi_sta {
+>   int enable;
+>   char *ssid;
+>   char *pass;
+>   char *user;
+>   char *anon_identity;
+>   char *cert;
+>   char *key;
+>   char *ca_cert;
+>   char *ip;
+>   char *netmask;
+>   char *gw;
+>   char *nameserver;
+>   char *dhcp_hostname;
+> };
+> ```
+> 
+> If `cfg->enable` is true, also calls `mgos_wifi_connect()`.
+>  
 #### mgos_wifi_setup_ap
 
 ```c
 bool mgos_wifi_setup_ap(const struct mgos_config_wifi_ap *cfg);
 ```
-
-Setup wifi access point; `struct mgos_config_wifi_ap` looks as follows:
-
-```c
-struct mgos_config_wifi_ap {
-  int enable;
-  char *ssid;
-  char *pass;
-  int hidden;
-  int channel;
-  int max_connections;
-  char *ip;
-  char *netmask;
-  char *gw;
-  char *dhcp_start;
-  char *dhcp_end;
-  int trigger_on_gpio;
-  int disable_after;
-  int keep_enabled;
-};
-```
- 
+> 
+> Setup wifi access point; `struct mgos_config_wifi_ap` looks as follows:
+> 
+> ```c
+> struct mgos_config_wifi_ap {
+>   int enable;
+>   char *ssid;
+>   char *pass;
+>   int hidden;
+>   int channel;
+>   int max_connections;
+>   char *ip;
+>   char *netmask;
+>   char *gw;
+>   char *dhcp_start;
+>   char *dhcp_end;
+>   int trigger_on_gpio;
+>   int disable_after;
+>   int keep_enabled;
+> };
+> ```
+>  
 #### mgos_wifi_setup
 
 ```c
 bool mgos_wifi_setup(struct mgos_config_wifi *cfg);
 ```
-
-Setup both wifi station and access point at once; `struct mgos_config_wifi`
-looks as follows:
-
-```c
-struct mgos_config_wifi {
-  struct mgos_config_wifi_sta sta; // See definition above
-  struct mgos_config_wifi_ap ap;   // See definition above
-};
-```
- 
+> 
+> Setup both wifi station and access point at once; `struct mgos_config_wifi`
+> looks as follows:
+> 
+> ```c
+> struct mgos_config_wifi {
+>   struct mgos_config_wifi_sta sta; // See definition above
+>   struct mgos_config_wifi_ap ap;   // See definition above
+> };
+> ```
+>  
 #### mgos_wifi_connect
 
 ```c
 bool mgos_wifi_connect(void);
 ```
-
-Connect to the previously setup wifi station (with `mgos_wifi_setup_sta()`).
- 
+> 
+> Connect to the previously setup wifi station (with `mgos_wifi_setup_sta()`).
+>  
 #### mgos_wifi_disconnect
 
 ```c
 bool mgos_wifi_disconnect(void);
 ```
-
-Disconnect from wifi station.
- 
+> 
+> Disconnect from wifi station.
+>  
 #### mgos_wifi_validate_ap_cfg
 
 ```c
 bool mgos_wifi_validate_ap_cfg(const struct mgos_config_wifi_ap *cfg,
                                char **msg);
 ```
-
-Check whether the wifi access point config `cfg` is valid; if it is, `true`
-is returned; otherwise `false` is returned and error message is written
-to `*msg`. The caller should free `*msg`.
- 
+> 
+> Check whether the wifi access point config `cfg` is valid; if it is, `true`
+> is returned; otherwise `false` is returned and error message is written
+> to `*msg`. The caller should free `*msg`.
+>  
 #### mgos_wifi_validate_sta_cfg
 
 ```c
 bool mgos_wifi_validate_sta_cfg(const struct mgos_config_wifi_sta *cfg,
                                 char **msg);
 ```
-
-Check whether the wifi station config `cfg` is valid; if it is, `true` is
-returned; otherwise `false` is returned and error message is written to
-`*msg`. The caller should free `*msg`.
- 
+> 
+> Check whether the wifi station config `cfg` is valid; if it is, `true` is
+> returned; otherwise `false` is returned and error message is written to
+> `*msg`. The caller should free `*msg`.
+>  
 #### mgos_wifi_get_status
 
 ```c
 enum mgos_wifi_status mgos_wifi_get_status(void);
 ```
-
-Get wifi status, see `enum mgos_wifi_status`.
- 
+> 
+> Get wifi status, see `enum mgos_wifi_status`.
+>  
 #### mgos_wifi_get_status_str
 
 ```c
 char *mgos_wifi_get_status_str(void);
 ```
-
-Return wifi status string; the caller should free it.
- 
+> 
+> Return wifi status string; the caller should free it.
+>  
 #### mgos_wifi_get_connected_ssid
 
 ```c
 char *mgos_wifi_get_connected_ssid(void);
 ```
-
-Return wifi ssid the device is currently connected to (if any); the caller
-should free it. If the device is not connected to any wifi network, `NULL`
-is returned.
- 
+> 
+> Return wifi ssid the device is currently connected to (if any); the caller
+> should free it. If the device is not connected to any wifi network, `NULL`
+> is returned.
+>  
 #### mgos_wifi_get_sta_default_dns
 
 ```c
 char *mgos_wifi_get_sta_default_dns(void);
 ```
-
-Return default DNS server IP address. The caller should free it.
- 
+> 
+> Return default DNS server IP address. The caller should free it.
+>  
 #### mgos_wifi_sta_get_rssi
 
 ```c
 int mgos_wifi_sta_get_rssi(void);
 ```
-
-Returns RSSI of the station if connected to an AP, otherwise 0.
-Note: RSSI is a negative number.
- 
+> 
+> Returns RSSI of the station if connected to an AP, otherwise 0.
+> Note: RSSI is a negative number.
+>  
 #### (*mgos_wifi_scan_cb_t)
 
 ```c
@@ -232,47 +232,47 @@ typedef void (*mgos_wifi_scan_cb_t)(int num_res,
                                     struct mgos_wifi_scan_result *res,
                                     void *arg);
 ```
-
-Callback prototype for `mgos_wifi_scan()`, called when wifi scan is done.
-`num_res` is a number of networks found, `res` is a pointer to the first
-one. `arg` is an arbitrary pointer given to `mgos_wifi_scan()`.
-
-See `mgos_wifi_scan()` for more details.
- 
+> 
+> Callback prototype for `mgos_wifi_scan()`, called when wifi scan is done.
+> `num_res` is a number of networks found, `res` is a pointer to the first
+> one. `arg` is an arbitrary pointer given to `mgos_wifi_scan()`.
+> 
+> See `mgos_wifi_scan()` for more details.
+>  
 #### mgos_wifi_scan
 
 ```c
 void mgos_wifi_scan(mgos_wifi_scan_cb_t cb, void *arg);
 ```
-
-Scan available wifi networks; when the scan is done, the provided callback
-`cb` will be called with list of SSIDs or NULL on error.
-
-Each particular scan result isn't guaranteed to be exhaustive; a few scans
-might be necessary to get all networks around.
-
-Caller owns SSIDS, they are not freed by the callee.
-
-A note for implementations: invoking inline is ok.
- 
+> 
+> Scan available wifi networks; when the scan is done, the provided callback
+> `cb` will be called with list of SSIDs or NULL on error.
+> 
+> Each particular scan result isn't guaranteed to be exhaustive; a few scans
+> might be necessary to get all networks around.
+> 
+> Caller owns SSIDS, they are not freed by the callee.
+> 
+> A note for implementations: invoking inline is ok.
+>  
 #### mgos_wifi_deinit
 
 ```c
 void mgos_wifi_deinit(void);
 ```
-
-Deinitialize wifi.
- 
+> 
+> Deinitialize wifi.
+>  
 #### mgos_wifi_scan_js
 
 ```c
 void mgos_wifi_scan_js(struct mjs *mjs);
 #endif
 ```
-
-Internal: implementation of mJS `Wifi.scan()`; available if only
-`MGOS_HAVE_MJS` is 1.
- 
+> 
+> Internal: implementation of mJS `Wifi.scan()`; available if only
+> `MGOS_HAVE_MJS` is 1.
+>  
 
 ### JS API
 

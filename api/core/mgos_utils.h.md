@@ -8,10 +8,10 @@
 ```c
 void mgos_system_restart_after(int delay_ms);
 ```
- Restart system after the specified number of milliseconds 
+>  Restart system after the specified number of milliseconds 
 #### mgos_rand_range
 
 ```c
 float mgos_rand_range(float from, float to);
 ```
- Return random number in a given range. 
+>  Return random number in a given range. 

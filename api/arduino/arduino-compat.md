@@ -41,4 +41,4 @@ void analogWriteFreq(uint32_t freq);
 void analogWriteRange(uint32_t range);
 #endif
 ```
-int atexit(void (*func)()) __attribute__((weak));
+> int atexit(void (*func)()) __attribute__((weak));

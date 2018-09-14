@@ -12,36 +12,36 @@ This library provides SPI ([Serial Peripheral Interface](https://en.wikipedia.or
 ```c
 struct mgos_spi *mgos_spi_create(const struct mgos_config_spi *cfg);
 ```
- Initialize SPI master. 
+>  Initialize SPI master. 
 #### mgos_spi_configure
 
 ```c
 bool mgos_spi_configure(struct mgos_spi *spi,
                         const struct mgos_config_spi *cfg);
 ```
- (Re)configure existing SPI interface. 
+>  (Re)configure existing SPI interface. 
 #### mgos_spi_run_txn
 
 ```c
 bool mgos_spi_run_txn(struct mgos_spi *spi, bool full_duplex,
                       const struct mgos_spi_txn *txn);
 ```
-
-Execute a half-duplex transaction. See `struct mgos_spi_txn` for the details
-on transaction params.
- 
+> 
+> Execute a half-duplex transaction. See `struct mgos_spi_txn` for the details
+> on transaction params.
+>  
 #### mgos_spi_close
 
 ```c
 void mgos_spi_close(struct mgos_spi *spi);
 ```
- Close SPI handle. 
+>  Close SPI handle. 
 #### mgos_spi_get_global
 
 ```c
 struct mgos_spi *mgos_spi_get_global(void);
 ```
- Return global SPI bus handle which is configured via sysconfig. 
+>  Return global SPI bus handle which is configured via sysconfig. 
 
 ### JS API
 

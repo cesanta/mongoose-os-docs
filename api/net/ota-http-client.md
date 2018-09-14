@@ -37,7 +37,7 @@ The library adds the following object to the device configuration:
 ```c
 void mgos_ota_http_start(struct update_context *ctx, const char *url);
 ```
- Start OTA update by pulling the firmware from the given URL. 
+>  Start OTA update by pulling the firmware from the given URL. 
 
 ### JS API
 

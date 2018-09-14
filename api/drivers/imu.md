@@ -243,41 +243,41 @@ bool mgos_imu_gyroscope_destroy(struct mgos_imu *imu);
 bool mgos_imu_accelerometer_destroy(struct mgos_imu *imu);
 bool mgos_imu_magnetometer_destroy(struct mgos_imu *imu);
 ```
- TODO(pim): Add SPI adders
-bool mgos_imu_gyroscope_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_gyro_type type);
-bool mgos_imu_accelerometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_acc_type type);
-bool mgos_imu_magnetometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_mag_type type);
-
+>  TODO(pim): Add SPI adders
+> bool mgos_imu_gyroscope_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_gyro_type type);
+> bool mgos_imu_accelerometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_acc_type type);
+> bool mgos_imu_magnetometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_mag_type type);
+> 
 #### mgos_imu_read
 
 ```c
 bool mgos_imu_read(struct mgos_imu *imu);
 ```
- Read all available imu data from the IMU 
+>  Read all available imu data from the IMU 
 #### mgos_imu_accelerometer_get
 
 ```c
 bool mgos_imu_accelerometer_get(struct mgos_imu *imu, float *x, float *y, float *z);
 ```
- Return accelerometer data in units of m/s/s 
+>  Return accelerometer data in units of m/s/s 
 #### mgos_imu_gyroscope_get
 
 ```c
 bool mgos_imu_gyroscope_get(struct mgos_imu *imu, float *x, float *y, float *z);
 ```
- Return accelerometer data in units of deg/sec rotation rate 
+>  Return accelerometer data in units of deg/sec rotation rate 
 #### mgos_imu_magnetometer_get
 
 ```c
 bool mgos_imu_magnetometer_get(struct mgos_imu *imu, float *x, float *y, float *z);
 ```
- Return magnetometer data in units of microtesla (1 microtesla = 10 milligauss) 
+>  Return magnetometer data in units of microtesla (1 microtesla = 10 milligauss) 
 #### mgos_imu_get_compass_heading
 
 ```c
 bool mgos_imu_get_compass_heading(struct mgos_imu *imu, uint16_t *heading);
 ```
- Return compass heading based on magnetometer data, from [0..359] 
+>  Return compass heading based on magnetometer data, from [0..359] 
 #### mgos_imu_gyroscope_get_name
 
 ```c
@@ -285,12 +285,12 @@ const char *mgos_imu_gyroscope_get_name(struct mgos_imu *imu);
 const char *mgos_imu_magnetometer_get_name(struct mgos_imu *imu);
 const char *mgos_imu_accelerometer_get_name(struct mgos_imu *imu);
 ```
- String representation of the sensor types, guaranteed to be le 10 characters. 
+>  String representation of the sensor types, guaranteed to be le 10 characters. 
 #### mgos_imu_init
 
 ```c
 bool mgos_imu_init(void);
 ```
-
-Initialization function for MGOS -- currently a noop.
- 
+> 
+> Initialization function for MGOS -- currently a noop.
+>  

@@ -120,13 +120,15 @@ const re2 =
     /(((\s*\/\/.*\n)+)|(\/\*([^\*]|\*[^\/])*\*\/))\s+(?![\s\/])([\s\S]+?)\n\n/g;
 let a;
 const backs = '```';
-const dd = '\n<div class="apidescr">\n\n';
+const ident = function(x) {
+  return stripComments(x).split('\n').map(y => `> ${y}`).join('\n');
+};
 while ((a = re2.exec(rest)) != null) {
   const x = a[6].match(/^.*?\*?(\S+)\(/);
   // console.error('----------', a[6]);
   if (!x) continue;
   md += `#### ${x[1]}\n`;
-  md += `\n${backs}c\n${a[6]}\n${backs}\n${stripComments(a[1])}\n`;
+  md += `\n${backs}c\n${a[6]}\n${backs}\n${ident(a[1])}\n`;
 }
 
 // ------------------------------------------------  Add JS API

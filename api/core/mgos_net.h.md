@@ -17,71 +17,71 @@ is lost, established, etc.
 ```c
 #define MGOS_EVENT_GRP_NET MGOS_EVENT_BASE('N', 'E', 'T')
 ```
-
-Event group which should be given to `mgos_event_add_group_handler()`
-in order to subscribe to network events.
-
-Example:
-```c
-static void my_net_ev_handler(int ev, void *evd, void *arg) {
-  if (ev == MGOS_NET_EV_IP_ACQUIRED) {
-    LOG(LL_INFO, ("Just got IP!"));
-    // Fetch something very useful from somewhere
-  }
-  (void) evd;
-  (void) arg;
-}
-
-// Somewhere else:
-mgos_event_add_group_handler(MGOS_EVENT_GRP_NET, my_net_ev_handler, NULL);
-```
- 
+> 
+> Event group which should be given to `mgos_event_add_group_handler()`
+> in order to subscribe to network events.
+> 
+> Example:
+> ```c
+> static void my_net_ev_handler(int ev, void *evd, void *arg) {
+>   if (ev == MGOS_NET_EV_IP_ACQUIRED) {
+>     LOG(LL_INFO, ("Just got IP!"));
+>     // Fetch something very useful from somewhere
+>   }
+>   (void) evd;
+>   (void) arg;
+> }
+> 
+> // Somewhere else:
+> mgos_event_add_group_handler(MGOS_EVENT_GRP_NET, my_net_ev_handler, NULL);
+> ```
+>  
 #### mgos_net_get_ip_info
 
 ```c
 bool mgos_net_get_ip_info(enum mgos_net_if_type if_type, int if_instance,
                           struct mgos_net_ip_info *ip_info);
 ```
-
-Retrieve IP configuration of the provided interface type and instance
-number, and fill provided `ip_info` with it. Returns `true` in case of
-success, false otherwise.
- 
+> 
+> Retrieve IP configuration of the provided interface type and instance
+> number, and fill provided `ip_info` with it. Returns `true` in case of
+> success, false otherwise.
+>  
 #### mgos_net_ip_to_str
 
 ```c
 char *mgos_net_ip_to_str(const struct sockaddr_in *sin, char *out);
 ```
-
-Converts address to dotted-quad NUL-terminated string.
-`out` must be at least 16 bytes long.
-Returns the out pointer.
- 
+> 
+> Converts address to dotted-quad NUL-terminated string.
+> `out` must be at least 16 bytes long.
+> Returns the out pointer.
+>  
 #### mgos_net_str_to_ip
 
 ```c
 bool mgos_net_str_to_ip(const char *ips, struct sockaddr_in *sin);
 ```
-
-Parses dotted-quad NUL-terminated string into an IPv4 address.
- 
+> 
+> Parses dotted-quad NUL-terminated string into an IPv4 address.
+>  
 #### mgos_net_str_to_ip_n
 
 ```c
 bool mgos_net_str_to_ip_n(const struct mg_str ips, struct sockaddr_in *sin);
 ```
-
-Parses dotted-quad NUL-terminated string into an IPv4 address.
- 
+> 
+> Parses dotted-quad NUL-terminated string into an IPv4 address.
+>  
 #### mgos_get_nameserver
 
 ```c
 char *mgos_get_nameserver(void);
 ```
-
-Returns nameserver address. The caller should `free()` it. Returns NULL
-in case of no DNS.
- 
+> 
+> Returns nameserver address. The caller should `free()` it. Returns NULL
+> in case of no DNS.
+>  
 
 ### JS API
 

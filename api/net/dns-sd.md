@@ -12,18 +12,18 @@
 ```c
 const char *mgos_dns_sd_get_host_name(void);
 ```
-
-Return currently configure DNS-SD hostname.
- 
+> 
+> Return currently configure DNS-SD hostname.
+>  
 #### mgos_dns_sd_advertise
 
 ```c
 void mgos_dns_sd_advertise(void);
 ```
- Send a DNS-SD advertisement message now. 
+>  Send a DNS-SD advertisement message now. 
 #### mgos_dns_sd_goodbye
 
 ```c
 void mgos_dns_sd_goodbye(void);
 ```
- Send a goodbye packet 
+>  Send a goodbye packet 

@@ -84,18 +84,18 @@ for some background information.
 void mgos_mqtt_global_subscribe(const struct mg_str topic,
                                 mg_event_handler_t handler, void *ud);
 ```
-
-Subscribe to a specific topic.
-This handler will receive SUBACK - when first subscribed to the topic,
-PUBLISH - for messages published to this topic, PUBACK - acks for PUBLISH
-requests. MG_EV_CLOSE - when connection is closed.
- 
+> 
+> Subscribe to a specific topic.
+> This handler will receive SUBACK - when first subscribed to the topic,
+> PUBLISH - for messages published to this topic, PUBACK - acks for PUBLISH
+> requests. MG_EV_CLOSE - when connection is closed.
+>  
 #### mgos_mqtt_add_global_handler
 
 ```c
 void mgos_mqtt_add_global_handler(mg_event_handler_t handler, void *ud);
 ```
- Registers a mongoose handler to be invoked on the global MQTT connection 
+>  Registers a mongoose handler to be invoked on the global MQTT connection 
 #### (*mgos_mqtt_connect_fn_t)
 
 ```c
@@ -104,51 +104,51 @@ typedef void (*mgos_mqtt_connect_fn_t)(struct mg_connection *c,
                                        struct mg_send_mqtt_handshake_opts *opts,
                                        void *fn_arg);
 ```
-
-Callback signature for `mgos_mqtt_set_connect_fn()`, see its docs for
-details.
- 
+> 
+> Callback signature for `mgos_mqtt_set_connect_fn()`, see its docs for
+> details.
+>  
 #### mgos_mqtt_set_connect_fn
 
 ```c
 void mgos_mqtt_set_connect_fn(mgos_mqtt_connect_fn_t cb, void *fn_arg);
 ```
-
-Set connect callback. It is invoked when CONNECT message is about to
-be sent. The callback is responsible to call `mg_send_mqtt_handshake_opt()`
- 
+> 
+> Set connect callback. It is invoked when CONNECT message is about to
+> be sent. The callback is responsible to call `mg_send_mqtt_handshake_opt()`
+>  
 #### mgos_mqtt_get_global_conn
 
 ```c
 struct mg_connection *mgos_mqtt_get_global_conn(void);
 ```
-
-Returns current MQTT connection if it is established; otherwise returns
-`NULL`
- 
+> 
+> Returns current MQTT connection if it is established; otherwise returns
+> `NULL`
+>  
 #### mgos_mqtt_global_connect
 
 ```c
 bool mgos_mqtt_global_connect(void);
 ```
-
-Attempt MQTT connection now (if enabled and not already connected).
-Normally MQTT will try to connect in the background, at certain interval.
-This function will force immediate connection attempt.
- 
+> 
+> Attempt MQTT connection now (if enabled and not already connected).
+> Normally MQTT will try to connect in the background, at certain interval.
+> This function will force immediate connection attempt.
+>  
 #### mgos_mqtt_pub
 
 ```c
 bool mgos_mqtt_pub(const char *topic, const void *message, size_t len, int qos,
                    bool retain);
 ```
-
-Publish message to the configured MQTT server, to the given MQTT topic.
-Return value will be true if there is a connection to the server and the
-message has been queued for sending. In case of QoS 1 return value does
-not indicate that PUBACK has been received; there is currently no way to
-check for that.
- 
+> 
+> Publish message to the configured MQTT server, to the given MQTT topic.
+> Return value will be true if there is a connection to the server and the
+> message has been queued for sending. In case of QoS 1 return value does
+> not indicate that PUBACK has been received; there is currently no way to
+> check for that.
+>  
 #### mgos_mqtt_pubf
 
 ```c
@@ -157,7 +157,7 @@ bool mgos_mqtt_pubf(const char *topic, int qos, bool retain,
 bool mgos_mqtt_pubv(const char *topic, int qos, bool retain,
                     const char *json_fmt, va_list ap);
 ```
- Variant of mgos_mqtt_pub for publishing a JSON-formatted string 
+>  Variant of mgos_mqtt_pub for publishing a JSON-formatted string 
 #### (*sub_handler_t)
 
 ```c
@@ -169,38 +169,38 @@ typedef void (*sub_handler_t)(struct mg_connection *nc, const char *topic,
  */
 void mgos_mqtt_sub(const char *topic, sub_handler_t, void *ud);
 ```
-
-Callback signature for `mgos_mqtt_sub()` below.
- 
+> 
+> Callback signature for `mgos_mqtt_sub()` below.
+>  
 #### mgos_mqtt_num_unsent_bytes
 
 ```c
 size_t mgos_mqtt_num_unsent_bytes(void);
 ```
-
-Returns number of pending bytes to send.
- 
+> 
+> Returns number of pending bytes to send.
+>  
 #### mgos_mqtt_get_packet_id
 
 ```c
 uint16_t mgos_mqtt_get_packet_id(void);
 ```
-
-Returns next packet id; the returned value is incremented every time the
-function is called, and it's never 0 (so after 0xffff it'll be 1)
- 
+> 
+> Returns next packet id; the returned value is incremented every time the
+> function is called, and it's never 0 (so after 0xffff it'll be 1)
+>  
 #### mgos_mqtt_set_max_qos
 
 ```c
 void mgos_mqtt_set_max_qos(int qos);
 ```
-
-Set maximum QOS level that is supported by server: 0, 1 or 2.
-Some servers, particularly AWS GreenGrass, accept only QoS0 transactions.
-An attempt to use any other QoS results into silent disconnect.
-Therefore, instead of forcing all client code to track such server's quirks,
-we add mechanism to transparently downgrade the QoS.
- 
+> 
+> Set maximum QOS level that is supported by server: 0, 1 or 2.
+> Some servers, particularly AWS GreenGrass, accept only QoS0 transactions.
+> An attempt to use any other QoS results into silent disconnect.
+> Therefore, instead of forcing all client code to track such server's quirks,
+> we add mechanism to transparently downgrade the QoS.
+>  
 
 ### JS API
 

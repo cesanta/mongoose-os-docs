@@ -107,4 +107,4 @@ Same as `I2C.WriteRegB`, but write 2-byte (word) register value.
 ```c
 bool mgos_rpc_service_i2c_init(void);
 ```
- __cplusplus 
+>  __cplusplus 

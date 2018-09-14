@@ -54,30 +54,30 @@ struct mgos_irrecv_nec_s *mgos_irrecv_nec_create(
   void *userdata
 );
 ```
-
-Create an object instance of IR receiver for NEC protocol.
-Return value: an object with the methods described below.
- 
+> 
+> Create an object instance of IR receiver for NEC protocol.
+> Return value: an object with the methods described below.
+>  
 #### mgos_irrecv_nec_close
 
 ```c
 void mgos_irrecv_nec_close(struct mgos_irrecv_nec_s *obj);
 ```
-
-Destroy an object instance of IR receiver for NEC protocol.
- 
+> 
+> Destroy an object instance of IR receiver for NEC protocol.
+>  
 #### mgos_irsend_nec
 
 ```c
 void mgos_irsend_nec(int pin, int code, bool tsop);
 ```
-
-Send IR code for NEC protocol.
-Params:
-pin:  GPIO number.
-code: 32-bit code.
-tsop: mode: true - mimic TSOP signal, false - drive real IR led at 38 kHz.
- 
+> 
+> Send IR code for NEC protocol.
+> Params:
+> pin:  GPIO number.
+> code: 32-bit code.
+> tsop: mode: true - mimic TSOP signal, false - drive real IR led at 38 kHz.
+>  
 
 ### JS API
 

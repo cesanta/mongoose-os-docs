@@ -25,4 +25,4 @@ mJS wrapper API.
 ```c
 struct mjs *mgos_mjs_get_global(void);
 ```
- Return global mJS instance. 
+>  Return global mJS instance. 

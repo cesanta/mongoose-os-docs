@@ -8,78 +8,78 @@
 ```c
 void cs_log_set_level(enum cs_log_level level);
 ```
-
-Set max log level to print; messages with the level above the given one will
-not be printed.
- 
+> 
+> Set max log level to print; messages with the level above the given one will
+> not be printed.
+>  
 #### cs_log_set_filter
 
 ```c
 void cs_log_set_filter(const char *pattern);
 ```
-
-Set log filter. NULL (a default) logs everything.
-Otherwise, function name and file name will be tested against the given
-pattern, and only matching messages will be printed.
-
-For the pattern syntax, refer to `mg_match_prefix()` in `str_util.h`.
-
-Example:
-```c
-void foo(void) {
-  LOG(LL_INFO, ("hello from foo"));
-}
-
-void bar(void) {
-  LOG(LL_INFO, ("hello from bar"));
-}
-
-void test(void) {
-  cs_log_set_filter(NULL);
-  foo();
-  bar();
-
-  cs_log_set_filter("f*");
-  foo();
-  bar(); // Will NOT print anything
-
-  cs_log_set_filter("bar");
-  foo(); // Will NOT print anything
-  bar();
-}
-```
- 
+> 
+> Set log filter. NULL (a default) logs everything.
+> Otherwise, function name and file name will be tested against the given
+> pattern, and only matching messages will be printed.
+> 
+> For the pattern syntax, refer to `mg_match_prefix()` in `str_util.h`.
+> 
+> Example:
+> ```c
+> void foo(void) {
+>   LOG(LL_INFO, ("hello from foo"));
+> }
+> 
+> void bar(void) {
+>   LOG(LL_INFO, ("hello from bar"));
+> }
+> 
+> void test(void) {
+>   cs_log_set_filter(NULL);
+>   foo();
+>   bar();
+> 
+>   cs_log_set_filter("f*");
+>   foo();
+>   bar(); // Will NOT print anything
+> 
+>   cs_log_set_filter("bar");
+>   foo(); // Will NOT print anything
+>   bar();
+> }
+> ```
+>  
 #### cs_log_print_prefix
 
 ```c
 int cs_log_print_prefix(enum cs_log_level level, const char *func,
                         const char *filename);
 ```
-
-Helper function which prints message prefix with the given `level`, function
-name `func` and `filename`. If message should be printed (accordingly to the
-current log level and filter), prints the prefix and returns 1, otherwise
-returns 0.
-
-Clients should typically just use `LOG()` macro.
- 
+> 
+> Helper function which prints message prefix with the given `level`, function
+> name `func` and `filename`. If message should be printed (accordingly to the
+> current log level and filter), prints the prefix and returns 1, otherwise
+> returns 0.
+> 
+> Clients should typically just use `LOG()` macro.
+>  
 #### cs_log_set_file
 
 ```c
 void cs_log_set_file(FILE *file);
 ```
-
-Set file to write logs into. If `NULL`, logs go to `stderr`.
- 
+> 
+> Set file to write logs into. If `NULL`, logs go to `stderr`.
+>  
 #### cs_log_printf
 
 ```c
 void cs_log_printf(const char *fmt, ...) PRINTF_LIKE(1, 2);
 ```
-
-Prints log to the current log file, appends "\n" in the end and flushes the
-stream.
- 
+> 
+> Prints log to the current log file, appends "\n" in the end and flushes the
+> stream.
+>  
 #### LOG
 
 ```c
@@ -88,32 +88,32 @@ stream.
     if (cs_log_print_prefix(l, __func__, __FILE__)) cs_log_printf x; \
   } while (0)
 ```
-
-Format and print message `x` with the given level `l`. Example:
-
-```c
-LOG(LL_INFO, ("my info message: %d", 123));
-LOG(LL_DEBUG, ("my debug message: %d", 123));
-```
- 
+> 
+> Format and print message `x` with the given level `l`. Example:
+> 
+> ```c
+> LOG(LL_INFO, ("my info message: %d", 123));
+> LOG(LL_DEBUG, ("my debug message: %d", 123));
+> ```
+>  
 #### DBG
 
 ```c
 #define DBG(x) LOG(LL_VERBOSE_DEBUG, x)
 ```
-
-Shortcut for `LOG(LL_VERBOSE_DEBUG, (...))`
- 
+> 
+> Shortcut for `LOG(LL_VERBOSE_DEBUG, (...))`
+>  
 #### DBG
 
 ```c
 #define DBG(x)
 ```
- NDEBUG 
+>  NDEBUG 
 #### LOG
 
 ```c
 #define LOG(l, x)
 #define DBG(x)
 ```
- CS_ENABLE_STDIO 
+>  CS_ENABLE_STDIO 

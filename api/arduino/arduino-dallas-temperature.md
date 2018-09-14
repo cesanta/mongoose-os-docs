@@ -12,230 +12,230 @@
 ```c
 void begin(void);
 ```
-initialise bus
+> initialise bus
 #### getDeviceCount
 
 ```c
 uint8_t getDeviceCount(void);
 ```
-returns the number of devices found on the bus
+> returns the number of devices found on the bus
 #### validAddress
 
 ```c
 bool validAddress(const uint8_t*);
 ```
-returns true if address is valid
+> returns true if address is valid
 #### validFamily
 
 ```c
 bool validFamily(const uint8_t* deviceAddress);
 ```
-returns true if address is of the family of sensors the lib supports.
+> returns true if address is of the family of sensors the lib supports.
 #### getAddress
 
 ```c
 bool getAddress(uint8_t*, uint8_t);
 ```
-finds an address at a given index on the bus
+> finds an address at a given index on the bus
 #### isConnected
 
 ```c
 bool isConnected(const uint8_t*);
 ```
-attempt to determine if the device at the given address is connected to the bus
+> attempt to determine if the device at the given address is connected to the bus
 #### isConnected
 
 ```c
 bool isConnected(const uint8_t*, uint8_t*);
 ```
-attempt to determine if the device at the given address is connected to the bus
-also allows for updating the read scratchpad
+> attempt to determine if the device at the given address is connected to the bus
+> also allows for updating the read scratchpad
 #### readScratchPad
 
 ```c
 bool readScratchPad(const uint8_t*, uint8_t*);
 ```
-read device's scratchpad
+> read device's scratchpad
 #### writeScratchPad
 
 ```c
 void writeScratchPad(const uint8_t*, const uint8_t*);
 ```
-write device's scratchpad
+> write device's scratchpad
 #### readPowerSupply
 
 ```c
 bool readPowerSupply(const uint8_t*);
 ```
-read device's power requirements
+> read device's power requirements
 #### getResolution
 
 ```c
 uint8_t getResolution();
 ```
-get global resolution
+> get global resolution
 #### setResolution
 
 ```c
 void setResolution(uint8_t);
 ```
-set global resolution to 9, 10, 11, or 12 bits
+> set global resolution to 9, 10, 11, or 12 bits
 #### getResolution
 
 ```c
 uint8_t getResolution(const uint8_t*);
 ```
-returns the device resolution: 9, 10, 11, or 12 bits
+> returns the device resolution: 9, 10, 11, or 12 bits
 #### setResolution
 
 ```c
 bool setResolution(const uint8_t*, uint8_t, bool skipGlobalBitResolutionCalculation = false);
 ```
-set resolution of a device to 9, 10, 11, or 12 bits
+> set resolution of a device to 9, 10, 11, or 12 bits
 #### setWaitForConversion
 
 ```c
 void setWaitForConversion(bool);
     bool getWaitForConversion(void);
 ```
-sets/gets the waitForConversion flag
+> sets/gets the waitForConversion flag
 #### setCheckForConversion
 
 ```c
 void setCheckForConversion(bool);
     bool getCheckForConversion(void);
 ```
-sets/gets the checkForConversion flag
+> sets/gets the checkForConversion flag
 #### requestTemperatures
 
 ```c
 void requestTemperatures(void);
 ```
-sends command for all devices on the bus to perform a temperature conversion
+> sends command for all devices on the bus to perform a temperature conversion
 #### requestTemperaturesByAddress
 
 ```c
 bool requestTemperaturesByAddress(const uint8_t*);
 ```
-sends command for one device to perform a temperature conversion by address
+> sends command for one device to perform a temperature conversion by address
 #### requestTemperaturesByIndex
 
 ```c
 bool requestTemperaturesByIndex(uint8_t);
 ```
-sends command for one device to perform a temperature conversion by index
+> sends command for one device to perform a temperature conversion by index
 #### getTemp
 
 ```c
 int16_t getTemp(const uint8_t*);
 ```
-returns temperature raw value (12 bit integer of 1/128 degrees C)
+> returns temperature raw value (12 bit integer of 1/128 degrees C)
 #### getTempC
 
 ```c
 float getTempC(const uint8_t*);
 ```
-returns temperature in degrees C
+> returns temperature in degrees C
 #### getTempF
 
 ```c
 float getTempF(const uint8_t*);
 ```
-returns temperature in degrees F
+> returns temperature in degrees F
 #### getTempCByIndex
 
 ```c
 float getTempCByIndex(uint8_t);
 ```
-Get temperature for device index (slow)
+> Get temperature for device index (slow)
 #### getTempFByIndex
 
 ```c
 float getTempFByIndex(uint8_t);
 ```
-Get temperature for device index (slow)
+> Get temperature for device index (slow)
 #### isParasitePowerMode
 
 ```c
 bool isParasitePowerMode(void);
 ```
-returns true if the bus requires parasite power
+> returns true if the bus requires parasite power
 #### isConversionComplete
 
 ```c
 bool isConversionComplete(void);
 ```
-Is a conversion complete on the wire?
+> Is a conversion complete on the wire?
 #### setHighAlarmTemp
 
 ```c
 void setHighAlarmTemp(const uint8_t*, char);
 ```
-sets the high alarm temperature for a device
-accepts a char.  valid range is -55C - 125C
+> sets the high alarm temperature for a device
+> accepts a char.  valid range is -55C - 125C
 #### setLowAlarmTemp
 
 ```c
 void setLowAlarmTemp(const uint8_t*, char);
 ```
-sets the low alarm temperature for a device
-accepts a char.  valid range is -55C - 125C
+> sets the low alarm temperature for a device
+> accepts a char.  valid range is -55C - 125C
 #### getHighAlarmTemp
 
 ```c
 char getHighAlarmTemp(const uint8_t*);
 ```
-returns a signed char with the current high alarm temperature for a device
-in the range -55C - 125C
+> returns a signed char with the current high alarm temperature for a device
+> in the range -55C - 125C
 #### getLowAlarmTemp
 
 ```c
 char getLowAlarmTemp(const uint8_t*);
 ```
-returns a signed char with the current low alarm temperature for a device
-in the range -55C - 125C
+> returns a signed char with the current low alarm temperature for a device
+> in the range -55C - 125C
 #### resetAlarmSearch
 
 ```c
 void resetAlarmSearch(void);
 ```
-resets internal variables used for the alarm search
+> resets internal variables used for the alarm search
 #### alarmSearch
 
 ```c
 bool alarmSearch(uint8_t*);
 ```
-search the wire for devices with active alarms
+> search the wire for devices with active alarms
 #### hasAlarm
 
 ```c
 bool hasAlarm(const uint8_t*);
 ```
-returns true if ia specific device has an alarm
+> returns true if ia specific device has an alarm
 #### hasAlarm
 
 ```c
 bool hasAlarm(void);
 ```
-returns true if any device is reporting an alarm on the bus
+> returns true if any device is reporting an alarm on the bus
 #### processAlarms
 
 ```c
 void processAlarms(void);
 ```
-runs the alarm handler for all devices returned by alarmSearch()
+> runs the alarm handler for all devices returned by alarmSearch()
 #### setAlarmHandler
 
 ```c
 void setAlarmHandler(const AlarmHandler *);
 ```
-sets the alarm handler
+> sets the alarm handler
 #### defaultAlarmHandler
 
 ```c
 static void defaultAlarmHandler(const uint8_t*);
 ```
-The default alarm handler
+> The default alarm handler
 #### setUserData
 
 ```c
@@ -244,47 +244,47 @@ void setUserData(const uint8_t*, int16_t );
     int16_t getUserData(const uint8_t* );
     int16_t getUserDataByIndex(uint8_t );
 ```
-if no alarm handler is used the two bytes can be used as user data
-example of such usage is an ID.
-note if device is not connected it will fail writing the data.
-note if address cannot be found no error will be reported.
-in short use carefully
+> if no alarm handler is used the two bytes can be used as user data
+> example of such usage is an ID.
+> note if device is not connected it will fail writing the data.
+> note if address cannot be found no error will be reported.
+> in short use carefully
 #### toFahrenheit
 
 ```c
 static float toFahrenheit(float);
 ```
-convert from Celsius to Fahrenheit
+> convert from Celsius to Fahrenheit
 #### toCelsius
 
 ```c
 static float toCelsius(float);
 ```
-convert from Fahrenheit to Celsius
+> convert from Fahrenheit to Celsius
 #### rawToCelsius
 
 ```c
 static float rawToCelsius(int16_t);
 ```
-convert from raw to Celsius
+> convert from raw to Celsius
 #### rawToFahrenheit
 
 ```c
 static float rawToFahrenheit(int16_t);
 ```
-convert from raw to Fahrenheit
+> convert from raw to Fahrenheit
 #### delete
 
 ```c
 void operator delete(void*);
 ```
-delete memory reference
+> delete memory reference
 #### calculateTemperature
 
 ```c
 int16_t calculateTemperature(const uint8_t*, uint8_t*);
 ```
-reads scratchpad and returns the raw temperature
+> reads scratchpad and returns the raw temperature
 
 ### JS API
 

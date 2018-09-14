@@ -12,7 +12,7 @@
 ```c
 int16_t   readS16_LE(byte reg); // little endian
 ```
-little endian
+> little endian
 
 ### JS API
 

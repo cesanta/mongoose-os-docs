@@ -22,43 +22,43 @@ Cross-cloud device cloud state API.
 ```c
 #define MGOS_SHADOW_BASE MGOS_EVENT_BASE('S', 'D', 'W')
 ```
- __cplusplus 
+>  __cplusplus 
 #### mgos_shadow_event_name
 
 ```c
 const char *mgos_shadow_event_name(int ev);
 ```
- Stringify shadow event name 
+>  Stringify shadow event name 
 #### mgos_shadow_get
 
 ```c
 bool mgos_shadow_get(void);
 ```
-
-Request shadow state. Response will arrive via GET_ACCEPTED topic.
-Note that MGOS automatically does this on every (re)connect if
-device.shadow.get_on_connect is true (default).
- 
+> 
+> Request shadow state. Response will arrive via GET_ACCEPTED topic.
+> Note that MGOS automatically does this on every (re)connect if
+> device.shadow.get_on_connect is true (default).
+>  
 #### mgos_shadow_updatef
 
 ```c
 bool mgos_shadow_updatef(uint64_t version, const char *state_jsonf, ...);
 ```
-
-Send an update. Format string should define the value of the "state" key,
-i.e. it should be an object with an update to the reported state, e.g.:
-`mgos_shadow_updatef("{foo: %d, bar: %d}", foo, bar)`.
-Response will arrive via UPDATE_ACCEPTED or REJECTED topic.
-If you want the update to be aplied only if a particular version is
-current,
-specify the version. Otherwise set it to 0 to apply to any version.
- 
+> 
+> Send an update. Format string should define the value of the "state" key,
+> i.e. it should be an object with an update to the reported state, e.g.:
+> `mgos_shadow_updatef("{foo: %d, bar: %d}", foo, bar)`.
+> Response will arrive via UPDATE_ACCEPTED or REJECTED topic.
+> If you want the update to be aplied only if a particular version is
+> current,
+> specify the version. Otherwise set it to 0 to apply to any version.
+>  
 #### mgos_shadow_update
 
 ```c
 bool mgos_shadow_update(double version, const char *state_json);
 ```
- "Simple" version of mgos_shadow_updatef, primarily for FFI.  
+>  "Simple" version of mgos_shadow_updatef, primarily for FFI.  
 
 ### JS API
 

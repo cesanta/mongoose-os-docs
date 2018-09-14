@@ -26,13 +26,13 @@ GG core bootstrapping is done transparently by the library.
 ```c
 void aws_gg_net_ready(int ev, void *evd, void *arg);
 ```
- Network configuration hook handler for the AWS GreenGrass. 
+>  Network configuration hook handler for the AWS GreenGrass. 
 #### aws_gg_reconnect
 
 ```c
 void aws_gg_reconnect(void);
 ```
- Reconnect to GreenGrass. 
+>  Reconnect to GreenGrass. 
 
 ### JS API
 

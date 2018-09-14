@@ -12,22 +12,22 @@ This library implements a [analog-to-digital conversion](https://en.wikipedia.or
 ```c
 bool mgos_adc_enable(int pin);
 ```
- Configure and enable ADC 
+>  Configure and enable ADC 
 #### mgos_adc_read
 
 ```c
 int mgos_adc_read(int pin);
 ```
- Read from the analog pin. Returns raw value. 
+>  Read from the analog pin. Returns raw value. 
 #### mgos_adc_read_voltage
 
 ```c
 int mgos_adc_read_voltage(int pin);
 ```
-
-Read from the specified analog pin.
-Returns voltage on the pin, in mV.
- 
+> 
+> Read from the specified analog pin.
+> Returns voltage on the pin, in mV.
+>  
 
 ### JS API
 

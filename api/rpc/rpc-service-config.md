@@ -97,6 +97,6 @@ Example usage:
 ```c
 bool mgos_rpc_service_config_init(void);
 ```
-
-Initialises mg_rpc handlers for Config commands
- 
+> 
+> Initialises mg_rpc handlers for Config commands
+>  

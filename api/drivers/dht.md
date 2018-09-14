@@ -22,25 +22,25 @@ See https://learn.adafruit.com/dht/overview for more information.
 ```c
 struct mgos_dht *mgos_dht_create(int pin, enum dht_type type);
 ```
- Initialise DHT sensor. Return an opaque DHT handle, or `NULL` on error. 
+>  Initialise DHT sensor. Return an opaque DHT handle, or `NULL` on error. 
 #### mgos_dht_close
 
 ```c
 void mgos_dht_close(struct mgos_dht *dht);
 ```
- Close DHT handle. 
+>  Close DHT handle. 
 #### mgos_dht_get_temp
 
 ```c
 float mgos_dht_get_temp(struct mgos_dht *dht);
 ```
- Return temperature in DegC or 'NAN' on failure. 
+>  Return temperature in DegC or 'NAN' on failure. 
 #### mgos_dht_get_humidity
 
 ```c
 float mgos_dht_get_humidity(struct mgos_dht *dht);
 ```
- Return humidity in % or 'NAN' on failure. 
+>  Return humidity in % or 'NAN' on failure. 
 
 ### JS API
 

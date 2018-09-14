@@ -131,9 +131,9 @@ enum mgos_app_init_result mgos_app_init(void) {
 ```c
 void begin(void);
 ```
-
-Initialises the bus
-   
+> 
+> Initialises the bus
+>    
 #### getDeviceCount
 
 ```c
@@ -141,76 +141,76 @@ uint8_t getDeviceCount(void) {
     return _devices;
   }
 ```
-
- Returns the number of devices found on the bus
-   
+> 
+>  Returns the number of devices found on the bus
+>    
 #### validAddress
 
 ```c
 bool validAddress(const uint8_t *);
 ```
-
- Returns true if address is valid
-   
+> 
+>  Returns true if address is valid
+>    
 #### validFamily
 
 ```c
 bool validFamily(const uint8_t *deviceAddress);
 ```
-
-Returns true if address is of the family of sensors the lib supports.
-   
+> 
+> Returns true if address is of the family of sensors the lib supports.
+>    
 #### getAddress
 
 ```c
 bool getAddress(uint8_t *deviceAddress, uint8_t index);
 ```
-
-Finds an address at a given index on the bus
-   
+> 
+> Finds an address at a given index on the bus
+>    
 #### isConnected
 
 ```c
 bool isConnected(const uint8_t *);
 ```
-
-Attempts to determine if the device at the given address is connected to
-the bus
-   
+> 
+> Attempts to determine if the device at the given address is connected to
+> the bus
+>    
 #### isConnected
 
 ```c
 bool isConnected(const uint8_t *, uint8_t *);
 ```
-
-Attempts to determine if the device at the given address is connected to
-the bus.
-Also allows for updating the read scratchpad
-   
+> 
+> Attempts to determine if the device at the given address is connected to
+> the bus.
+> Also allows for updating the read scratchpad
+>    
 #### readScratchPad
 
 ```c
 bool readScratchPad(const uint8_t *, uint8_t *);
 ```
-
-Reads device's scratchpad
-   
+> 
+> Reads device's scratchpad
+>    
 #### writeScratchPad
 
 ```c
 void writeScratchPad(const uint8_t *, const uint8_t *);
 ```
-
-Writes device's scratchpad
-   
+> 
+> Writes device's scratchpad
+>    
 #### readPowerSupply
 
 ```c
 bool readPowerSupply(const uint8_t *deviceAddress);
 ```
-
-Reads device's power requirements
-   
+> 
+> Reads device's power requirements
+>    
 #### getResolution
 
 ```c
@@ -222,26 +222,26 @@ uint8_t getResolution() {
    */
   uint8_t getResolution(const uint8_t *deviceAddress);
 ```
-
-Gets the global resolution
-   
+> 
+> Gets the global resolution
+>    
 #### setResolution
 
 ```c
 void setResolution(uint8_t);
 ```
-
-Sets the global resolution to 9, 10, 11, or 12 bits
-   
+> 
+> Sets the global resolution to 9, 10, 11, or 12 bits
+>    
 #### setResolution
 
 ```c
 bool setResolution(const uint8_t *, uint8_t,
                      bool skipGlobalBitResolutionCalculation = false);
 ```
-
-Sets the resolution of a device to 9, 10, 11, or 12 bits
-   
+> 
+> Sets the resolution of a device to 9, 10, 11, or 12 bits
+>    
 #### setWaitForConversion
 
 ```c
@@ -249,14 +249,14 @@ void setWaitForConversion(bool value) {
     _waitForConversion = value;
   }
 ```
-
-Sets/gets the value of the waitForConversion flag
-true : function requestTemperature() etc returns when conversion is ready
-false: function requestTemperature() etc returns immediately (USE WITH
-CARE!!)
-       (1) programmer has to check if the needed delay has passed
-       (2) but the application can do meaningful things in that time
-   
+> 
+> Sets/gets the value of the waitForConversion flag
+> true : function requestTemperature() etc returns when conversion is ready
+> false: function requestTemperature() etc returns immediately (USE WITH
+> CARE!!)
+>        (1) programmer has to check if the needed delay has passed
+>        (2) but the application can do meaningful things in that time
+>    
 #### setCheckForConversion
 
 ```c
@@ -264,14 +264,14 @@ void setCheckForConversion(bool value) {
     _checkForConversion = value;
   }
 ```
-
-Sets/gets the checkForConversion flag
-sets the value of the checkForConversion flag
-true : function requestTemperature() etc will 'listen' to an IC to
-determine whether a conversion is complete
-false: function requestTemperature() etc will wait a set time (worst case
-scenario) for a conversion to complete
-   
+> 
+> Sets/gets the checkForConversion flag
+> sets the value of the checkForConversion flag
+> true : function requestTemperature() etc will 'listen' to an IC to
+> determine whether a conversion is complete
+> false: function requestTemperature() etc will wait a set time (worst case
+> scenario) for a conversion to complete
+>    
 #### requestTemperatures
 
 ```c
@@ -279,58 +279,58 @@ void requestTemperatures(void);
   // sends command for one device to perform a temperature conversion by address
   bool requestTemperaturesByAddress(const uint8_t *);
 ```
-
-Sends command for all devices on the bus to perform a temperature
-conversion
-   
+> 
+> Sends command for all devices on the bus to perform a temperature
+> conversion
+>    
 #### requestTemperaturesByIndex
 
 ```c
 bool requestTemperaturesByIndex(uint8_t);
 ```
-
-Sends command for one device to perform a temperature conversion by index
-   
+> 
+> Sends command for one device to perform a temperature conversion by index
+>    
 #### getTemp
 
 ```c
 int16_t getTemp(const uint8_t *);
 ```
-
-Returns temperature raw value (12 bit integer of 1/128 degrees C)
-   
+> 
+> Returns temperature raw value (12 bit integer of 1/128 degrees C)
+>    
 #### getTempC
 
 ```c
 float getTempC(const uint8_t *);
 ```
-
-Returns temperature in degrees C
-   
+> 
+> Returns temperature in degrees C
+>    
 #### getTempF
 
 ```c
 float getTempF(const uint8_t *);
 ```
-
-Returns temperature in degrees F
-   
+> 
+> Returns temperature in degrees F
+>    
 #### getTempCByIndex
 
 ```c
 float getTempCByIndex(uint8_t);
 ```
-
-Get temperature for device index (slow)
-   
+> 
+> Get temperature for device index (slow)
+>    
 #### getTempFByIndex
 
 ```c
 float getTempFByIndex(uint8_t);
 ```
-
-Get temperature for device index (slow)
-   
+> 
+> Get temperature for device index (slow)
+>    
 #### isParasitePowerMode
 
 ```c
@@ -338,57 +338,57 @@ bool isParasitePowerMode(void) {
     return _parasite;
   }
 ```
-
-Returns true if the bus requires parasite power
-   
+> 
+> Returns true if the bus requires parasite power
+>    
 #### isConversionComplete
 
 ```c
 bool isConversionComplete(void);
 ```
-
-Is a conversion complete on the wire?
-   
+> 
+> Is a conversion complete on the wire?
+>    
 #### toFahrenheit
 
 ```c
 static float toFahrenheit(float);
 ```
-
-Convert from Celsius to Fahrenheit
-   
+> 
+> Convert from Celsius to Fahrenheit
+>    
 #### toCelsius
 
 ```c
 static float toCelsius(float);
 ```
-
-Convert from Fahrenheit to Celsius
-   
+> 
+> Convert from Fahrenheit to Celsius
+>    
 #### rawToCelsius
 
 ```c
 static float rawToCelsius(int16_t);
 ```
-
-Convert from raw to Celsius
-   
+> 
+> Convert from raw to Celsius
+>    
 #### rawToFahrenheit
 
 ```c
 static float rawToFahrenheit(int16_t);
 ```
-
-Convert from raw to Fahrenheit
-   
+> 
+> Convert from raw to Fahrenheit
+>    
 #### calculateTemperature
 
 ```c
 int16_t calculateTemperature(const uint8_t *, uint8_t *);
 ```
-
-Reads scratchpad and returns the raw temperature
-   
+> 
+> Reads scratchpad and returns the raw temperature
+>    
 
 ### JS API
 
