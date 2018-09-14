@@ -84,22 +84,18 @@ for some background information.
 void mgos_mqtt_global_subscribe(const struct mg_str topic,
                                 mg_event_handler_t handler, void *ud);
 ```
-<div class="apidescr">
 
 Subscribe to a specific topic.
 This handler will receive SUBACK - when first subscribed to the topic,
 PUBLISH - for messages published to this topic, PUBACK - acks for PUBLISH
 requests. MG_EV_CLOSE - when connection is closed.
  
-</div>
 #### mgos_mqtt_add_global_handler
 
 ```c
 void mgos_mqtt_add_global_handler(mg_event_handler_t handler, void *ud);
 ```
-<div class="apidescr">
  Registers a mongoose handler to be invoked on the global MQTT connection 
-</div>
 #### (*mgos_mqtt_connect_fn_t)
 
 ```c
@@ -108,53 +104,44 @@ typedef void (*mgos_mqtt_connect_fn_t)(struct mg_connection *c,
                                        struct mg_send_mqtt_handshake_opts *opts,
                                        void *fn_arg);
 ```
-<div class="apidescr">
 
 Callback signature for `mgos_mqtt_set_connect_fn()`, see its docs for
 details.
  
-</div>
 #### mgos_mqtt_set_connect_fn
 
 ```c
 void mgos_mqtt_set_connect_fn(mgos_mqtt_connect_fn_t cb, void *fn_arg);
 ```
-<div class="apidescr">
 
 Set connect callback. It is invoked when CONNECT message is about to
 be sent. The callback is responsible to call `mg_send_mqtt_handshake_opt()`
  
-</div>
 #### mgos_mqtt_get_global_conn
 
 ```c
 struct mg_connection *mgos_mqtt_get_global_conn(void);
 ```
-<div class="apidescr">
 
 Returns current MQTT connection if it is established; otherwise returns
 `NULL`
  
-</div>
 #### mgos_mqtt_global_connect
 
 ```c
 bool mgos_mqtt_global_connect(void);
 ```
-<div class="apidescr">
 
 Attempt MQTT connection now (if enabled and not already connected).
 Normally MQTT will try to connect in the background, at certain interval.
 This function will force immediate connection attempt.
  
-</div>
 #### mgos_mqtt_pub
 
 ```c
 bool mgos_mqtt_pub(const char *topic, const void *message, size_t len, int qos,
                    bool retain);
 ```
-<div class="apidescr">
 
 Publish message to the configured MQTT server, to the given MQTT topic.
 Return value will be true if there is a connection to the server and the
@@ -162,7 +149,6 @@ message has been queued for sending. In case of QoS 1 return value does
 not indicate that PUBACK has been received; there is currently no way to
 check for that.
  
-</div>
 #### mgos_mqtt_pubf
 
 ```c
@@ -171,9 +157,7 @@ bool mgos_mqtt_pubf(const char *topic, int qos, bool retain,
 bool mgos_mqtt_pubv(const char *topic, int qos, bool retain,
                     const char *json_fmt, va_list ap);
 ```
-<div class="apidescr">
  Variant of mgos_mqtt_pub for publishing a JSON-formatted string 
-</div>
 #### (*sub_handler_t)
 
 ```c
@@ -185,38 +169,31 @@ typedef void (*sub_handler_t)(struct mg_connection *nc, const char *topic,
  */
 void mgos_mqtt_sub(const char *topic, sub_handler_t, void *ud);
 ```
-<div class="apidescr">
 
 Callback signature for `mgos_mqtt_sub()` below.
  
-</div>
 #### mgos_mqtt_num_unsent_bytes
 
 ```c
 size_t mgos_mqtt_num_unsent_bytes(void);
 ```
-<div class="apidescr">
 
 Returns number of pending bytes to send.
  
-</div>
 #### mgos_mqtt_get_packet_id
 
 ```c
 uint16_t mgos_mqtt_get_packet_id(void);
 ```
-<div class="apidescr">
 
 Returns next packet id; the returned value is incremented every time the
 function is called, and it's never 0 (so after 0xffff it'll be 1)
  
-</div>
 #### mgos_mqtt_set_max_qos
 
 ```c
 void mgos_mqtt_set_max_qos(int qos);
 ```
-<div class="apidescr">
 
 Set maximum QOS level that is supported by server: 0, 1 or 2.
 Some servers, particularly AWS GreenGrass, accept only QoS0 transactions.
@@ -224,7 +201,6 @@ An attempt to use any other QoS results into silent disconnect.
 Therefore, instead of forcing all client code to track such server's quirks,
 we add mechanism to transparently downgrade the QoS.
  
-</div>
 
 ### JS API
 
@@ -234,7 +210,6 @@ we add mechanism to transparently downgrade the QoS.
 ```javascript
 MQTT.sub(topic, handler)
 ```
-<div class="apidescr">
 Subscribe to a topic, and call given handler function when message arrives.
 A handler receives 4 parameters: MQTT connection, topic name,
 message, and userdata.
@@ -247,13 +222,11 @@ MQTT.sub('my/topic/#', function(conn, topic, msg) {
   print('Topic:', topic, 'message:', msg);
 }, null);
 ```
-</div>
 #### MQTT.pub
 
 ```javascript
 MQTT.pub(topic, message, qos, retain)
 ```
-<div class="apidescr">
 Publish message to a topic. If `qos` is not specified, it defaults to 0.
 If `retain` is not specified, it defaults to `false`.
 Return value: 0 on failure (e.g. no connection to server), 1 on success.
@@ -268,13 +241,11 @@ GPIO.set_button_handler(pin, GPIO.PULL_UP, GPIO.INT_EDGE_NEG, 200, function() {
   print('Published:', res ? 'yes' : 'no');
 }, null);
 ```
-</div>
 #### MQTT.setEventHandler
 
 ```javascript
 MQTT.setEventHandler(handler, userdata)
 ```
-<div class="apidescr">
 Set MQTT connection event handler. Event handler is
 `ev_handler(conn, ev, edata)`, where `conn` is an opaque connection handle,
 `ev` is an event number, `edata` is an event-specific data.
@@ -287,4 +258,3 @@ MQTT.setEventHandler(function(conn, ev, edata) {
   if (ev !== 0) print('MQTT event handler: got', ev);
 }, null);
 ```
-</div>

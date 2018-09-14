@@ -54,28 +54,23 @@ struct mgos_irrecv_nec_s *mgos_irrecv_nec_create(
   void *userdata
 );
 ```
-<div class="apidescr">
 
 Create an object instance of IR receiver for NEC protocol.
 Return value: an object with the methods described below.
  
-</div>
 #### mgos_irrecv_nec_close
 
 ```c
 void mgos_irrecv_nec_close(struct mgos_irrecv_nec_s *obj);
 ```
-<div class="apidescr">
 
 Destroy an object instance of IR receiver for NEC protocol.
  
-</div>
 #### mgos_irsend_nec
 
 ```c
 void mgos_irsend_nec(int pin, int code, bool tsop);
 ```
-<div class="apidescr">
 
 Send IR code for NEC protocol.
 Params:
@@ -83,7 +78,6 @@ pin:  GPIO number.
 code: 32-bit code.
 tsop: mode: true - mimic TSOP signal, false - drive real IR led at 38 kHz.
  
-</div>
 
 ### JS API
 
@@ -93,31 +87,23 @@ tsop: mode: true - mimic TSOP signal, false - drive real IR led at 38 kHz.
 ```javascript
 IR.Receiver.NEC.create(pin, callback, userdata)
 ```
-<div class="apidescr">
 Create an object instance of IR receiver for NEC protocol.
 Return value: an object with the methods described below.
-</div>
 #### myIR.close
 
 ```javascript
 myIR.close()
 ```
-<div class="apidescr">
 Close receiver handle. Return value: none.
-</div>
 #### IR.Sender.NEC.pwm
 
 ```javascript
 IR.Sender.NEC.pwm(pin, code)
 ```
-<div class="apidescr">
 Send NEC IR code via real IR led. Return value: none.
-</div>
 #### IR.Sender.NEC.tsop
 
 ```javascript
 IR.Sender.NEC.tsop(pin, code)
 ```
-<div class="apidescr">
 Mimic TSOP receiver: drive a pin as if it would be connected to a TSOP receiver. Return value: none.
-</div>

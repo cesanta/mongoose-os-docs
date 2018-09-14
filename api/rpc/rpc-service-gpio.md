@@ -88,6 +88,4 @@ Example usage:
 ```c
 bool mgos_rpc_service_gpio_init(void);
 ```
-<div class="apidescr">
  __cplusplus 
-</div>

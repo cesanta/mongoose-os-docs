@@ -53,159 +53,121 @@ load('api_ds3231.js');
 ```javascript
 DS3231.create()
 ```
-<div class="apidescr">
 Create an instance of DS3231 with the methods described below.
-</div>
 #### myds.setVoltage
 
 ```javascript
 myds.setVoltage()
 ```
-<div class="apidescr">
 Destroy `myds` instance; it's illegal to call any methods on that instance
 afterwards.
 Return value: none.
-</div>
 #### myds.setTimeSeconds
 
 ```javascript
 myds.setTimeSeconds(seconds)
 ```
-<div class="apidescr">
 Set seconds, 0 to 59.
 Return value: none.
-</div>
 #### myds.setTimeMinutes
 
 ```javascript
 myds.setTimeMinutes(minutes)
 ```
-<div class="apidescr">
 Set minutes, 0 to 59.
 Return value: none.
-</div>
 #### myds.setTimeHours
 
 ```javascript
 myds.setTimeHours(hours)
 ```
-<div class="apidescr">
 Set hours, 0 to 23.
 Return value: none.
-</div>
 #### myds.setTimeDayOfTheWeek
 
 ```javascript
 myds.setTimeDayOfTheWeek(dayOfTheWeekDay)
 ```
-<div class="apidescr">
 Set day of the week, 1 to 7.
 Return value: none.
-</div>
 #### myds.setTimeDate
 
 ```javascript
 myds.setTimeDate(date)
 ```
-<div class="apidescr">
 Set day of month, 1 to 31.
 Return value: none.
-</div>
 #### myds.setTimeMonth
 
 ```javascript
 myds.setTimeMonth(month)
 ```
-<div class="apidescr">
 Set month, 1 to 12
 Return value: none.
-</div>
 #### myds.setTimeYear
 
 ```javascript
 myds.setTimeYear(twoDigitYear)
 ```
-<div class="apidescr">
 Set two last digits of the year, 0 to 99.
 Return value: none.
-</div>
 #### myds.getTimeSeconds
 
 ```javascript
 myds.getTimeSeconds()
 ```
-<div class="apidescr">
 Get seconds, 0 to 59.
-</div>
 #### myds.getTimeMinutes
 
 ```javascript
 myds.getTimeMinutes()
 ```
-<div class="apidescr">
 Get minutes, 0 to 59.
-</div>
 #### myds.getTimeHours
 
 ```javascript
 myds.getTimeHours()
 ```
-<div class="apidescr">
 Get hours, 0 to 23.
-</div>
 #### myds.getTimeHoursIs12HourClock
 
 ```javascript
 myds.getTimeHoursIs12HourClock()
 ```
-<div class="apidescr">
 Return 1 if 12-hour format is used, 0 otherwise.
-</div>
 #### myds.getTimeHoursIsPM
 
 ```javascript
 myds.getTimeHoursIsPM()
 ```
-<div class="apidescr">
 Return 1 if it's later than the noon.
-</div>
 #### myds.getTimeDayOfTheWeek
 
 ```javascript
 myds.getTimeDayOfTheWeek()
 ```
-<div class="apidescr">
 Get day of week, 1 to 7.
-</div>
 #### myds.getTimeDate
 
 ```javascript
 myds.getTimeDate()
 ```
-<div class="apidescr">
 Get day of month, 1 to 31.
-</div>
 #### myds.getTimeMonth
 
 ```javascript
 myds.getTimeMonth()
 ```
-<div class="apidescr">
 Get month, 1 to 12.
-</div>
 #### myds.getTimeYear
 
 ```javascript
 myds.getTimeYear()
 ```
-<div class="apidescr">
 Get last two digits of the year, 0 to 99.
-</div>
 #### myds.getTimeYearCentury
 
 ```javascript
 myds.getTimeYearCentury()
 ```
-<div class="apidescr">
 Return 1 if year is between 2100 and 2199; 0 otherwise.
-</div>

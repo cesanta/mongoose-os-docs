@@ -16,16 +16,13 @@ A filesystem is backed by a device which supports block reads and writes.
 ```c
 #define MGOS_VFS_VFD_TO_FS_FD(vfd) ((vfd) &0xff)
 ```
-<div class="apidescr">
  Convert virtual fd to filesystem-specific fd 
-</div>
 #### (
 
 ```c
 #define MMAP_NUM_MASK ((1 << MMAP_NUM_BITS) - 1)
 #define MMAP_ADDR_MASK ((1 << MMAP_ADDR_BITS) - 1)
 ```
-<div class="apidescr">
 
 Platform-dependent header should define the following macros:
 
@@ -42,45 +39,37 @@ need to define two more macros which will define how these bits are used:
   mmapped area;
 - MMAP_NUM_BITS: how many bits are used for the number of mmapped area.
  
-</div>
 #### mgos_vfs_mmap_descs_cnt
 
 ```c
 int mgos_vfs_mmap_descs_cnt(void);
 ```
-<div class="apidescr">
 
 Returns total number of allocated mmap descriptors (not all of them might be
 used at the moment)
  
-</div>
 #### mgos_vfs_mmap_desc_get
 
 ```c
 struct mgos_vfs_mmap_desc *mgos_vfs_mmap_desc_get(int idx);
 #endif /* CS_MMAP */
 ```
-<div class="apidescr">
 
 Returns mmap descriptor at the given index
  
-</div>
 #### mgos_vfs_fs_register_type
 
 ```c
 bool mgos_vfs_fs_register_type(const char *type,
                                const struct mgos_vfs_fs_ops *ops);
 ```
-<div class="apidescr">
  Register fielsystem type and make it available for use in mkfs and mount. 
-</div>
 #### mgos_vfs_mkfs
 
 ```c
 bool mgos_vfs_mkfs(const char *dev_type, const char *dev_opts,
                    const char *fs_type, const char *fs_opts);
 ```
-<div class="apidescr">
 
 Create a filesystem.
 First a device is created with given type and options and then filesystem
@@ -88,7 +77,6 @@ is created on it. Device and filesystem types must've been previosuly
 registered and options have device and filesystem-specific format
 and usually are JSON objects.
  
-</div>
 #### mgos_vfs_mkfs_dev
 
 ```c
@@ -97,9 +85,7 @@ bool mgos_vfs_mkfs_dev(struct mgos_vfs_dev *dev, const char *fs_type,
 bool mgos_vfs_mkfs_dev_name(const char *dev_name, const char *fs_type,
                             const char *fs_opts);
 ```
-<div class="apidescr">
  Create a filesystem on an existing device. 
-</div>
 #### mgos_vfs_mount
 
 ```c
@@ -107,7 +93,6 @@ bool mgos_vfs_mount(const char *path, const char *dev_type,
                     const char *dev_opts, const char *fs_type,
                     const char *fs_opts);
 ```
-<div class="apidescr">
 
 Mount a filesystem.
 First a device is created with given type and options and then filesystem
@@ -117,71 +102,58 @@ Nested mounts are not currently supported, so "/mnt/foo" is not ok.
 Device and filesystem types must've been previosly registered and options
 have device and filesystem-specific format and usually are JSON objects.
  
-</div>
 #### mgos_vfs_mount_dev_name
 
 ```c
 bool mgos_vfs_mount_dev_name(const char *path, const char *dev_name,
                              const char *fs_type, const char *fs_opts);
 ```
-<div class="apidescr">
 
 Mount a filesystem from an existing device.
  
-</div>
 #### mgos_vfs_umount
 
 ```c
 bool mgos_vfs_umount(const char *path);
 ```
-<div class="apidescr">
 
 Unmount a previously mounted filesystem.
 Only filesystems with no open files can be unmounted.
  
-</div>
 #### mgos_vfs_umount_all
 
 ```c
 void mgos_vfs_umount_all(void);
 ```
-<div class="apidescr">
 
 Unmount all the filesystems, regardless of open files.
 Done only on reboot.
  
-</div>
 #### mgos_vfs_gc
 
 ```c
 bool mgos_vfs_gc(const char *path);
 ```
-<div class="apidescr">
 
 Perform GC of a filesystem at the specified mountpoint.
  
-</div>
 #### mgos_vfs_hal_mount
 
 ```c
 bool mgos_vfs_hal_mount(const char *path, struct mgos_vfs_fs *fs);
 ```
-<div class="apidescr">
 
 Platform implementation must ensure that paths prefixed with "path" are
 routed to "fs" and file descriptors are translated appropriately.
  
-</div>
 #### mgos_realpath
 
 ```c
 char *mgos_realpath(const char *path, char *resolved_path);
 ```
-<div class="apidescr">
 
 Clean up path, see realpath(3).
  
-</div>
 #### mgos_vfs_open
 
 ```c
@@ -200,6 +172,4 @@ struct dirent *mgos_vfs_readdir(DIR *pdir);
 int mgos_vfs_closedir(DIR *pdir);
 #endif
 ```
-<div class="apidescr">
  libc API 
-</div>

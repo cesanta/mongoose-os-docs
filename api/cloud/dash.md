@@ -21,7 +21,6 @@ Device management dashboard API.
 ```c
 void mgos_dash_callf_noreply(const char *method, const char *json_fmt, ...);
 ```
-<div class="apidescr">
 
 Send an RPC request to the dashboard that does not require an answer.
 Example - report statistical data:
@@ -29,4 +28,3 @@ Example - report statistical data:
    mgos_dash_call_noreply("Dash.Data", "[%d, %d]", value1, value2);
 ```
  
-</div>

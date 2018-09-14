@@ -67,13 +67,11 @@ bool mgos_watson_send_event_jsonf(const char *event_id, const char *json_fmt,
 bool mgos_watson_send_event_jsonp(const struct mg_str *event_id,
                                   const struct mg_str *body);
 ```
-<div class="apidescr">
 
 Send an event, in JSON format.
 The message should be an object with a "d" key and properties, e.g.:
 `mgos_watson_send_eventf("{d: {foo: %d}}", foo);`
  
-</div>
 
 ### JS API
 

@@ -26,17 +26,13 @@ GG core bootstrapping is done transparently by the library.
 ```c
 void aws_gg_net_ready(int ev, void *evd, void *arg);
 ```
-<div class="apidescr">
  Network configuration hook handler for the AWS GreenGrass. 
-</div>
 #### aws_gg_reconnect
 
 ```c
 void aws_gg_reconnect(void);
 ```
-<div class="apidescr">
  Reconnect to GreenGrass. 
-</div>
 
 ### JS API
 
@@ -46,7 +42,6 @@ void aws_gg_reconnect(void);
 ```javascript
 AWS.Shadow.setStateHandler(callback, userdata)
 ```
-<div class="apidescr">
 
 Set AWS shadow state handler callback.
 
@@ -79,32 +74,26 @@ AWS.Shadow.setStateHandler(function(data, event, reported, desired, reported_met
   print(JSON.stringify(reported), JSON.stringify(desired));
 }, null);
 ```
-</div>
 #### AWS.Shadow.get
 
 ```javascript
 AWS.Shadow.get()
 ```
-<div class="apidescr">
 
 Request shadow state. The event handler (see
 `AWS.Shadow.setStateHandler()`) will receive a `GET_ACCEPTED` event.
 Returns true in case of success, false otherwise.
-</div>
 #### AWS.Shadow.getVersion
 
 ```javascript
 AWS.Shadow.getVersion();
 ```
-<div class="apidescr">
 Return last shadow state version (a number).
-</div>
 #### AWS.Shadow.update
 
 ```javascript
 AWS.Shadow.update(version, state);
 ```
-<div class="apidescr">
 
 Update AWS shadow state.
 
@@ -123,4 +112,3 @@ GPIO.set_button_handler(buttonPin, GPIO.PULL_UP, GPIO.INT_EDGE_NEG, 200, functio
   AWS.Shadow.update(0, {desired: {on: state.on, counter: state.counter + 1}});
 }, null);
 ```
-</div>

@@ -22,6 +22,4 @@ mos --port mqtt://iot.eclipse.org:1883/esp8266_DA7E15 call Config.Get
 ```c
 struct mg_rpc_channel *mg_rpc_channel_mqtt(const struct mg_str device_id);
 ```
-<div class="apidescr">
  __cplusplus 
-</div>

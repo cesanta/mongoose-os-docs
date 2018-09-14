@@ -16,6 +16,4 @@ implemented.
 ```c
 bool mbedtls_atca_is_available();
 ```
-<div class="apidescr">
  Invoked from mbedTLS during ECDH phase of the handshake. 
-</div>

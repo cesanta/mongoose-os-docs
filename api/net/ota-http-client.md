@@ -37,9 +37,7 @@ The library adds the following object to the device configuration:
 ```c
 void mgos_ota_http_start(struct update_context *ctx, const char *url);
 ```
-<div class="apidescr">
  Start OTA update by pulling the firmware from the given URL. 
-</div>
 
 ### JS API
 
@@ -49,7 +47,5 @@ void mgos_ota_http_start(struct update_context *ctx, const char *url);
 ```javascript
 OTA.evdataOtaStatusMsg(evdata)
 ```
-<div class="apidescr">
 Getter function for the `evdata` given to the event callback for the event
 `Event.OTA_STATUS`, see `Event.addHandler()` in `api_events.js`.
-</div>

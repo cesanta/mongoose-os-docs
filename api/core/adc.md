@@ -12,28 +12,22 @@ This library implements a [analog-to-digital conversion](https://en.wikipedia.or
 ```c
 bool mgos_adc_enable(int pin);
 ```
-<div class="apidescr">
  Configure and enable ADC 
-</div>
 #### mgos_adc_read
 
 ```c
 int mgos_adc_read(int pin);
 ```
-<div class="apidescr">
  Read from the analog pin. Returns raw value. 
-</div>
 #### mgos_adc_read_voltage
 
 ```c
 int mgos_adc_read_voltage(int pin);
 ```
-<div class="apidescr">
 
 Read from the specified analog pin.
 Returns voltage on the pin, in mV.
  
-</div>
 
 ### JS API
 
@@ -43,16 +37,13 @@ Returns voltage on the pin, in mV.
 ```javascript
 ADC.enable(pin)
 ```
-<div class="apidescr">
 Configure and enable ADC for a `pin`,
 return 1 if success, 0 otherwise.
-</div>
 #### ADC.read
 
 ```javascript
 ADC.read(pin)
 ```
-<div class="apidescr">
 Read `pin` analog value, return an integer.
 
 Note for ESP8266 platform:
@@ -67,4 +58,3 @@ of VDD33 pin 3 and 4. Then:
 	for example, in Modem-sleep mode or in normal Wi-Fi working
 	mode.
 Return value: Power voltage of VDD33; unit: 1/1024 V.
-</div>

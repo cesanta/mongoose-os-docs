@@ -13,7 +13,6 @@ mapping in the yml file for your platform: `mos_<PLATFORM>.yml`.
 ```c
 struct mgos_i2c *mgos_i2c_create(const struct mgos_config_i2c *cfg);
 ```
-<div class="apidescr">
 
 Initialize I2C master with the given params. Typically clients don't need to
 do that manually: mgos has a global I2C instance created with the params
@@ -32,93 +31,77 @@ const struct mgos_config_i2c cfg = {
 struct mgos_i2c *myi2c = mgos_i2c_create(&cfg);
 ```
  
-</div>
 #### (
 
 ```c
 #define MGOS_I2C_ADDR_CONTINUE ((uint16_t) -1)
 ```
-<div class="apidescr">
  If this special address is passed to read or write, START is not generated
 and address is not put on the bus. It is assumed that this is a continuation
 of a previous operation which (after read or write with stop = false). 
-</div>
 #### mgos_i2c_read
 
 ```c
 bool mgos_i2c_read(struct mgos_i2c *i2c, uint16_t addr, void *data, size_t len,
                    bool stop);
 ```
-<div class="apidescr">
 
 Read specified number of bytes from the specified address.
 Address should not include the R/W bit. If addr is -1, START is not
 performed.
 If |stop| is true, then at the end of the operation bus will be released.
  
-</div>
 #### mgos_i2c_write
 
 ```c
 bool mgos_i2c_write(struct mgos_i2c *i2c, uint16_t addr, const void *data,
                     size_t len, bool stop);
 ```
-<div class="apidescr">
 
 Write specified number of bytes from the specified address.
 Address should not include the R/W bit. If addr is -1, START is not
 performed.
 If |stop| is true, then at the end of the operation bus will be released.
  
-</div>
 #### mgos_i2c_stop
 
 ```c
 void mgos_i2c_stop(struct mgos_i2c *i2c);
 ```
-<div class="apidescr">
 
 Release the bus (when left unreleased after read or write).
  
-</div>
 #### mgos_i2c_get_freq
 
 ```c
 int mgos_i2c_get_freq(struct mgos_i2c *i2c);
 ```
-<div class="apidescr">
 
 Get I2C interface frequency.
  
-</div>
 #### mgos_i2c_set_freq
 
 ```c
 bool mgos_i2c_set_freq(struct mgos_i2c *i2c, int freq);
 ```
-<div class="apidescr">
 
 Set I2C interface frequency.
  
-</div>
 #### mgos_i2c_read_reg_b
 
 ```c
 int mgos_i2c_read_reg_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg);
 ```
-<div class="apidescr">
 
 Helper for reading 1-byte register `reg` from a device at address `addr`.
 In case of success return a numeric byte value from 0x00 to 0xff; otherwise
 return -1.
  
-</div>
 #### mgos_i2c_read_reg_w
 
 ```c
 int mgos_i2c_read_reg_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg);
 ```
-<div class="apidescr">
 
 Helper for reading 2-byte register `reg` from a device at address `addr`.
 In case of success returns a numeric big-endian value: e.g. if 0x01, 0x02
@@ -126,74 +109,61 @@ was read from a device, 0x0102 will be returned.
 
 In case of error returns -1.
  
-</div>
 #### mgos_i2c_read_reg_n
 
 ```c
 bool mgos_i2c_read_reg_n(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
                          size_t n, uint8_t *buf);
 ```
-<div class="apidescr">
 
 Helper for reading `n`-byte register value from a device. Returns true on
 success, false on error. Data is written to `buf`, which should be large
 enough.
  
-</div>
 #### mgos_i2c_write_reg_b
 
 ```c
 bool mgos_i2c_write_reg_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
                           uint8_t value);
 ```
-<div class="apidescr">
 
 Helper for writing 1-byte register `reg` to a device at address `addr`.
 Returns `true` in case of success, `false` otherwise.
  
-</div>
 #### mgos_i2c_write_reg_w
 
 ```c
 bool mgos_i2c_write_reg_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
                           uint16_t value);
 ```
-<div class="apidescr">
 
 Helper for writing 2-byte register `reg` to a device at address `addr`.
 The value is big-endian: e.g. if `value` is `0x0102`, then `0x01, 0x02`
 will be written.
 Returns `true` in case of success, `false` otherwise.
  
-</div>
 #### mgos_i2c_write_reg_n
 
 ```c
 bool mgos_i2c_write_reg_n(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
                           size_t n, const uint8_t *buf);
 ```
-<div class="apidescr">
 
 Helper for writing `n`-byte register `reg` to a device at address `addr`.
 Returns `true` in case of success, `false` otherwise.
  
-</div>
 #### mgos_i2c_close
 
 ```c
 void mgos_i2c_close(struct mgos_i2c *conn);
 ```
-<div class="apidescr">
  Close i2c connection and free resources. 
-</div>
 #### mgos_i2c_get_global
 
 ```c
 struct mgos_i2c *mgos_i2c_get_global(void);
 ```
-<div class="apidescr">
  Return i2c bus handle that is set up via the sysconfig. 
-</div>
 
 ### JS API
 
@@ -203,33 +173,26 @@ struct mgos_i2c *mgos_i2c_get_global(void);
 ```javascript
 I2C.get()
 ```
-<div class="apidescr">
 Get I2C bus handle. Return value: opaque pointer.
-</div>
 #### I2C.close
 
 ```javascript
 I2C.close(handle)
 ```
-<div class="apidescr">
 Close I2C handle. Return value: none.
-</div>
 #### I2C.write
 
 ```javascript
 I2C.write(handle, addr, buf, size, stop)
 ```
-<div class="apidescr">
 Send a byte array to I2C.
 If stop is true, the bus will be released at the end.
 Return value: success, true/false.
-</div>
 #### I2C.read
 
 ```javascript
 I2C.read(handle, addr, len, stop)
 ```
-<div class="apidescr">
 Read specified number of bytes from the specified address.
 If stop is true, the bus will be released at the end.
 Return value: null on error, string with data on success. Example:
@@ -237,22 +200,18 @@ Return value: null on error, string with data on success. Example:
 let data = I2C.read(bus, 31, 3, true);  // Read 3 bytes
 if (data) print(JSON.stringify([data.at(0), data.at(1), data.at(2)]));
 ```
-</div>
 #### I2C.stop
 
 ```javascript
 I2C.stop(handle)
 ```
-<div class="apidescr">
 Set i2c Stop condition. Releases the bus.
 Return value: none.
-</div>
 #### I2C.readRegB
 
 ```javascript
 I2C.readRegB(handle, addr, reg)
 ```
-<div class="apidescr">
 Read 1-byte register `reg` from the device at address `addr`; in case of
 success return a numeric byte value from 0x00 to 0xff; otherwise return
 -1. Example:
@@ -261,13 +220,11 @@ success return a numeric byte value from 0x00 to 0xff; otherwise return
 let val = I2C.readRegB(bus, 0x12, 0x40);
 if (val >= 0) print(val);
 ```
-</div>
 #### I2C.readRegW
 
 ```javascript
 I2C.readRegW(handle, addr, reg)
 ```
-<div class="apidescr">
 Read 2-byte register `reg` from the device at address `addr`; in case of
 success return a numeric value; e.g. if 0x01, 0x02 was read from a device,
 0x0102 will be returned. In case of a failure return -1.
@@ -276,13 +233,11 @@ success return a numeric value; e.g. if 0x01, 0x02 was read from a device,
 let val = I2C.readRegW(bus, 0x12, 0x40);
 if (val >= 0) print(val);
 ```
-</div>
 #### I2C.readRegN
 
 ```javascript
 I2C.readRegN(handle, addr, reg, num)
 ```
-<div class="apidescr">
 Read N-byte register `reg` from the device at address `addr`. In case of
 success return a string with data; otherwise return an empty string.
 
@@ -294,13 +249,11 @@ You can get numeric values using `at(n)`, e.g. `"abc".at(0)` is `0x61`.
 let buf = I2C.readRegN(bus, 0x12, 0x40, 7);
 if (buf != "") for (let i = 0; i < buf.length; i++) { print(buf.at(i)); }
 ```
-</div>
 #### I2C.writeRegB
 
 ```javascript
 I2C.writeRegB(handle, addr, reg, val)
 ```
-<div class="apidescr">
 Write numeric `val` (from 0x00 to 0xff) into 1-byte register `reg` at
 address `addr`.  Return `true` on success, `false` on failure.
 ```javascript
@@ -308,13 +261,11 @@ address `addr`.  Return `true` on success, `false` on failure.
 let result = I2C.writeRegB(bus, 0x12, 0x40, 0x55);
 if (result) print('success') else print('failure');
 ```
-</div>
 #### I2C.writeRegW
 
 ```javascript
 I2C.writeRegW(handle, addr, reg, val)
 ```
-<div class="apidescr">
 Write numeric `val` into 2-byte register `reg` at address `addr`. E.g.
 if `val` is `0x0102`, then `0x01, 0x02` will be written.
 Return `true` on success, `false` on failure.
@@ -323,13 +274,11 @@ Return `true` on success, `false` on failure.
 let result = I2C.writeRegW(bus, 0x12, 0x40, 0x5566);
 if (result) print('success') else print('failure');
 ```
-</div>
 #### I2C.writeRegN
 
 ```javascript
 I2C.writeRegN(handle, addr, reg, n, buf)
 ```
-<div class="apidescr">
 Write n first bytes of the string `buf` into the  register `reg` at
 address `addr`. E.g.  if `buf` is `"abc"`, then `0x61, 0x62, 0x63` will be
 written.
@@ -339,4 +288,3 @@ Return `true` on success, `false` on failure.
 let result = I2C.writeRegN(bus, 0x12, 0x40, 3, "\x55\x66\x77");
 if (result) print('success') else print('failure');
 ```
-</div>

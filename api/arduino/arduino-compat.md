@@ -41,6 +41,4 @@ void analogWriteFreq(uint32_t freq);
 void analogWriteRange(uint32_t range);
 #endif
 ```
-<div class="apidescr">
 int atexit(void (*func)()) __attribute__((weak));
-</div>

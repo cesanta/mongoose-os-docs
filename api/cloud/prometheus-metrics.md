@@ -201,7 +201,6 @@ void mgos_prometheus_metrics_printf(struct mg_connection *nc,
                                     const char *name, const char *descr,
                                     const char *fmt, ...);
 ```
-<div class="apidescr">
  Output a formatted metric tuple to the network connection. For example:
 
 uint32_t my_counter=1234;
@@ -214,22 +213,18 @@ will output:
 number_of_requests 1234
 
  
-</div>
 #### (*mgos_prometheus_metrics_fn_t)
 
 ```c
 typedef void (*mgos_prometheus_metrics_fn_t)(struct mg_connection *nc, void *user_data);
 ```
-<div class="apidescr">
  Prototype of a function which is to be called on each prometheus pull/push.
  
-</div>
 #### mgos_prometheus_metrics_add_handler
 
 ```c
 void mgos_prometheus_metrics_add_handler(mgos_prometheus_metrics_fn_t handler, void *user_data);
 ```
-<div class="apidescr">
  Registers a function handler, which will be called each time Prometheus
 scrapes our HTTP /metrics endpoint. Libraries and application code can
 register any number of handlers, which will be called one after another.
@@ -251,15 +246,12 @@ enum mgos_app_init_result mgos_app_init(void) {
 }
 
  
-</div>
 #### mgos_prometheus_metrics_push
 
 ```c
 void mgos_prometheus_metrics_push(const char *job, const char *instance);
 ```
-<div class="apidescr">
  Perform an HTTP POST request against the Prometheus Pushgateway specified in
 the flag prometheus.pushgateway in mos.yml, using 'job' and 'instance'.
 The job argument is mandatory, but instance can be passed NULL.
  
-</div>

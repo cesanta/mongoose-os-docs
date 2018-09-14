@@ -10,7 +10,6 @@ typedef void (*json_walk_callback_t)(void *callback_data, const char *name,
                                      size_t name_len, const char *path,
                                      const struct json_token *token);
 ```
-<div class="apidescr">
 
 Callback-based SAX-like API.
 
@@ -37,27 +36,23 @@ true }"
 - type: JSON_TYPE_OBJECT_END, name: NULL, path: "", value: "{ \"foo\": 123,
 \"bar\": [ 1, 2, { \"baz\": true } ] }"
  
-</div>
 #### json_walk
 
 ```c
 int json_walk(const char *json_string, int json_string_length,
               json_walk_callback_t callback, void *callback_data);
 ```
-<div class="apidescr">
 
 Parse `json_string`, invoking `callback` in a way similar to SAX parsers;
 see `json_walk_callback_t`.
 Return number of processed bytes, or a negative error code.
  
-</div>
 #### json_printf
 
 ```c
 int json_printf(struct json_out *, const char *fmt, ...);
 int json_vprintf(struct json_out *, const char *fmt, va_list ap);
 ```
-<div class="apidescr">
 
 Generate formatted output into a given sting buffer.
 This is a superset of printf() function, with extra format specifiers:
@@ -73,26 +68,22 @@ Return number of bytes printed. If the return value is bigger than the
 supplied buffer, that is an indicator of overflow. In the overflow case,
 overflown bytes are not printed.
  
-</div>
 #### json_fprintf
 
 ```c
 int json_fprintf(const char *file_name, const char *fmt, ...);
 int json_vfprintf(const char *file_name, const char *fmt, va_list ap);
 ```
-<div class="apidescr">
 
 Same as json_printf, but prints to a file.
 File is created if does not exist. File is truncated if already exists.
  
-</div>
 #### json_asprintf
 
 ```c
 char *json_asprintf(const char *fmt, ...);
 char *json_vasprintf(const char *fmt, va_list ap);
 ```
-<div class="apidescr">
 
 Print JSON into an allocated 0-terminated string.
 Return allocated string, or NULL on error.
@@ -104,26 +95,22 @@ Example:
   free(str);
 ```
  
-</div>
 #### json_printf_array
 
 ```c
 int json_printf_array(struct json_out *, va_list *ap);
 ```
-<div class="apidescr">
 
 Helper %M callback that prints contiguous C arrays.
 Consumes void *array_ptr, size_t array_size, size_t elem_size, char *fmt
 Return number of bytes printed.
  
-</div>
 #### json_scanf
 
 ```c
 int json_scanf(const char *str, int str_len, const char *fmt, ...);
 int json_vscanf(const char *str, int str_len, const char *fmt, va_list ap);
 ```
-<div class="apidescr">
 
 Scan JSON string `str`, performing scanf-like conversions according to `fmt`.
 This is a `scanf()` - like function, with following differences:
@@ -151,34 +138,28 @@ This is a `scanf()` - like function, with following differences:
 Return number of elements successfully scanned & converted.
 Negative number means scan error.
  
-</div>
 #### (*json_scanner_t)
 
 ```c
 typedef void (*json_scanner_t)(const char *str, int len, void *user_data);
 ```
-<div class="apidescr">
  json_scanf's %M handler  
-</div>
 #### json_scanf_array_elem
 
 ```c
 int json_scanf_array_elem(const char *s, int len, const char *path, int index,
                           struct json_token *token);
 ```
-<div class="apidescr">
 
 Helper function to scan array item with given path and index.
 Fills `token` with the matched JSON token.
 Return -1 if no array element found, otherwise non-negative token length.
  
-</div>
 #### json_unescape
 
 ```c
 int json_unescape(const char *src, int slen, char *dst, int dlen);
 ```
-<div class="apidescr">
 
 Unescape JSON-encoded string src,slen into dst, dlen.
 src and dst may overlap.
@@ -186,36 +167,30 @@ If destination buffer is too small (or zero-length), result string is not
 written but the length is counted nevertheless (similar to snprintf).
 Return the length of unescaped string in bytes.
  
-</div>
 #### json_escape
 
 ```c
 int json_escape(struct json_out *out, const char *str, size_t str_len);
 ```
-<div class="apidescr">
 
 Escape a string `str`, `str_len` into the printer `out`.
 Return the number of bytes printed.
  
-</div>
 #### json_fread
 
 ```c
 char *json_fread(const char *file_name);
 ```
-<div class="apidescr">
 
 Read the whole file in memory.
 Return malloc-ed file content, or NULL on error. The caller must free().
  
-</div>
 #### json_setf
 
 ```c
 int json_setf(const char *s, int len, struct json_out *out,
               const char *json_path, const char *json_fmt, ...);
 ```
-<div class="apidescr">
 
 Update given JSON string `s,len` by changing the value at given `json_path`.
 The result is saved to `out`. If `json_fmt` == NULL, that deletes the key.
@@ -229,37 +204,31 @@ Example:  s is a JSON string { "a": 1, "b": [ 2 ] }
   json_setf(s, len, out, ".b[]", "7");   // { "a": 1, "b": [ 2,7 ] }
   json_setf(s, len, out, ".b", NULL);    // { "a": 1 }
  
-</div>
 #### json_prettify
 
 ```c
 int json_prettify(const char *s, int len, struct json_out *out);
 ```
-<div class="apidescr">
 
 Pretty-print JSON string `s,len` into `out`.
 Return number of processed bytes in `s`.
  
-</div>
 #### json_prettify_file
 
 ```c
 int json_prettify_file(const char *file_name);
 ```
-<div class="apidescr">
 
 Prettify JSON file `file_name`.
 Return number of processed bytes, or negative number of error.
 On error, file content is not modified.
  
-</div>
 #### json_next_key
 
 ```c
 void *json_next_key(const char *s, int len, void *handle, const char *path,
                     struct json_token *key, struct json_token *val);
 ```
-<div class="apidescr">
 
 Iterate over an object at given JSON `path`.
 On each iteration, fill the `key` and `val` tokens. It is OK to pass NULL
@@ -276,16 +245,13 @@ while ((h = json_next_key(s, len, h, ".foo", &key, &val)) != NULL) {
 }
 ```
  
-</div>
 #### json_next_elem
 
 ```c
 void *json_next_elem(const char *s, int len, void *handle, const char *path,
                      int *idx, struct json_token *val);
 ```
-<div class="apidescr">
 
 Iterate over an array at given JSON `path`.
 Similar to `json_next_key`, but fills array index `idx` instead of `key`.
  
-</div>

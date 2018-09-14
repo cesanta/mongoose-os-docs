@@ -45,6 +45,4 @@ _Note_: At present, level 2 (MITM protection) is not usable as it requires devic
 #define MGOS_BT_UUID_STR_LEN (sizeof(struct mgos_bt_uuid) * 3)
 #define MGOS_BT_DEV_NAME_LEN 32
 ```
-<div class="apidescr">
  Each byte is transformed into 3 bytes: "XX:", and last byte into "XX\0" 
-</div>
