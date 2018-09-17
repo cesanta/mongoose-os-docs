@@ -51,9 +51,38 @@ an RPC service `Sum` that adds two numbers `a` and `b`:
 
 ```javascript
 RPC.addHandler('Sum', function(args) {
-  return args.a + args.b;
+  if (typeof(args) === 'object' && typeof(args.a) === 'number' && typeof(args.b) === 'number') {
+    return args.a + args.b;
+  } else {
+    return {error: -1, message: 'Bad request. Expected: {"a":N1,"b":N2}'};
+  }
 });
 ```
+
+See [RPC.addHandler API reference](/docs/api/rpc/rpc-common.md#rpc-addhandler).
+The C/C++ implementation that does the same would look something like this:
+
+```c
+#include "mgos_rpc.h"
+
+static void sum_cb(struct mg_rpc_request_info *ri, void *cb_arg,
+                   struct mg_rpc_frame_info *fi, struct mg_str args) {
+  double a = 0, b = 0;
+  if (json_scanf(args.p, args.len, ri->args_fmt, &a, &b) == 2) {
+    mg_rpc_send_responsef(ri, "%.2lf", a + b);
+  } else {
+    mg_rpc_send_errorf(ri, -1, "Bad request. Expected: {\"a\":N1,\"b\":N2}");
+  }
+  (void) cb_arg;
+  (void) fi;
+}
+
+// Somewhere in init function, register the handler:
+mgos_rpc_add_handler("Sum", "{a: %lf, b: %lf}", sum_cb, NULL);
+```
+
+See [mgos_rpc_add_handler API reference](/docs/api/rpc/rpc-common.md#mgos_rpc_add_handler). Make sure to
+include the `rpc-common` library in your app's `mos.yml`.
 
 Here is how you can call it:
 
