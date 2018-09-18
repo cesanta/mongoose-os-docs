@@ -234,7 +234,7 @@ In order to see your user ID, click on the Account tab:
 | Method | Endpoint         | Params | Description |
 | ------ | ---------------- | ------ | ----------- |
 | GET    | /devices         | &nbsp; | List all registered devices |
-| POST   | /devices         | {"name": "x"} | Register new device |
+| POST   | /devices         | &nbsp; | Register new device |
 | PUT    | /devices/:id     | {"name": "x", "shared_with": "github_user1"} | Change device properties |
 | DELETE | /devices/:id     | &nbsp; | Delete device |
 | POST   | /devices/:id/rpc/:func | {...} | Call device's RPC function |
