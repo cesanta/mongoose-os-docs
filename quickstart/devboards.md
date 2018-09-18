@@ -1,4 +1,4 @@
-# Recommended devboards
+# Devboards reference
 
 <div class="card-deck mt-4">
   <div class="card my-3 shadow">
