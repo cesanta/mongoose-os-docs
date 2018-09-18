@@ -2,14 +2,28 @@
 
 Mongoose OS uses `mos` tool for various tasks:
 installation (flashing firmware), building firmware from C sources,
-managing files on
-a device, calling device's RPC services, and so on.
-Download and install `mos` tool following instructions
-at https://mongoose-os.com/software.html.
+managing files on a device, calling device's RPC services, and so on.
+
+|  OS |  Setup instructions | 
+| --- | ------------------- |
+| Windows | Right-click on [mos.exe](https://mongoose-os.com/downloads/mos-release/win/mos.exe) link,  choose "Save target as". Then, double-click on saved executable to start Web UI, or start a command line prompt and type `mos --help`. |
+|  MacOS | First, [install brew utility](https://brew.sh/). Then, <pre>brew tap cesanta/mos<br>brew install mos<br>mos --help</pre> |
+|  Ubuntu Linux | <pre>sudo add-apt-repository ppa:mongoose-os/mos<br>sudo apt-get update<br>sudo apt-get install mos<br>mos --help</pre> |
+|  Generic MacOS/Linux | <pre>curl -fsSL https://mongoose-os.com/downloads/mos/install.sh \| /bin/bash<br>mos --help</pre> |
+
+### USB-to-Serial drivers
+
+If `mos` tool cannot talk to your device, the most usual cause for that is USB-to-Serial drivers. Make sure you have them installed:
+
+- [Silabs drivers](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx) for Espressif boards
+- [CH43x drivers](https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver) for Espressif boards
+- [FTDI drivers](http://www.ftdichip.com/Drivers/VCP.htm) for CC3200, CC3220
+
 
 ### Web UI and command line mode
 
-`mos` tool can be used in both Web UI and command line mode. If you start
+`mos` tool is a CLI (command line interface) utility, but it also has a
+buit-in Web interface. If you start
 `mos` with no arguments, from the terminal or by double-clicking the executable,
 it'll start a web server and open a browser window. Alternatively,
 you can use it from the command line - that's useful for build automation.

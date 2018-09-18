@@ -1,7 +1,7 @@
 # MAX72xx LED matrix
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-md-max72xx](https://github.com/mongoose-os-libs/arduino-md-max72xx) | [MD_MAX72xx.h](https://github.com/mongoose-os-libs/arduino-md-max72xx/tree/master/include/MD_MAX72xx.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/md-max72xx](https://github.com/mongoose-os-libs/md-max72xx) | [MD_MAX72xx.h](https://github.com/mongoose-os-libs/md-max72xx/tree/master/include/MD_MAX72xx.h) | &nbsp;  | &nbsp;         |
 
 
 

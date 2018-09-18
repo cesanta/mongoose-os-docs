@@ -11,7 +11,7 @@
 - [HTU21D(F) I2C](htu21df-i2c.md)
 - [ILI9341 SPI](ili9341-spi.md)
 - [IMU](imu.md)
-- [MAX72xx LED matrix](arduino-md-max72xx.md)
+- [MAX72xx LED matrix](md-max72xx.md)
 - [MCP9808 I2C](mcp9808-i2c.md)
 - [MQ135 gas sensor](mq135.md)
 - [Neopixel](neopixel.md)
