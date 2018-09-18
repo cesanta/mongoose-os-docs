@@ -1,5 +1,13 @@
 # Devboards reference
 
+This page contains a refence for the most popular development boards
+used with Mongoose OS. For each board, a `mos flash ..` command shows
+how to flash a pre-built [demo-js](https://github.com/mongoose-os-apps/demo-js)
+app to that board. A board may require an extra configuration, in which case
+an additional `mos config-set ...` command is shown. If you want to add
+a new board to the list, click on "edit this doc" link on top of this page,
+edit the document on Github, and send a PR.
+
 <div class="card-deck mt-4">
   <div class="card my-3 shadow">
     <div class="card-header font-weight-bold text-muted">
