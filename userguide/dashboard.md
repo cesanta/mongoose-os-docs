@@ -235,11 +235,10 @@ In order to see your user ID, click on the Account tab:
 | ------ | ---------------- | ------ | ----------- |
 | GET    | /devices         | &nbsp; | List all registered devices |
 | POST   | /devices         | &nbsp; | Register new device |
-| PUT    | /devices/:id     | {"name": "x", "shared_with": "github_user1"} | Change device properties |
+| PUT    | /devices/:id     | {"name": "x", "shared_with": "github_user1", "shadow": ...} | Change device properties |
 | DELETE | /devices/:id     | &nbsp; | Delete device |
 | POST   | /devices/:id/rpc/:func | {...} | Call device's RPC function |
 | POST   | /devices/:id/ota | fw.zip | OTA: `curl -v -F file=@fw.zip URL` |
-| GET    | /devices/:id/shadow | &nbsp; | Get device shadow |
 | POST   | /devices/:id/shadow | {...} | Update device shadow |
 | GET    | /keys            | &nbsp; | List all API keys |
 | POST   | /keys            | &nbsp; | Create an API key |
