@@ -34,8 +34,8 @@ workstations. Summary:
 
 | Build type | Build command |
 | ---------- | ------------- |
-| Remote (default)    | `mos build --platform PLATFORM` |
-| Local  (requires Docker)   | `mos build --platform PLATFORM --local --verbose` |
+| Remote (default)    | <pre>mos build --platform PLATFORM</pre> |
+| Local  (requires Docker)   | <pre>mos build --platform PLATFORM --local --verbose</pre> |
 
 ## How to create a new app using Web UI
 
