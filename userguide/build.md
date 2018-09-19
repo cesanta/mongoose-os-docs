@@ -32,9 +32,10 @@ everything is done on the local machine. This is a preferrable option for the
 automated builds, and for those who do not want their sources leaving their
 workstations. Summary:
 
-**To build remotely (the default):** `mos build --platform PLATFORM`
-
-**To build locally (requires Docker):** `mos build --platform PLATFORM --local --verbose`
+| Build type | Build command |
+| ---------- | ------------- |
+| Remote (default)    | `mos build --platform PLATFORM` |
+| Local  (requires Docker)   | `mos build --platform PLATFORM --local --verbose` |
 
 ## How to create a new app using Web UI
 
