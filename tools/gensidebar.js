@@ -14,7 +14,7 @@ const f = (dir, depth) => {
     } else {
       const cls = depth >= toggleLevel ? 'fa-caret-right' : 'fa-caret-down';
       const caret = `<i class="fa fa-fw ${cls}"></i>`;
-      a.push(`<div class="tree-toggler">${caret}&nbsp;${m[1]}`);
+      a.push(`<div class="tree-toggler">${caret}&nbsp;<b>${m[1]}</b>`);
       a = a.concat(f(`${dir}/${m[2]}`, depth + 1));
       a.push('</div>');
     }
