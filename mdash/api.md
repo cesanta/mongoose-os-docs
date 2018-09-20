@@ -18,5 +18,5 @@ Example:
 <pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-4"><code>curl -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer API_KEY' \
   -d '{"pin": 2}' \
-  http://dash.mongoose-os.com/api/v2/devices/DEVICE_ID/rpc/GPIO.Toggle
+  https://dash.mongoose-os.com/api/v2/devices/DEVICE_ID/rpc/GPIO.Toggle
 true</code></pre>
