@@ -26,7 +26,7 @@ Mongoose OS supports the following microcontrollers:
 </div>
 
 
-#### STM32 B-L475E-IOT01A2
+#### STM32 B-L475E-IOT01A
 
 <div class="row pb-4">
   <div class="col-md-8">
