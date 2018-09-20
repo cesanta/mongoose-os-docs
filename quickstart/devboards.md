@@ -4,7 +4,7 @@ Mongoose OS supports the following microcontrollers:
 
 |  Vendor  | Microcontrollers |
 | -------  | --------------- | 
-| ST Micro | L4, F4, F7 series |
+| ST Microelectronics | STM32L4, STM32F4, STM32F7 series |
 | Texas Instruments | CC3220, CC3200 |
 | Espressif Systems | ESP32, ESP8266   |
 
