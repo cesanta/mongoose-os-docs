@@ -1,0 +1,27 @@
+{
+  "i2c": {
+    "sda_gpio": 15,
+    "scl_gpio": 4
+  },
+  "pins": {
+    "display": {
+      "backlight": 14
+    }
+  },
+  "spi": {
+    "unit_no": 3,
+    "miso_gpio": 19,
+    "mosi_gpio": 23,
+    "sclk_gpio": 18,
+    "cs0_gpio": 5,
+    "cs1_gpio": -1,
+    "cs2_gpio": -1
+  },
+  "ili9341": {
+    "spi_freq": 40000000,
+    "dc_pin": 21,
+    "rst_pin": -1,
+    "width": 240,
+    "height": 320
+  }
+}
