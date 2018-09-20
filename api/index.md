@@ -1,5 +1,5 @@
 - [Core](core)
-- [Cloud Integrations](cloud)
+- [Cloud services](cloud)
 - [Networking](net)
 - [Drivers](drivers)
 - [Arduino compat](arduino)
