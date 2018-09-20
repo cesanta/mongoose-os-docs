@@ -32,7 +32,7 @@ Mongoose OS supports the following microcontrollers:
   <div class="col-md-8">
     <table class="my-0">
       <tr><th class="small">Capabilities</th><td>WiFi, BT, 868 RF, NFC, 128k RAM, 1M Flash</td></tr>
-      <tr><th class="small">Flash demo-js app</th><td><pre>mos flash stm32</pre></td></tr>
+      <tr><th class="small">Flash demo-js app</th><td><pre>mos flash stm32-B-L475E-IOT01A</pre></td></tr>
       <tr><th class="small">Build an app</th><td><pre>mos build --platform stm32 --board B-L475E-IOT01A</pre></td></tr>
     </table>
   </div>
