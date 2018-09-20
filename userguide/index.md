@@ -5,5 +5,4 @@
 - [Debugging](debug.md)
 - [Over the Air updates](ota.md)
 - [Security](security.md)
-- [Management dashboard](dashboard.md)
 - [Licensing](licensing.md)

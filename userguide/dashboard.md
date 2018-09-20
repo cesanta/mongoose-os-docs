@@ -1,7 +1,7 @@
 # Device Management Dashboard
 
 <video controls="" class="float-right border w-50 ml-3 mb-3">
-    <source src="images/dash1.mp4" type="video/mp4">
+    <source src="../mdash/dash1.mp4" type="video/mp4">
 </video>
 
 Mongoose OS provides an integrated service for device management called mDash.
@@ -41,7 +41,7 @@ Then, `mos build` and `mos flash`.
 **Step 3.** Login to the https://dash.mongoose-os.com/, register a new device.
 Click on a "Token" field for the new device to copy it to the clipboard.
 
-<img src="images/dash8.png" class="w-75 pb-3" />
+<img src="../mdash/dash8.png" class="w-75 pb-3" />
 
 **Step 4.** Configure device: `mos config-set dash.enable=true dash.token=GENERATED_TOKEN`
 
@@ -104,7 +104,7 @@ about the device: architecture, firmware version, etc.
 ### Over-the-Air firmware updates
 
 <video controls="" class="float-right border w-50 ml-3 mb-3">
-    <source src="images/dash2.mp4" type="video/mp4">
+    <source src="../mdash/dash2.mp4" type="video/mp4">
 </video>
 
 If a device includes `rpc-service-ota` library, then it can be updated remotely.
@@ -158,7 +158,7 @@ your device to the dashboard, reserves some keys:
 The device shadow is displayed in the device list, and it is available for
 edit in the device panel (when clicked on the device name):
 
-<img src="images/dash7.png" class="w-50 float-right">
+<img src="../mdash/dash7.png" class="w-50 float-right">
 
 Devices can update their shadow using C API or JavaScript API,
 see [shadow library](https://github.com/mongoose-os-libs/shadow) for reference.
@@ -214,7 +214,7 @@ ws.on('message', msg => console.log('Got message:', msg.toString()));
 
 ## Device sharing
 
-<img src="images/dash9.png" class="w-50 float-right">
+<img src="../mdash/dash9.png" class="w-50 float-right">
 
 It is possible to share a device with other users. This is driven by the
 `shared_with` property of the device, which is a comma-separated
@@ -222,11 +222,11 @@ string of user IDs to share device with. The `shared_with` property could be
 set via the API, or via the dashboard's "Info" panel:
 
 <div class="clearfix"></div>
-<img src="images/dash10.png" class="w-50 float-right">
+<img src="../mdash/dash10.png" class="w-50 float-right">
 Shared devices are marked with an alternate background in the device list:
 
 <div class="clearfix"></div>
-<img src="images/dash11.png" class="w-50 float-right">
+<img src="../mdash/dash11.png" class="w-50 float-right">
 In order to see your user ID, click on the Account tab:
 
 ## REST API Reference
