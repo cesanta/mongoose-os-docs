@@ -4,27 +4,9 @@ Mongoose OS supports the following microcontrollers:
 
 |  Vendor  | Microcontrollers |
 | -------  | --------------- | 
-| ST Microelectronics | STM32L4, STM32F4, STM32F7 series |
+| STMicroelectronics | STM32L4, STM32F4, STM32F7 series |
 | Texas Instruments | CC3220, CC3200 |
 | Espressif Systems | ESP32, ESP8266   |
-
-
-#### ESP32 PICO-D4-KIT
-
-<div class="row pb-4">
-  <div class="col-md-8">
-    <table class="my-0">
-      <tr><th class="small">Capabilities</th><td>WiFi, BT, 520k RAM, 4M Flash</td></tr>
-      <tr><th class="small">Flash demo-js app</th><td><pre>mos flash esp32</pre></td></tr>
-      <tr><th class="small">Build custom app</th><td><pre>mos build --platform esp32</pre></td></tr>
-    </table>
-  </div>
-  <div class="col-md-4">
-    <img class="img-fluid mh-100 mw-100" src="images/esp32-pico-kit.png" />
-    <a target="_blank" href="https://www.mouser.ie/ProductDetail/Espressif-Systems/ESP32-PICO-KIT?qs=%2fha2pyFadug%252b4OsJtZ6BWCK54algBDG2cu7MN2ivj8E%3d">Buy on mouser.com</a>
-  </div>
-</div>
-
 
 #### STM32 B-L475E-IOT01A
 
@@ -39,6 +21,22 @@ Mongoose OS supports the following microcontrollers:
   <div class="col-md-4">
     <img class="img-fluid mh-100 mw-100" src="images/stm32_iot01a.png" />
     <a target="_blank" href="https://www.mouser.ie/ProductDetail/STMicroelectronics/B-L475E-IOT01A2?qs=sGAEpiMZZMtw0nEwywcFgLsaY7JiSlO%2fppdYl3jRSsNnt9SKMZclVw%3d%3d">Buy on mouser.com</a>
+  </div>
+</div>
+
+#### STM32 NUCLEO-F746ZG
+
+<div class="row pb-4">
+  <div class="col-md-8">
+    <table class="my-0">
+      <tr><th class="small">Capabilities</th><td>Ethernet, 320k RAM, 1M Flash</td></tr>
+      <tr><th class="small">Flash demo-js app</th><td><pre>mos flash stm32</pre></td></tr>
+      <tr><th class="small">Build an app</th><td><pre>mos build --platform stm32 --board NUCLEO-F746ZG</pre></td></tr>
+    </table>
+  </div>
+    <div class="col-md-4">
+    <img class="img-fluid mh-100 mw-100" src="images/nucleo-f746zg.png" />
+    <a target="_blank" href="https://www.mouser.ie/ProductDetail/STMicroelectronics/NUCLEO-F746ZG?qs=sGAEpiMZZMtw0nEwywcFgCOvL%2fCIMT%2f2w01SZnal1Ngwgxcd9gFiJw%3d%3d">Buy on mouser.com</a>
   </div>
 </div>
 
@@ -58,6 +56,21 @@ Mongoose OS supports the following microcontrollers:
   </div>
 </div>
 
+#### ESP32 PICO-D4-KIT
+
+<div class="row pb-4">
+  <div class="col-md-8">
+    <table class="my-0">
+      <tr><th class="small">Capabilities</th><td>WiFi, BT, 520k RAM, 4M Flash</td></tr>
+      <tr><th class="small">Flash demo-js app</th><td><pre>mos flash esp32</pre></td></tr>
+      <tr><th class="small">Build custom app</th><td><pre>mos build --platform esp32</pre></td></tr>
+    </table>
+  </div>
+  <div class="col-md-4">
+    <img class="img-fluid mh-100 mw-100" src="images/esp32-pico-kit.png" />
+    <a target="_blank" href="https://www.mouser.ie/ProductDetail/Espressif-Systems/ESP32-PICO-KIT?qs=%2fha2pyFadug%252b4OsJtZ6BWCK54algBDG2cu7MN2ivj8E%3d">Buy on mouser.com</a>
+  </div>
+</div>
 
 #### ESP8266 NodeMCU
 
@@ -90,23 +103,6 @@ Mongoose OS supports the following microcontrollers:
     <a target="_blank" href="https://www.mouser.ie/All-Manufacturers/_/N-0?Keyword=esp32-devkit-c">Buy on mouser.com</a>
   </div>
 </div>
-
-#### STM32 NUCLEO-F746ZG
-
-<div class="row pb-4">
-  <div class="col-md-8">
-    <table class="my-0">
-      <tr><th class="small">Capabilities</th><td>Ethernet, 320k RAM, 1M Flash</td></tr>
-      <tr><th class="small">Flash demo-js app</th><td><pre>mos flash stm32</pre></td></tr>
-      <tr><th class="small">Build an app</th><td><pre>mos build --platform stm32 --board NUCLEO-F746ZG</pre></td></tr>
-    </table>
-  </div>
-    <div class="col-md-4">
-    <img class="img-fluid mh-100 mw-100" src="images/nucleo-f746zg.png" />
-    <a target="_blank" href="https://www.mouser.ie/ProductDetail/STMicroelectronics/NUCLEO-F746ZG?qs=sGAEpiMZZMtw0nEwywcFgCOvL%2fCIMT%2f2w01SZnal1Ngwgxcd9gFiJw%3d%3d">Buy on mouser.com</a>
-  </div>
-</div>
-
 
 #### ESP32 ODROID-GO
 
