@@ -113,7 +113,7 @@ Mongoose OS supports the following microcontrollers:
 <div class="row pb-4">
   <div class="col-md-8">
     <table class="my-0">
-      <tr><th class="small">Capabilities</th><td>WiFi, BT, 2.4" TFT, 4MB PSRAM, 16M Flash, SD card, Battery, Speaker, 9 Buttons, Powersw</td></tr>
+      <tr><th class="small">Capabilities</th><td>WiFi, BT, 2.4" TFT, 4MB PSRAM, 16M Flash, SD card, Battery, Speaker, 10 Buttons, Powerswitch</td></tr>
       <tr><th class="small">Flash demo-js app</th><td>First, download <a href="odroid-go/conf3.json">conf3.json from here</a>. Then, <pre class="mt-2">mos flash esp32<br>mos put conf3.json</pre></td></tr>
       <tr><th class="small">Build an app</th><td><pre>mos build --platform esp32</pre></td></tr>
     </table>
