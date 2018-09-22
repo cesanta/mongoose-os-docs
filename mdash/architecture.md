@@ -8,8 +8,7 @@ JSON-RPC 2.0 protocol. Each RPC frame wrapped into the Websocket frame.
 The RESTful API endpoints that the dashboard exports start with
 `/api/v2/`. The endpoints that for the individual device start with
 `/api/v2/devices/:id`, where `:id` is the unique device ID, generated at
-the device registration together with the access token. Note: you cannot
-provide your own token, but you can provide your own ID.
+the device registration together with the access token.
 
 The dashboard gives a RESTful access to all RPC services exported by the device.
 Thus, the dashboard acts as a JSON-RPC / RESTful bridge. The device's
@@ -28,4 +27,6 @@ curl \
 
 When a device comes online, the `dash` library that is responsible for the
 dashboard connection, sends a shadow update message with the information
-about the device: architecture, firmware version, etc.
+about the device: architecture, firmware version, etc:
+
+![](dash12.png)
