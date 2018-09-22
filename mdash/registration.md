@@ -11,7 +11,10 @@ Click on a "Token" field for the new device to copy it to the clipboard.
 
 Done! Now your device should appear "green" (online) on a dashboard.
 
-__NOTE__: If `mos config-set` command on Step 3 fails for you, complaining
+
+### Troubleshooting
+
+If `mos config-set` command on Step 3 fails for you, complaining
 about non-existing variables, then your app needs to be rebuilt with the
 `dash` library. Edit your app's `mos.yml`:
 
