@@ -89,8 +89,8 @@ tags:
   ...
 ```
 
-That creates an "API Reference/Core/ADC" documentation item, with automatically
-generated API reference from the README and header files.
+That creates an [API Reference/Core/ADC](/docs/api/core/adc.md)
+documentation page. The content is generate from the README.md and header files.
 
 
 ## Boot process
