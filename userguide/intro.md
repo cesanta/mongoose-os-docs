@@ -63,7 +63,7 @@ networking API, etc, will be covered further down.
 
 ## Source code structure
 
-The main Mongoose OS lives at
+The Mongoose OS core lives at
 [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) on GitHub:
 
 - [common/](https://github.com/cesanta/mongoose-os/tree/master/common) - various utility functions
@@ -71,6 +71,27 @@ The main Mongoose OS lives at
 - [fw/platforms/](https://github.com/cesanta/mongoose-os/tree/master/fw/platforms) - platform-specific code
 - [frozen/](https://github.com/cesanta/mongoose-os/tree/master/frozen) - JSON parser/emitter
 - [mongoose/](https://github.com/cesanta/mongoose-os/tree/master/mongoose) - networking code
+
+The bulk of the functionality, however, is split into libraries. Each library
+is a separate GitHub repository, collected under the
+[mongoose-os-libs](https://github.com/mongoose-os-libs) organisation, which
+serves as a central repository of libraries.
+
+When documentation is generated, all libraries are traversed and the
+"API Reference" part is automatically generated. The `docs:` tag in the
+library's `mos.yml` file specifies the documentation category and title.
+For example, for the ADC library located at https://github.com/mongoose-os-libs/adc,
+the `mos.yml` contains:
+
+```yml
+tags:
+  - docs:core:ADC
+  ...
+```
+
+That creates an "API Reference/Core/ADC" documentation item, with automatically
+generated API reference from the README and header files.
+
 
 ## Boot process
 
