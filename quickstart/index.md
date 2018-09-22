@@ -1,5 +1,5 @@
 - [mos tool installation](setup.md)
-- [Devboards reference](devboards.md)
+- [Supported hardware](devboards.md)
 - [Starting with JavaScript](prog1.md)
 - [Starting with C/C++](prog2.md)
 - [Advanced JavaScript](prog3.md)
