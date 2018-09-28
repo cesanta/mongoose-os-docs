@@ -134,6 +134,17 @@ bool mgos_gpio_set_button_handler(int pin, enum mgos_gpio_pull_type pull_type,
 > 
 > Note: implicitly enables the interrupt.
 >  
+#### mgos_gpio_blink
+
+```c
+bool mgos_gpio_blink(int pin, int on_ms, int off_ms);
+```
+> 
+> A utility function that takes care of blinking an LED.
+> The pin must be configured as output first.
+> On (output "1") and off ("0") times are specified in milliseconds.
+> Set to (0, 0) to disable.
+>  
 #### mgos_gpio_str
 
 ```c
@@ -193,6 +204,16 @@ GPIO.disable_int(pin)
 ```
 Disable interrupts on GPIO pin.
 Return value: 1 in case of success, 0 otherwise.
+#### GPIO.blink
+
+```javascript
+GPIO.blink(pin, on_ms, off_ms)
+```
+A utility function that takes care of blinking an LED.
+The pin must be configured as output first.
+On (output "1") and off ("0") times are specified in milliseconds.
+Set to (0, 0) to disable.
+Return value: 1 on success, 0 on failure.
 #### GPIO.set_int_handler
 
 ```javascript
