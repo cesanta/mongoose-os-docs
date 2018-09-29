@@ -23,8 +23,7 @@ for example in Node JS:
 
 ```javascript
 const Websocket = require('ws');
-const addr = 'wss://dash.mongoose-os.com/api/v2/notify';
-const headers = { Authorization : 'Bearer ' + API_TOKEN };
-const ws = new Websocket(addr, { origin: addr, headers: headers });
+const addr = 'wss://dash.mongoose-os.com/api/v2/notify?access_token=API_TOKEN';
+const ws = new Websocket(addr, { origin: addr });
 ws.on('message', msg => console.log('Got message:', msg.toString()));
 ```
