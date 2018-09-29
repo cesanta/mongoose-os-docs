@@ -6,7 +6,7 @@ managing files on a device, calling device's RPC services, and so on.
 
 |  OS |  Setup instructions | 
 | --- | ------------------- |
-| Windows | Create `C:\mos` folder. Right-click on this [mos.exe](https://mongoose-os.com/downloads/mos-release/win/mos.exe) link,  choose "Save target as", save `mos.exe` into the `C:\mos` folder. Start a command line prompt and type: <pre>cd C:\mos<br>mos --help</pre> |
+| Windows | Create `C:\mos` folder. Right-click on this [mos.exe](https://mongoose-os.com/downloads/mos-release/win/mos.exe) link,  choose "Save target as", save `mos.exe` into the `C:\mos` folder. Start a command line prompt and type: <pre class="mt-1">cd C:\mos<br>mos --help</pre> |
 |  MacOS | First, [install brew utility](https://brew.sh/). Then, <pre>brew tap cesanta/mos<br>brew install mos<br>mos --help</pre> |
 |  Ubuntu Linux | <pre>sudo add-apt-repository ppa:mongoose-os/mos<br>sudo apt-get update<br>sudo apt-get install mos<br>mos --help</pre> |
 |  Arch Linux | <pre>git clone https://github.com/cesanta/mos-tool<br>cd mos-tool/mos/archlinux_pkgbuild/mos-release<br>makepkg<br>pacman -U ./mos-*.tar.xz<br>mos --help</pre> |
