@@ -9,6 +9,7 @@ managing files on a device, calling device's RPC services, and so on.
 | Windows | Right-click on [mos.exe](https://mongoose-os.com/downloads/mos-release/win/mos.exe) link,  choose "Save target as". Then, double-click on saved executable to start Web UI, or start a command line prompt and type `mos --help`. |
 |  MacOS | First, [install brew utility](https://brew.sh/). Then, <pre>brew tap cesanta/mos<br>brew install mos<br>mos --help</pre> |
 |  Ubuntu Linux | <pre>sudo add-apt-repository ppa:mongoose-os/mos<br>sudo apt-get update<br>sudo apt-get install mos<br>mos --help</pre> |
+|  Arch Linux | <pre>git clone https://github.com/cesanta/mos-tool<br>cd mos-tool/mos/archlinux_pkgbuild/mos-release<br>makepkg<br>pacman -U ./mos-*.tar.xz<br>mos --help</pre> |
 |  Generic MacOS/Linux | <pre>curl -fsSL https://mongoose-os.com/downloads/mos/install.sh \| /bin/bash<br>mos --help</pre> |
 
 ### USB-to-Serial drivers
