@@ -19,7 +19,8 @@ Login to the dashboard and open the developer tools / network / WS panel to
 see it in action.
 
 You can implement your own service that attaches to the `/api/v2/notify`,
-for example in Node JS:
+for example in Node JS (don't forget to substitute API_TOKEN with your real
+API access token):
 
 ```javascript
 const Websocket = require('ws');
