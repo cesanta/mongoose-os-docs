@@ -8,12 +8,18 @@ app: `mos flash YOUR_PLATFORM`, for example `mos flash esp32`
 
 **Step 3.** Congifure WiFi: `mos wifi NETWORK_NAME NETWORK_PASSWORD`
 
+<img src="./dash8.png" class="w-50 float-right" />
+
 **Step 4.** Login to the https://dash.mongoose-os.com/, register a new device.
-Click on a "Token" field for the new device to copy it to the clipboard.
+Click on a "Token" link  to copy it to the clipboard.
 
-<img src="./dash8.png" class="w-75 pb-3" />
+<div class="w-100 clearfix" />
 
-**Step 5.** Configure device: `mos config-set dash.enable=true dash.token=GENERATED_TOKEN`
+**Step 5.** Configure device:
+
+```
+mos config-set dash.enable=true dash.token=GENERATED_TOKEN
+```
 
 Done! Now your device should appear "green" (online) on a dashboard.
 
