@@ -1,13 +1,19 @@
 # Device registration
 
-**Step 1.** Congifure WiFi: `mos wifi NETWORK_NAME NETWORK_PASSWORD`
+**Step 1.** Make sure you have `mos` tool installed - see [mos tool setup](../quickstart/setup.md)
 
-**Step 2.** Login to the https://dash.mongoose-os.com/, register a new device.
+**Step 2.** Flash an app to your device. If you already have an
+app flashed, skip this step. Otherwise, flash a pre-built demo
+app: `mos flash YOUR_PLATFORM`, for example `mos flash esp32`
+
+**Step 3.** Congifure WiFi: `mos wifi NETWORK_NAME NETWORK_PASSWORD`
+
+**Step 4.** Login to the https://dash.mongoose-os.com/, register a new device.
 Click on a "Token" field for the new device to copy it to the clipboard.
 
 <img src="./dash8.png" class="w-75 pb-3" />
 
-**Step 3.** Configure device: `mos config-set dash.enable=true dash.token=GENERATED_TOKEN`
+**Step 5.** Configure device: `mos config-set dash.enable=true dash.token=GENERATED_TOKEN`
 
 Done! Now your device should appear "green" (online) on a dashboard.
 
