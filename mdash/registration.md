@@ -18,7 +18,7 @@ Click on a "Token" link  to copy it to the clipboard.
 **Step 5.** Configure device:
 
 ```
-mos config-set dash.enable=true dash.token=GENERATED_TOKEN
+mos config-set dash.enable=true dash.token=TOKEN
 ```
 
 Done! Now your device should appear "green" (online) on a dashboard.
