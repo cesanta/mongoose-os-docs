@@ -109,7 +109,7 @@ It works this way: first of, the OTA process never mutates the existing
 flash partition. OTA-ed firmware and filesystem gets copied to the
 new partition without touching an existing one.
 
-A new firmware boots from a flash partition that is
+Secondly, a new firmware boots from a flash partition that is
 marked "dirty". When a boot loaded sees a "dirty" flag, it start
 a hardware timer that triggers after `commit_timeout` seconds.
 If a "dirty" flag is still present when a timer kicks in, a boot loader
