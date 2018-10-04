@@ -147,7 +147,7 @@ Now let's use the cornerstone of Mongoose OS remote management capabilities.
 We can make any hardware function be remotely accessible. This is done
 by creating an RPC service. Read more about it in the Overview and Core
 libraries sections, and here we jump straight to it. Looking at
-[MG-RPC API doc](), add RPC service `Temp.Read`:
+[MG-RPC API doc](../api/rpc/rpc-common.md), add RPC service `Temp.Read`:
 
 ```c
 #include "mgos.h"
@@ -185,7 +185,7 @@ And now, call the device's RPC service:
 {"value": 18.6}</code></pre>
 
 This call could be performed over the serial connection as well as over
-network connection - see [RPC section](/docs/overview/rpc.html) to learn more.
+network connection - see [RPC section](/docs/userguide/rpc.md) to learn more.
 
 To summarise, this section demonstrates how to use C/C++ API, libraries,
 custom configuration, and MG-RPC remote management mechanism.
