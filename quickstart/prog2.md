@@ -78,7 +78,7 @@ or via the `mos` tool, e.g. `mos config-set app.pin=42`.
 
 ## Add code that uses sensor library
 
-Then, edit `src/main.c`, add a timer (see [timer api docs](/docs/libraries/core/timer.html)) that reads DHT and logs the value
+Then, edit `src/main.c`, add a timer (see [timer api docs](/docs/api/core/mgos_timers.h.md)) that reads DHT and logs the value
 (error handling is intentionally omitted):
 
 ```c

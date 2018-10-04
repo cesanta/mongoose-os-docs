@@ -39,7 +39,7 @@ Therefore here are the rules of thumb:
 
 - If you need to define your own config parameters, add a `config_schema`
   section in the `mos.yml` file, as described in the
-  [quick start guide](/docs/quickstart/using-c-cpp.html#create-custom-cofiguration-section)
+  [quick start guide](/docs/quickstart/prog2.md#create-custom-cofiguration-section)
 - If you want to override some system default setting, for example
   a default UART speed, also use `config_schema` and add overrides there,
   see [example](https://github.com/mongoose-os-apps/default/blob/c4e2acbb5fec8d151b0d74fa12f9f1791f08edeb/mos.yml#L23-L25) 
