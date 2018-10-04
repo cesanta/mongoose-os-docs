@@ -195,7 +195,7 @@ blog post.
 
 ## OTA update via AWS IoT device shadow
 
-TBD
+See [OTA via shadow](../userguide/ota.md#ota-using-device-shadow)
 
 
 ## Using AWS IoT in your custom firmware
