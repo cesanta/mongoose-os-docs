@@ -47,9 +47,9 @@ libs:
   - origin: https://github.com/mongoose-os-libs/dht  # <-- Add this line!
 ```
 
-Note - all available libraries are collected under the https://github.com/mongoose-os-libs organisation, so you can browse it
-The "API Reference" section provides an easy to use navigation over those
-libraries and their API. Now, open `src/main.c`, you'll see the following
+Note - all available libraries are collected under the https://github.com/mongoose-os-libs organisation. They are categorised
+and documented under the "API Reference" docs section.
+Now, open `src/main.c`, you'll see the following
 skeleton code which initialises an app that does nothing:
 
 ```c
