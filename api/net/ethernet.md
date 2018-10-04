@@ -30,7 +30,7 @@ Currently only LAN8742a PHY in RMII mode is supported.
 
 Since ETH MAC functions can be assigned to different pins, you need to specify pin assignments.
 These are provided as C macros and can be specified in the `cdefs` section.
-See example definitions for NUCLEO and Discovery boards [here](mos_stm32.yml).
+See example definitions for NUCLEO and Discovery boards in `mos_stm32.yml`.
 
 ## Configuration
 

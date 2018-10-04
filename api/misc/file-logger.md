@@ -10,7 +10,7 @@ log files of max size Y, so that you always have latest logs from the device
 persisted on the filesystem. By default there are max 10 files, prefixed with
 `log_`, each of max size 5000 bytes.
 
-See [mos.yml file](mos.yml) for the possible options. At least you'd have to
+See `mos.yml` for the possible options. At least you'd have to
 enable this lib in your app's `mos.yml`, like this:
 
 ```yaml
