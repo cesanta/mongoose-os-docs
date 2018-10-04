@@ -1,6 +1,6 @@
 - [Quick Start](quickstart)
-- [Cloud Tutorials](cloud)
 - [User Guide](userguide)
+- [Cloud Tutorials](cloud)
 - [API Reference](api)
 - [Management Dashboard](mdash)
 - [HOWTOs](howtos)
