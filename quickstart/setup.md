@@ -14,7 +14,7 @@ managing files on a device, calling device's RPC services, and so on.
 
 ### Device registration
 
-Follow the Management Dashboard [Device Registration guide](https://mongoose-os.com/downloads/mos-release/win/mos.exe) to configure and register a new device. 
+Follow a [Management Dashboard Device Registration guide](https://mongoose-os.com/docs/mdash/registration.md) to configure and register a new device. 
 
 ### USB-to-Serial drivers
 
