@@ -11,7 +11,7 @@ app: `mos flash YOUR_PLATFORM`, for example `mos flash esp32`
 <img src="./dash8.png" class="w-50 float-right" />
 
 **Step 4.** Login to the https://dash.mongoose-os.com/, register a new device.
-Click on a "Token" link  to copy it to the clipboard
+Left Click on a "Token" link  to copy it to the clipboard.
 
 <div class="w-100 clearfix">&nbsp;</div>
 
