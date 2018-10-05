@@ -10,7 +10,7 @@ It is required by the `mos ls`, `mos get`, `mos put`, `mos rm` commands.
 If this library is not included in the app, those commands won't work.
 It is possible to call this service programmatically via serial, HTTP/RESTful,
 Websocket, MQTT or other transports
-(see [RPC section](/docs/core_components/rpc.html)) or use `mos` tool.
+(see [RPC section](/docs/userguide/rpc.md)) or use `mos` tool.
 
 <iframe src="https://www.youtube.com/embed/z5JltFNF_RE"
   width="560" height="315" frameborder="0" allowfullscreen></iframe>

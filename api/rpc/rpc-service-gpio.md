@@ -8,7 +8,7 @@
 This service provides an ability to manage GPIO on devices remotely.
 It is possible to call this service programmatically via serial, HTTP/RESTful,
 Websocket, MQTT or other transports
-(see [RPC section](/docs/core_components/rpc.html)) or via the `mos` tool.
+(see [RPC section](/docs/userguide/rpc.md)) or use `mos` tool.
 
 Below is a list of exported RPC methods and arguments:
 

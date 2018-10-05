@@ -5,7 +5,7 @@
 
 
 
-Provides [RPC service](https://mongoose-os.com/docs/overview/rpc.html) for
+Provides [RPC service](https://mongoose-os.com/docs/userguide/rpc.md) for
 [GATT](https://learn.adafruit.com/introduction-to-bluetooth-low-energy/gatt)
 client.
 

@@ -10,7 +10,7 @@ It is required by the `mos config-get` and `mos config-set` commands.
 If this library is not included in the app, those commands won't work.
 It is possible to call this service programmatically via serial, HTTP/RESTful,
 Websocket, MQTT or other transports
-(see [RPC section](/docs/core_components/rpc.html)) or use `mos` tool.
+(see [RPC section](/docs/userguide/rpc.md)) or use `mos` tool.
 
 <iframe src="https://www.youtube.com/embed/GEJngJxtTWw"
   width="560" height="315"  frameborder="0" allowfullscreen></iframe>
@@ -77,7 +77,7 @@ Saving and rebooting...</code></pre>
 ## Config.Save
 Writes an existing device confuguration on flash, as a sequence of
 `confX.json` files
-(see [description](/docs/core_components/configuration.html)). This makes
+(see [description](/docs/userguide/configuration.md)). This makes
 configuration permament, preserved after device reboot. Arguments:
 
 ```javascript
