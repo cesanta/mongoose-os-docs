@@ -12,6 +12,10 @@ managing files on a device, calling device's RPC services, and so on.
 |  Arch Linux | <pre>git clone https://github.com/cesanta/mos-tool<br>cd mos-tool/mos/archlinux_pkgbuild/mos-release<br>makepkg<br>pacman -U ./mos-*.tar.xz<br>mos --help</pre> |
 |  Generic MacOS/Linux | <pre>curl -fsSL https://mongoose-os.com/downloads/mos/install.sh \| /bin/bash<br>mos --help</pre> |
 
+### Device registration
+
+Follow the Management Dashboard [Device Registration guide](https://mongoose-os.com/downloads/mos-release/win/mos.exe) to configure and register a new device. 
+
 ### USB-to-Serial drivers
 
 If `mos` tool cannot talk to your device, the most usual cause for that is USB-to-Serial drivers. Make sure you have them installed:
