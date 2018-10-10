@@ -42,17 +42,34 @@ Make sure you have them installed:
 When done, press `Ctrl-l` to refresh the window. In a port dropdown, at least
 one port should be present.
 
-## Build a firmware
+![](images/qs2.png)
+
+## Create new app
 
 In a UI, choose your board from a dropdown menu. Then, press `Ctrl-n`
 to create a new app. That will paste the `mos clone` command into the prompt.
-Change `APP_NAME` to `my_app` and press enter. That will clone the
+Change `APP_NAME` to `my_app`:
+
+![](images/qs3.png)
+
+Press enter. That will clone the
 [demo-js](https://github.com/mongoose-os-apps/demo-js) repository as `my_app`.
+Notice how current directory has changed to `my_app`:
+
+![](images/qs4.png)
+
+
+## Build app firmware
+
+Make sure the board is selected, then press `Ctrl-b` and press enter.
+That starts a build process that takes several seconds to complete:
+
+![](images/qs5.png)
 
 When the command finishes, the built firmware will be located at `build/fw.zip`.
 As you can see, we won't make any changes to the app - we'll do that later.
 
-## Flash a firmware
+## Flash firmware
 
 Type `mos flash` and press enter. That will flash a built firmware to a device.
 
