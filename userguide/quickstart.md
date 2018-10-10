@@ -4,7 +4,7 @@ A 10-minutes tutorial that makes your device into a mobile-controllable,
 updatable, remotely manageable, secure, configurable product. Just follow
 the steps below.
 
-## Installing mos tool
+## Install mos tool
 
 Mongoose OS uses `mos` tool for various tasks:
 installation (flashing firmware), building firmware from C sources,
@@ -18,78 +18,53 @@ managing files on a device, calling device's RPC services, and so on.
 |  Arch Linux | <pre>git clone https://github.com/cesanta/mos-tool<br>cd mos-tool/mos/archlinux_pkgbuild/mos-release<br>makepkg<br>pacman -U ./mos-*.tar.xz<br>mos --help</pre> |
 |  Generic MacOS/Linux | <pre>curl -fsSL https://mongoose-os.com/downloads/mos/install.sh \| /bin/bash<br>mos --help</pre> |
 
-### USB-to-Serial drivers
+## Start mos tool
 
-If `mos` tool cannot talk to your device, the most usual cause for that is USB-to-Serial drivers. Make sure you have them installed:
+Make sure your device is connected via the USB to your workstation.
+
+On Windows, double-click on `mos.exe`. On Mac or Linux, start terminal
+and enter `mos` command, with no arguments. Running `mos` tool this way,
+without arguments, starts a Web UI window:
+
+![](images/qs1.png)
+
+
+## USB-to-Serial drivers
+
+If the UI complains about the unavailable ports, and you have your device
+connected, the problem could be with the USB-to-Serial driver.
+Make sure you have them installed:
 
 - [Silabs drivers](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx) for Espressif boards
 - [CH43x drivers](https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver) for Espressif boards
 - [FTDI drivers](http://www.ftdichip.com/Drivers/VCP.htm) for CC3200, CC3220
 
+When done, press `Ctrl-l` to refresh the window. In a port dropdown, at least
+one port should be present.
 
-### Web UI and command line mode
+## Build a firmware
 
-`mos` tool is a CLI (command line interface) utility, but it also has a
-buit-in Web interface. If you start
-`mos` with no arguments, from the terminal or by double-clicking the executable,
-it'll start a web server and open a browser window. Alternatively,
-you can use it from the command line - that's useful for build automation.
-Run `mos --help` to see available commands, and `mos --helpfull` to see all
-possible options.
+In a UI, choose your board from a dropdown menu. Then, press `Ctrl-n`
+to create a new app. That will paste the `mos clone` command into the prompt.
+Change `APP_NAME` to `my_app` and press enter. That will clone the
+[demo-js](https://github.com/mongoose-os-apps/demo-js) repository as `my_app`.
 
-<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-100"><code>mos --help
-The Mongoose OS command line tool, v. 20170910-081234/master@f7f336fd+.
-Commands:
-  ...</code></pre>
+When the command finishes, the built firmware will be located at `build/fw.zip`.
+As you can see, we won't make any changes to the app - we'll do that later.
 
-### Using `--port` option
+## Flash a firmware
 
-`mos` tool connects to the device specified by `--port` flag, which is
-set to `auto` by default. That means, `mos` auto-detects the serial port
-for the device. You can specify this value manually. It could be a
-serial device,  e.g. `--port COM3` on Windows or `--port /dev/ttyUSB0` on Linux.
+Type `mos flash` and press enter. That will flash a built firmware to a device.
 
-It is possible to set `--port` value to be a network endpoint instead of
-serial port. Device listens for commands on serial, Websocket, and MQTT
-transports (unless they are disabled). Therefore, `--port ws://IP_ADDR/rpc`
-connects to the remote device via Websocket, and
-`--port mqtt://MQTT_SERVER/DEVICE_ID/rpc` via the MQTT protocol.
-That gives an ability to use `mos` tool as a remote device management tool.
+## Configure WiFi
 
-### Using environment variables to set default option values
+## Add device to the mDash management dashboard
 
-The default values for any `mos` flag could be overridden via the
-environment variable `MOS_FLAGNAME`. For example, to set the default value
-for `--port` flag, export `MOS_PORT` variable - on Mac/Linux,
-put that into your `~/.profile`:
+## Enable mobile app
 
-```
-export MOS_PORT=YOUR_SERIAL_PORT  # E.g. /dev/ttyUSB0
-```
+## Invite users (you) to use the mobile app
 
-### Notes on wiring
+## Make changes to the firmware
 
-In some cases, for example if you're using a bare-bones ESP8266
-module instead of a development board, you need to perform extra
-steps to switch the module between flashing and firmware boot
-state. This table provides a summary:
+## Update firmware over-the-air
 
-| Platform           | Wiring Notes                                           |
-| ------------------ |--------------------------------------------------------|
-| bare bones ESP8266 |  flash via UART:  `GPIO15 LOW, GPIO0 LOW, GPIO2 HIGH`<br> boot from flash: `GPIO15 LOW, GPIO0 HIGH, GPIO2 HIGH`<br> boot from SD: `GPIO15 HIGH` |
-| bare bones ESP32 |  flash via UART:  `GPIO0 LOW`<br> boot from flash: `GPIO0 HIGH`|
-| CC3200 launchpad   | connect J8 to SOP2 (see [guide](http://energia.nu/cc3200guide/))  |
-
-### Notes on versioning
-
-The `mos` tool could be self-updated via the Web UI or via the console
-command `mos update`. The `mos` tool version also influences the firmware
-build: the libraries that are used during the build correspond to the
-`mos` version. There are 3 ways you can stay updated:
-
-- Pin to a specific version, e.g. `mos update 1.18`. This is the most
-  stable approach, as nothing gets changed in this case
-- Pin to the "release" channel, `mos update release`. This is the default.
-  Released are created once in 1-2 weeks
-- Pin to the "latest" channel, `mos update latest`. Get the most latest
-  updates, but experience breakages sometimes
