@@ -2,3 +2,4 @@
 - [Google IoT Core](google.md)
 - [Microsoft Azure IoT](azure.md)
 - [Private MQTT server](mqtt.md)
+- [Samsung Artik](samsung.md)
