@@ -4,6 +4,28 @@ A 10-minute guide to turn your device into a mobile-controllable,
 updatable, remotely manageable, secure, configurable product. Just follow
 the steps below.
 
+<div class="row">
+  <div class="col-md-4">
+    <div><a href="#install-mos-tool">1. Install mos tool</a></div>
+    <div><a href="#start-mos-tool">2. Start mos tool</a></div>
+    <div><a href="#usb-to-serial-drivers">3. Intall drivers (if needed)</a></div>
+    <div><a href="#create-new-app">4. Create new app</a></div>
+    <div><a href="#build-app-firmware">5. Build app firmware</a></div>
+  </div>
+  <div class="col-md-4">
+    <div><a href="#flash-firmware">6. Flash firmware</a></div>
+    <div><a href="#configure-wifi">7. Configure WiFi</a></div>
+    <div><a href="#add-device-to-the-mdash-management-dashboard">8. Register on mDash</a></div>
+    <div><a href="#enable-mobile-app">9. Enable mobile app</a></div>
+    <div><a href="#control-your-device-from-the-mobile-app">10. Control from mobile</a></div>
+  </div>
+  <div class="col-md-4">
+    <div><a href="#modify-firmware">11. Modify firmware</a></div>
+    <div><a href="#update-firmware-over-the-air">12. OTA update firmware</a></div>
+    <div><a href="#next-steps">13. Next steps</a></div>
+  </div>
+</div>
+
 ## Install mos tool
 
 Mongoose OS uses `mos` tool for various tasks:
@@ -158,7 +180,7 @@ to `true`, and lights on an LED on a device:
 
 ![](images/qs13.png)
 
-## Make changes to the firmware
+## Modify firmware
 
 Now it is time to make a change to the default firmware. Let's assume that
 we want to report a temperature to our mobile users, and disable the
