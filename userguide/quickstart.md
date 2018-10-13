@@ -239,5 +239,4 @@ disappeared, and instead of uptime, we're showing a temperature in a
 It's time to move on to more advanced topics - learn how to add support
 to different hardware peripherals, write logic in both C/C++ and JS,
 use API reference, send data to the databases/analytics engines like
-Firebase. Proceed to the [advanced guide](advanced.md)
-
+Firebase. Proceed to the [advanced guide](advanced.md).
