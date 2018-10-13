@@ -6,7 +6,7 @@ the steps below.
 
 <div class="row">
   <div class="col-md-4">
-    <div><a href="#install-mos-tool">1. Install mos tool</a></div>
+    <div><a href="#download-and-install-mos-tool">1. Download and install</a></div>
     <div><a href="#start-mos-tool">2. Start mos tool</a></div>
     <div><a href="#usb-to-serial-drivers">3. Intall drivers (if needed)</a></div>
     <div><a href="#create-new-app">4. Create new app</a></div>
@@ -26,7 +26,7 @@ the steps below.
   </div>
 </div>
 
-## Install mos tool
+## Download and install mos tool
 
 Mongoose OS uses `mos` tool for various tasks:
 installation (flashing firmware), building firmware from C sources,
