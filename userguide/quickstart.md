@@ -1,6 +1,6 @@
 # Mongoose OS quick start quide
 
-A 10-minute guide to turn your device into a mobile-controllable,
+A 15 minute guide to turn your device into a mobile-controllable,
 updatable, remotely manageable, secure, configurable product. Just follow
 the steps below.
 
@@ -10,45 +10,49 @@ the steps below.
     <div><a href="#start-mos-tool">2. Start mos tool</a></div>
     <div><a href="#usb-to-serial-drivers">3. Intall drivers (if needed)</a></div>
     <div><a href="#create-new-app">4. Create new app</a></div>
-    <div><a href="#build-app-firmware">5. Build app firmware</a></div>
   </div>
   <div class="col-md-4">
+    <div><a href="#build-app-firmware">5. Build app firmware</a></div>
     <div><a href="#flash-firmware">6. Flash firmware</a></div>
     <div><a href="#configure-wifi">7. Configure WiFi</a></div>
     <div><a href="#add-device-to-the-mdash-management-dashboard">8. Register on mDash</a></div>
-    <div><a href="#enable-mobile-app">9. Enable mobile app</a></div>
-    <div><a href="#control-your-device-from-the-mobile-app">10. Control from mobile</a></div>
   </div>
   <div class="col-md-4">
-    <div><a href="#modify-firmware">11. Modify firmware</a></div>
-    <div><a href="#update-firmware-over-the-air">12. OTA update firmware</a></div>
-    <div><a href="#next-steps">13. Next steps</a></div>
+    <div><a href="#enable-mobile-app">9. Enable mobile app</a></div>
+    <div><a href="#control-your-device-from-the-mobile-app">10. Control from mobile</a></div>
+    <div><a href="#update-firmware-over-the-air">11. OTA update firmware</a></div>
+    <div><a href="#next-steps">12. Next steps</a></div>
   </div>
 </div>
 
 ## Download and install mos tool
 
 Mongoose OS uses `mos` tool for various tasks:
-installation (flashing firmware), building firmware from C sources,
-managing files on a device, calling device's RPC services, and so on.
+building firmware, flashing firmware,
+managing device, provisioning device on cloud services, and so on.
 
 |  OS |  Setup instructions | 
 | --- | ------------------- |
-| Windows | Create `C:\mos` folder. Right-click on this [mos.exe](https://mongoose-os.com/downloads/mos-release/win/mos.exe) link,  choose "Save target as", save `mos.exe` into the `C:\mos` folder. Start a command line prompt and type: <pre class="mt-1">cd C:\mos<br>mos --help</pre> |
-|  MacOS | First, [install brew utility](https://brew.sh/). Then, <pre>brew tap cesanta/mos<br>brew install mos<br>mos --help</pre> |
-|  Ubuntu Linux | <pre>sudo add-apt-repository ppa:mongoose-os/mos<br>sudo apt-get update<br>sudo apt-get install mos<br>mos --help</pre> |
-|  Arch Linux | <pre>git clone https://github.com/cesanta/mos-tool<br>cd mos-tool/mos/archlinux_pkgbuild/mos-release<br>makepkg<br>pacman -U ./mos-*.tar.xz<br>mos --help</pre> |
-|  Generic MacOS/Linux | <pre>curl -fsSL https://mongoose-os.com/downloads/mos/install.sh \| /bin/bash<br>mos --help</pre> |
+| Windows | Create `C:\mos` folder. Right-click on this [mos.exe](https://mongoose-os.com/downloads/mos-release/win/mos.exe) link,  choose "Save target as", save `mos.exe` into the `C:\mos` folder. Double-click on `mos.exe` to start a Web UI. |
+|  MacOS | First, [install brew utility](https://brew.sh/). Then execute the following to start a Web UI: <pre>brew tap cesanta/mos<br>brew install mos<br>mos</pre> |
+|  Ubuntu Linux | Note: Linux version does not have a Web UI, it is command-line only. <pre>sudo add-apt-repository ppa:mongoose-os/mos<br>sudo apt-get update<br>sudo apt-get install mos<br>mos</pre> |
+|  Arch Linux | Note: Linux version does not have a Web UI, it is command-line only. <pre>git clone https://github.com/cesanta/mos-tool<br>cd mos-tool/mos/archlinux_pkgbuild/mos-release<br>makepkg<br>pacman -U ./mos-*.tar.xz<br>mos</pre> |
+|  Generic MacOS/Linux | Note: no Web UI, command-line only. <pre>curl -fsSL https://mongoose-os.com/downloads/mos/install.sh \| /bin/bash<br>mos</pre> |
 
 ## Start mos tool
 
 Make sure your device is connected via the USB to your workstation.
 
-On Windows, double-click on `mos.exe`. On Mac or Linux, start terminal
-and enter `mos` command, with no arguments. Running `mos` tool
-without arguments starts a Web UI window:
+Completing previous section should leave you with the `mos` Web UI running:
 
 ![](images/qs1.png)
+
+Note: if you like using command prompt / terminal instead of the UI,
+you can execute `mos` commands in a command prompt instead.
+The Web UI appears only when `mos` tool is started without arguments.
+On Windows and Mac, closing the Web UI window also terminates the `mos` command.
+On Linux, the Web UI is started in a browser, so to stop it, close the
+browser window and pressing `Ctrl-C` in a terminal where `mos` is running.
 
 
 ## USB-to-Serial drivers
@@ -180,37 +184,13 @@ to `true`, and lights on an LED on a device:
 
 ![](images/qs13.png)
 
-## Modify firmware
-
-Now it is time to make a change to the default firmware. Let's assume that
-we want to report a temperature to our mobile users, and disable the
-on/off button. Go to the mos tool, notice the current directory. Start
-your favorite editor, and open `fs/init.js` file in it.
-
-Make changes in three places:
-
-```javascript
-load('api_sys.js');
-load('api_math.js');  // <--- add this line
-```
-
-```javascript
-let state = {on: false, temp: 0};  // <-- change "uptime" to "temp"
-```
-
-And simulate temperature reading:
-
-```javascript
-let reportState = function() {
-  state.temp = 20 + Math.random() * 3;  // <-- this line
-```
-
-When done editing, save changes. Press `Ctrl-b` and enter to rebuild the firware.
-Note how the new firmware is saved in `build/fw.zip`.
 
 ## Update firmware over-the-air
 
 Now let's update our device with the new firmware over the air.
+First, rebuild the firmware by pressing `Ctrl-b` followed by Enter.
+That will create a firmware .zip file with the new build timestamp.
+
 Go to the mDash, click on "Devices" top menu item to see the device list.
 Select a device, click on "OTA update selected" button, then click on
 "Choose firmware .zip file":
