@@ -63,12 +63,12 @@ curl -v -F file=@build/fw.zip http://IP_ADDR/update
 
 OTA implementation in Mongoose OS has 3 layers:
 
-1. The lowest layer, implemented by  the [ota-common](https://github.com/mongoose-os-libs/ota-common)
+-  **Layer 1.** The lowest layer, implemented by  the [ota-common](https://github.com/mongoose-os-libs/ota-common)
    library. The API functions that do the work are
    `updater_context_create()` to start an update, a sequence of
    `updater_process()` to apply the
    next chunk of firmware, and `updater_finish()` to finish the update.
-2. The RPC service that provides a remote management API for the
+-  **Layer 2.** The RPC service that provides a remote management API for the
    low-level OTA API. It is implemented by the [rpc-service-ota](https://github.com/mongoose-os-libs/rpc-service-ota)
    library. The RPC API are of two kinds: push and pull.
    * `OTA.Update` is a pull mechanism. Works only via HTTP.
@@ -77,7 +77,7 @@ OTA implementation in Mongoose OS has 3 layers:
    * `OTA.{Begin,Write,End}` is a push mechanism. It works over any transport,
    for example, BLE, or MQTT. They are calling corresponding
    low-level API.
-3. Helper libraries and tools that invoke the 2nd RPC layer,
+-  **Layer 3.** Helper libraries and tools that invoke the 2nd RPC layer,
    * `mos ota` command calls the "push" RPC, and can work over any transport
    by specifying the `--port ...` parameter. That is the most universal method.
    * [ota-http-client](https://github.com/mongoose-os-libs/ota-http-client)
