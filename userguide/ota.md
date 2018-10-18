@@ -63,33 +63,36 @@ curl -v -F file=@build/fw.zip http://IP_ADDR/update
 
 OTA implementation in Mongoose OS has 3 layers:
 
--  **Layer 1.** The lowest layer, implemented by  the [ota-common](https://github.com/mongoose-os-libs/ota-common)
-   library. The API functions that do the work are
-   `updater_context_create()` to start an update, a sequence of
-   `updater_process()` to apply the
-   next chunk of firmware, and `updater_finish()` to finish the update.
--  **Layer 2.** The RPC service that provides a remote management API for the
+**Layer 1.** The lowest layer, implemented by  the [ota-common](https://github.com/mongoose-os-libs/ota-common)
+library. The API functions that do the work are
+`updater_context_create()` to start an update, a sequence of
+`updater_process()` to apply the
+next chunk of firmware, and `updater_finish()` to finish the update.
+
+**Layer 2.** The RPC service that provides a remote management API for the
    low-level OTA API. It is implemented by the [rpc-service-ota](https://github.com/mongoose-os-libs/rpc-service-ota)
    library. The RPC API are of two kinds: push and pull.
-   * `OTA.Update` is a pull mechanism. Works only via HTTP.
+
+- `OTA.Update` is a pull mechanism. Works only via HTTP.
    You pass a URL to the new .zip file as a parameter of the RPC call,
    the .zip file gets downloaded and low-level API calls apply it.
-   * `OTA.{Begin,Write,End}` is a push mechanism. It works over any transport,
+- `OTA.{Begin,Write,End}` is a push mechanism. It works over any transport,
    for example, BLE, or MQTT. They are calling corresponding
    low-level API.
--  **Layer 3.** Helper libraries and tools that invoke the 2nd RPC layer,
-   * `mos ota` command calls the "push" RPC, and can work over any transport
+
+**Layer 3.** Helper libraries and tools that invoke the 2nd RPC layer,
+- `mos ota` command calls the "push" RPC, and can work over any transport
    by specifying the `--port ...` parameter. That is the most universal method.
-   * [ota-http-client](https://github.com/mongoose-os-libs/ota-http-client)
+- [ota-http-client](https://github.com/mongoose-os-libs/ota-http-client)
    library is able to fetch firmware from a URL. This library is in fact
    used by the `OTA.Update` RPC implementation. Also, this library is able
    to periodically poll a given URL for the new version of firmware,
    and auto-update.
-   * [ota-http-server](https://github.com/mongoose-os-libs/ota-http-server) library
+- [ota-http-server](https://github.com/mongoose-os-libs/ota-http-server) library
    registers and `/update` URI handler directly on a device. You can push
    the new firmware over the HTTP POST. This method is for the development
    purposes: `curl -v -i -F filedata=@fw.zip http://IPADDR/update`
-   * [ota-shadow](https://github.com/mongoose-os-libs/ota-shadow) library
+- [ota-shadow](https://github.com/mongoose-os-libs/ota-shadow) library
    observes `desired.ota.url` shadow changes. If it gets a new URL,
    it triggers the `OTA.Update` with that URL. This method works for the
    offline devices - you can change the shadow of the number of devices, and
