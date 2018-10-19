@@ -19,8 +19,8 @@ updatable, remotely manageable, secure, configurable product.
   <div class="col-md-4">
     <div><a href="#enable-mobile-app">9. Enable mobile app</a></div>
     <div><a href="#control-your-device-from-the-mobile-app">10. Control from mobile</a></div>
-    <div><a href="#update-firmware-over-the-air">11. OTA update firmware</a></div>
-    <div><a href="#next-steps">12. Next steps</a></div>
+    <div><a href="#make-changes-to-the-firmware">11. Change firmware</a></div>
+    <div><a href="#update-firmware-over-the-air">12. OTA update firmware</a></div>
   </div>
 </div>
 
@@ -185,11 +185,24 @@ to `true`, and lights on an LED on a device:
 ![](images/qs13.png)
 
 
+## Make changes to the firmware
+
+Click on the folder icon on the bottom left corner. That opens a system
+file browser in the current app directory. Open `fs/init.js` in your
+favorite editor:
+
+![](images/qs14.png)
+
+Change `LED on` to `MY LED on` and save:
+
+![](images/qs14.1.png)
+
+Then, rebuild the firmware with `mos build`.
+
+
 ## Update firmware over-the-air
 
 Now let's update our device with the new firmware over the air.
-First, rebuild the firmware by pressing `Ctrl-b` followed by Enter.
-That will create a firmware .zip file with the new build timestamp.
 
 Go to the mDash, click on "Devices" top menu item to see the device list.
 Select a device, click on "OTA update selected" button, then click on
@@ -202,17 +215,16 @@ progress bar appears showing the OTA progress:
 
 ![](images/qs16.png)
 
-When OTA finishes, click on "Mobile App" menu item. In the
-"Mobile app configuration" section, disable "on" control,
-change "uptime" to "temp" and save:
+During the OTA process, the device receives chunks of new firmware
+from the cloud, and serial console displays that:
 
 ![](images/qs17.png)
 
-Go to your mobile app and notice how the UI changes. On/off control
-disappeared, and instead of uptime, we're showing a temperature in a
-20-23 range:
+Eventually, the device reboots with the new firmware and we could
+see the changed message in the serial console:
 
 ![](images/qs18.png)
+
 
 ## Next steps
 
