@@ -146,6 +146,40 @@ Set it to `true` or
 This example demonstrates remote device configuration using the device twin, and can be
 applied to a broad range of use cases.
 
+## IoT button
+
+Open `fs/init.js` file in your favorite editor, copy/paste the following code:
+
+```javascript
+load('api_config.js');
+load('api_gpio.js');
+load('api_sys.js');
+load('api_mqtt.js');
+
+let pin = Cfg.get('board.button1.pin');  // Built-in button GPIO number
+let topic = '/devices/' + Cfg.get('device.id') + '/events';  // MQTT topic
+
+let f = function() {
+  let message = JSON.stringify({
+    total_ram: Sys.total_ram(),
+    free_ram: Sys.free_ram(),
+    uptime: Sys.uptime(),
+  });
+  let ok = MQTT.pub(topic, message, 1);
+  print('Published:', ok, topic, '->', message);
+};
+
+GPIO.set_button_handler(pin, GPIO.PULL_UP, GPIO.INT_EDGE_NEG, 20, f, null);
+```
+
+When done, copy `fs/init.js` to the device and reboot the device:
+
+```
+mos put fs/init.js
+mos call Sys.Reboot
+```
+
+Then, press a button to send an MQTT message.
 
 ## Bulk OTA updates with the Azure IoT Hub automatic device management feature
 
