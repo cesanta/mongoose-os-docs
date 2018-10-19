@@ -3,4 +3,3 @@
 - [Add filesystem](fs.md)
 - [MakerFactory ESP32 board](maker-factory-esp32.md)
 - [Add FS with content](fs-flash.md)
-- [IoT button](iot-button.md)
