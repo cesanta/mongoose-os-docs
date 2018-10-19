@@ -1,7 +1,5 @@
 # IoT button example
 
-## C/C++
-
 ## JavaScript
 
 Make sure your app has [mqtt](https://github.com/mongoose-os-libs/mqtt)
