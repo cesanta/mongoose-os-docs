@@ -99,13 +99,15 @@ bool mgos_azure_is_connected(void);
 #### mgos_azure_dm_response
 
 ```c
-bool mgos_azure_dm_response(int64_t id, int status, const struct mg_str *resp);
+bool mgos_azure_dm_response(struct mg_str id, int status,
+                            const struct mg_str *resp);
 ```
 >  Respond to a Direct Method call. 
 #### mgos_azure_dm_responsef
 
 ```c
-bool mgos_azure_dm_responsef(int64_t id, int status, const char *json_fmt, ...);
+bool mgos_azure_dm_responsef(struct mg_str id, int status, const char *json_fmt,
+                             ...);
 ```
 >  Respond to a Direct Method call with a JSON message. 
 

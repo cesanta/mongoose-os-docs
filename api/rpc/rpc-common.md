@@ -1,7 +1,7 @@
 # RPC core
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-common](https://github.com/mongoose-os-libs/rpc-common) | [mgos_rpc.h](https://github.com/mongoose-os-libs/rpc-common/tree/master/include/mgos_rpc.h) | &nbsp;  | [api_rpc.js](https://github.com/mongoose-os-libs/rpc-common/tree/master/mjs_fs/api_rpc.js)         |
+| [mongoose-os-libs/rpc-common](https://github.com/mongoose-os-libs/rpc-common) | [mg_rpc.h](https://github.com/mongoose-os-libs/rpc-common/tree/master/include/mg_rpc.h) | &nbsp;  | [api_rpc.js](https://github.com/mongoose-os-libs/rpc-common/tree/master/mjs_fs/api_rpc.js)         |
 
 
 
@@ -10,64 +10,233 @@ for detailed documentation.
 
 
  ----- 
-#### mgos_rpc_common_init
+#### mg_rpc_create
 
 ```c
-bool mgos_rpc_common_init(void);
-struct mg_rpc *mgos_rpc_get_global(void);
-struct mg_rpc_cfg *mgos_rpc_cfg_from_sys(const struct mgos_config *scfg);
-void mgos_rpc_channel_ws_out_cfg_from_sys(
-    const struct mgos_config *scfg, struct mg_rpc_channel_ws_out_cfg *chcfg);
+struct mg_rpc *mg_rpc_create(struct mg_rpc_cfg *cfg);
 ```
->  __cplusplus 
-#### (*mgos_rpc_eh_t)
+>  Create mg_rpc instance. Takes over cfg, which must be heap-allocated. 
+#### mg_rpc_add_channel
 
 ```c
-typedef void (*mgos_rpc_eh_t)(struct mg_rpc_request_info *ri, const char *args,
-                              const char *src, void *user_data);
-```
->  FFI-able signature of the function that receives RPC request 
-#### (*mgos_rpc_result_cb_t)
-
-```c
-typedef void (*mgos_rpc_result_cb_t)(const char *result, int error_code,
-                                     const char *error_msg, void *cb_arg);
-```
->  FFI-able signature of the function that receives response to a request. 
-#### mgos_rpc_add_handler
-
-```c
-void mgos_rpc_add_handler(const char *method, mgos_rpc_eh_t cb, void *cb_arg);
+void mg_rpc_add_channel(struct mg_rpc *c, const struct mg_str dst,
+                        struct mg_rpc_channel *ch);
+#define MG_RPC_DST_DEFAULT "*"
 ```
 > 
-> FFI-able function to add an RPC handler
+> Adds a channel to the instance.
+> If dst is empty, it will be learned when first frame arrives from the other
+> end. A "default" channel, if present, will be used for frames that don't have
+> a better match.
 >  
-#### mgos_rpc_send_response
+#### mg_rpc_remove_channel
 
 ```c
-bool mgos_rpc_send_response(struct mg_rpc_request_info *ri,
-                            const char *response_json);
+void mg_rpc_remove_channel(struct mg_rpc *c, struct mg_rpc_channel *ch);
 ```
->  FFI-able function to send response from an RPC handler 
-#### mgos_rpc_call
+>  Remove a channel from the instance. 
+#### mg_rpc_connect
 
 ```c
-bool mgos_rpc_call(const char *dst, const char *method, const char *args_json,
-                   mgos_rpc_result_cb_t cb, void *cb_arg);
+void mg_rpc_connect(struct mg_rpc *c);
 ```
->  FFI-able function to perform an RPC call 
-#### mgos_print_sys_info
+>  Invokes connect method on all channels of this instance. 
+#### mg_rpc_disconnect
 
 ```c
-int mgos_print_sys_info(struct json_out *out);
+void mg_rpc_disconnect(struct mg_rpc *c);
 ```
->  Print system info JSON object. Return number of bytes written. 
-#### MGOS_EVENT_BASE
+>  Invokes close method on all channels of this instance. 
+#### mg_rpc_add_local_id
 
 ```c
-#define MGOS_RPC_EVENT_BASE MGOS_EVENT_BASE('R', 'P', 'C')
+void mg_rpc_add_local_id(struct mg_rpc *c, const struct mg_str id);
 ```
->  RPC events 
+> 
+> Add a local ID. Frames with this `dst` will be considered addressed to this
+> instance.
+>  
+#### (*mg_result_cb_t)
+
+```c
+typedef void (*mg_result_cb_t)(struct mg_rpc *c, void *cb_arg,
+                               struct mg_rpc_frame_info *fi,
+                               struct mg_str result, int error_code,
+                               struct mg_str error_msg);
+```
+>  Signature of the function that receives response to a request. 
+#### mg_rpc_callf
+
+```c
+bool mg_rpc_callf(struct mg_rpc *c, const struct mg_str method,
+                  mg_result_cb_t cb, void *cb_arg,
+                  const struct mg_rpc_call_opts *opts, const char *args_jsonf,
+                  ...);
+```
+> 
+> Make an RPC call.
+> The destination RPC server is specified by `opts`, and destination
+> RPC service name is `method`.
+> `cb` callback function is optional, in which case request is sent but
+> response is not required.
+> opts can be NULL, in which case the default destination is used.
+> Example - calling a remote RPC server over websocket:
+> 
+> ```c
+> struct mg_rpc_call_opts opts = {.dst = mg_mk_str("ws://1.2.3.4/foo") };
+> mg_rpc_callf(mgos_rpc_get_global(), mg_mk_str("My.Func"), NULL, NULL, &opts,
+>              "{param1: %Q, param2: %d}", "jaja", 1234);
+> ```
+> It is possible to call RPC services running locally. In this case,
+> include the https://github.com/mongoose-os-libs/rpc-loopback library,
+> and use `MGOS_RPC_LOOPBACK_ADDR` special destination address:
+> 
+> ```c
+> #include "mg_rpc_channel_loopback.h"
+> struct mg_rpc_call_opts opts = {.dst = mg_mk_str(MGOS_RPC_LOOPBACK_ADDR) };
+> ```
+>  
+#### mg_rpc_vcallf
+
+```c
+bool mg_rpc_vcallf(struct mg_rpc *c, const struct mg_str method,
+                   mg_result_cb_t cb, void *cb_arg,
+                   const struct mg_rpc_call_opts *opts, const char *args_jsonf,
+                   va_list ap);
+```
+>  Same as mg_rpc_callf, but takes va_list ap 
+#### (*mg_handler_cb_t)
+
+```c
+typedef void (*mg_handler_cb_t)(struct mg_rpc_request_info *ri, void *cb_arg,
+                                struct mg_rpc_frame_info *fi,
+                                struct mg_str args);
+```
+> 
+> Signature of an incoming request handler.
+> Note that only request_info remains valid after return from this function,
+> frame_info and args will be invalidated.
+>  
+#### mg_rpc_add_handler
+
+```c
+void mg_rpc_add_handler(struct mg_rpc *c, const char *method,
+                        const char *args_fmt, mg_handler_cb_t cb, void *cb_arg);
+```
+>  Add a method handler. 
+#### (*mg_prehandler_cb_t)
+
+```c
+typedef bool (*mg_prehandler_cb_t)(struct mg_rpc_request_info *ri, void *cb_arg,
+                                   struct mg_rpc_frame_info *fi,
+                                   struct mg_str args);
+```
+> 
+> Signature of an incoming requests prehandler, which is called right before
+> calling the actual handler.
+> 
+> If it returns false, the further request processing is not performed. It's
+> called for existing handlers only.
+>  
+#### mg_rpc_set_prehandler
+
+```c
+void mg_rpc_set_prehandler(struct mg_rpc *c, mg_prehandler_cb_t cb,
+                           void *cb_arg);
+```
+>  Set a generic method prehandler. 
+#### mg_rpc_send_responsef
+
+```c
+bool mg_rpc_send_responsef(struct mg_rpc_request_info *ri,
+                           const char *result_json_fmt, ...);
+```
+> 
+> Respond to an incoming request.
+> result_json_fmt can be NULL, in which case no result is included.
+> `ri` is freed by the call, so it's illegal to use it afterwards.
+>  
+#### mg_rpc_send_errorf
+
+```c
+bool mg_rpc_send_errorf(struct mg_rpc_request_info *ri, int error_code,
+                        const char *error_msg_fmt, ...);
+```
+> 
+> Send and error response to an incoming request.
+> error_msg_fmt is optional and can be NULL, in which case only code is sent.
+> `ri` is freed by the call, so it's illegal to use it afterwards.
+>  
+#### mg_rpc_send_error_jsonf
+
+```c
+bool mg_rpc_send_error_jsonf(struct mg_rpc_request_info *ri, int error_code,
+                             const char *error_json_fmt, ...);
+```
+> 
+> Like mg_rpc_send_errorf, but uses JSON formatting, see json_printf().
+> NOTE: "error.message" will still be a string but will contain serialized
+> JSON formatted accordingly to error_json_fmt.
+>  
+#### mg_rpc_is_connected
+
+```c
+bool mg_rpc_is_connected(struct mg_rpc *c);
+```
+>  Returns true if the instance has an open default channel. 
+#### mg_rpc_can_send
+
+```c
+bool mg_rpc_can_send(struct mg_rpc *c);
+```
+>  Returns true if the instance has an open default channel
+> and it's not currently busy. 
+#### mg_rpc_get_channel_info
+
+```c
+bool mg_rpc_get_channel_info(struct mg_rpc *c, struct mg_rpc_channel_info **ci,
+                             int *num_ci);
+void mg_rpc_channel_info_free(struct mg_rpc_channel_info *ci);
+void mg_rpc_channel_info_free_all(struct mg_rpc_channel_info *ci, int num_ci);
+```
+> 
+> Retrieve information about currently active channels.
+> Results are heap-allocated and must be freed all together with
+> mg_rpc_channel_info_free_all() or individuallt with
+> mg_rpc_channel_info_free().
+> Note: mg_rpc_channel_info_free_all does not free the pointer passed to it.
+>  
+#### mg_rpc_add_list_handler
+
+```c
+void mg_rpc_add_list_handler(struct mg_rpc *c);
+```
+>  Enable RPC.List handler that returns a list of all registered endpoints 
+#### mg_rpc_parse_frame
+
+```c
+bool mg_rpc_parse_frame(const struct mg_str f, struct mg_rpc_frame *frame);
+```
+> 
+> Parses frame `f` and stores result into `frame`. Returns true in case of
+> success, false otherwise.
+>  
+#### mg_rpc_check_digest_auth
+
+```c
+bool mg_rpc_check_digest_auth(struct mg_rpc_request_info *ri);
+```
+> 
+> Checks whether digest auth creds were provided and were correct. After that
+> call, the caller should check whether the authn was successful by checking
+> if `ri->authn_info.username.len` is not empty.
+> 
+> If some error has happened, like failure to open `htdigest` file, sends
+> an error response and returns false (in this case, `ri` is not valid
+> anymore). Otherwise returns true.
+> 
+> NOTE: returned true does not necessarily mean the successful authentication.
+>  
 
 ### JS API
 

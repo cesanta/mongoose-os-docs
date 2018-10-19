@@ -10,6 +10,8 @@
 #### mg_rpc_channel_uart
 
 ```c
-struct mg_rpc_channel *mg_rpc_channel_uart(int uart_no);
+struct mg_rpc_channel *mg_rpc_channel_uart(
+    const struct mgos_config_rpc_uart *cfg,
+    const struct mgos_uart_config *ucfg);
 ```
 >  __cplusplus 

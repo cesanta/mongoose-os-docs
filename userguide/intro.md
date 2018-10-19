@@ -1,6 +1,6 @@
 # Introduction
 
-This guide is about the design of
+This overview is about the design of
 [Mongoose OS](https://mongoose-os.com), a firmware development framework for
 connected products. If you are an IoT firmware developer, Mongoose OS is for you.
 
