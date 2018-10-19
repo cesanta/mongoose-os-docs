@@ -56,16 +56,20 @@ browser window and pressing `Ctrl-C` in a terminal where `mos` is running.
 
 ## USB-to-Serial drivers
 
-If the UI complains about the unavailable ports, and you have your device
-connected, the problem could be with the USB-to-Serial driver.
-Make sure you have them installed:
+If you have your device connected via the USB, the UI can still
+complain about the unavailable ports like this:
+
+![](images/qs1.5.png)
+
+The most usual reason for this is a missing USB-to-Serial driver. Below are
+the links to the driver installation pages. Install the driver, and re-insert
+your device into the USB. 
 
 - [Silabs drivers](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx) for Espressif boards
 - [CH43x drivers](https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver) for Espressif boards
 - [FTDI drivers](http://www.ftdichip.com/Drivers/VCP.htm) for CC3200, CC3220
 
-When done, press `Ctrl-l` to refresh the window. In a port dropdown, at least
-one port should be present.
+In a "Choose port" dropdown, at least one port must appear.
 
 ![](images/qs2.png)
 
@@ -85,13 +89,12 @@ Notice how current directory has changed to `app1`:
 
 ## Build app firmware
 
-Make sure the board is selected, then press `Ctrl-b` and press enter.
-That starts a build process that takes several seconds to complete:
+Make sure the board is selected. Type `mos build` and press Enter.
+That starts a build process that takes up to a minute to complete.
+When the command finishes, the built firmware will be located at `build/fw.zip`.
+As you can see, we did not make any changes to the app - we'll do that later.
 
 ![](images/qs5.png)
-
-When the command finishes, the built firmware will be located at `build/fw.zip`.
-As you can see, we won't make any changes to the app - we'll do that later.
 
 ## Flash firmware
 
@@ -103,8 +106,7 @@ Type `mos flash` and press enter. That will flash a built firmware to the device
 When flashing completes, the firmware starts to write logs to the serial
 console. Notice how new messages start to appear in the right window.
 The window autoscrolls to the bottom, unless you scroll up manually to see
-some previous logs. To re-enable the scrol, click on the command input
-and press enter.
+some previous logs. 
 
 ## Configure WiFi
 
@@ -124,10 +126,9 @@ network, gets the IP configuration, and synchronises time with SNTP server:
 
 ![](../mdash/dash8.png)
 
-- Go back to the mos tool, type command (change ACCESS_TOKEN to your copied
-access token) and press enter:
+- Go back to the mos tool, type command (change TOKEN to your copied token) and press enter:
   ```
-  mos config-set dash.enable=true dash.token=ACCESS_TOKEN
+  mos config-set dash.enable=true dash.token=TOKEN
   ```
 
 ![](images/qs8.png)
