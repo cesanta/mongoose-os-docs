@@ -156,8 +156,8 @@ load('api_gpio.js');
 load('api_sys.js');
 load('api_mqtt.js');
 
-let pin = Cfg.get('board.btn1.pin');  // Built-in button GPIO number
-let topic = '/devices/' + Cfg.get('device.id') + '/events';  // MQTT topic
+let pin = Cfg.get('board.btn1.pin');  // User button GPIO pin
+let topic = 'devices/' + Cfg.get('device.id') + '/messages/events/';
 
 let f = function() {
   let message = JSON.stringify({
