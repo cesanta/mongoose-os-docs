@@ -37,7 +37,7 @@ Mongoose OS supports the following microcontrollers:
     </table>
   </div>
     <div class="col-md-4">
-    <img class="img-fluid mh-100 mw-100" src="images/nucleo-f746zg.png" />
+    <img class="img-fluid mh-100 mw-100" src="https://github.com/cesanta/mongoose-os-docs/tree/master/quickstart/images/nucleo-f746zg.png" />
     <a target="_blank" href="https://www.mouser.ie/ProductDetail/STMicroelectronics/NUCLEO-F746ZG?qs=sGAEpiMZZMtw0nEwywcFgCOvL%2fCIMT%2f2w01SZnal1Ngwgxcd9gFiJw%3d%3d">Buy on mouser.com</a>
   </div>
 </div>
