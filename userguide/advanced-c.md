@@ -7,6 +7,24 @@ In particular, our firmware will:
 - implement a RPC service for reading the sensor remotely - for example,
   via MQTT
 
+<div class="row">
+  <div class="col-md-4">
+    <div><a href="#start-mos-tool">1. Start mos tool</a></div>
+    <div><a href="#clone-template-project">2. Clone template project</a></div>
+    <div><a href="#learn-app-directory-structure">3. Learn app dir structure</a></div>
+  </div>
+  <div class="col-md-4">
+    <div><a href="#add-necessary-libraries">4. Add required libraries</a></div>
+    <div><a href="#create-custom-configuration-section">5. Create app's custom config</a></div>
+    <div><a href="#add-code-that-uses-sensor-library">6. Add sensor code</a></div>
+  </div>
+  <div class="col-md-4">
+    <div><a href="#build-the-app-and-test-sensor-reading">7. Build app, test sensor</a></div>
+    <div><a href="#add-rpc-service-to-read-sensor-data-remotely">8. Add RPC service</a></div>
+    <div><a href="#build-and-test-the-final-app">9. Rebuild app and test RPC</a></div>
+  </div>
+</div>
+
 ## Start `mos` tool
 
 Run `mos` tool without arguments to start the Web UI. After start,
