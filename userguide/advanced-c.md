@@ -109,7 +109,6 @@ a `config_schema:` section in the `mos.yml`, to have it like this:
 
 ```yaml
 config_schema:
- - ["app", "o", {title: "My app custom settings"}]
  - ["app.pin", "i", 5, {title: "GPIO pin a sensor is attached to"}]
 ```
 
