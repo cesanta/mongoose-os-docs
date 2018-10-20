@@ -137,6 +137,12 @@ enum mgos_app_init_result mgos_app_init(void) {
 }
 ```
 
+The `mgos_dht.h` file comes from the `dht` library that we have included to our app.
+In order to find out its documentation and API, navigate to
+"API Reference" -> "Drivers" -> "DHT temp sensor". This should bring you to
+[this page - DHT temp sensor](/docs/api/drivers/dht.md). Similarly, you can find
+out about any other library.
+
 ## Build the app and test sensor reading
 
 Connect DHT sensor to pin 5. The sensor itself has following pins:
