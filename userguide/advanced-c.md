@@ -164,7 +164,9 @@ Choose your board and port in the the UI, and run `mos build` command:
 
 ![](images/advanced-c6.png)
 
-When finished, run `mos flash` to flash the firmware and see the output in the console.
+When finished, run `mos flash` to flash the firmware and see the output in the console:
+
+![](images/advanced-c7.png)
 
 ## Add RPC service to read sensor data remotely
 
@@ -203,6 +205,8 @@ enum mgos_app_init_result mgos_app_init(void) {
 Run `mos build` followed by `mos flash`.
 And now, call the device's RPC service by running `mos call Temp.Read`.
 You will see `{"value": 18.6}` printed.
+
+![](images/advanced-c8.png)
 
 This call could be performed over the serial connection as well as over
 network connection - see [RPC section](/docs/userguide/rpc.md) to learn more.
