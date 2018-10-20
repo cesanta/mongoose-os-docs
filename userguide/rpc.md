@@ -110,7 +110,8 @@ To see a list of all RPC services implemented by a device, call `RPC.List`:
   "I2C.WriteRegB",
   "I2C.ReadRegW",
   "I2C.ReadRegB",
-  ...</code></pre>
+  ...
+]</code></pre>
 
 
 ## Remote management
@@ -134,9 +135,4 @@ at IP address 192.168.1.4 using `mos` tool in a command line mode:
 [
   31
 ]</code></pre>
-
-Example: connect to a remote device via the MQTT server and manage it
-using `mos` tool Web UI:
-
-![](images/mos3.gif)
 

@@ -117,6 +117,9 @@ This custom configuration section will allow us to change sensor pin
 at run time, without recompiling firmware. That could be done programmatically
 or via the `mos` tool, e.g. `mos config-set app.pin=42`.
 
+NOTE: see [mos.yml file format reference](build.md#mos-yml-file-format-reference)
+for the full documentation about the `mos.yml`.
+
 ## Add code that uses sensor library
 
 Then, edit `src/main.c`, add a timer (see [timer api docs](/docs/api/core/mgos_timers.h.md)) that reads DHT and logs the value

@@ -37,37 +37,6 @@ workstations. Summary:
 | Remote (default)    | <pre>mos build --platform PLATFORM</pre> |
 | Local  (requires Docker)   | <pre>mos build --platform PLATFORM --local --verbose</pre> |
 
-## How to create a new app using Web UI
-
-An app sources is a directory with a `mos.yml` file which describes how
-to build an app. Click on
-[mos.yml](https://github.com/mongoose-os-apps/empty/blob/master/mos.yml) to
-see a well-documented `mos.yml` of the `empty` app, which is used as a
-app template, or see a detailed description below.
-
-To build an app, use Web UI to either import an existing app from the
-[existing apps collection](https://github.com/mongoose-os-apps), or to create
-a new app from scratch (a new app is really a clone of an
-[empty app](https://github.com/mongoose-os-apps/empty). Then click on
-a build button, and once you see a successful build log message, click on
-the flash button:
-
-![](images/app1.gif)
-
-## How to create a new app using command line
-
-If you like working with terminal, or if you want to integrate
-app build process into your favorite IDE, you can use `mos` in console mode:
-
-```bash
-# Clone an `empty` template app into a new directory `my-app`
-git clone https://github.com/mongoose-os-apps/empty my-app
-cd my-app
-mos build
-mos flash
-mos console
-```
-
 ## mos.yml file format reference
 
 `mos.yml` file drives the way Mongoose apps are biult. Below is a description

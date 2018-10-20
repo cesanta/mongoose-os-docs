@@ -33,12 +33,6 @@ Getting configuration...
 Setting new configuration...
 Saving and rebooting...</code></pre>
 
-#### Increasing the debug level from the UI
-
-![](images/mos5.png)
-
-That will reboot the device, and it will start logging with the increased
-verbosity.
 
 ### Debug configuration settings quick reference
 
