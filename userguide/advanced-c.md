@@ -4,7 +4,7 @@ In this guide we will learn how to implement device logic in C/C++.
 In particular, our firmware will:
 - have an ability to read DHT22 temperature/humidity sensor data
 - set up a timer to read and print sensor data to the debug console
-- implement a RPC service to read report sensor to the remote client
+- implement a RPC service allow to read the sensor remotely
 
 ## Start `mos` tool
 
