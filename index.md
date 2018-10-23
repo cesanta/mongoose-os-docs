@@ -1,5 +1,5 @@
 - [User Guide](userguide)
 - [Cloud Tutorials](cloud)
 - [API Reference](api)
-- [Management Dashboard](mdash)
+- [mDash](mdash)
 - [HOWTOs](howtos)

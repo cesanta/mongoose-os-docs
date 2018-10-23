@@ -5,5 +5,6 @@
 - [Device shadow](shadow.md)
 - [Notifications](notifications.md)
 - [Device sharing](sharing.md)
+- [Mobile app](mobile.md)
 - [REST API reference](api.md)
 - [On-premises licensing](licensing.md)

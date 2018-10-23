@@ -161,6 +161,12 @@ Event.addGroupHandler(Event.SYS, function(ev, evdata, ud) {
   print("Sys event:", ev);
 }, null);
 ```
+#### Event.on
+
+```javascript
+Event.on(event_num, callback, userdata)
+```
+Alias for Event.addHandler
 #### Event.regBase
 
 ```javascript
@@ -229,3 +235,15 @@ System event which is triggered when OTA status changes.
 
 In the callback, use `OTA.evdataOtaStatusMsg(evdata)` from `api_ota.js` to
 get the OTA status message.
+#### Event.CLOUD_CONNECTED
+
+```javascript
+Event.CLOUD_CONNECTED
+```
+Triggered when device is connected to the cloud (mqtt, dash)
+#### Event.CLOUD_DISCONNECTED
+
+```javascript
+Event.CLOUD_DISCONNECTED
+```
+Triggered when device is disconnected from the cloud
