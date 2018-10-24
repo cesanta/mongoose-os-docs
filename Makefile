@@ -1,7 +1,5 @@
 all: sidebar.html # apps
 
-.PHONY: sidebar.html api/core api
-
 APPSMD = quickstart/apps.md
 TMP = /tmp/.tmp.mos.yml
 apps:
@@ -16,16 +14,18 @@ apps:
 		echo "| [$${REPO#*/}](https://github.com/$$REPO) | $$(cat $(TMP) | perl -nle 'print $$1 if /^description: (.*)/') | $$(cat $(TMP) | perl -nle 'print $$1 if /^author: (.*)/') | " >> $(APPSMD) ;\
 		done
 
+API = mos/api
+.PHONY: sidebar.html $(API)/core $(API)
 
 CATEGORIES ?= core cloud net drivers arduino rpc misc
 clean-generated:
-	@for C in $(CATEGORIES) ; do rm -rf api/$$C; mkdir api/$$C; touch api/$$C/index.md ; done
+	@for C in $(CATEGORIES) ; do rm -rf $(API)/$$C; mkdir $(API)/$$C; touch $(API)/$$C/index.md ; done
 
 
 DEV ?= ../cesanta.com
 INC ?= $(DEV)/fw/include
 MJS ?= $(DEV)/mos_libs/mjs
-api/core: clean-generated
+$(API)/core: clean-generated
 	@(cd $(INC) && ls *.h) | while read F; do node tools/genapi.js $@/$$F.md cesanta/mongoose-os $(INC)/$$F >> $@/index.md; done
 	@node tools/genapi.js $@/frozen.h.md cesanta/frozen $(DEV)/frozen/frozen.h >> $@/index.md
 	@node tools/genapi.js $@/cs_dbg.h.md cesanta/mongoose-os $(DEV)/common/cs_dbg.h >> $@/index.md
@@ -35,7 +35,7 @@ api/core: clean-generated
 
 LIBS ?= /tmp/libs
 LIBSINDEX ?= /tmp/libs.txt
-api:
+$(API):
 	@test -f $(LIBSINDEX) || curl -s https://api.github.com/orgs/mongoose-os-libs/repos?per_page=200 | perl -nle 'print $$1 if /"full_name": "(.*)"/' | sort > $(LIBSINDEX)
 	@mkdir -p $(LIBS)
 	@cat $(LIBSINDEX) | while read REPO ; \
@@ -59,8 +59,8 @@ api:
 	done
 
 
-sidebar.html: api/core api
-	@for C in $(CATEGORIES) ; do sort -o api/$$C/index.md api/$$C/index.md ; done
+sidebar.html: $(API)/core $(API)
+	@for C in $(CATEGORIES) ; do sort -o $(API)/$$C/index.md $(API)/$$C/index.md ; done
 	@node tools/gensidebar.js > $@
 
 clean:

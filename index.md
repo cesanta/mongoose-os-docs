@@ -1,5 +1,3 @@
-- [User Guide](userguide)
-- [Cloud Tutorials](cloud)
-- [API Reference](api)
+- [Quick Start](quickstart)
+- [Mongoose OS](mos)
 - [mDash](mdash)
-- [HOWTOs](howtos)
