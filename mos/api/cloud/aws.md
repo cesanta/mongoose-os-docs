@@ -7,7 +7,7 @@
 
 This library implements integration of Mongoose OS with AWS IoT.
 
-See tutorial at https://mongoose-os.com/docs/cloud/aws.md
+See tutorial at https://mongoose-os.com/docs/mos/cloud/aws.md
 
 
  ----- 

@@ -8,7 +8,7 @@
 This service provides an ability to manage I2C peripherals on devices remotely.
 It is possible to call this service programmatically via serial, HTTP/RESTful,
 Websocket, MQTT or other transports
-(see [RPC section](/docs/userguide/rpc.md)) or via the `mos` tool.
+(see [RPC section](/docs/mos/userguide/rpc.md)) or via the `mos` tool.
 
 Below is a list of exported RPC methods and arguments:
 

@@ -7,7 +7,7 @@
 
 This library implements integration of Mongoose OS with Google IoT Core.
 
-See tutorial at https://mongoose-os.com/docs/cloud/google.md
+See tutorial at https://mongoose-os.com/docs/mos/cloud/google.md
 
 
  ----- 

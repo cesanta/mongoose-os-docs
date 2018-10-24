@@ -116,12 +116,12 @@ This custom configuration section will allow us to change sensor pin
 at run time, without recompiling firmware. That could be done programmatically
 or via the `mos` tool, e.g. `mos config-set app.pin=42`.
 
-NOTE: see [mos.yml file format reference](build.md#mos-yml-file-format-reference)
+NOTE: see [mos.yml file format reference](../mos/userguide/build.md#mos-yml-file-format-reference)
 for the full documentation about the `mos.yml`.
 
 ## Add code that uses sensor library
 
-Then, edit `src/main.c`, add a timer (see [timer api docs](/docs/api/core/mgos_timers.h.md)) that reads DHT and logs the value
+Then, edit `src/main.c`, add a timer (see [timer api docs](../mos/api/core/mgos_timers.h.md)) that reads DHT and logs the value
 (error handling is intentionally omitted):
 
 ```c
@@ -142,7 +142,7 @@ enum mgos_app_init_result mgos_app_init(void) {
 The `mgos_dht.h` file comes from the `dht` library that we have included to our app.
 In order to find out its documentation and API, navigate to
 "API Reference" -> "Drivers" -> "DHT temp sensor". This should bring you to
-[this page - DHT temp sensor](/docs/api/drivers/dht.md). Similarly, you can find
+[this page - DHT temp sensor](../mos/api/drivers/dht.md). Similarly, you can find
 out about any other library.
 
 ## Build the app and test sensor reading
@@ -173,7 +173,7 @@ Now let's use the cornerstone of Mongoose OS remote management capabilities.
 We can make any hardware function be remotely accessible. This is done
 by creating an RPC service. Read more about it in the Overview and Core
 libraries sections, and here we jump straight to it. Looking at
-[MG-RPC API doc](../api/rpc/rpc-common.md), add RPC service `Temp.Read`:
+[MG-RPC API doc](../mos/api/rpc/rpc-common.md), add RPC service `Temp.Read`:
 
 ```c
 #include "mgos.h"
@@ -208,5 +208,5 @@ You will see `{"value": 18.6}` printed.
 ![](images/advanced-c8.png)
 
 This call could be performed over the serial connection as well as over
-network connection - see [RPC section](/docs/userguide/rpc.md) to learn more.
+network connection - see [RPC section](../mos/userguide/rpc.md) to learn more.
 

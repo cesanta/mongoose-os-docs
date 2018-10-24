@@ -25,7 +25,7 @@ az login
 ## Setup device
 
 - Follow [mos tool setup instructions](/software.html) to install `mos` tool
-- Pick one of the supported devices. We suggest to choose from [recommended devboards](../quickstart/devboards.md)
+- Pick one of the supported devices. We suggest to choose from [recommended devboards](../userguide/devboards.md)
 - Connect your device to your workstation via USB
 - Clone, build and flash the firmware:
 ```bash

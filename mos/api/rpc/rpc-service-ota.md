@@ -8,7 +8,7 @@
 This service provides an ability to manage OTA on devices remotely.
 It is possible to call this service programmatically via serial, HTTP/RESTful,
 Websocket, MQTT or other transports
-(see [RPC section](/docs/userguide/rpc.md)) or via the `mos` tool.
+(see [RPC section](/docs/mos/userguide/rpc.md)) or via the `mos` tool.
 
 See in-depth description of our OTA mechanism at
 [Updating firmware reliably - embedded.com](http://www.embedded.com/design/prototyping-and-development/4443082/Updating-firmware-reliably).

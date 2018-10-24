@@ -39,7 +39,7 @@ start the console, and provision to AWS IoT. Open the shadow GUI for the
 device.
 
 Upload built firmware to the
-[Mongoose OS dashboard](https://mongoose-os.com/docs/overview/dashboard.html)
+[Mongoose OS dashboard](https://mongoose-os.com/docs/mdash/intro.md)
 and copy the firmware URL.
 
 ![](img1.png)

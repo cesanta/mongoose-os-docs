@@ -22,7 +22,7 @@ It must execute without errors.
 ## Setup device
 
 - Follow [mos tool setup instructions](/software.html) to install `mos` tool
-- Pick one of the supported devices. We suggest to choose from [recommended devboards](../quickstart/devboards.md)
+- Pick one of the supported devices. We suggest to choose from [recommended devboards](../userguide/devboards.md)
 - Connect your device to your workstation with a USB cable
 - Flash a pre-built [demo-js](https://github.com/mongoose-os-apps/demo-js)
   firmware:

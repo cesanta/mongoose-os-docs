@@ -26,10 +26,6 @@ which looks like this:
 ]}
 ```
 
-This file is maintained by a set of API functions, see [API
-documentation](https://mongoose-os.com/docs/api/mgos_crontab.h.html) for more
-details.
-
 For the cron expression syntax, see [cron
 core](https://github.com/mongoose-os-libs/cron) docs.
 

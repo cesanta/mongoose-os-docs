@@ -36,8 +36,7 @@ Note that the `"jsonrpc": "2.0"` attribute in the request frame can be omitted.
 Mongoose OS libraries implement a large set of ready-to-go RPC services,
 like managing hardware peripherals (GPIO, SPI, I2C), managing files,
 remote updates, etc. It is easy to add custom RPC services too,
-see "RPC Core" library in the
-[RPC Services](../api/rpc.md) section for more details.
+see [RPC Core library](../api/rpc/rpc-common.md) for more details.
 
 The JSON-RPC messages could be carried out by many different channels:
 serial (UART), HTTP/Restful, WebSocket, MQTT, Bluetooth. RPC API allows
@@ -59,7 +58,7 @@ RPC.addHandler('Sum', function(args) {
 });
 ```
 
-See [RPC.addHandler API reference](/docs/api/rpc/rpc-common.md#rpc-addhandler).
+See [RPC.addHandler API reference](../api/rpc/rpc-common.md#rpc-addhandler).
 The C/C++ implementation that does the same would look something like this:
 
 ```c
@@ -81,7 +80,7 @@ static void sum_cb(struct mg_rpc_request_info *ri, void *cb_arg,
 mgos_rpc_add_handler("Sum", "{a: %lf, b: %lf}", sum_cb, NULL);
 ```
 
-See [mgos_rpc_add_handler API reference](/docs/api/rpc/rpc-common.md#mgos_rpc_add_handler). Make sure to
+See [mgos_rpc_add_handler API reference](../api/rpc/rpc-common.md#mgos_rpc_add_handler). Make sure to
 include the `rpc-common` library in your app's `mos.yml`.
 
 Here is how you can call it:

@@ -48,7 +48,7 @@ config_schema:
 ## Write device logic
 
 Create `fs/init.js` file with the following content
-(see [MG-RPC JS API reference](/docs/api/rpc/rpc-common.md#rpc-addhandler)):
+(see [MG-RPC JS API reference](../mos/api/rpc/rpc-common.md#rpc-addhandler)):
 
 ```javascript
 load('api_config.js');

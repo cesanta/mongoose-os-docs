@@ -89,7 +89,7 @@ tags:
   ...
 ```
 
-That creates an [API Reference/Core/ADC](/docs/api/core/adc.md)
+That creates an [API Reference/Core/ADC](../api/core/adc.md)
 documentation page. The content is generate from the README.md and header files.
 
 
