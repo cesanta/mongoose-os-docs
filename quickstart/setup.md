@@ -24,7 +24,7 @@ updatable, remotely manageable, secure, configurable product.
   </div>
 </div>
 
-## Download and install mos tool
+## 1. Download and install mos tool
 
 Mongoose OS uses `mos` tool for various tasks:
 building firmware, flashing firmware,
@@ -38,7 +38,7 @@ managing device, provisioning device on cloud services, and so on.
 |  Arch Linux | Note: Linux version start UI in a browser window. <pre>git clone https://github.com/cesanta/mos-tool<br>cd mos-tool/mos/archlinux_pkgbuild/mos-release<br>makepkg<br>pacman -U ./mos-*.tar.xz<br>mos</pre> |
 |  Generic MacOS/Linux | Note: starts UI in a browser window. <pre>curl -fsSL https://mongoose-os.com/downloads/mos/install.sh \| /bin/bash<br>mos</pre> |
 
-## Start mos tool
+## 2. Start mos tool
 
 Make sure your device is connected via the USB to your workstation.
 
@@ -54,7 +54,7 @@ On Linux, the Web UI is started in a browser, so to stop it, close the
 browser window and pressing `Ctrl-C` in a terminal where `mos` is running.
 
 
-## USB-to-Serial drivers
+## 3. USB-to-Serial drivers
 
 If you have your device connected via the USB, the UI can still
 complain about the unavailable ports like this:
@@ -73,7 +73,7 @@ In a "Choose port" dropdown, at least one port must appear.
 
 ![](images/qs2.png)
 
-## Create new app
+## 4. Create new app
 
 In the UI, select your board from the dropdown menu. Then, press `Ctrl-n`
 to create a new app. That will paste the `mos clone` command into the prompt:
@@ -87,7 +87,7 @@ Notice how current directory has changed to `app1`:
 ![](images/qs4.png)
 
 
-## Build app firmware
+## 5. Build app firmware
 
 Make sure the board is selected. Type `mos build` and press Enter.
 That starts a build process that takes up to a minute to complete.
@@ -96,7 +96,7 @@ As you can see, we did not make any changes to the app - we'll do that later.
 
 ![](images/qs5.png)
 
-## Flash firmware
+## 6. Flash firmware
 
 Make sure the port is selected in the dropdown menu.
 Type `mos flash` and press enter. That will flash a built firmware to the device:
@@ -108,7 +108,7 @@ console. Notice how new messages start to appear in the right window.
 The window autoscrolls to the bottom, unless you scroll up manually to see
 some previous logs. 
 
-## Configure WiFi
+## 7. Configure WiFi
 
 Type command `mos wifi WIFI_NETWORK_NAME WIFI_PASSWORD`. Use your own
 network name/password. Press enter. On the serial console, you'll see how
@@ -118,7 +118,7 @@ network, gets the IP configuration, and synchronises time with SNTP server:
 ![](images/qs7.png)
 
 
-## Add device to the mDash management dashboard
+## 8. Add device to the mDash management dashboard
 
 - Login to the mDash at https://dash.mongoose-os.com/. 
 - Click on "Add new device" button. That'll create a new device.
@@ -155,7 +155,7 @@ general information, real-time notifications, configuration editor, file
 editor, device shadow editor, and an RPC service call window. We won't study
 all these management tools now though, so proceed to the next step.
 
-## Enable mobile app
+## 9. Enable mobile app
 
 Click on the "Mobile app" menu, and click on a checkbox to enable mobile app.
 Enter your email address in the text box and press on "Send invitation" button:
@@ -167,7 +167,7 @@ On your mobile phone, open you inbox, open an email from mDash:
 ![](images/qs12.png)
 
 
-## Control your device from the mobile app
+## 10. Control your device from the mobile app
 
 Click on the link in the invitation email. This will bring you immediately
 to the PWA (Progressive Web App). It is available only for those who has
@@ -185,7 +185,7 @@ to `true`, and lights on an LED on a device:
 ![](images/qs13.png)
 
 
-## Make changes to the firmware
+## 11. Make changes to the firmware
 
 Click on the folder icon on the bottom left corner. That opens a system
 file browser in the current app directory. Open `fs/init.js` in your
@@ -200,7 +200,7 @@ Change `LED on` to `MY LED on` and save:
 Then, rebuild the firmware with `mos build`.
 
 
-## Update firmware over-the-air
+## 12. Update firmware over-the-air
 
 Now let's update our device with the new firmware over the air.
 

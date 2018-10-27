@@ -24,34 +24,11 @@ az login
 
 ## Setup device
 
-- Follow [mos tool setup instructions](/software.html) to install `mos` tool
 - Pick one of the supported devices. We suggest to choose from [recommended devboards](../userguide/devboards.md)
 - Connect your device to your workstation via USB
-- Clone, build and flash the firmware:
-```bash
-git clone https://github.com/mongoose-os-apps/demo-js
-cd demo-js
-mos build --platform YOUR_PLATFORM  # e.g. stm32, esp32, esp8266, cc3220
-mos flash
-```
-NOTE: you can customise this firmware as you wish, or build a firmware
-from scratch using an [empty](https://github.com/mongoose-os-apps/empty) app.
-In this case, it is important to include
-[azure](https://github.com/mongoose-os-libs/azure) library in the `libs` section
-of the `mos.yml` file:
-```yaml
-libs:
-  ...
-  - origin: https://github.com/mongoose-os-libs/azure # <-- Add this!
-```
-
-
-- Configure WiFi on a device using the mongoose OS command line tool `mos`
-```
-mos wifi WIFI_NETWORK WIFI_PASSWORD
-```
-
-- Provision your device to Azure IoT with a single command using the `mos` tool:
+- Complete [Quickstart Guide](../../quickstart/setup.md) steps 1-7 inclusive.
+  As a result, your device should be connected to the Internet
+- Provision your device to Azure IoT with a single command:
 ```
 mos azure-iot-setup --azure-hub-name YOUR_AZURE_HUB_NAME
 ```
@@ -73,58 +50,8 @@ That will bring up the device twin editor:
 
 ![](images/azure4.png)
 
-Start your favorite editor, create a file called `init.js`, copy-paste
-the following snippet and save:
-
-```javascript
-load('api_config.js');
-load('api_gpio.js');
-load('api_shadow.js');
-
-let led = Cfg.get('pins.led');  // Built-in LED GPIO number
-let state = {on: false};        // Device state - LED on/off status
-
-// Set up twin handler to synchronise device state with the shadow state
-Twin.addHandler(function(event, obj) {
-  if (event === 'CONNECTED') {
-    // Connected to shadow - report our current state.
-    Twin.update(0, state);
-  } else if (event === 'UPDATE_DELTA') {
-    // Got delta. Iterate over the delta keys, handle those we know about.
-    print('Got delta:', JSON.stringify(obj));
-    for (let key in obj) {
-      if (key === 'on') {
-        // Twin wants us to change local state - do it.
-        state.on = obj.on;
-        GPIO.set_mode(led, GPIO.MODE_OUTPUT);
-        GPIO.write(led, state.on ? 1 : 0);
-        print('LED on ->', state.on);
-      } else {
-        print('Dont know how to handle key', key);
-      }
-    }
-    // Once we've done synchronising with the shadow, report our state.
-    Twin.update(0, state);
-  }
-});
-```
-
-This snippet makes a device controllable by the device twin, by synchronising
-the `on` attribute in the device twin with the LED status: if `on` is `true`,
-the LED is turned on, and if `on` is `false`, it is turned off. That is done
-by handling `Shadow.UPDATE_DELTA` event, which is generated every time
-the `desired` attributes of the twin are different from the `reported` attributes.
-
-In the command prompt (or terminal on Linux/Mac), enter the following commands
-to copy `init.js` to the device, reboot the device, and start monitoring
-serial output:
-
-```
-mos put init.js
-mos call Sys.Reboot
-mos console 
-```
-
+The firmware that we've build following quickstart guide, contains
+code that synchronises device LED with the `desired.on` twin setting.
 In the device twin editor, add `desired.on` boolean key:
 
 ```javascript
