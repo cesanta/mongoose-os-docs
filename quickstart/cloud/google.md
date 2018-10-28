@@ -52,7 +52,7 @@ gcloud beta iot registries create iot-registry --region europe-west1 --event-pub
 
 ## Setup device
 
-- Pick one of the supported devices. We suggest to choose from [recommended devboards](../userguide/devboards.md)
+- Pick one of the supported devices. We suggest to choose from [recommended devboards](../devboards.md)
 - Connect your device to your workstation via USB
 - Complete [Quickstart Guide](../../quickstart/setup.md) steps 1-7 inclusive.
   As a result, your device should be connected to the Internet

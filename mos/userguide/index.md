@@ -1,5 +1,4 @@
 - [Introduction](intro.md)
-- [Supported hardware](devboards.md)
 - [RPC mechanism](rpc.md)
 - [Device config](configuration.md)
 - [Build Process](build.md)

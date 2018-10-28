@@ -6,7 +6,7 @@ control the board and report metrics.
 
 ## Setup the board and Google IoT Core
 
-Please follow [Google IoT Core tutorial](../cloud/google.md)
+Please follow [Google IoT Core tutorial](../../quickstart/cloud/google.md)
 in order to setup the cloud side and provision your board to Google IoT Core.
 You need to complete **Setup Google IoT Core** and
 **Setup device** sections only. When done, continue on this tutorial.

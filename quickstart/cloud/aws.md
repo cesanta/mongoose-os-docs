@@ -21,7 +21,7 @@ It must execute without errors.
 
 ## Setup device
 
-- Pick one of the supported devices. We suggest to choose from [recommended devboards](../userguide/devboards.md)
+- Pick one of the supported devices. We suggest to choose from [recommended devboards](../devboards.md)
 - Connect your device to your workstation via USB
 - Complete [Quickstart Guide](../../quickstart/setup.md) steps 1-7 inclusive.
   As a result, your device should be connected to the Internet
@@ -55,55 +55,8 @@ functionality on AWS IoT in less than 2 minutes:
 
 ## Controlling LED using AWS device shadow
 
-Start your favorite editor, create a file called `init.js`, copy-paste
-the following snippet and save:
-
-```javascript
-load('api_config.js');
-load('api_gpio.js');
-load('api_shadow.js');
-
-let led = Cfg.get('pins.led');  // Built-in LED GPIO number
-let state = {on: false};        // Device state - LED on/off status
-
-// Set up Shadow handler to synchronise device state with the shadow state
-Shadow.addHandler(function(event, obj) {
-  if (event === 'CONNECTED') {
-    // Connected to shadow - report our current state.
-    Shadow.update(0, state);
-  } else if (event === 'UPDATE_DELTA') {
-    // Got delta. Iterate over the delta keys, handle those we know about.
-    print('Got delta:', JSON.stringify(obj));
-    for (let key in obj) {
-      if (key === 'on') {
-        // Shadow wants us to change local state - do it.
-        state.on = obj.on;
-        GPIO.set_mode(led, GPIO.MODE_OUTPUT);
-        GPIO.write(led, state.on ? 1 : 0);
-        print('LED on ->', state.on);
-      }
-    }
-    // Once we've done synchronising with the shadow, report our state.
-    Shadow.update(0, state);
-  }
-});
-```
-
-This snippet makes a device controllable by the device shadow, by synchronising
-the `on` attribute in the shadow with the LED status: if `on` is `true`,
-the LED is turned on, and if `on` is `false`, it is turned off. That is done
-by handling `Shadow.UPDATE_DELTA` event, which is generated every time
-the `desired` attributes of the shadow are different from the `reported` attributes.
-
-In the command prompt (or terminal on Linux/Mac), enter the following commands
-to copy `init.js` to the device, reboot the device, and start monitoring
-serial output:
-
-```
-mos put init.js
-mos call Sys.Reboot
-mos console 
-```
+The firmware that we've build following quickstart guide, contains
+code that synchronises device LED with the `desired.on` shadow setting.
 
 <video controls="" class="float-right border w-50 m-3">
     <source src="images/aws1.mp4" type="video/mp4">
@@ -134,7 +87,7 @@ We'll report free RAM metric using MQTT API. Note that AWS IoT has
 versatile rules engine, which allows to handle incoming MQTT messages in
 a various ways: store in Dynamo DB, forward to your Lambda function, etc etc.
 
-Again, create `init.js` file in your favorite editor with the following content:
+Open `fs/init.js` file in your favorite editor and copy/paste the following:
 
 ```javascript
 load('api_config.js');
@@ -155,14 +108,11 @@ Timer.set(1000 /* milliseconds */, Timer.REPEAT, function() {
     <source src="images/aws2.mp4" type="video/mp4">
 </video>
 
-In the command prompt (or terminal on Linux/Mac), enter the following commands
-to copy `init.js` to the device, reboot the device, and start monitoring
-serial output:
+Copy `fs/init.js` to the device and reboot the device:
 
 ```
-mos put init.js
+mos put fs/init.js
 mos call Sys.Reboot
-mos console
 ```
 
 In the AWS IoT console, click on "Test". Into the "Subscription topic" field,
@@ -187,7 +137,7 @@ blog post.
 
 ## OTA update via AWS IoT device shadow
 
-See [OTA via shadow](../userguide/ota.md#ota-using-device-shadow)
+See [OTA via shadow](../../mos/userguide/ota.md#ota-using-device-shadow)
 
 
 ## Using AWS IoT in your custom firmware
@@ -202,7 +152,7 @@ C/C++ implementation.
 Also, MQTT API is available, also for both C/C++ and JavaScript.
 
 In order to have AWS IoT functionality in your custom application,
-just add `aws` library to your `mos.yml` file:
+make sure to add `aws` library to your `mos.yml` file:
 
 ```yaml
 libs:
