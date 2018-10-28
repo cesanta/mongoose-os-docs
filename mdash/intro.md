@@ -11,6 +11,8 @@ functionality:
 - 24/7 access and monitoring for your devices in the field
 - Full isolation. Other users cannot see traffic from your devices and cannot
   access them
+- OTA updates, on-the-fly file editing, config editing, shadow editing,
+  calling any device function like `Sys.Reboot`, `Sys.GetInfo`, `GPIO.Toggle`, etc
 - RESTful API and Web UI that provide:
    * Online/offline status together with device metadata like
    firmware version, build time, device architecture
