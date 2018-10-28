@@ -20,5 +20,3 @@ functionality:
    * Reliable OTA updates with manual or automatic commit
    * Device twin (or, shadow) cloud object, semantically identical to AWS / Azure
 - Notification stream that lets you catch state changes, implement custom logging, etc
-- A Web UI for device management: filesystem, shadow object, OTA,
-  device configuration, direct RPC calls
