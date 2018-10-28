@@ -21,27 +21,20 @@ It must execute without errors.
 
 ## Setup device
 
-- Follow [mos tool setup instructions](/software.html) to install `mos` tool
 - Pick one of the supported devices. We suggest to choose from [recommended devboards](../userguide/devboards.md)
-- Connect your device to your workstation with a USB cable
-- Flash a pre-built [demo-js](https://github.com/mongoose-os-apps/demo-js)
-  firmware:
-```bash
-mos flash YOUR_PLATFORM  # e.g. stm32, esp32, esp8266, cc3220
-```
-- Configure WiFi on a device
-```
-mos wifi WIFI_NETWORK WIFI_PASSWORD
-```
-- Provision your device to AWS IoT with a single command:
+- Connect your device to your workstation via USB
+- Complete [Quickstart Guide](../../quickstart/setup.md) steps 1-7 inclusive.
+  As a result, your device should be connected to the Internet
+- Provision your device to AWS IoT:
 ```
 mos aws-iot-setup --aws-region YOUR_AWS_REGION
 ```
+
 This command performs certificate management for you, and
-onboard your device on AWS IoT cloud. If your device has an
+onboards your device on a cloud. If your device has an
 [Atmel ECC508A](http://www.atmel.com/devices/ATECC508A.aspx) secure element
-attached, then Mongoose Firmware will use ECC508A chip for TLS handshake
-and keep your credentials secure. 
+attached, Mongoose OS automatically uses ECC508A chip for TLS
+and keeps your credentials securely stored.
 
 Open AWS console, "IoT Core" service, and find your provisioned device in
 the list. On the picture, ESP8266 was used.
