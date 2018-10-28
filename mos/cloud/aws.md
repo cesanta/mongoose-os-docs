@@ -29,7 +29,6 @@ It must execute without errors.
 ```
 mos aws-iot-setup --aws-region YOUR_AWS_REGION
 ```
-
 This command performs certificate management for you, and
 onboards your device on a cloud. If your device has an
 [Atmel ECC508A](http://www.atmel.com/devices/ATECC508A.aspx) secure element

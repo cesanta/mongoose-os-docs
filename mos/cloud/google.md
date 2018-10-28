@@ -67,7 +67,6 @@ from the result of your previous command:
 ```
 mos gcp-iot-setup --gcp-project YOUR_PROJECT_ID --gcp-region europe-west1 --gcp-registry iot-registry
 ```
-
 This command performs certificate management for you, and
 onboards your device on a cloud. If your device has an
 [Atmel ECC508A](http://www.atmel.com/devices/ATECC508A.aspx) secure element
