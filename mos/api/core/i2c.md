@@ -164,6 +164,13 @@ void mgos_i2c_close(struct mgos_i2c *conn);
 struct mgos_i2c *mgos_i2c_get_global(void);
 ```
 >  Return i2c bus handle that is set up via the sysconfig. 
+#### mgos_i2c_reset_bus
+
+```c
+bool mgos_i2c_reset_bus(int sda_gpio, int scl_gpio);
+```
+>  Init given pins as OD outputs and perform bus reset
+> by sending dummy clocks. 
 
 ### JS API
 

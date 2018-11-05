@@ -123,7 +123,11 @@ typedef void (*mg_handler_cb_t)(struct mg_rpc_request_info *ri, void *cb_arg,
 void mg_rpc_add_handler(struct mg_rpc *c, const char *method,
                         const char *args_fmt, mg_handler_cb_t cb, void *cb_arg);
 ```
->  Add a method handler. 
+> 
+> Add a method handler.
+> `method` can be a pattern, e.g. `Foo.*` will match calls to `Foo.Bar`.
+> Matching is case-insensitive so invoking `foo.bar` will also work.
+>  
 #### (*mg_prehandler_cb_t)
 
 ```c
