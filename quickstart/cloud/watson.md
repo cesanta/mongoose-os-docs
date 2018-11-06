@@ -7,10 +7,10 @@ This is a quick start tutorial for [IBM Watson IoT Platform](https://internetoft
 
 - Complete [Quickstart Guide](../../quickstart/setup.md) steps 1-7 inclusive.
   As a result, your device should be connected to the Internet
-- Provision your device to AWS IoT:
-```
-$ mos watson-iot-setup
-```
+- Provision your device to IBM Watson:
+  ```
+  mos watson-iot-setup
+  ```
 
 This does not require any credentials and will set up the device for [QuickStart cloud dashboard](https://quickstart.internetofthings.ibmcloud.com/#/) connectivity.
 With QuickStart dashboard, you will be able to send data from the device at a limited rate but device management (sending commands to the device) is not available.
