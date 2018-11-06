@@ -13,6 +13,17 @@ $ mos watson-iot-setup
 This does not require any credentials and will set up the device for [QuickStart cloud dashboard](https://quickstart.internetofthings.ibmcloud.com/#/) connectivity.
 With QuickStart dashboard, you will be able to send data from the device at a limited rate but device management (sending commands to the device) is not available.
 
+Note: in order to make a button press to send events, a default
+topic name should be changed. Open `fs/init.js` and edit `set_button_handler()`
+callback by changing topic name:
+
+```javascript
+let topic = 'iot-2/evt/mos/fmt/json';
+```
+
+Save, upload to a device using `mos put fs/init.js`, and reboot.
+
+
 ## IBM Cloud Account setup
 
 If you already have an IBM Cloud account and a cloud orgaization set up (you can register for a free trial [here](https://www.ibm.com/internet-of-things/spotlight/watson-iot-platform)) you can use `mos` to add a device to your org.
