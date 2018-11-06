@@ -5,7 +5,9 @@ This is a quick start tutorial for [IBM Watson IoT Platform](https://internetoft
 
 ## Quick Setup
 
-The easiest way to setup Watson IoT Platform cloud connection is by using `mos watson-iot-setup`.
+- Complete [Quickstart Guide](../../quickstart/setup.md) steps 1-7 inclusive.
+  As a result, your device should be connected to the Internet
+- Provision your device to AWS IoT:
 ```
 $ mos watson-iot-setup
 ```
