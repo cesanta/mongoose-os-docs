@@ -16,7 +16,10 @@ This does not require any credentials and will set up the device for [QuickStart
 With QuickStart dashboard, you will be able to send data from the device at a limited rate but device management (sending commands to the device) is not available.
 
 Note: in order to make a button press to send events,
-- Mongoose OS RPC support should be disabled by `mos config-set rpc.mqtt.enable=false`
+- Mongoose OS RPC support should be disabled by
+  ```
+  mos config-set rpc.mqtt.enable=false
+  ```
 - A default topic name should be changed. Open `fs/init.js` and edit
   `set_button_handler()` callback by changing topic name:
   ```javascript
