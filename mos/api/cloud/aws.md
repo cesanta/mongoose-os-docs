@@ -37,6 +37,12 @@ void aws_gg_reconnect(void);
 ### JS API
 
  --- 
+#### AWS.isConnected
+
+```javascript
+AWS.isConnected()
+```
+Return value: true if AWS connection is up, false otherwise.
 #### AWS.Shadow.setStateHandler
 
 ```javascript

@@ -114,3 +114,15 @@ bool mgos_azure_dm_responsef(struct mg_str id, int status, const char *json_fmt,
 ### JS API
 
  --- 
+#### Azure.isConnected
+
+```javascript
+Azure.isConnected()
+```
+Return value: true if Azure connection is up, false otherwise.
+#### Azure.sendD2CMsg
+
+```javascript
+Azure.sendD2CMsg(props, body)
+```
+Send a Device to Cloud message. `props`, if specified, must be URL-encoded.

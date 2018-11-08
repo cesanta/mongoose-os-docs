@@ -16,6 +16,12 @@ Device management dashboard API.
  
 
  ----- 
+#### mgos_dash_is_connected
+
+```c
+bool mgos_dash_is_connected(void);
+```
+>  Returns true if mDash connection is up, false otherwise. 
 #### mgos_dash_notifyf
 
 ```c
@@ -40,6 +46,12 @@ void mgos_dash_notify(const char *method, const char *data);
 ### JS API
 
  --- 
+#### Dash.isConnected
+
+```javascript
+Dash.isConnected()
+```
+Return value: true if mDash connection is up, false otherwise.
 #### Dash.notify
 
 ```javascript

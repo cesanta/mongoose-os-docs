@@ -9,6 +9,12 @@ See [IBM Watson tutorial](https://mongoose-os.com/docs/quickstart/cloud/watson.m
 
 
  ----- 
+#### mgos_watson_is_connected
+
+```c
+bool mgos_watson_is_connected(void);
+```
+>  Returns true if Watson connection is up, false otherwise. 
 #### mgos_watson_send_event_jsonf
 
 ```c
@@ -26,3 +32,9 @@ bool mgos_watson_send_event_jsonp(const struct mg_str *event_id,
 ### JS API
 
  --- 
+#### Watson.isConnected
+
+```javascript
+Watson.isConnected()
+```
+Return value: true if Watson connection is up, false otherwise.
