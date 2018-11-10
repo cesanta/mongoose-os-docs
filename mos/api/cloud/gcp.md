@@ -1,7 +1,7 @@
 # Google IoT Core
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/gcp](https://github.com/mongoose-os-libs/gcp) | [mgos_gcp.h](https://github.com/mongoose-os-libs/gcp/tree/master/include/mgos_gcp.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/gcp](https://github.com/mongoose-os-libs/gcp) | [mgos_gcp.h](https://github.com/mongoose-os-libs/gcp/tree/master/include/mgos_gcp.h) | &nbsp;  | [api_gcp.js](https://github.com/mongoose-os-libs/gcp/tree/master/mjs_fs/api_gcp.js)         |
 
 
 
@@ -11,6 +11,12 @@ See tutorial at https://mongoose-os.com/docs/mos/cloud/google.md
 
 
  ----- 
+#### mgos_gcp_is_connected
+
+```c
+bool mgos_gcp_is_connected(void);
+```
+>  Returns true if GCP connection is up, false otherwise. 
 #### mgos_gcp_send_event
 
 ```c
@@ -40,3 +46,13 @@ bool mgos_gcp_send_event_subf(const char *subfolder, const char *json_fmt, ...);
 > 
 > E.g.: mgos_gcp_send_event_subf("foo_events", "{foo: %d}", foo);
 >  
+
+### JS API
+
+ --- 
+#### GCP.isConnected
+
+```javascript
+GCP.isConnected()
+```
+Return value: true if GCP connection is up, false otherwise.

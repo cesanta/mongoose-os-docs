@@ -17,6 +17,10 @@ update, and upload a .zip file using the Web UI:
 
 ![](images/ota3.png)
 
+The in-progress is visible on the dashboard, regardless of the OTA method:
+
+![](images/ota5.png)
+
 
 ## OTA by calling `OTA.Update` device RPC
 

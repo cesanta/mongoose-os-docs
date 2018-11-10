@@ -1,5 +1,6 @@
 - [Amazon AWS IoT](aws.md)
 - [Google IoT Core](google.md)
+- [IBM Watson](watson.md)
 - [Microsoft Azure IoT](azure.md)
 - [Private MQTT server](mqtt.md)
 - [Samsung Artik](samsung.md)

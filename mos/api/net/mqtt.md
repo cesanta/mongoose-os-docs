@@ -136,6 +136,12 @@ bool mgos_mqtt_global_connect(void);
 > Normally MQTT will try to connect in the background, at certain interval.
 > This function will force immediate connection attempt.
 >  
+#### mgos_mqtt_global_is_connected
+
+```c
+bool mgos_mqtt_global_is_connected(void);
+```
+>  Returns true if MQTT connection is up, false otherwise. 
 #### mgos_mqtt_pub
 
 ```c
@@ -205,6 +211,12 @@ void mgos_mqtt_set_max_qos(int qos);
 ### JS API
 
  --- 
+#### MQTT.isConnected
+
+```javascript
+MQTT.isConnected()
+```
+Return value: true if MQTT connection is up, false otherwise.
 #### MQTT.sub
 
 ```javascript

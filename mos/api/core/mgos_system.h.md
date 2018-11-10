@@ -170,7 +170,8 @@ will alter the contents, and these changes will be visible to the caller.
 Sys.calloc(nmemb, size)
 ```
 Allocate a memory region.
-Note: currently memory allocated this way must be explicitly released with `free()`.
+Note: currently memory allocated this way must be explicitly released with
+`free()`.
 #### Sys.total_ram
 
 ```javascript

@@ -77,7 +77,7 @@ static void sum_cb(struct mg_rpc_request_info *ri, void *cb_arg,
 }
 
 // Somewhere in init function, register the handler:
-mgos_rpc_add_handler("Sum", "{a: %lf, b: %lf}", sum_cb, NULL);
+mg_rpc_add_handler(mgos_rpc_get_global(), "Sum", "{a: %lf, b: %lf}", sum_cb, NULL);
 ```
 
 See [mgos_rpc_add_handler API reference](../api/rpc/rpc-common.md#mgos_rpc_add_handler). Make sure to

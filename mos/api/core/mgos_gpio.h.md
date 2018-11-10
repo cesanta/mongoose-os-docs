@@ -21,6 +21,21 @@ bool mgos_gpio_set_mode(int pin, enum mgos_gpio_mode mode);
 bool mgos_gpio_set_pull(int pin, enum mgos_gpio_pull_type pull);
 ```
 >  Set pull-up or pull-down type. 
+#### mgos_gpio_setup_input
+
+```c
+bool mgos_gpio_setup_input(int pin, enum mgos_gpio_pull_type pull);
+```
+>  Sets up a pin as an input and confiures pull-up or pull-down. 
+#### mgos_gpio_setup_output
+
+```c
+bool mgos_gpio_setup_output(int pin, bool level);
+```
+> 
+> Sets up pin output while avoiding spurious transitions:
+> desired output level is configured first, then mode.
+>  
 #### mgos_gpio_read
 
 ```c
@@ -166,10 +181,24 @@ Set GPIO pin mode.
 #### GPIO.set_pull
 
 ```javascript
-GPIO.set_pull(pin, type)
+GPIO.set_pull(pin, pull_type)
 ```
 Set GPIO pin pull type.
-`type` can be either `GPIO.PULL_NONE`, `GPIO.PULL_UP`, or `GPIO.PULL_DOWN`.
+`pull_type` can be either `GPIO.PULL_NONE`, `GPIO.PULL_UP`, or `GPIO.PULL_DOWN`.
+#### GPIO.setup_input
+
+```javascript
+GPIO.setup_input(pin, pull_type)
+```
+Setup pin as input and configure pull type.
+`pull_type` can be either `GPIO.PULL_NONE`, `GPIO.PULL_UP`, or `GPIO.PULL_DOWN`.
+#### GPIO.setup_output
+
+```javascript
+GPIO.setup_output(pin, level)
+```
+Setup pin as output and set initial level, 0 or 1.
+Avoids spurious transitions: applies level first, then sets mode.
 #### GPIO.toggle
 
 ```javascript

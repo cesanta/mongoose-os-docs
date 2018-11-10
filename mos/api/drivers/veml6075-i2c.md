@@ -46,7 +46,7 @@ static void timer_cb(void *user_data) {
   uvb=mgos_veml6075_getUVB(s_veml6075);
   uvindex=mgos_veml6075_getUVIndex(s_veml6075);
 
-  LOG(LL_INFO, ("VEML6075 uva=%.1f uvb=%.1f uvindex=%.2f usecs=%u", uva, uvb, uvindex));
+  LOG(LL_INFO, ("VEML6075 uva=%.1f uvb=%.1f uvindex=%.2f", uva, uvb, uvindex));
 
   (void) user_data;
 }
