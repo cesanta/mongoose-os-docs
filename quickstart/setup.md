@@ -7,7 +7,7 @@ updatable, remotely manageable, secure, configurable product.
   <div class="col-md-4">
     <div><a href="#1-download-and-install-mos-tool">1. Download and install</a></div>
     <div><a href="#2-start-mos-tool">2. Start mos tool</a></div>
-    <div><a href="#3-usb-to-serial-drivers">3. Intall drivers (if needed)</a></div>
+    <div><a href="#3-usb-to-serial-drivers">3. Install drivers (if needed)</a></div>
     <div><a href="#4-create-new-app">4. Create new app</a></div>
   </div>
   <div class="col-md-4">
