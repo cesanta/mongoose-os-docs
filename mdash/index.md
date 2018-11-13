@@ -3,6 +3,7 @@
 - [Technical overview](architecture.md)
 - [OTA support](ota.md)
 - [Device shadow](shadow.md)
+- [Data storage](data.md)
 - [Notifications](notifications.md)
 - [Device sharing](sharing.md)
 - [Mobile app](mobile.md)
