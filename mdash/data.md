@@ -10,11 +10,20 @@ and visualisation:
 Device logs data via the device shadow update. Here how it is done in C/C++:
 
 ```c
+#include "mgos.h"
+#include "mgos_shadow.h"  // make sure to include "shadow" lib in mos.yml
+
+// Somewhere in your code ...
+mgos_shadow_updatef(0, "{my_value: %g}", 1.2345);
 ```
 
 And in JavaScript:
 
 ```javascript
+load('api_shadow');
+
+// Somewhere in your code ...
+Shadow.update(0, JSON.stringify({my_value: 1.2345}));
 ```
 
 See [Device shadow](shadow.md) section for the detailed device shadow
