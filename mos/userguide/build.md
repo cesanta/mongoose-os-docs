@@ -195,6 +195,14 @@ libs:
     name: mylib
 ```
 
+### name
+
+Override app or lib name. By default, the name is set equal to the
+directory name.
+
+```yaml
+name: my_cool_app
+```
 
 ### sources
 
