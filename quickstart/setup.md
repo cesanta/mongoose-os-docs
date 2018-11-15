@@ -1,26 +1,26 @@
 # Mongoose OS quick start quide
 
-A 15 minute guide to turn your device into a mobile-controllable,
+A 12-minute guide to turn your device into a mobile-controllable,
 updatable, remotely manageable, secure, configurable product.
 
 <div class="row">
   <div class="col-md-4">
-    <div><a href="#1-download-and-install-mos-tool">1. Download and install</a></div>
-    <div><a href="#2-start-mos-tool">2. Start mos tool</a></div>
-    <div><a href="#3-usb-to-serial-drivers">3. Install drivers (if needed)</a></div>
-    <div><a href="#4-create-new-app">4. Create new app</a></div>
+    <div><a href="#1-download-and-install-mos-tool">1. Download and install [1min]</a></div>
+    <div><a href="#2-start-mos-tool">2. Start mos tool [0 min]</a></div>
+    <div><a href="#3-usb-to-serial-drivers">3. Install drivers if needed [2 min]</a></div>
+    <div><a href="#4-create-new-app">4. Create new app [1 min]</a></div>
   </div>
   <div class="col-md-4">
-    <div><a href="#5-build-app-firmware">5. Build app firmware</a></div>
-    <div><a href="#6-flash-firmware">6. Flash firmware</a></div>
-    <div><a href="#7-configure-wifi">7. Configure WiFi</a></div>
-    <div><a href="#8-add-device-to-the-mdash-management-dashboard">8. Register on mDash</a></div>
+    <div><a href="#5-build-app-firmware">5. Build app firmware [1 min]</a></div>
+    <div><a href="#6-flash-firmware">6. Flash firmware [1 min]</a></div>
+    <div><a href="#7-configure-wifi">7. Configure WiFi [0 min]</a></div>
+    <div><a href="#8-add-device-to-the-mdash-management-dashboard">8. Register on mDash [1 min]</a></div>
   </div>
   <div class="col-md-4">
-    <div><a href="#9-enable-mobile-app">9. Enable mobile app</a></div>
-    <div><a href="#10-control-your-device-from-the-mobile-app">10. Control from mobile</a></div>
-    <div><a href="#11-make-changes-to-the-firmware">11. Change firmware</a></div>
-    <div><a href="#12-update-firmware-over-the-air">12. OTA update firmware</a></div>
+    <div><a href="#9-enable-mobile-app">9. Enable mobile app [1 min]</a></div>
+    <div><a href="#10-control-your-device-from-the-mobile-app">10. Control from mobile [2 min]</a></div>
+    <div><a href="#11-make-changes-to-the-firmware">11. Change firmware [2 min]</a></div>
+    <div><a href="#12-update-firmware-over-the-air">12. OTA update firmware [2 min]</a></div>
   </div>
 </div>
 
