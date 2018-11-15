@@ -76,13 +76,16 @@ In a "Choose port" dropdown, at least one port must appear.
 ## 4. Create new app
 
 In the UI, select your board from the dropdown menu. Then, press `Ctrl-n`
-to create a new app. That will paste the `mos clone` command into the prompt:
+to create a new app. That will paste the following command:
+
+```
+mos clone https://github.com/mongoose-os-apps/demo-js app1
+```
 
 ![](images/qs3.png)
 
-Press Enter. That will clone the
-[demo-js](https://github.com/mongoose-os-apps/demo-js) repository as `app1`.
-Notice how current directory has changed to `app1`:
+Press Enter. That is going to clone `demo-js` repo into the `app1` directory.
+Notice how current directory changes to `app1`:
 
 ![](images/qs4.png)
 
