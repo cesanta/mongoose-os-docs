@@ -19,7 +19,9 @@ true</code></pre>
 | DELETE | /devices/:id     | &nbsp; | Delete device |
 | POST   | /devices/:id/rpc/:func | {...} | Call device's RPC function |
 | POST   | /devices/:id/ota | fw.zip | OTA: `curl -v -F file=@fw.zip URL` |
+| GET    | /devices/:id/data | &nbsp; | Get device saved data |
 | GET    | /keys            | &nbsp; | List all API keys |
 | POST   | /keys            | &nbsp; | Create an API key |
 | DELETE | /keys/:id        | &nbsp; | Delete an API key |
 | POST   | /logs            | {"start": 0} | Get stored notification logs |
+| GET    | /devices/data    | &nbsp; | Get data from all devices |
