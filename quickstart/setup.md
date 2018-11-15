@@ -75,7 +75,7 @@ In a "Choose port" dropdown, at least one port must appear.
 
 NOTE: on some Mac computers, the port might not show up even after the
 driver is installed. The possible reason could be the extension policy,
-the fix is covered in https://github.com/tekezo/Karabiner-Elements/issues/777#issuecomment-312400158
+the fix is covered in [this issue](https://github.com/tekezo/Karabiner-Elements/issues/777#issuecomment-312400158)
 
 ## 4. Create new app
 
