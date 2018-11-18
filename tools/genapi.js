@@ -7,6 +7,7 @@ let jsFile = process.argv[5] || '';  // JS source file
 const hBase = (hFile || '').replace(/.+\//, '');
 let menuTitle = process.argv[6] || hBase;
 const readmeMD = process.argv[7];
+const symbols = [];
 
 const ignoreHeaders = {
   'mgos.h': 1,
@@ -120,15 +121,16 @@ const re2 =
     /(((\s*\/\/.*\n)+)|(\/\*([^\*]|\*[^\/])*\*\/))\s+(?![\s\/])([\s\S]+?)\n\n/g;
 let a;
 const backs = '```';
-const ident = function(x) {
-  return stripComments(x).split('\n').map(y => `> ${y}`).join('\n');
-};
+const ident = function(
+    x) { return stripComments(x).split('\n').map(y => `> ${y}`).join('\n'); };
 while ((a = re2.exec(rest)) != null) {
   const x = a[6].match(/^.*?\*?(\S+)\(/);
   // console.error('----------', a[6]);
   if (!x) continue;
   md += `#### ${x[1]}\n`;
-  md += `\n${backs}c\n${a[6]}\n${backs}\n${ident(a[1])}\n`;
+  const doc = `\n${backs}c\n${a[6]}\n${backs}\n${ident(a[1])}\n`;
+  symbols.push({name: x[1], file: hLink, doc: doc, lang: 'c'});
+  md += doc;
 }
 
 // ------------------------------------------------  Add JS API
@@ -141,9 +143,14 @@ if (jsFile) {
     const m2 = stripComments(a[1]).match(/^[^`]+?`(.*)`.*?\n([\s\S]+)$/);
     if (!m2) continue;
     md += `#### ${m2[1].replace(/\(.*/, '')}\n`;
-    md += `\n${backs}javascript\n${m2[1]}\n${backs}\n${m2[2]}\n`;
+    const doc = `\n${backs}javascript\n${m2[1]}\n${backs}\n${m2[2]}\n`;
+    symbols.push({name: m2[1], file: jsLink, doc: doc, lang: 'js'});
+    md += doc;
   }
 }
 
 fs.writeFileSync(dstFile, md);
+let x = JSON.parse(fs.readFileSync('symbols.json', 'utf-8'));
+x = x.concat(symbols);
+fs.writeFileSync('symbols.json', JSON.stringify(x, null, '  '));
 console.log(`- [${menuTitle}](${dstFile.replace(/.*\//, '')})`);

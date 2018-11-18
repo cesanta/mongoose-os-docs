@@ -26,6 +26,7 @@ DEV ?= ../cesanta.com
 INC ?= $(DEV)/fw/include
 MJS ?= $(DEV)/mos_libs/mjs
 $(API)/core: clean-generated
+	@echo '[]' > symbols.json
 	@(cd $(INC) && ls *.h) | while read F; do node tools/genapi.js $@/$$F.md cesanta/mongoose-os $(INC)/$$F >> $@/index.md; done
 	@node tools/genapi.js $@/frozen.h.md cesanta/frozen $(DEV)/frozen/frozen.h >> $@/index.md
 	@node tools/genapi.js $@/cs_dbg.h.md cesanta/mongoose-os $(DEV)/common/cs_dbg.h >> $@/index.md
