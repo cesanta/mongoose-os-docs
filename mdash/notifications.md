@@ -18,6 +18,8 @@ The dashboard UI uses `/api/v2/notify` endpoint in order to catch state changes.
 Login to the dashboard and open the developer tools / network / WS panel to
 see it in action.
 
+## How to catch notifications from all devices
+
 You can implement your own service that attaches to the `/api/v2/notify`,
 for example in Node JS (don't forget to substitute API_TOKEN with your real
 API access token):
@@ -28,3 +30,38 @@ const addr = 'wss://dash.mongoose-os.com/api/v2/notify?access_token=API_TOKEN';
 const ws = new Websocket(addr, { origin: addr });
 ws.on('message', msg => console.log('Got message:', msg.toString()));
 ```
+
+## How to send a notification from your device
+
+The API is documented at [mDash API](/docs/mos/api/cloud/dash.md).
+Below are quick examples.
+
+In C/C++:
+
+```c
+mgos_dash_notifyf("MyStat", "{temperature: %f}", 12.34);
+```
+
+In JavaScript:
+
+```javascript
+Dash.notify('MyStat', {temperature: 12.34});
+```
+
+That generates a notification:
+
+```javascript
+{
+  "id": "DEVICE_ID",        // This is the device ID that generated notification
+  "name": "rpc.out.MyStat", // "rpc.out.EVENT_NAME", in our case rpc.out.MyStat
+  "data": {"temperature": 12.34}  // Your event payload - arbitrary
+}
+```
+
+The further possible actions:
+- Catch this notification (see section above) and do your custom action
+- Modify the PWA mobile app, which catches all notifications,
+  and show the data somehow to the user
+- Save the data automatically to the database, and graph it. See
+  [Data Storage](data.md) section
+
