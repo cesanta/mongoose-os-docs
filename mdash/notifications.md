@@ -50,8 +50,8 @@ Dash.notify('MyStat', {temperature: 12.34});
 
 Note that the format of data is arbitrary - it could be anything: a number,
 a string, an array, or a complex nested object. It's up to you. In this
-example, a simple object `{"temperature": 12.34}` is used, which generates
-the following notification:
+example, a simple object `{"temperature": 12.34}` is used. The
+example  generates the following notification:
 
 ```javascript
 {
