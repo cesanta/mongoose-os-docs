@@ -48,7 +48,10 @@ In JavaScript:
 Dash.notify('MyStat', {temperature: 12.34});
 ```
 
-That generates a notification:
+Note that the format of data is arbitrary - it could be anything: a number,
+a string, an array, or a complex nested object. It's up to you. In this
+example, a simple object `{"temperature": 12.34}` is used, which generates
+the following notification:
 
 ```javascript
 {
@@ -58,7 +61,7 @@ That generates a notification:
 }
 ```
 
-The further possible actions:
+Further possible actions:
 - Catch this notification (see section above) and do your custom action
 - Modify the PWA mobile app, which catches all notifications,
   and show the data somehow to the user
