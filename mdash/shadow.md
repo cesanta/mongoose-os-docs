@@ -7,7 +7,7 @@ state/config objects provide similar functionality, but implemented quite differ
 Device shadow is a JSON object that is associated with a device. It
 lives on a cloud, keeps device state, and always available
 regardless whether the associated device is online or offline. Shadow object
-has three top-level keys:
+has four top-level keys:
  
  - `desired` - this is the state you want your device to have.
  - `reported` - this is the state your device actually has.
@@ -15,6 +15,8 @@ has three top-level keys:
   every time `desired` or `reported` changes.
   `delta` is the difference between `desired` and `reported`
   **only for keys that are present in** `desired`.
+- `tags` - arbitrary settings invisible to the device but visible to
+  the cloud user
 
 The structure of the `desired` and `reported` subobjects is arbitrary -
 create whatever structure you wish. However, the `dash` library that connects
