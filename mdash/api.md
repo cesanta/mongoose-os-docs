@@ -10,18 +10,62 @@ HTTP header. Those API calls that use `POST` or `PUT`, should specify
   https://dash.mongoose-os.com/api/v2/devices/DEVICE_ID/rpc/GPIO.Toggle
 true</code></pre>
 
+## GET /devices
 
-| Method | Endpoint         | Params | Description |
-| ------ | ---------------- | ------ | ----------- |
-| GET    | /devices         | &nbsp; | List all registered devices |
-| POST   | /devices         | &nbsp; | Register new device |
-| POST   | /devices/:id     | {"name": "x", "shared_with": "github_user1", "shadow": ...} | Change device properties |
-| DELETE | /devices/:id     | &nbsp; | Delete device |
-| POST   | /devices/:id/rpc/:func | {...} | Call device's RPC function |
-| POST   | /devices/:id/ota | fw.zip | OTA: `curl -v -F file=@fw.zip URL` |
-| GET    | /devices/:id/data | &nbsp; | Get device saved data |
-| GET    | /keys            | &nbsp; | List all API keys |
-| POST   | /keys            | &nbsp; | Create an API key |
-| DELETE | /keys/:id        | &nbsp; | Delete an API key |
-| POST   | /logs            | {"start": 0} | Get stored notification logs |
-| GET    | /devices/data    | &nbsp; | Get data from all devices |
+List all registered devices. Params: none.
+
+## POST /devices
+
+Register new device. Params: none.
+
+## POST /devices/:id
+
+Change device properties. Params:
+
+```javascript
+{
+  "name": "MyCoolDeviceName",
+  "shared_with": "github_user1,github_user2",
+  "shadow": ...
+}
+```
+
+Any key in the params is optional.
+
+
+## DELETE /devices/:id     
+
+Delete device. Params: none.
+
+## POST /devices/:id/rpc/:func
+
+Call device's RPC function. Params: any valid JSON string, which is expected by the function.
+
+
+## POST /devices/:id/ota
+
+Perform device OTA. Params: a binary content of the firmware .zip file. Example: `curl -v -F file=@fw.zip URL`.
+
+## GET /devices/:id/data
+
+Get device saved data. Params: none.
+
+## GET  /keys
+
+List all API keys. Params: none.
+
+## POST  /keys
+
+Create an API key. Params: none.
+
+## DELETE /keys/:id
+
+Delete an API key. Params: none.
+
+## POST /logs
+
+Get stored notification logs. Params:  `{"start": 0}` - an offset to start from.
+
+## GET  /devices/data 
+
+Get data from all devices. Params: none.
