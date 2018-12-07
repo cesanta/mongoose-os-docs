@@ -29,9 +29,9 @@ all libraries where all restrictions are removed.
 
 |  Library  |   Community Edition | Enterprise Edition |
 | --------- | ------------ | ---------------- |
-| [ota-http-client](https://github.com/mongoose-os-libs/ota-http-client) | OTA only from [Mongoose OS dashboard service](https://mongoose-os.com/docs/reference/dashboard.html) | No restrictions - OTA from any URL | 
+| [ota-http-client](https://github.com/mongoose-os-libs/ota-http-client) | OTA only from [Mongoose OS dashboard service](https://mongoose-os.com/docs/mdash/intro.md) | No restrictions - OTA from any URL | 
 | [ota-http-server](https://github.com/mongoose-os-libs/ota-http-server) | No restrictions | No restrictions | 
-| [ota-aws-shadow](https://github.com/mongoose-os-libs/ota-aws-shadow) | OTA only from [Mongoose OS dashboard service](https://mongoose-os.com/docs/reference/dashboard.html) | No restrictions - OTA from any URL | 
+| [ota-aws-shadow](https://github.com/mongoose-os-libs/ota-aws-shadow) | OTA only from [Mongoose OS dashboard service](https://mongoose-os.com/docs/mdash/intro.md) | No restrictions - OTA from any URL | 
 | [cron](https://github.com/mongoose-os-libs/cron) | 3 cron tasks max | No restrictions | 
 | [crontab](https://github.com/mongoose-os-libs/crontab) | 3 crontab entries max | No restrictions | 
 | [Mongoose Networking Library](https://github.com/cesanta/mongoose) | No restrictions | No restrictions |
