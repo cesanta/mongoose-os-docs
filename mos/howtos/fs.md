@@ -8,7 +8,7 @@ it is possible to write a driver that implements a Dropbox or Google Drive
 storage type, and a device (e.g. ESP8266 module) can mount a Dropbox folder.
 
 Mongoose OS provides a
-[Filesystem RPC service](/libraries/remote_management/rpc-service-fs.html)
+[Filesystem RPC service](/docs/mos/api/rpc/rpc-service-fs.md)
 that allows remote filesystem management - for example,
 you can edit files remotely.
 
