@@ -215,17 +215,17 @@ Go to the mDash, click on "Devices" top menu item to see the device list.
 Select a device, click on "OTA update selected" button, then click on
 "Choose firmware .zip file":
 
-![](images/qs15.png)
+![mDash list, zip file selector](images/qs15.png)
 
 Navigate to the freshly built `fw.zip` file, then notice how the
 progress bar appears showing the OTA progress:
 
-![](images/qs16.png)
+![OTA progress on mDash](images/qs16.png)
 
 During the OTA process, the device receives chunks of new firmware
 from the cloud, and serial console displays that:
 
-![](images/qs17.png)
+![device serial logs during the OTA](images/qs17.png)
 
 Eventually, the device reboots with the new firmware and we could
 see the changed message in the serial console:
@@ -238,4 +238,4 @@ see the changed message in the serial console:
 It's time to move on to more advanced topics - learn how to add support
 to different hardware peripherals, write logic in both C/C++ and JS,
 use API reference, send data to the databases/analytics engines like
-Firebase. Proceed to the [advanced guide](develop-in-c.md).
+Firebase. Proceed to the [advanced guide](/docs/quickstart/develop-in-c.md).
