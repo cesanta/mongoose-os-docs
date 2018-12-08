@@ -122,7 +122,7 @@ network name/password. Press enter. On the serial console, you'll see how
 the device reboots after saving new configuration settings, joins the WiFi
 network, gets the IP configuration, and synchronises time with SNTP server:
 
-![](images/qs7.png)
+![wifi setup screenshot, time sync via SNTP](images/qs7.png)
 
 
 ## 8. Add device to the mDash management dashboard
@@ -131,7 +131,7 @@ network, gets the IP configuration, and synchronises time with SNTP server:
 - Click on "Add new device" button. That'll create a new device.
 - Click on a "Token" link to copy the device's access token to the clipboard:
 
-![](../mdash/dash8.png)
+![](/docs/mdash/dash8.png)
 
 - Go back to the mos tool, type command (change TOKEN to your copied token) and press enter:
   ```
