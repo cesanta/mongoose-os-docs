@@ -143,7 +143,7 @@ network, gets the IP configuration, and synchronises time with SNTP server:
 Notice that the device started to print messages `{"uptime":XX,"on":false}`
 to the serial console. It sends this message to the dashboard, reporting
 its state to the device shadow
-([read more about device shadows](../mdash/shadow.md)).
+([read more about device shadows](/docs/mdash/shadow.md)).
 
 Notice that the device became online on mDash, and how the device shadow
 updates every second, incrementing its version number:
