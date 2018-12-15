@@ -24,7 +24,7 @@ and some have only one type. After successfully adding the sensors to the
 `mgos_imu` object, reads can be performed, mostly by performing
  `mgos_imu_*_get()` calls.
 
-All implementation offer the calls described below in the `IMU API`. 
+All implementations offer the calls described below in the `IMU API`.
 Some implementations offer chip-specific addendums, mostly setting sensitivity
 and range options.
 
@@ -82,8 +82,8 @@ error occurred, `false` is returned and the contents of `x`, `y` and `z` are
 unmodified. Note the units of the return values:
 
 *   ***magnetometer*** returns units of `microTesla`.
-*   ***accelerometer*** returns units of `m/s/s` (or standard G).
-*   ***gyroscope*** returns units of `degrees per second`.
+*   ***accelerometer*** returns units of `m/s/s`.
+*   ***gyroscope*** returns units of `radians per second`.
 
 `const char *mgos_imu_*_get_name()` -- This returns a symbolic name of the
 attached sensor, which is guaranteed to be less than or equal to 10 characters
@@ -247,37 +247,39 @@ bool mgos_imu_magnetometer_destroy(struct mgos_imu *imu);
 > bool mgos_imu_gyroscope_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_gyro_type type);
 > bool mgos_imu_accelerometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_acc_type type);
 > bool mgos_imu_magnetometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_mag_type type);
-> 
-#### mgos_imu_read
-
-```c
-bool mgos_imu_read(struct mgos_imu *imu);
-```
->  Read all available imu data from the IMU 
+>  
 #### mgos_imu_accelerometer_get
 
 ```c
 bool mgos_imu_accelerometer_get(struct mgos_imu *imu, float *x, float *y, float *z);
 ```
 >  Return accelerometer data in units of m/s/s 
+#### mgos_imu_accelerometer_get_offset
+
+```c
+bool mgos_imu_accelerometer_get_offset(struct mgos_imu *imu, float *x, float *y, float *z);
+bool mgos_imu_accelerometer_set_offset(struct mgos_imu *imu, float x, float y, float z);
+```
+>  Get/set accelerometer offset in units of m/s/s 
 #### mgos_imu_gyroscope_get
 
 ```c
 bool mgos_imu_gyroscope_get(struct mgos_imu *imu, float *x, float *y, float *z);
 ```
->  Return accelerometer data in units of deg/sec rotation rate 
+>  Return gyroscope data in units of Rads/sec 
+#### mgos_imu_gyroscope_get_offset
+
+```c
+bool mgos_imu_gyroscope_get_offset(struct mgos_imu *imu, float *x, float *y, float *z);
+bool mgos_imu_gyroscope_set_offset(struct mgos_imu *imu, float x, float y, float z);
+```
+>  Get/set gyroscope offset in units of m/s/s 
 #### mgos_imu_magnetometer_get
 
 ```c
 bool mgos_imu_magnetometer_get(struct mgos_imu *imu, float *x, float *y, float *z);
 ```
 >  Return magnetometer data in units of microtesla (1 microtesla = 10 milligauss) 
-#### mgos_imu_get_compass_heading
-
-```c
-bool mgos_imu_get_compass_heading(struct mgos_imu *imu, uint16_t *heading);
-```
->  Return compass heading based on magnetometer data, from [0..359] 
 #### mgos_imu_gyroscope_get_name
 
 ```c

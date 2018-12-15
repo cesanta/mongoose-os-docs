@@ -1,7 +1,7 @@
 # BLE
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/bt-common](https://github.com/mongoose-os-libs/bt-common) | [mgos_bt.h](https://github.com/mongoose-os-libs/bt-common/tree/master/include/mgos_bt.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/bt-common](https://github.com/mongoose-os-libs/bt-common) | [mgos_bt.h](https://github.com/mongoose-os-libs/bt-common/tree/master/include/mgos_bt.h) | &nbsp;  | [api_bt_ble.js](https://github.com/mongoose-os-libs/bt-common/tree/master/mjs_fs/api_bt_ble.js)         |
 
 
 
@@ -32,7 +32,7 @@ settings:
 ## Security
 
 Default settings allow for unrestricted access: anyone can pair with a device and access the services.
-A better idea is to set `bt.gatts.require_pairing` to true, `bt.allow_pairing` to false and only enable it for a limited time via `mgos_bt_gap_set_pairing_enable` when user performs some action, e.g. presses a button.
+A better idea is to set `bt.gatts.require_pairing` to true, `bt.allow_pairing` to false and only enable it for a limited time via `mgos_bt_ble_set_pairing_enable` when user performs some action, e.g. presses a button.
 Raising `bt.gatts.min_sec_level` to at least 1 is also advisable.
 _Note_: At present, level 2 (MITM protection) is not usable as it requires device to have at least output capability during pairing, and there's no API for displaying the pairing code yet.
 
@@ -46,3 +46,7 @@ _Note_: At present, level 2 (MITM protection) is not usable as it requires devic
 #define MGOS_BT_DEV_NAME_LEN 32
 ```
 >  Each byte is transformed into 3 bytes: "XX:", and last byte into "XX\0" 
+
+### JS API
+
+ --- 

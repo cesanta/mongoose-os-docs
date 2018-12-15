@@ -1158,6 +1158,12 @@
     "lang": "c"
   },
   {
+    "name": "mbuf_append_and_free",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "doc": "\n```c\nsize_t mbuf_append_and_free(struct mbuf *, void *data, size_t data_size);\n```\n> \n> Appends data to the Mbuf and frees it (data must be heap-allocated).\n> \n> Returns the number of bytes appended or 0 if out of memory.\n> data is freed irrespective of return value.\n>  \n",
+    "lang": "c"
+  },
+  {
     "name": "mbuf_insert",
     "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
     "doc": "\n```c\nsize_t mbuf_insert(struct mbuf *, size_t, const void *, size_t);\n```\n> \n> Inserts data at a specified offset in the Mbuf.\n> \n> Existing data will be shifted forwards and the buffer will\n> be grown if necessary.\n> Returns the number of bytes inserted.\n>  \n",
@@ -1173,6 +1179,18 @@
     "name": "mbuf_resize",
     "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
     "doc": "\n```c\nvoid mbuf_resize(struct mbuf *, size_t new_size);\n```\n> \n> Resizes an Mbuf.\n> \n> If `new_size` is smaller than buffer's `len`, the\n> resize is not performed.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mbuf_move",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "doc": "\n```c\nvoid mbuf_move(struct mbuf *from, struct mbuf *to);\n```\n>  Moves the state from one mbuf to the other. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mbuf_clear",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "doc": "\n```c\nvoid mbuf_clear(struct mbuf *);\n```\n>  Removes all the data from mbuf (if any). \n",
     "lang": "c"
   },
   {
@@ -4170,12 +4188,6 @@
     "lang": "c"
   },
   {
-    "name": "mgos_ds3231_date_time_get_struct_descr",
-    "file": "[mgos_ds3231.h](https://github.com/mongoose-os-libs/ds3231/tree/master/include/mgos_ds3231.h)",
-    "doc": "\n```c\nconst struct mjs_c_struct_member *mgos_ds3231_date_time_get_struct_descr();\n```\n> \n> Get the structure description\n>  \n",
-    "lang": "c"
-  },
-  {
     "name": "mgos_ds3231_date_time_get_unixtime",
     "file": "[mgos_ds3231.h](https://github.com/mongoose-os-libs/ds3231/tree/master/include/mgos_ds3231.h)",
     "doc": "\n```c\ntime_t mgos_ds3231_date_time_get_unixtime(\n    const struct mgos_ds3231_date_time *dt);\n```\n> \n> Get the `unixtime` time part of the `mgos_ds3231_date_time` structure.\n>  \n",
@@ -4862,13 +4874,7 @@
   {
     "name": "mgos_imu_gyroscope_destroy",
     "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nbool mgos_imu_gyroscope_destroy(struct mgos_imu *imu);\nbool mgos_imu_accelerometer_destroy(struct mgos_imu *imu);\nbool mgos_imu_magnetometer_destroy(struct mgos_imu *imu);\n```\n>  TODO(pim): Add SPI adders\n> bool mgos_imu_gyroscope_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_gyro_type type);\n> bool mgos_imu_accelerometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_acc_type type);\n> bool mgos_imu_magnetometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_mag_type type);\n> \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_imu_read",
-    "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nbool mgos_imu_read(struct mgos_imu *imu);\n```\n>  Read all available imu data from the IMU \n",
+    "doc": "\n```c\nbool mgos_imu_gyroscope_destroy(struct mgos_imu *imu);\nbool mgos_imu_accelerometer_destroy(struct mgos_imu *imu);\nbool mgos_imu_magnetometer_destroy(struct mgos_imu *imu);\n```\n>  TODO(pim): Add SPI adders\n> bool mgos_imu_gyroscope_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_gyro_type type);\n> bool mgos_imu_accelerometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_acc_type type);\n> bool mgos_imu_magnetometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_mag_type type);\n>  \n",
     "lang": "c"
   },
   {
@@ -4878,21 +4884,27 @@
     "lang": "c"
   },
   {
+    "name": "mgos_imu_accelerometer_get_offset",
+    "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
+    "doc": "\n```c\nbool mgos_imu_accelerometer_get_offset(struct mgos_imu *imu, float *x, float *y, float *z);\nbool mgos_imu_accelerometer_set_offset(struct mgos_imu *imu, float x, float y, float z);\n```\n>  Get/set accelerometer offset in units of m/s/s \n",
+    "lang": "c"
+  },
+  {
     "name": "mgos_imu_gyroscope_get",
     "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nbool mgos_imu_gyroscope_get(struct mgos_imu *imu, float *x, float *y, float *z);\n```\n>  Return accelerometer data in units of deg/sec rotation rate \n",
+    "doc": "\n```c\nbool mgos_imu_gyroscope_get(struct mgos_imu *imu, float *x, float *y, float *z);\n```\n>  Return gyroscope data in units of Rads/sec \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_imu_gyroscope_get_offset",
+    "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
+    "doc": "\n```c\nbool mgos_imu_gyroscope_get_offset(struct mgos_imu *imu, float *x, float *y, float *z);\nbool mgos_imu_gyroscope_set_offset(struct mgos_imu *imu, float x, float y, float z);\n```\n>  Get/set gyroscope offset in units of m/s/s \n",
     "lang": "c"
   },
   {
     "name": "mgos_imu_magnetometer_get",
     "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
     "doc": "\n```c\nbool mgos_imu_magnetometer_get(struct mgos_imu *imu, float *x, float *y, float *z);\n```\n>  Return magnetometer data in units of microtesla (1 microtesla = 10 milligauss) \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_imu_get_compass_heading",
-    "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nbool mgos_imu_get_compass_heading(struct mgos_imu *imu, uint16_t *heading);\n```\n>  Return compass heading based on magnetometer data, from [0..359] \n",
     "lang": "c"
   },
   {
@@ -5757,12 +5769,6 @@
     "name": "crc8",
     "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
     "doc": "\n```c\nstatic uint8_t crc8(const uint8_t *addr, uint8_t len);\n```\n> \n> Compute a Dallas Semiconductor 8 bit CRC, these are used in the\n> ROM and scratchpad registers.\n>      \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_ota_http_start",
-    "file": "[mgos_ota_http_client.h](https://github.com/mongoose-os-libs/ota-http-client/tree/master/include/mgos_ota_http_client.h)",
-    "doc": "\n```c\nvoid mgos_ota_http_start(struct update_context *ctx, const char *url);\n```\n>  Start OTA update by pulling the firmware from the given URL. \n",
     "lang": "c"
   },
   {

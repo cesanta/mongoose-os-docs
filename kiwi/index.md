@@ -1,1 +1,1 @@
-- [Introduction](intro.md)
+- [User guide](intro.md)

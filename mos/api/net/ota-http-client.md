@@ -1,7 +1,7 @@
 # OTA via HTTP GET
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ota-http-client](https://github.com/mongoose-os-libs/ota-http-client) | [mgos_ota_http_client.h](https://github.com/mongoose-os-libs/ota-http-client/tree/master/include/mgos_ota_http_client.h) | &nbsp;  | [api_ota.js](https://github.com/mongoose-os-libs/ota-http-client/tree/master/mjs_fs/api_ota.js)         |
+| [mongoose-os-libs/ota-http-client](https://github.com/mongoose-os-libs/ota-http-client) | [](https://github.com/mongoose-os-libs/ota-http-client/tree/master/include/) | &nbsp;  | [api_ota.js](https://github.com/mongoose-os-libs/ota-http-client/tree/master/mjs_fs/api_ota.js)         |
 
 
 
@@ -22,6 +22,7 @@ The library adds the following object to the device configuration:
     "commit_timeout": 0,        // OTA commit timeout
     "url": "",                  // HTTP URL to poll
     "interval": 0,              // Polling interval
+    "extra_http_headers": "",   // Extra HTTP request headers
     "ssl_ca_file": "ca.pem",    // TLS CA cert file
     "ssl_client_cert_file": "", // TLS cert file
     "ssl_server_name": "",      // TLS server name
@@ -32,12 +33,6 @@ The library adds the following object to the device configuration:
 
 
  ----- 
-#### mgos_ota_http_start
-
-```c
-void mgos_ota_http_start(struct update_context *ctx, const char *url);
-```
->  Start OTA update by pulling the firmware from the given URL. 
 
 ### JS API
 

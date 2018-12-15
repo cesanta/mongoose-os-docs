@@ -9,7 +9,7 @@ This library provides [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot
 
 Currently only plain MQTT is supported.
 
-See Azure IoT + Mongoose OS tutorial at https://mongoose-os.com/docs/mos/cloud/azure.md
+See Azure IoT + Mongoose OS tutorial at https://mongoose-os.com/docs/quickstart/cloud/azure.md
 
 ## Authentication
 
