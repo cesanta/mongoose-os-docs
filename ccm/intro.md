@@ -19,7 +19,7 @@ product. Below is the summary of the provided functionality:
 There are two ways of getting a functioning CCM module:
 
 1. Buy a ready-to-go, pre-flashed, encrypted module via the [order form](https://mongoose-os.com/order-ccm.html)
-2. Use any ESP32 hardware you already have, and flash the CCM firmware on it yourself:
+2. Use any ESP32 hardware you already have, and flash the CCM firmware on it:
    * Install `mos` tool by following "Step 1" at [mos quickstart](https://mongoose-os.com/docs/quickstart/setup.md)
    * Run `mos flash ccm` command
 
