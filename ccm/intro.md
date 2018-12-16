@@ -11,7 +11,7 @@ product. Below is the summary of the provided functionality:
 - Provision CCM over the Bluetooth Low Energy (BLE)
 - Provision CCM over the WiFi Access Point
 - Provision CCM from the Host MCU
-- Update Host MCU over-the-air. Implemented for STM32 or AVR Hosts
+- Update Host MCU over-the-air. Implemented for STM32 Hosts
 - Update CCM itself over-the-air
 
 ## Setting up hardware
@@ -36,11 +36,11 @@ see configuration section at the end of this document.
 
 | CCM pin | Host MCU pin  |
 | ------- | ------------  |
-| GND     | -             |
-| 3.3v    | -             |
-| 25      | UART RX       |
-| 26      | UART TX       |
-| 27      | RST (reset)   |
+| GND     | GND           |
+| VCC 3.3v | VCC 3.3v     |
+| IO 25   | UART RX       |
+| IO 26   | UART TX       |
+| IO 27   | RST (reset)   |
 
 <!-- ![CCM module wiring](images/wiring.png) -->
 
