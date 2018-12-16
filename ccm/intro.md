@@ -36,11 +36,11 @@ see configuration section at the end of this document.
 
 | CCM pin | Host MCU pin  |
 | ------- | ------------  |
-| GND     | GND           |
-| VCC 3.3v | VCC 3.3v     |
 | IO 25   | UART RX       |
 | IO 26   | UART TX       |
 | IO 27   | RST (reset)   |
+| GND     | GND           |
+| VCC 3.3v | VCC 3.3v     |
 
 <!-- ![CCM module wiring](images/wiring.png) -->
 
