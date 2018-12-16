@@ -16,17 +16,33 @@ product. Below is the summary of the provided functionality:
 
 ## Setting up hardware
 
+There are two ways of getting a functioning CCM module:
+
+1. Buy a ready-to-go, pre-flashed, encrypted module via the [order form](https://mongoose-os.com/order-ccm.html)
+2. Use any ESP32 hardware you already have, and flash the CCM firmware on it yourself:
+   * Install `mos` tool by following "Step 1" at [mos quickstart](https://mongoose-os.com/docs/quickstart/setup.md)
+   * Run `mos flash ccm` command
 
 ## Wiring
 
-Host microcontroller must be connected to the CCM via 4 lines. The TX/RX
-lines provide UART communication between Host and CCM. The BOOT and CN lines
-enable CCM to move Host into the bootloader mode to update Host's firmware.
-The diagram below shows the bottom view of the CCM module. CCM pins
-27 and 14 must be wired to the TX, RX pins of the Host, respectively.
-CCM pins 34, 35 must be wired to BOOT0, EN pins respectively:
+Host microcontroller should be connected to the CCM via the UART's TX and RX
+lines. That enables UART communication between two microcontrollers.
+To enable Host firmware update, an RST (reset) line also
+should be connected. That allows CCM to put Host into a boot loader mode
+for the firmware update, and then use UART to transfer firmware data.
 
-![CCM module wiring](images/wiring.png)
+Table below summarises the pinout. Note that the pinout below is configurable,
+see configuration section at the end of this document.
+
+| CCM pin | Host MCU pin  |
+| ------- | ------------  |
+| GND     | -             |
+| 3.3v    | -             |
+| 25      | UART RX       |
+| 26      | UART TX       |
+| 27      | RST (reset)   |
+
+<!-- ![CCM module wiring](images/wiring.png) -->
 
 ### Communication protocol
 
@@ -45,9 +61,9 @@ not have an `id` attribute, thus Host does not send a response:
 ```
 
 When Host receives a JSON-RPC frame, it must parse the frame and call
-corresponding handler function. That is done by the 
-
-In the following example, a CCM calls a custom function `Sum` that
+corresponding handler function. A handler function processes the request
+and produces a reply, which is sent back to the CCM.
+In the following communication example, a CCM calls a custom function `Sum` that
 adds two numbers:
 
 ```javascript
@@ -58,15 +74,15 @@ adds two numbers:
 And here is the example when CCM calls a non-existent function:
 
 ```javascript
-{"id": 12008, "method": "This_Function_Does_Not_Exist", "params": true}
-{"id": 12008, "error": {"code": -32601, "message": "method not found"}}
+{"id": 12008, "method": "This_Function_Does_Not_Exist", "params": true}   // CCM -> Host
+{"id": 12008, "error": {"code": -32601, "message": "method not found"}}   // Host -> CCM
 ```
 
 The communication is two-way. This is an example where Host
 sends an MQTT message to the cloud:
 
 ```javascript
-{"method": "MQTT.Pub", "params": {"topic": "t1", "message": "hello"}}
+{"method": "MQTT.Pub", "params": {"topic": "t1", "message": "hello"}}   // Host -> CCM
 ```
 
 ### mjson JSON-RPC library
@@ -76,16 +92,20 @@ For the Host, a compact C/C++ JSON-RPC library called `mjson` is available.
 https://github.com/cesanta/mjson. `mjson` makes it
 easy to define RPC services on the Host MCU, and call RPC services on CCM.
 
-The gist of the `msjon` usage is this:
+The `msjon` usage pattern is as follows:
 
-- Initialise the library: call `jsonrpc_init()`,
-  then export any number of the custom functions using `jsonrpc_export()`.
-- In the event loop, read the UART in a buffer. When a newline is received,
-  call `json_process()`.
-- At any time, you can call `jsonrpc_call()` to send a JSON-RPC frame to the CCM.
+1. Initialise the library by calling `jsonrpc_init()`
+2. Export any number of custom functions using `jsonrpc_export()`
+3. In the event loop, read the UART, feed each read byte into `json_process_byte()`
+4. At any time, you can call `jsonrpc_call()` to send a JSON-RPC frame to the CCM
 
-The Arduino sketch below demonstrates how to create an RPC service called
-`Sum` on the Host:
+That pattern works on any Host MCU, regardless the architecture and
+development environment: on Nordic nRF, TI, PIC, Atmel, STM32, NXP, or
+what have you.
+
+It is easy to demonstrate it on the Arduino platform.
+The Arduino sketch below shows how to create a `Sum` RPC service for adding
+two numbers:
 
 ```c
 #include "mjson.h"  // Sketch -> Add file -> add mjson.h
