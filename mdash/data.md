@@ -45,7 +45,7 @@ mgos_shadow_updatef(0, "{my_value: %g}", 1.2345);
 And in JavaScript:
 
 ```javascript
-load('api_shadow');
+load('api_shadow.js');
 
 // Somewhere in your code ...
 Shadow.update(0, JSON.stringify({my_value: 1.2345}));
