@@ -1,38 +1,50 @@
 # Licensing
 
-Mongoose OS is Open Source and dual-licensed:
+Mongoose OS is highly modular. It consists of the
+[core](https://github.com/cesanta/mongoose-os)
+and a large number of
+[libraries](https://github.com/mongoose-os-libs). The core, and most of
+the libraries, are open source and released under the
+[Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
 
-- **Mongoose OS Community Edition** - Apache License Version 2.0
-- **Mongoose OS Enterprise Edition** - Commercial License
+Some of the libraries are closed-source, and have certain restrictions.
+Those restrictions can be removed by licensing a device.
+
+## Licensing process
+
+- Login to the [Mongoose License Manager](https://license.mongoose-os.com)
+- Buy any number of licenses you need
+- If your device is connected to your workstation over USB, run:
+  ```
+  mos license
+  ```
+- Or, if your device is accessible remotely, run:
+  ```
+  mos --port DEVICE_ADDRESS license
+  ```
+
+Licenses are bound to devices, and they are permanent.
+
+The `mos license` command creates a unique license string specific
+for a device,
+and updates `device.license` configuration parameter, which "unlocks"
+the device and removes restrictions. The License Manager decreases
+the number of available licenses and saves a unique
+license string. The next time `mos license` is run for the same device,
+an old license string is returned by the License Manager
+but the number of available licenses is not decreased.
+Thus the device, once licensed, is licensed permanently.
 
 
-## Community vs Enterprise Edition
+## Libraries with restrictions
 
-|     &nbsp;    |  Community Edition |  Enterprise Edition  |
-| ------------- | ------------------ | -------------------- |
-| License | [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) | Commercial |
-| Allows to close end-product's source code  | Yes | Yes  |
-| Price  | Free | Paid, see [details](/pricing.html#mos-pricing) |
-| Functionality  | Limited (see below) | Full |
-| Technical support  | Community support via [Forum](https://forum.mongoose-os.com) and [Chat](https://gitter.im/cesanta/mongoose-os) | Commercial support by Mongoose OS development team, see [details](/support.html) |
+Below is the list of closed-source libraries and their restrictions.
 
-
-## Closed-source libraries
-
-Several Mongoose OS libraries, specifically libraries that are mainly
-used in the commercial setup, are closed-source.
-They are available for free usage in **Community Edition** with
-restrictions only. The table below provides a summary of all such libraries. 
-
-Mongoose OS Enterprise Edition customers receive full version of
-all libraries with the restrictions removed.
-
-|  Library  |   Community Edition | Enterprise Edition |
-| --------- | ------------ | ---------------- |
-| [ota-http-client](https://github.com/mongoose-os-libs/ota-http-client) | OTA only from [Mongoose OS dashboard service](https://mongoose-os.com/docs/mdash/intro.md) | No restrictions - OTA from any URL | 
-| [ota-http-server](https://github.com/mongoose-os-libs/ota-http-server) | No restrictions | No restrictions | 
-| [ota-aws-shadow](https://github.com/mongoose-os-libs/ota-aws-shadow) | OTA only from [Mongoose OS dashboard service](https://mongoose-os.com/docs/mdash/intro.md) | No restrictions - OTA from any URL | 
-| [cron](https://github.com/mongoose-os-libs/cron) | 3 cron tasks max | No restrictions | 
-| [crontab](https://github.com/mongoose-os-libs/crontab) | 3 crontab entries max | No restrictions | 
-| [Mongoose Networking Library](https://github.com/cesanta/mongoose) | No restrictions | No restrictions |
-|[mJS JavaScript Engine](https://github.com/cesanta/mjs)| Binary only | No restrictions |
+|  Library  | Restriction |
+| --------- | ------------ |
+| [ota-common](https://github.com/mongoose-os-libs/ota-common) | OTA only from [mDash](https://mongoose-os.com/docs/mdash/intro.md) |
+| [ota-http-client](https://github.com/mongoose-os-libs/ota-http-client) | OTA only from [mDash](https://mongoose-os.com/docs/mdash/intro.md) |
+| [ota-http-server](https://github.com/mongoose-os-libs/ota-http-server) | No restrictions |
+| [ota-aws-shadow](https://github.com/mongoose-os-libs/ota-aws-shadow) | OTA only from [mDash](https://mongoose-os.com/docs/mdash/intro.md) |
+| [cron](https://github.com/mongoose-os-libs/cron) | 3 cron tasks max |
+| [crontab](https://github.com/mongoose-os-libs/crontab) | 3 crontab entries max |
