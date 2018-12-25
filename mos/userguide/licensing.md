@@ -33,7 +33,7 @@ the number of available licenses and saves a unique
 license string. The next time `mos license` is run for the same device,
 an old license string is returned by the License Manager
 but the number of available licenses is not decreased.
-Thus the device, once licensed, is licensed permanently.
+Thus a device, once licensed, is licensed permanently.
 
 
 ## Libraries with restrictions
