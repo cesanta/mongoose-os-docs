@@ -9,7 +9,7 @@ can be licensed to unlock full functionality. The summary is below:
 |  Functionality  | Unlicensed  | Licensed |
 | --------------- | ----------- | -------- |
 | Over-the-air update (OTA) | OTA only from [mDash](https://mongoose-os.com/docs/mdash/intro.md) | OTA from anywhere
-| Cloud services supported | Only [mDash](https://mongoose-os.com/docs/mdash/intro.md) | All cloud services - mDash, AWS, Azure, Google, Watson, private MQTT |
+| Cloud services supported | Only [mDash](https://mongoose-os.com/docs/mdash/intro.md) | mDash, AWS, Azure, Google, Watson, private MQTT |
 
 ## Licensing process
 
