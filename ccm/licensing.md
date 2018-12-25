@@ -1,12 +1,13 @@
 # Licensing
 
 CCM-MOD and CCM-EVAL hardware modules are shipped with all functionality
-unlocked. CCM-FIRMWARE is distributed in the software form, and some
-functionality is restricted:
+unlocked. CCM-FIRMWARE is distributed in the software form, unlicensed,
+where some functionality. A device which is flashed with the CCM-FIRMWARE,
+can be licensed to unlock full functionality. The summary is below:
 
 
-|  Functionality  | Unlicensed  |
-| --------------- | ------------ |
+|  Functionality  | Unlicensed  | Licensed |
+| --------------- | ----------- | -------- |
 | Over-the-air update (OTA) | OTA only from [mDash](https://mongoose-os.com/docs/mdash/intro.md) | OTA from anywhere
 | Cloud services supported | Only [mDash](https://mongoose-os.com/docs/mdash/intro.md) | All cloud services - mDash, AWS, Azure, Google, Watson, private MQTT |
 
