@@ -31,7 +31,9 @@ const ws = new Websocket(addr, { origin: addr });
 ws.on('message', msg => console.log('Got message:', msg.toString()));
 ```
 
-To see your mDash API tokens, login to mDash and click on "Keys" tab.
+To see your mDash API tokens, login to mDash and click on "Keys" tab:
+
+![mDash API key](images/key1.png)
 
 ## How to send a notification from your device
 
