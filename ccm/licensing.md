@@ -1,9 +1,10 @@
 # Licensing
 
 CCM-MOD and CCM-EVAL hardware modules are shipped with all functionality
-unlocked. CCM-FIRMWARE is distributed in the software form, unlicensed,
-where some functionality. A device which is flashed with the CCM-FIRMWARE,
-can be licensed to unlock full functionality. The summary is below:
+unrestricted. CCM-FIRMWARE is distributed in the software form, unlicensed,
+where some functionality is restricted. A device which is flashed with
+the CCM-FIRMWARE, can be licensed to "unlock" full functionality.
+The summary is below:
 
 
 |  Functionality  | Unlicensed  | Licensed |
