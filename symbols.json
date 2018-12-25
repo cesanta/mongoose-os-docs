@@ -240,6 +240,24 @@
     "lang": "js"
   },
   {
+    "name": "mgos_file_copy",
+    "file": "[mgos_file_utils.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_file_utils.h)",
+    "doc": "\n```c\nbool mgos_file_copy(const char *from, const char *to);\n```\n>  Copy a file \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_file_digest",
+    "file": "[mgos_file_utils.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_file_utils.h)",
+    "doc": "\n```c\nbool mgos_file_digest(const char *fname, mbedtls_md_type_t dt, uint8_t *digest);\n```\n>  Compute file's digest. *digest must have enough space for the digest type. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_file_copy_if_different",
+    "file": "[mgos_file_utils.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_file_utils.h)",
+    "doc": "\n```c\nbool mgos_file_copy_if_different(const char *from, const char *to);\n```\n>  Copy the file if target does not exist or is different. \n",
+    "lang": "c"
+  },
+  {
     "name": "(*mgos_gpio_int_handler_f)",
     "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
     "doc": "\n```c\ntypedef void (*mgos_gpio_int_handler_f)(int pin, void *arg);\n```\n>  GPIO interrupt handler signature. \n",
@@ -3550,6 +3568,12 @@
     "file": "[mgos_bt.h](https://github.com/mongoose-os-libs/bt-common/tree/master/include/mgos_bt.h)",
     "doc": "\n```c\n#define MGOS_BT_ADDR_STR_LEN (sizeof(struct mgos_bt_addr) * 3 + 2 /* type */)\n#define MGOS_BT_UUID_STR_LEN (sizeof(struct mgos_bt_uuid) * 3)\n#define MGOS_BT_DEV_NAME_LEN 32\n```\n>  Each byte is transformed into 3 bytes: \"XX:\", and last byte into \"XX\\0\" \n",
     "lang": "c"
+  },
+  {
+    "name": "GAP.parseName(advData)",
+    "file": "[api_bt_gap.js](https://github.com/mongoose-os-libs/bt-common/tree/master/mjs_fs/api_bt_gap.js)",
+    "doc": "\n```javascript\nGAP.parseName(advData)\n```\nParse name from adv data. Tries to get long, falls back to short.\n",
+    "lang": "js"
   },
   {
     "name": "_read",

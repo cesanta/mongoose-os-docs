@@ -1,1 +1,2 @@
 - [User guide](intro.md)
+- [Licensing](licensing.md)

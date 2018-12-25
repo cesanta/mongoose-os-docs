@@ -13,7 +13,7 @@ Those restrictions can be removed by licensing a device.
 ## Licensing process
 
 - Login to the [Mongoose License Manager](https://license.mongoose-os.com)
-- Buy any number of licenses you need
+- Buy any number of licenses you need. IMPORTANT: choose "mongoose-os" license type
 - If your device is connected to your workstation over USB, run:
   ```
   mos license

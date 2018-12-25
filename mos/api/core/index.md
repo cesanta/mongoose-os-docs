@@ -19,3 +19,4 @@
 - [Timers](mgos_timers.h.md)
 - [UART](mgos_uart.h.md)
 - [Utils](mgos_utils.h.md)
+- [mgos_file_utils.h](mgos_file_utils.h.md)
