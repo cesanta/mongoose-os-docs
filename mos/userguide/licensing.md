@@ -5,12 +5,12 @@ Mongoose OS is highly modular. It consists of the
 and a large number of
 [libraries](https://github.com/mongoose-os-libs). The core, and most of
 the libraries, are open source and released under the
-[Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
+[Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0) as Mongoose OS Community Edition.
 
 Some of the libraries are closed-source, and have certain restrictions.
-Those restrictions can be removed by licensing a device.
+Those restrictions can be removed by purchasing a Mongoose OS Enterprise Edition license.
 
-## Licensing process
+## Mongoose OS Enterprise Edition Licensing process
 
 - Login to the [Mongoose License Manager](https://license.mongoose-os.com)
 - Buy any number of licenses you need. IMPORTANT: choose "mongoose-os" license type
