@@ -244,11 +244,6 @@ static void mqtt_cb(struct jsonrpc_request *r) {
   jsonrpc_call("{\"method\":\"MQTT.Sub\",\"params\":{\"topic\":%Q}}", "t/#");
 ```
 
-
-```javascript
-{"method": "MQTT.Pub", "params": {"topic": "t1", "message": "hello", "qos": 1}}
-```
-
 ### 9. RPC Services provided by the Host
 
 #### RPC.List
