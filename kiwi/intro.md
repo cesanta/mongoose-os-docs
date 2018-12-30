@@ -37,3 +37,26 @@ Got message: {"id":"e0a560b5b1d7d70deed4b811","name":"rpc.out.BLE.Adv",
 "value":"fd3f7fd38700f0ffffff01000000000000009bc6e7f5b505d74100000000000000008c1dfd3f841dfd3f06000000848e0f40b0f4fd3f00000000333930313036fd3f991dfd3f5492fd3f00000000a81dfd3f00000000000000007270633f281efd3f70c10e404cc10e402cc1"}]},
 "at":"2018-12-16T22:55:22.977011429Z"}
 ```
+
+# Using MQTT
+
+Kiwi firmware could send BLE advertisements to mDash, or to any MQTT service.
+In order to use MQTT, please follow the steps below:
+
+- License your device, per [licensing instructions](/docs/mos/userguide/licensing.md)
+- Configure MQTT:
+   - For generic/private MQTT server, run
+   ```
+   mos config-set mqtt.enable=true mqtt.server=HOST:PORT
+   ```
+   - For AWS, follow [AWS guide's](/docs/quickstart/cloud/aws.md) "Setup AWS IoT" and "Setup device" chapters
+   - For Google, follow [GCP guide's](/docs/quickstart/cloud/gcp.md) "Setup Google IoT Core" and "Setup device" chapters
+   - For Azure, follow [Azure guide's](/docs/quickstart/cloud/azure.md) "Setup Azure IoT Hub" and "Setup device" chapters
+   - For Watson, follow [Watson guide's](/docs/quickstart/cloud/watson.md) "Quick setup" chapter
+
+By default, Kiwi reports to the `kiwi` MQTT topic. You can change the default
+by running
+
+```
+mos config-set kiwi.topic=YOUR_TOPIC
+```
