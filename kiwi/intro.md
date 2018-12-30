@@ -50,7 +50,7 @@ In order to use MQTT, please follow the steps below:
    mos config-set mqtt.enable=true mqtt.server=HOST:PORT
    ```
    - For AWS, follow [AWS guide's](/docs/quickstart/cloud/aws.md) "Setup AWS IoT" and "Setup device" chapters
-   - For Google, follow [GCP guide's](/docs/quickstart/cloud/gcp.md) "Setup Google IoT Core" and "Setup device" chapters
+   - For Google, follow [GCP guide's](/docs/quickstart/cloud/google.md) "Setup Google IoT Core" and "Setup device" chapters
    - For Azure, follow [Azure guide's](/docs/quickstart/cloud/azure.md) "Setup Azure IoT Hub" and "Setup device" chapters
    - For Watson, follow [Watson guide's](/docs/quickstart/cloud/watson.md) "Quick setup" chapter
 
