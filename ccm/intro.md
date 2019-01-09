@@ -47,7 +47,7 @@ do the following:
 | IO 33     | UART TX       | &nbsp; |
 | GND       | GND           | &nbsp; |
 | VCC 3.3V  | VCC 3.3V      | &nbsp; |
-| IO 27     | RST (reset)   | Optional. Host OTA |
+| IO 13     | RST (reset)   | Optional. Host OTA |
 | IO 14     | BOOT0         | Optional. Host OTA |
 
 Note: that default pinout is configurable,
