@@ -43,8 +43,8 @@ do the following:
 
 | CCM pin   | Host MCU pin  | Notes  |
 | -------   | ------------  | ------ |
-| IO 25     | UART RX       | &nbsp; |
-| IO 26     | UART TX       | &nbsp; |
+| IO 32     | UART RX       | &nbsp; |
+| IO 33     | UART TX       | &nbsp; |
 | GND       | GND           | &nbsp; |
 | VCC 3.3V  | VCC 3.3V      | &nbsp; |
 | IO 27     | RST (reset)   | Optional. Host OTA |
