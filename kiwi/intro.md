@@ -125,3 +125,11 @@ For example, to traverse an adv data, do:
 Functions `mkrsp()` and `mkadv` could be used to rewrite response and adv
 data, respectively. They both take an opaque pointer, and string + length
 parameter.
+
+If you need to disable rewrite, just remove the `app.js`:
+```
+mos rm app.js
+```
+
+The device needs to be rebooted after `app.js` change, since `app.js` is
+read once at startup.
