@@ -60,3 +60,68 @@ by running
 ```
 mos config-set kiwi.topic=YOUR_TOPIC
 ```
+
+# Rewriting scan responses
+
+It is possible to define a custom logic to modify received scan results
+before storing/reporting them. This can be done by uploading an `app.js`
+file to the device:
+
+```
+mos put path/to/app.js
+```
+
+Here is how `app.js` content should look like:
+
+```javascript
+load('api_events.js');
+
+let evo = ffi('void *get_kiwi_ev_descr(void)')();
+let mkrsp = ffi('void kiwi_mkrsp(void *, char *, int)');  
+let mkadv = ffi('void kiwi_mkadv(void *, char *, int)');
+
+Event.on(Event.baseNumber('KWI'), function(ev, data) {
+  let obj = s2o(data, evo);
+  print('got kiwi event:', JSON.stringify(obj));
+
+  // Put your response rewrite logic below.
+  if (obj.stored_rsp !== '') {
+    mkrsp(data, '\x01\x02\x03', 3);   // Rewrite scan resp
+    mkadv(data, 'abc321', 6);         // Rewrite adv data
+  }
+}, null);
+
+print('JS rewrite initialised');
+```
+
+For each scan result, a JavaScript callback function is called.
+It receives scan `data` opaque pointer, which could be transformed into the
+JavaScript object `obj` with the following fields:
+
+```javascript
+{
+  "addr": "...",          // 6-byte device MAC address
+  "adv": "...",           // Adv data
+  "stored_adv": "...",    // Stored adv data
+  "rsp": "...",           // Scan response
+  "stored_rsp": "..."     // Stored scan response
+}
+```
+
+All fields a byte strings. Length could be taken like `obj.adv.length`.
+Contents could be examined using `at()` function, like `obj.adv.at(0)`.
+See https://github.com/cesanta/mjs#built-in-api for mjs API reference.
+
+For example, to traverse an adv data, do:
+
+```javascript
+    for (let i = 0; i < obj.adv.length; i++) {
+       let val = obj.adv.at(i);
+       print('Value at index', i, 'is', val);
+    }
+```
+
+
+Functions `mkrsp()` and `mkadv` could be used to rewrite response and adv
+data, respectively. They both take an opaque pointer, and string + length
+parameter.
