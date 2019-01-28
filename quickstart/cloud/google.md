@@ -17,10 +17,6 @@ See following video that repeats setup steps mentioned below:
 ## Setup Google IoT Core
 
 - Install [gcloud command line tool](https://cloud.google.com/sdk/gcloud/)
-- Install beta components:
-```
-gcloud components install beta
-```
 - Authenticate with Google Cloud:
 ```
 gcloud auth login
@@ -39,15 +35,15 @@ gcloud config set project YOUR_PROJECT_NAME
 ```
 - Create PubSub topic for device data:
 ```
-gcloud beta pubsub topics create iot-topic
+gcloud pubsub topics create iot-topic
 ```
 - Create PubSub subscription for device data:
 ```
-gcloud beta pubsub subscriptions create --topic iot-topic iot-subscription
+gcloud pubsub subscriptions create --topic iot-topic iot-subscription
 ```
 - Create device registry:
 ```
-gcloud beta iot registries create iot-registry --region europe-west1 --event-pubsub-topic=iot-topic
+gcloud iot registries create iot-registry --region europe-west1 --event-notification-config=topic=iot-topic
 ```
 
 ## Setup device
