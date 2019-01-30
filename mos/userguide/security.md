@@ -3,7 +3,7 @@
 Mongoose OS uses mbedTLS library from ARM with several patches:
 
 - RAM usage by each connection. By default, mbedTLS uses allocates >32k RAM for each TLS connection. Mongoose OS uses dynamic buffers, reducing RAM usage per connection down to 1k RAM.
-- ECC508A crypto chip integration. This patch makes mbedTLS to offload crypto to the hardware chip.
+- ATECC608A crypto chip integration. This patch makes mbedTLS to offload crypto to the hardware chip.
 - Dynamic CA certificates loading. By default, mbedTLS loads all CA certificates in RAM. Our patch makes it load on demand, saving a lot of RAM. Mongoose OS stores CA certificates in ca.pem file, where you can add your server's CA certificate without blowing RAM usage.
 
 ## ESP32 flash encryption
@@ -56,7 +56,7 @@ mos flash-read --arch esp32 0x190000 2000 -
 ```
 
 
-## ATECC508A crypto chip
+## ATECC608A crypto chip
 
 Often, IoT boards provide no built-in flash protection mechanism.
 Anyone with a physical access to the device can read the whole flash,
@@ -68,7 +68,7 @@ Private keys are stored inside the crypto chip, and all the crypto operations
 that require private key, are offloaded to the crypto chip which performs
 the operation and gives the result back.
 
-[ATECC508A crypto chip](http://www.atmel.com/devices/ATECC508A.aspx)
+[ATECC608A crypto chip](https://www.microchip.com/wwwproducts/en/ATECC608A)
 is designed with additional hardware protection mechanisms
 to make key extraction difficult. It is an impressive piece of hardware with
 many layers of protection, and important enough it is quite inexpensive,
@@ -76,10 +76,10 @@ costing less than 80 cent a piece.
 
 ### Wiring (ESP8266 NodeMCU example)
 
-Get ATECC508A - either as an ATCRYPTOAUTH-XPRO board which requires no
-soldering, or a bare-bones ATECC508A which requires soldering.
+Get ATECC608A - either as an ATCRYPTOAUTH-XPRO board which requires no
+soldering, or a bare-bones ATECC608A which requires soldering.
 
-| Function | ATECC508A pin | ESP8266 pin  | NodeMCU pin  | ATCRYPTOAUTH pin |
+| Function | ATECC608A pin | ESP8266 pin  | NodeMCU pin  | ATCRYPTOAUTH pin |
 | :------: |:-------------:| :-----------:| :-----------:| :--------------: |
 | SDA      |   5           | 10 (GPIO12)  |   D6         |  11 (yellow)     |
 | SCL      |   6           | 9 (GPIO14)   |   D5         |  12 (white)      |
@@ -90,7 +90,7 @@ Wiring for ATCRYPTOAUTH-XPRO:
 
   ![](images/ecc1.png)
 
-Wiring for the bare-bones ATECC508A:
+Wiring for the bare-bones ATECC608A:
 
   ![](images/ecc2.png)
 
@@ -98,12 +98,32 @@ Wiring for the bare-bones ATECC508A:
 ### Setup guide
 
 Mongoose OS has native support for
-[ATECC508A](http://www.atmel.com/devices/ATECC508A.aspx) crypto chip.
+[ATECC608A](https://www.microchip.com/wwwproducts/en/ATECC608A) security chip.
 This section is a quick guide to get it up and running.
 For a more detailed reference, especially of chip configuration, please
 refer to Microchip documentation.
 
-1. Generate a cert and key as normal. An example below shows a self-signed 
+1. The chips leave the factory unconfigured. Blank chip will be detected but crypto operations failing with code `0xf4`.
+   Microchip provides their own configuration tools but `mos` includes basic commands to get and set configuration as a YAML file.
+   For development you can use our
+  [sample configuration](https://raw.githubusercontent.com/cesanta/mongoose-os/master/fw/tools/atca-test-config.yaml).
+  To set it, use the following `mos` commands:
+
+```bash
+mos atca-set-config atca-test-config.yaml --dry-run=false
+mos atca-lock-zone config --dry-run=false
+mos atca-lock-zone data --dry-run=false
+```
+
+Note: This only needs to be done once and once locked, chip configuration cannot be changed anymore. You can dump chip's configuration with `mos atca-get-config --format=yaml`.
+
+Note 2: Sample config is very permissive and is only
+  suitable for development and testing, NOT for production deployments. Please refer to 
+  Microchip's manual and other documentation to come up with more secure
+  configuration (we may be able to assist with that too - ask a question
+  on [our forum](http://forum.cesanta.com)).
+
+2. Generate a cert and key as normal. An example below shows a self-signed 
   certificate, but of course it doesn't have to be. The importnat thing is
   that it's a ECDSA certificate using P256 curve, since that is what the chip
   supports.
@@ -116,23 +136,6 @@ openssl req -new -subj \
 openssl x509 -in ecc.csr.pem -text -out ecc.crt.pem \
   -req -signkey ecc.key.pem -days 3650
 ```
-
-2. Configure the chip. You can use our
-  [sample configuration](https://raw.githubusercontent.com/cesanta/mongoose-os/master/fw/tools/atca-test-config.yaml).
-  To set it, use extended `mos` commands:
-
-```bash
-mos -X atca-set-config atca-aws-test.yaml --dry-run=false
-mos -X atca-lock-zone config --dry-run=false
-mos -X atca-lock-zone data --dry-run=false
-```
-
-  Note: these changes are irreversible: once locked, zones cannot be
-  unlocked anymore. Also, this sample config is very permissive and is only
-  suitable for testing, NOT for production deployments. Please refer to 
-  Microchip manual and other documentation to come up with more secure
-  configuration (we may be able to assist with that too - ask a question
-  on [our forum](http://forum.cesanta.com)).
 
 3. Write the generated key into the device. Assuming you are using our
   sample configuration described in the previous section,
