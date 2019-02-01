@@ -78,7 +78,7 @@ load('api_config.js');
 load('api_gpio.js');
 load('api_mqtt.js');
 
-let led = Cfg.get('pins.led');
+let led = Cfg.get('board.led1.pin');
 let topic = '/devices/' + Cfg.get('device.id') + '/config';
 
 GPIO.set_mode(led, GPIO.MODE_OUTPUT);
