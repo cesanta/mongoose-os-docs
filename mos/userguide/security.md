@@ -32,7 +32,7 @@ information like TLS private keys could be easily stolen from the flash.
 In this case, we see a part of the device's file system, not encrypted.
 
 In order to enable flash encryption, use `esp32-gen-key` command. It
-enables flash encryption for the next flashing:
+enables flash encryption for the next flashing (and sets efuses):
 
 ```bash
 mos -X esp32-gen-key flash_encryption_key fe.key \
@@ -55,6 +55,12 @@ to ensure there no plain-text parts are present:
 mos flash-read --arch esp32 0x190000 2000 -
 ```
 
+It is recommended to use a separate key for each device.  The efuses must be set to enable encryption (this is done automatically by `esp32-gen-key`) and can be verified by running:
+```bash
+mos esp32-efuse-get
+```
+
+A device with encryption enabled should show `flash_crypt_cnt      : 0x01`
 
 ## ATECC608A crypto chip
 
