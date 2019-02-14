@@ -22,7 +22,7 @@ do the following:
 - Connect your device to your workstation and run the following command
   to flash the CCM firmware:
   ```
-  mos flash https://mongoose-os.com/downloads/ccm/ccm.zip
+  mos flash https://mongoose-os.com/downloads/ccm/release/CCM-WROOM-32.zip
   ```
 
 ## 2. Setting up network
