@@ -44,13 +44,13 @@ do the following:
 | CCM pin   | Host MCU pin  | Notes  |
 | -------   | ------------  | ------ |
 | IO 32     | UART RX       | &nbsp; |
-| IO 33     | UART TX       | &nbsp; |
+| IO 34     | UART TX       | &nbsp; |
 | GND       | GND           | &nbsp; |
-| VCC 3.3V  | VCC 3.3V      | &nbsp; |
-| IO 13     | RST (reset)   | Optional. Host OTA |
-| IO 14     | BOOT0         | Optional. Host OTA |
+| VCC 5V    | VCC 5V        | Do not connect 3.3V |
+| IO 14     | RST (reset)   | Optional. Host OTA |
+| IO 12     | BOOT0         | Optional. Host OTA |
 
-Note: that default pinout is configurable,
+Note: this is the default pinout and it is configurable,
 see configuration section at the end of this document.
 
 Below is the example wiring for the CCM-EVAL and STM32 BluePill board:
@@ -61,12 +61,12 @@ Below is the example wiring for the CCM-EVAL and STM32 BluePill board:
 ## 4. Preparing firmware .zip file for the Host MCU
 
 Build a new firmware for your Host using your familiar development tools,
-like Keil IDE, or Arduino IDE, or whatever else. Assume that the result
-binary file is FIRMWARE.BIN. Use the following command to prepare a
-.zip file understood by the CCM:
+like IAR or Keil IDE, Arduino IDE, or whatever else. Assume that the resulting
+firmware file is `FIRMWARE.HEX`. To be processed by CCM it needs to be converted to
+a .zip firmware bundle. Here's how to do it:
 
 ```
-mos create-fw-bundle -o fw.zip --name fw --platform ccm_host host_fw:type=STM32,src=FIRMWARE.BIN,addr=0x8000000
+mos create-fw-bundle -o fw.zip --name fw --platform ccm_host host_fw:type=STM32,src=FIRMWARE.HEX
 ```
 
 ## 5. Updating Host MCU over-the-air
@@ -372,19 +372,35 @@ Below is a CCM configuration available for tuning:
 
 ```javascript
 {
-  "provision": {
-    "btn": {
-      "pin": 0,             // Factory reset pin
-      "pull_up": true,      // Pull-up state
-      "hold_ms": 0          // Number of milliseconds to hold for reset
+  "host": {
+    "ota": {
+      "enable": true,               // Enable/disable host OTA
+      "chip_type": "STM32",         // Type of the host MCU chip. Currently only STM32 is supported.
+      "stm32": {                    // STM32 Host OTA settings
+        "boot0_pin": 12,            // Host BOOT0 pin
+        "intf_type": "UART",        // Type of the host communication interface.
+                                    // Currently only UART interface is supported.
+        "rst_pin": 14,              // Host reset pin
+        "uart": {                   // STM32 UART communication settings
+          "baud_rate": 115200,      // UART baud rate used during update
+          "rx_pin": 34,             // UART RX pin (connected to host TX)
+          "tx_pin": 32              // UART TX pin (connected to host RX)
+        }
+      }
     },
-    "led": {
-      "pin": -1,            // Status LED GPIO number
-      "active_high": true   // LED is on when the voltage is high
-    },
-    "stable_state": 3,      // Do not reset when joined WiFi at least once
-    "timeout": 300,
-    "max_state": 3
+    "rpc": {                        // Host RPC channel settings
+      "enable": true,               // Enable RPC channel to host
+      "intf_type": "UART",          // Type of the host communication interface.
+                                    // Currently only UART interface is supported.
+      "uart": {                     // RPC UART communication settings
+        "baud_rate": 115200,        // UART baud rate used for RPC
+        "rx_pin": 34,               // UART RX pin (connected to host TX)
+        "tx_pin": 32,               // UART TX pin (connected to host RX)
+        "fc_type": 0,               // Flow control: 0 - none, 1 - CTS/RTS, 2 - XON/XOFF
+        "cts_pin": -1,              // UART CTS pin (connected to host RTS)
+        "rts_pin": -1               // UART RTS pin (connected to host CTS)
+      }
+    }
   }
 }
 ```
