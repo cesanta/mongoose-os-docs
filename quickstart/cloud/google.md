@@ -19,7 +19,7 @@ See following video that repeats setup steps mentioned below:
 - Install [gcloud command line tool](https://cloud.google.com/sdk/gcloud/)
 - Authenticate with Google Cloud:
 ```
-gcloud auth login
+gcloud auth application-default login
 ```
 - Create cloud project - choose your unique project name:
 ```
