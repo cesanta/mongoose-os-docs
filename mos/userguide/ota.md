@@ -34,7 +34,7 @@ This method works by downloading a new firmware over HTTP.
 NOTE: this method requires professional subscription.
 
 ```
-mos --port DEVICE_ADDRESS call RPC.Update '{"url": "URL_TO_ZIP"}'
+mos --port DEVICE_ADDRESS call OTA.Update '{"url": "URL_TO_ZIP"}'
 ```
 
 ## OTA using device shadow
