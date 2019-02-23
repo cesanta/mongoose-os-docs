@@ -187,9 +187,9 @@ Return free available RAM in bytes.
 #### Sys.reboot
 
 ```javascript
-Sys.reboot(us)
+Sys.reboot(ms)
 ```
-Reboot the system after `us` microseconds. Return value: none.
+Reboot the system after `ms` milliseconds. Return value: none.
 #### Sys.uptime
 
 ```javascript
