@@ -17,7 +17,7 @@ Kiwi is a BLE to MQTT gateway that provides the following functionality:
 1. Pick one of the supported ESP32 devices. We suggest to choose from [recommended devboards](/docs/quicktart/devboards.md)
 2. Connect your device to your workstation via USB
 3. Follow steps 1,2,3 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
-4. In the `mos` UI, run `mos flash https://mongoose-os.com/downloads/kiwi.zip` command
+4. In the `mos` UI, run `mos flash https://mongoose-os.com/downloads/kiwi/kiwi.zip` command
 5. Follow steps 7,8 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
 
 When done, you should have your ESP32 device flashed, provisioned to WiFi,
