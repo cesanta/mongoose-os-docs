@@ -12,6 +12,7 @@ Those restrictions can be removed by purchasing a Mongoose OS Enterprise Edition
 
 ## Mongoose OS Enterprise Edition Licensing process
 
+- Make sure that `rpc-service-ota` library is used by your app
 - Login to the [Mongoose License Manager](https://license.mongoose-os.com)
 - Buy any number of licenses you need. IMPORTANT: choose "mongoose-os" license type
 - If your device is connected to your workstation over USB, run:

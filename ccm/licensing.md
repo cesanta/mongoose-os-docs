@@ -14,6 +14,7 @@ The summary is below:
 
 ## Licensing process
 
+- Make sure that `rpc-service-ota` library is used by your app
 - Login to the [Mongoose License Manager](https://license.mongoose-os.com)
 - Buy any number of licenses you need. IMPORTANT: choose "ccm" license type
 - If your device is connected to your workstation over USB, run:
