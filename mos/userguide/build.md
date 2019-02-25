@@ -39,7 +39,7 @@ workstations. Summary:
 
 ## mos.yml file format reference
 
-`mos.yml` file drives the way Mongoose apps are biult. Below is a description
+`mos.yml` file drives the way Mongoose apps are built. Below is a description
 of the sections (keys) in this file. Libraries also have `mos.yml` files, the
 only difference with apps is that they have `type: lib` key and they cannot
 be built into a firmware. So the following applies to both apps and libraries.
