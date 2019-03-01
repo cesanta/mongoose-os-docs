@@ -1,50 +1,39 @@
-# Kiwi: BLE to MQTT gateway
+# KIWI - a bluetooth beacon gateway
 
-Kiwi is a BLE to MQTT gateway that provides the following functionality:
+KIWI module listens for the BLE beacon advertisements, and forwards them to
+the specified MQTT server. AWS IoT, Azure, Google IoT Core, IBM Watson,
+and private MQTT servers are supported. The gateway algorithm is as follows:
 
-- Catch BLE beacons and forward them to the specified MQTT topic
-- Provide set of commands (driven by MQTT or REST) to:
-    * Scan bluetooth network for devices
-    * Connect to a given device
-    * Scan a given device for characteristics
-    * Read a given characteristic
-    * Write to a given characteristic
-    * Subscribe to notifications
-- Configure gatway to read BLE devices and forward data to the cloud (MQTT)
+- Connect to the configured MQTT server. Reconnect when the connection is lost
+- Perform a continuous BLE scan, listen for the BLE advertisements
+- When a BLE advertisement is received,
+  report it to the MQTT server, to the `kiwi.pub_topic` topic
+- If the next advertisement is the same as previous, skip reporting
+- Limit the frequency of reports by `kiwi.interval_ms` value
+- When KIWI reconnects to a server, re-report all devices
+- Subscribe to a `kiwi.sub_topic` and re-report all devices when a message is
+  received from that topic
+- This is an example message that gets reported to the MQTT:
+
+```javascript
+{
+  "gw": "esp32-ce12ba",
+  "mac": "7f:d3:87:0b:ac:d5",
+  "rssi": -16,
+  "adv": "02011a14ff4c0001000000000400000000000010000000006c1dfd3f7fd387"
+}
+```
 
 ## Quick start
 
-1. Pick one of the supported ESP32 devices. We suggest to choose from [recommended devboards](/docs/quicktart/devboards.md)
-2. Connect your device to your workstation via USB
+1. Buy an ESP32 device mentioned at the [KIWI page](/kiwi/)
+2. Connect an ESP32 device to your workstation via USB
 3. Follow steps 1,2,3 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
 4. In the `mos` UI, run `mos flash https://mongoose-os.com/downloads/kiwi/kiwi.zip` command
-5. Follow steps 7,8 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
-
-When done, you should have your ESP32 device flashed, provisioned to WiFi,
-and connected to mDash. Now, you need to catch notifications from it.
-Read the [mDash notification](/docs/mdash/notifications.md) section on how
-to catch notifications from your devices.
-
-If you run an example Node.js code provided by the mDash doc, you should
-see BLE advertisement printed on a console, e.g.:
-
-```javascript
-Got message: {"id":"e0a560b5b1d7d70deed4b811","name":"rpc.out.BLE.Adv",
-"data":{"mac":"7f:d3:87:0b:ac:d5","rssi":-16,
-"adv":"02011a14ff4c0001000000000400000000000010000000006c1dfd3f7fd387",
-"parsed":[{"type":1,"name":"flags","value":"1a14"},{"type":255,"name":"manufacturer_specific_data",
-"value":"4c0001000000000400000000000010000000006c"}, {"type":29,"name":"paring_rand_256",
-"value":"fd3f7fd38700f0ffffff01000000000000009bc6e7f5b505d74100000000000000008c1dfd3f841dfd3f06000000848e0f40b0f4fd3f00000000333930313036fd3f991dfd3f5492fd3f00000000a81dfd3f00000000000000007270633f281efd3f70c10e404cc10e402cc1"}]},
-"at":"2018-12-16T22:55:22.977011429Z"}
-```
-
-# Using MQTT
-
-Kiwi firmware could send BLE advertisements to mDash, or to any MQTT service.
-In order to use MQTT, please follow the steps below:
-
-- License your device, per [licensing instructions](/docs/mos/userguide/licensing.md)
-- Configure MQTT:
+5. Follow step 7 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
+6. Login to the [license manager][https://license.mongoose-os.com] and buy KIWI licenses (one per device)
+7. Execute `mos license`
+8. Configure MQTT:
    - For generic/private MQTT server, run
    ```
    mos config-set mqtt.enable=true mqtt.server=HOST:PORT
@@ -54,12 +43,38 @@ In order to use MQTT, please follow the steps below:
    - For Azure, follow [Azure guide's](/docs/quickstart/cloud/azure.md) "Setup Azure IoT Hub" and "Setup device" chapters
    - For Watson, follow [Watson guide's](/docs/quickstart/cloud/watson.md) "Quick setup" chapter
 
-By default, Kiwi reports to the `kiwi` MQTT topic. You can change the default
-by running
+When done, you should have your ESP32 device flashed, provisioned to WiFi,
+connected to the cloud, and reporting devices. 
+
+
+# Configuring KIWI
+
+KIWI keeps its configuration on a flash filesystem. It could be instected
+and changed using `mos` tool. To see an existing configuration,
+execute `mos config-get`. Below is the documentation for relevant entries:
+
+```javascript
+"kiwi": {
+  "pub_topic": "kiwi",        // Publish topic - devices get reported to it
+  "sub_topic": "kiwi",        // Subscribe topic - on message, devices are re-reported
+  "qos":  0,                  // Publish QOS
+  "report_interval_ms":  0,   // Reporting interval in milliseconds
+  "active_scan":  false,      // Do an active or passive BLE scan
+  "name_filter":  "",         // If not empty, only report devices with this substring
+},
+"mqtt": {
+  "enable": true,             // Enable MQTT. Requires a license
+  "server": "broker.mqttdashboard.com:1883",    // MQTT server address
+}
+```
+
+In order to change any configuration parameter, execute `mos config-set name=value`, for example:
 
 ```
-mos config-set kiwi.topic=YOUR_TOPIC
+mos config-set mqtt.server=my.server.com:1883
+mos config-set kiwi.pub_topic=my_cool_topic
 ```
+
 
 # Rewriting scan responses
 
