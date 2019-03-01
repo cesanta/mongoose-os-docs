@@ -1,5 +1,7 @@
 # KIWI - a bluetooth beacon gateway
 
+## Introduction
+
 KIWI module listens for the BLE beacon advertisements, and forwards them to
 the specified MQTT server. AWS IoT, Azure, Google IoT Core, IBM Watson,
 and private MQTT servers are supported. The gateway algorithm is as follows:
@@ -47,7 +49,7 @@ When done, you should have your ESP32 device flashed, provisioned to WiFi,
 connected to the cloud, and reporting devices. 
 
 
-# Configuring KIWI
+## Configuring KIWI
 
 KIWI keeps its configuration on a flash filesystem. It could be instected
 and changed using `mos` tool. To see an existing configuration,
@@ -76,7 +78,7 @@ mos config-set kiwi.pub_topic=my_cool_topic
 ```
 
 
-# Rewriting scan responses
+## Rewriting scan responses
 
 It is possible to define a custom logic to modify received scan results
 before storing/reporting them. This can be done by uploading an `app.js`
