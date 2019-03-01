@@ -65,7 +65,7 @@ execute `mos config-get`. Below is the documentation for relevant entries:
   "name_filter":  "",         // If not empty, only report devices with this substring
 },
 "mqtt": {
-  "enable": true,             // Enable MQTT. Requires a license
+  "enable": true,                               // Enable MQTT. Requires a license
   "server": "broker.mqttdashboard.com:1883",    // MQTT server address
 }
 ```
