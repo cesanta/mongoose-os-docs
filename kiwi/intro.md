@@ -6,7 +6,7 @@ KIWI module listens for the BLE beacon advertisements, and forwards them to
 the specified MQTT server. AWS IoT, Azure, Google IoT Core, IBM Watson,
 and private MQTT servers are supported. The gateway algorithm is as follows:
 
-- Connect to the configured MQTT server. Reconnect when the connection is lost
+- Connect to the configured MQTT server. Reconnect when a connection is lost
 - Perform a continuous BLE scan, listen for the BLE advertisements
 - When a BLE advertisement is received,
   report it to the MQTT server, to the `kiwi.pub_topic` topic
