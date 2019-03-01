@@ -57,8 +57,8 @@ execute `mos config-get`. Below is the documentation for relevant entries:
 
 ```javascript
 "kiwi": {
-  "pub_topic": "kiwi_1",      // Publish topic - devices get reported to it
-  "sub_topic": "kiwi_2",      // Subscribe topic - on message, devices are re-reported
+  "pub_topic": "kiwi",        // Publish topic - devices get reported to it
+  "sub_topic": "kiwi_flush",  // Subscribe topic - on message, devices are re-reported
   "qos":  0,                  // Publish QOS
   "report_interval_ms":  0,   // Reporting interval in milliseconds
   "active_scan":  false,      // Do an active or passive BLE scan
