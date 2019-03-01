@@ -65,6 +65,7 @@ Using port /dev/ttyUSB0
 Let's put a file there
 
 ```
+$ mos put README.md
 $ mos ls -l /mnt
 Using port /dev/ttyUSB0
 README.md 991
