@@ -62,7 +62,7 @@ execute `mos config-get`. Below is the documentation for relevant entries:
   "qos":  0,                  // Publish QOS
   "report_interval_ms":  0,   // Reporting interval in milliseconds
   "active_scan":  false,      // Do an active or passive BLE scan
-  "name_filter":  "",         // If not empty, only report devices with this substring in the name
+  "name_filter":  "",         // Only report devices with this substring in the name
 },
 "mqtt": {
   "enable": true,                               // Enable MQTT. Requires a license
