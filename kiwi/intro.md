@@ -33,7 +33,7 @@ and private MQTT servers are supported. The gateway algorithm is as follows:
 3. Follow steps 1,2,3 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
 4. In the `mos` UI, run `mos flash https://mongoose-os.com/downloads/kiwi/kiwi.zip` command
 5. Follow step 7 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
-6. Login to the [license manager][https://license.mongoose-os.com] and buy KIWI licenses (one per device)
+6. Login to the [license manager](https://license.mongoose-os.com) and buy KIWI licenses (one per device)
 7. Execute `mos license`
 8. Configure MQTT:
    - For generic/private MQTT server, run
