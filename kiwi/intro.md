@@ -23,7 +23,7 @@ and private MQTT servers are supported. The gateway algorithm is as follows:
   "mac": "7f:d3:87:0b:ac:d5",
   "rssi": -16,
   "adv": "02011a14ff4c00010000000006c1dfd3f7fd387",
-  "scan": "04ae45c2",
+  "scan": "04ae45c2"   // Scan response. Only available for active scans
 }
 ```
 
