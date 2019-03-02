@@ -9,9 +9,9 @@ and private MQTT servers are supported. The gateway algorithm is as follows:
 - Connect to the configured MQTT server. Reconnect when a connection is lost
 - Perform a continuous BLE scan, listen for the BLE advertisements
 - When a BLE advertisement is received,
-  report it to the MQTT server, to the `kiwi.pub_topic` topic
+  report it to the `kiwi.pub_topic` MQTT topic
 - If the next advertisement is the same as previous, skip reporting
-- Limit the frequency of reports by `kiwi.interval_ms` value
+- Limit the frequency of reports by `kiwi.report_interval_ms` value
 - When KIWI reconnects to a server, re-report all devices
 - Subscribe to a `kiwi.sub_topic` and re-report all devices when a message is
   received from that topic
