@@ -28,7 +28,7 @@ and private MQTT servers are supported. The gateway algorithm is as follows:
 
 ## Quick start
 
-1. Buy an ESP32 device mentioned at the [KIWI page](/kiwi/)
+1. Buy an ESP32 device mentioned on the [KIWI page](/kiwi/)
 2. Connect an ESP32 device to your workstation via USB
 3. Follow steps 1,2,3 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
 4. In the `mos` UI, run `mos flash https://mongoose-os.com/downloads/kiwi/kiwi.zip` command
@@ -44,6 +44,7 @@ and private MQTT servers are supported. The gateway algorithm is as follows:
    - For Google, follow [GCP guide's](/docs/quickstart/cloud/google.md) "Setup Google IoT Core" and "Setup device" chapters
    - For Azure, follow [Azure guide's](/docs/quickstart/cloud/azure.md) "Setup Azure IoT Hub" and "Setup device" chapters
    - For Watson, follow [Watson guide's](/docs/quickstart/cloud/watson.md) "Quick setup" chapter
+   - For [mDash](https://dash.mongoose-os.com), follow step 8 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
 
 When done, you should have your ESP32 device flashed, provisioned to WiFi,
 connected to the cloud, and reporting devices. 
