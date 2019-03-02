@@ -22,7 +22,8 @@ and private MQTT servers are supported. The gateway algorithm is as follows:
   "gw": "esp32-ce12ba",
   "mac": "7f:d3:87:0b:ac:d5",
   "rssi": -16,
-  "adv": "02011a14ff4c0001000000000400000000000010000000006c1dfd3f7fd387"
+  "adv": "02011a14ff4c00010000000006c1dfd3f7fd387",
+  "scan": "04ae45c2",
 }
 ```
 
