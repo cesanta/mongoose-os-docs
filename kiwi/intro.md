@@ -13,7 +13,7 @@ and private MQTT servers are supported. The gateway algorithm is as follows:
 - If the next advertisement is the same as previous, skip reporting
 - Limit the frequency of reports by `kiwi.report_interval_ms` value
 - When KIWI reconnects to a server, re-report all devices
-- Subscribe to a `kiwi.sub_topic` and re-report all devices when a message is
+- Subscribe to a `kiwi.sub_topic`. When any message arrives on this topic, re-report all devices
   received from that topic
 - This is an example message that gets reported to the MQTT:
 
