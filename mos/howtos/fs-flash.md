@@ -1,6 +1,6 @@
 # HowTo: Create an image file of an populated filesystem
 
-When developing with **Mongoose OS** and IoT devices to flash, it is often necessary to provide data that takes up more space than the average file system can provide. There exists a nice [HowTo](https://mongoose-os.com/docs/howtos/fs.md) that explains how to add an additional filesystem to a device running **Mongoose-OS** - but the problem is: it's a lot of manual effort and it's a bit complicated. To make matters worse, the file system must also be "filled" manually for each individual device. So if you plan to flash many devices, you need to find a way to create a firmware package that already contains the file system. This will then be transferred to the device in one go - there is no need to intervene manually - everything is included in one firmware.
+When developing with **Mongoose OS** and IoT devices to flash, it is often necessary to provide data that takes up more space than the average file system can provide. There exists a nice [HowTo](https://mongoose-os.com/docs/mos/howtos/fs.md) that explains how to add an additional filesystem to a device running **Mongoose-OS** - but the problem is: it's a lot of manual effort and it's a bit complicated. To make matters worse, the file system must also be "filled" manually for each individual device. So if you plan to flash many devices, you need to find a way to create a firmware package that already contains the file system. This will then be transferred to the device in one go - there is no need to intervene manually - everything is included in one firmware.
 
 This HowTo describes how to achieve this goal. This requires some preparatory work and a few steps, but the result is worthwhile. And it doesn't matter if it's an additional 256kB file system or one with 16MB - in both cases you can cover it with a single firmware package and save a lot of trouble.
 ***
@@ -8,14 +8,14 @@ This HowTo describes how to achieve this goal. This requires some preparatory wo
 
 The first step is to go the usual way - set up your device the way you want it, create the additional file system and store the desired files in it. There are two ways to do this:
 
-- on the one hand the **conventional way** to create such a file system as described in [this manual](https://mongoose-os.com/docs/howtos/fs.md), or
+- on the one hand the **conventional way** to create such a file system as described in [this manual](https://mongoose-os.com/docs/mos/howtos/fs.md), or
 - on the other hand the **use of the [library "fstab"](https://github.com/mongoose-os-libs/fstab)**, which does the work of creating and mounting the file system for you.
 
 It is sufficient to use the first way, because you only have to set up and mount the file system once. All in all, the effort is even a little less than with the external library, so here we describe the first way. A tutorial on how to use the "fstab" library may be created elsewhere, then you can decide yourself which way you want to go.
 
 ## 2. Creating and Populating an Additonal Filesystem
 
-This part is not very tiring: proceed as described under ["Adding File System"](https://mongoose-os.com/docs/howtos/fs.md), set up the filesystem and mount it under the desired name, e.g. _**"/mnt"**_ (this is our example) or another name as you like. The spelling of the filesystem reminds of a directory and is also used in the path syntax, but it is ultimately a mounting point for the files, the filesystem below is flat.
+This part is not very tiring: proceed as described under ["Adding File System"](https://mongoose-os.com/docs/mos/howtos/fs.md), set up the filesystem and mount it under the desired name, e.g. _**"/mnt"**_ (this is our example) or another name as you like. The spelling of the filesystem reminds of a directory and is also used in the path syntax, but it is ultimately a mounting point for the files, the filesystem below is flat.
 
 Once your device is newly flashed and the file system is active, you can test it with e.g.
 
