@@ -47,7 +47,14 @@ and private MQTT servers are supported. The gateway algorithm is as follows:
    - For [mDash](https://dash.mongoose-os.com), follow step 8 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
 
 When done, you should have your ESP32 device flashed, provisioned to WiFi,
-connected to the cloud, and reporting devices. 
+connected to the cloud, and reporting devices. Below is an example
+of M5Stack gateway,
+
+![m5stack gateway](images/demo2.png)
+
+reporting data to the http://www.mqtt-dashboard.com:
+
+![m5stack gateway](images/demo1.png)
 
 
 ## Configuring KIWI
