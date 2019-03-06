@@ -1,7 +1,7 @@
 # Onewire
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-onewire](https://github.com/mongoose-os-libs/arduino-onewire) | [OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h) | &nbsp;  | [api_arduino_onewire.js](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/mjs_fs/api_arduino_onewire.js)         |
+| [mongoose-os-libs/arduino-onewire](https://github.com/mongoose-os-libs/arduino-onewire) | [mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h) | &nbsp;  | [api_arduino_onewire.js](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/mjs_fs/api_arduino_onewire.js)         |
 
 
 
@@ -15,99 +15,181 @@ Additionally, a mgos-specific API is available, see
 
 
  ----- 
-#### reset
+#### mgos_arduino_onewire_create
 
 ```c
-uint8_t reset(void);
+OneWire *mgos_arduino_onewire_create(uint8_t pin);
 ```
-> Perform a 1-Wire reset cycle. Returns 1 if a device responds
-> with a presence pulse.  Returns 0 if there is no device or the
-> bus is shorted or otherwise held low for more than 250uS
-#### select
+> 
+> Create a OneWire object instance. Return value: an object with the methods
+> described below.
+>  
+#### mgos_arduino_onewire_close
 
 ```c
-void select(const uint8_t rom[8]);
+void mgos_arduino_onewire_close(OneWire *ow);
 ```
-> Issue a 1-Wire rom select command, you do the reset first.
-#### skip
+> 
+> Destroy an `ow` instance.
+>  
+#### mgos_arduino_onewire_reset
 
 ```c
-void skip(void);
+uint8_t mgos_arduino_onewire_reset(OneWire *ow);
 ```
-> Issue a 1-Wire rom skip command, to address all on bus.
-#### write
+> 
+> Reset the 1-wire bus. Usually this is needed before communicating with any
+> device.
+>  
+#### mgos_arduino_onewire_select
 
 ```c
-void write(uint8_t v, uint8_t power = 0);
+void mgos_arduino_onewire_select(OneWire *ow, const uint8_t *addr);
 ```
-> Write a byte. If 'power' is one then the wire is held high at
-> the end for parasitically powered devices. You are responsible
-> for eventually depowering it by calling depower() or doing
-> another read or write.
-#### read
+> 
+> Select a device based on its address `addr`, which is a 8-byte array.
+> After a reset, this is needed to choose which device you will use, and then
+> all communication will be with that device, until another reset.
+> 
+> Example:
+> ```c
+> uint8_t addr[] = {0x28, 0xff, 0x2b, 0x45, 0x4c, 0x04, 0x00, 0x10};
+> mgos_arduino_onewire_select(myow, addr);
+> ```
+>  
+#### mgos_arduino_onewire_skip
 
 ```c
-uint8_t read(void);
+void mgos_arduino_onewire_skip(OneWire *ow);
 ```
-> Read a byte.
-#### write_bit
+> 
+> Skip the device selection. This only works if you have a single device, but
+> you can avoid searching and use this to immediately access your device.
+>  
+#### mgos_arduino_onewire_write
 
 ```c
-void write_bit(uint8_t v);
+void mgos_arduino_onewire_write(OneWire *ow, uint8_t v);
 ```
-> Write a bit. The bus is always left powered at the end, see
-> note in write() about that.
-#### read_bit
+> 
+> Write a byte to the onewire bus.
+> 
+> Example:
+> ```c
+> // Write 0x12 to the onewire bus
+> mgos_arduino_onewire_write(myow, 0x12);
+> ```
+>  
+#### mgos_arduino_onewire_write_bytes
 
 ```c
-uint8_t read_bit(void);
+void mgos_arduino_onewire_write_bytes(OneWire *ow, const uint8_t *buf,
+                                      uint16_t count);
 ```
-> Read a bit.
-#### depower
+> 
+> Write `count` bytes from the buffer `buf`. Example:
+> 
+> ```c
+> // Write [0x55, 0x66, 0x77] to the onewire bus
+> const uint8_t buf[] = {0xff, 0x66, 0x77};
+> mgos_arduino_onewire_write_bytes(myow, buf, sizeof(buf));
+> ```
+>  
+#### mgos_arduino_onewire_read
 
 ```c
-void depower(void);
+uint8_t mgos_arduino_onewire_read(OneWire *ow);
 ```
-> Stop forcing power onto the bus. You only need to do this if
-> you used the 'power' flag to write() or used a write_bit() call
-> and aren't about to do another read or write. You would rather
-> not leave this powered if you don't have to, just in case
-> someone shorts your bus.
-#### reset_search
+> 
+> Read a byte from the onewire bus.
+>  
+#### mgos_arduino_onewire_read_bytes
 
 ```c
-void reset_search();
+void mgos_arduino_onewire_read_bytes(OneWire *ow, uint8_t *buf, uint16_t count);
 ```
-> Clear the search state so that if will start from the beginning again.
-#### target_search
+> 
+> Read multiple bytes from the onewire bus and write them to `buf`. The given
+> buffer should be at least `count` bytes long.
+>  
+#### mgos_arduino_onewire_write_bit
 
 ```c
-void target_search(uint8_t family_code);
+void mgos_arduino_onewire_write_bit(OneWire *ow, uint8_t v);
 ```
-> Setup the search to find the device type 'family_code' on the next call
-> to search(*newAddr) if it is present.
-#### search
+> 
+> Write a single bit to the onewire bus. Given `v` should be either 0 or 1.
+>  
+#### mgos_arduino_onewire_read_bit
 
 ```c
-uint8_t search(uint8_t *newAddr, bool search_mode = true);
+uint8_t mgos_arduino_onewire_read_bit(OneWire *ow);
 ```
-> Look for the next device. Returns 1 if a new address has been
-> returned. A zero might mean that the bus is shorted, there are
-> no devices, or you have already retrieved all of them.  It
-> might be a good idea to check the CRC to make sure you didn't
-> get garbage.  The order is deterministic. You will always get
-> the same devices in the same order.
-#### crc8
+> 
+> Read a single bit from the onewire bus. Returned value is either 0 or 1.
+>  
+#### mgos_arduino_onewire_depower
 
 ```c
-static uint8_t crc8(const uint8_t *addr, uint8_t len);
-  
- private:
-  struct mgos_onewire *ow_;  // The mgos_onewire handle
-};
+void mgos_arduino_onewire_depower(OneWire *ow);
 ```
-> Compute a Dallas Semiconductor 8 bit CRC, these are used in the
-> ROM and scratchpad registers.
+> 
+> Not implemented yet.
+>  
+#### mgos_arduino_onewire_search
+
+```c
+uint8_t mgos_arduino_onewire_search(OneWire *ow, uint8_t *newAddr,
+                                    uint8_t search_mode);
+```
+> 
+> Search for the next device. The given `addr` should point to the buffer with
+> at least 8 bytes. If a device is found, `addr` is
+> filled with the device's address and 1 is returned. If no more
+> devices are found, 0 is returned.
+> `mode` is an integer: 0 means normal search, 1 means conditional search.
+> Example:
+> ```c
+> uint8_t addr[8];
+> uint8_t res = mgos_arduino_onewire_search(addr, 0);
+> if (res) {
+>   // addr contains the next device's address
+>   printf("Found!");
+> } else {
+>   printf("Not found");
+> }
+> ```
+>  
+#### mgos_arduino_onewire_reset_search
+
+```c
+void mgos_arduino_onewire_reset_search(OneWire *ow);
+```
+> 
+> Reset a search. Next use of `mgos_arduino_onewire_search(....)` will begin
+> at the first device.
+>  
+#### mgos_arduino_onewire_target_search
+
+```c
+void mgos_arduino_onewire_target_search(OneWire *ow, uint8_t family_code);
+```
+> 
+> Setup the search to find the device type 'fc' (family code) on the next call
+> to `mgos_arduino_onewire_search()` if it is present.
+> 
+> If no devices of the desired family are currently on the bus, then
+> device of some another type will be found by `search()`.
+>  
+#### mgos_arduino_onewire_crc8
+
+```c
+uint8_t mgos_arduino_onewire_crc8(OneWire *ow, const uint8_t *addr,
+                                  uint8_t len);
+```
+> 
+> Calculate crc8 for the given buffer `addr`, `len`.
+>  
 
 ### JS API
 

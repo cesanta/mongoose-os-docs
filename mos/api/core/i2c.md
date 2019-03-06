@@ -152,18 +152,76 @@ bool mgos_i2c_write_reg_n(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
 > Helper for writing `n`-byte register `reg` to a device at address `addr`.
 > Returns `true` in case of success, `false` otherwise.
 >  
+#### mgos_i2c_setbits_reg_b
+
+```c
+bool mgos_i2c_setbits_reg_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
+                            uint8_t bitoffset, uint8_t bitlen, uint8_t value);
+bool mgos_i2c_getbits_reg_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
+                            uint8_t bitoffset, uint8_t bitlen, uint8_t *value);
+bool mgos_i2c_setbits_reg_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
+                            uint8_t bitoffset, uint8_t bitlen, uint16_t value);
+bool mgos_i2c_getbits_reg_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,
+                            uint8_t bitoffset, uint8_t bitlen, uint16_t *value);
+```
+> 
+> Helper to set/get a number of bits in a register `reg` on a device at
+> address `addr`.
+> - bitoffset: 0..n, is the position at which to write `value`
+>              n=7 for reg_b, n=15 for reg_w
+> - bitlen   : 1..m, number of bits to write
+>              m=8 for reg_b, m=16 for reg_w
+> - value    : the value to write there
+> 
+> Invariants:
+> - value must fit in `bitlen` (ie value < 2^bitlen)
+> - bitlen+bitoffset <= register size (8 for reg_b, 16 for reg_w)
+> - bitlen cannot be 0.
+> - *conn cannot be NULL.
+> 
+> The `setbits` call will write the bits to the register, the `getbits` call
+> will return the value of those bits in *value.
+> 
+> Returns `true` in case of success, `false` otherwise.
+> 
+> Examples (the bits set or get are between []):
+> 1) If register was 0x00 (0b00000000)
+>    mgos_i2c_setbits_reg_b(conn, addr, reg, 0, 1, 1);
+>    Register will be 0x01 (0b0000000[1])
+> 2) If register was 0xffff (0b1111111111111111)
+>    mgos_i2c_setbits_reg_w(conn, addr, reg, 14, 2, 0);
+>    Register will be 0x3fff (0b[00]11111111111111)
+> 3) If register was 0xabcd (0b1010101111001101)
+>    mgos_i2c_setbits_reg_w(conn, addr, reg, 10, 4, 5);
+>    Register will be 0x97cd (0b10[0101]1111001101)
+> 4) If register was 0xabcd (0b1010101111001101)
+>    mgos_i2c_getbits_reg_w(conn, addr, reg, 0, 2, &value);
+>    value will be 1   (0b10101011110011[01])
+>    mgos_i2c_getbits_reg_w(conn, addr, reg, 13, 3, &value);
+>    value will be 5   (0b[101]0101111001101)
+>    mgos_i2c_getbits_reg_w(conn, addr, reg, 6, 5, &value);
+>    value will be 15  (0b10101[01111]001101)
+>    mgos_i2c_getbits_reg_w(conn, addr, reg, 5, 9, &value);
+>    value will be 350 (0b10[101011110]01101)
+>  
 #### mgos_i2c_close
 
 ```c
 void mgos_i2c_close(struct mgos_i2c *conn);
 ```
 >  Close i2c connection and free resources. 
+#### mgos_i2c_get_bus
+
+```c
+struct mgos_i2c *mgos_i2c_get_bus(int bus_no);
+```
+>  Return bus object for the specified bus number. 
 #### mgos_i2c_get_global
 
 ```c
 struct mgos_i2c *mgos_i2c_get_global(void);
 ```
->  Return i2c bus handle that is set up via the sysconfig. 
+>  Return the default I2C bus. Equivalent to `mgos_i2c_get_bus(0)`. 
 #### mgos_i2c_reset_bus
 
 ```c

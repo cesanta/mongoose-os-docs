@@ -14,26 +14,48 @@ the programmatic API for the device configuration.
  
 
  ----- 
+#### mgos_sys_config_save
+
+```c
+bool mgos_sys_config_save(const struct mgos_config *cfg, bool try_once,
+                          char **msg);
+```
+> 
+> Save config. Performs diff against defaults and only saves diffs.
+> Reboot is required to reload the config.
+> If try_once is set, the config will only take effect for one boot.
+> 
+> If return value is false, a message may be provided in *msg.
+> If non-NULL, it must be free()d.
+> It is safe to pass a NULL `msg`
+>  
+#### mgos_sys_config_save_level
+
+```c
+bool mgos_sys_config_save_level(const struct mgos_config *cfg,
+                                enum mgos_config_level level, bool try_once,
+                                char **msg);
+```
+>  Saves given coonfig at the specified level. Performs diff against level-1. 
+#### mgos_sys_config_load_level
+
+```c
+bool mgos_sys_config_load_level(struct mgos_config *cfg,
+                                enum mgos_config_level level);
+```
+>  Loads config up to and including level. 
 #### save_cfg
 
 ```c
 bool save_cfg(const struct mgos_config *cfg, char **msg);
 ```
-> 
-> Save config. Performs diff against defaults and only saves diffs.
-> Reboot is required to reload the config.
-> If return value is false, a message may be provided in *msg.
-> If non-NULL, it must be free()d.
-> It is safe to pass a NULL `msg`
->  
+>  Deprecated API, equivalent to mgos_sys_config_save(cfg, false, msg). 
 #### load_config_defaults
 
 ```c
 bool load_config_defaults(struct mgos_config *cfg);
 ```
-> 
-> Reset all config values to defaults.
->  
+>  Loads configs up to MGOS_CONFIG_LEVEL_USER - 1. Deprecated. 
 #### mgos_config_reset
 
 ```c
@@ -49,7 +71,7 @@ void mgos_config_reset(int level);
 ```c
 typedef bool (*mgos_config_validator_fn)(const struct mgos_config *cfg,
                                          char **msg);
-void mgos_register_config_validator(mgos_config_validator_fn fn);
+void mgos_sys_config_register_validator(mgos_config_validator_fn fn);
 ```
 > 
 > Register a config validator.
@@ -58,6 +80,12 @@ void mgos_register_config_validator(mgos_config_validator_fn fn);
 > An error message may be *msg may be set to error message.
 > Note: if non-NULL, *msg will be freed. Remember to use strdup and asprintf.
 >  
+#### mgos_config_validate
+
+```c
+bool mgos_config_validate(const struct mgos_config *cfg, char **msg);
+```
+>  Run validators on the specified config. 
 #### mgos_expand_mac_address_placeholders
 
 ```c

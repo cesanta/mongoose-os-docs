@@ -88,6 +88,14 @@ int mg_strncmp(const struct mg_str str1, const struct mg_str str2, size_t n);
 > 
 > Like `mg_strcmp`, but compares at most `n` characters.
 >  
+#### mg_strfree
+
+```c
+void mg_strfree(struct mg_str *s);
+```
+> 
+> Free the string (assuming it was heap allocated).
+>  
 #### mg_strstr
 
 ```c

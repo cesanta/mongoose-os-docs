@@ -1,5 +1,8 @@
 - [Quick Start](quickstart)
 - [Mongoose OS](mos)
-- [mDash](mdash)
-- [CCM](ccm)
-- [Kiwi](kiwi)
+- [mDash device dashboard](mdash)
+- [CCM communication module](ccm)
+- [Kiwi BLE gateway](kiwi)
+- [UART gateway](uart-gateway)
+
+

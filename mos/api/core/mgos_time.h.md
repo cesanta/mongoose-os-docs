@@ -9,6 +9,12 @@
 double mgos_uptime(void);
 ```
 >  Get number of seconds since last reboot 
+#### mgos_uptime_micros
+
+```c
+int64_t mgos_uptime_micros(void);
+```
+>  Get number of microseconds since last reboot 
 #### mgos_strftime
 
 ```c

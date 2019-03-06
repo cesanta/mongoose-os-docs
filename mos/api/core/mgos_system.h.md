@@ -37,13 +37,19 @@ size_t mgos_get_fs_memory_usage(void);
 ```c
 size_t mgos_get_fs_size(void);
 ```
->  Get filesystem size. 
+> 
+> Get filesystem size.
+> Deprecated, please use mgos_vfs_get_space_total("/") instead.
+>  
 #### mgos_get_free_fs_size
 
 ```c
 size_t mgos_get_free_fs_size(void);
 ```
->  Get filesystem free space. 
+> 
+> Get filesystem free space.
+> Deprecated, please use mgos_vfs_get_space_free("/") instead.
+>  
 #### mgos_fs_gc
 
 ```c

@@ -204,7 +204,8 @@ void mgos_prometheus_metrics_printf(struct mg_connection *nc,
 >  Output a formatted metric tuple to the network connection. For example:
 > ```c
 > uint32_t my_counter=1234;
-> mgos_prometheus_metrics_printf(nc, COUNTER, "number_of_requests", "My Description",
+> mgos_prometheus_metrics_printf(nc, COUNTER, "number_of_requests", "My
+> Description",
 >                                "%u", my_counter);
 > ```
 > 
@@ -218,14 +219,16 @@ void mgos_prometheus_metrics_printf(struct mg_connection *nc,
 #### (*mgos_prometheus_metrics_fn_t)
 
 ```c
-typedef void (*mgos_prometheus_metrics_fn_t)(struct mg_connection *nc, void *user_data);
+typedef void (*mgos_prometheus_metrics_fn_t)(struct mg_connection *nc,
+                                             void *user_data);
 ```
 >  Prototype of a function which is to be called on each prometheus pull/push.
 >  
 #### mgos_prometheus_metrics_add_handler
 
 ```c
-void mgos_prometheus_metrics_add_handler(mgos_prometheus_metrics_fn_t handler, void *user_data);
+void mgos_prometheus_metrics_add_handler(mgos_prometheus_metrics_fn_t handler,
+                                         void *user_data);
 ```
 >  Registers a function handler, which will be called each time Prometheus
 > scrapes our HTTP /metrics endpoint. Libraries and application code can
@@ -236,7 +239,8 @@ void mgos_prometheus_metrics_add_handler(mgos_prometheus_metrics_fn_t handler, v
 > #include "mgos_prometheus_metrics.h"
 > uint32_t my_counter=0;
 > 
-> static void prometheus_metrics_fn(struct mg_connection *nc, void *user_data) {
+> static void prometheus_metrics_fn(struct mg_connection *nc, void *user_data)
+> {
 >   mgos_prometheus_metrics_printf(nc, COUNTER,
 >     "my_counter", "Total things counted",
 >     "%u", my_counter);

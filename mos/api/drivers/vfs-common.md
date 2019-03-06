@@ -129,6 +129,22 @@ void mgos_vfs_umount_all(void);
 > Unmount all the filesystems, regardless of open files.
 > Done only on reboot.
 >  
+#### mgos_vfs_get_space_total
+
+```c
+size_t mgos_vfs_get_space_total(const char *path);
+```
+> 
+> Get FS size of a file system at the specified mountpoint.
+>  
+#### mgos_vfs_get_space_free
+
+```c
+size_t mgos_vfs_get_space_free(const char *path);
+```
+> 
+> Get free spece of a file system at the specified mountpoint.
+>  
 #### mgos_vfs_gc
 
 ```c

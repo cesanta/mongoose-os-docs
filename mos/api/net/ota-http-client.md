@@ -1,7 +1,7 @@
 # OTA via HTTP GET
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ota-http-client](https://github.com/mongoose-os-libs/ota-http-client) | [](https://github.com/mongoose-os-libs/ota-http-client/tree/master/include/) | &nbsp;  | [api_ota.js](https://github.com/mongoose-os-libs/ota-http-client/tree/master/mjs_fs/api_ota.js)         |
+| [mongoose-os-libs/ota-http-client](https://github.com/mongoose-os-libs/ota-http-client) | [mgos_ota_http_client.h](https://github.com/mongoose-os-libs/ota-http-client/tree/master/include/mgos_ota_http_client.h) | &nbsp;  | [api_ota.js](https://github.com/mongoose-os-libs/ota-http-client/tree/master/mjs_fs/api_ota.js)         |
 
 
 
@@ -33,6 +33,12 @@ The library adds the following object to the device configuration:
 
 
  ----- 
+#### mgos_ota_http_start
+
+```c
+void mgos_ota_http_start(const char *url, const struct mgos_ota_opts *opts);
+```
+>  Start OTA update by pulling the firmware from the given URL. 
 
 ### JS API
 

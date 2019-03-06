@@ -142,6 +142,14 @@ bool mgos_cron_is_expr_valid(const char *expr, const char **perr);
 > of an error, if `perr` is not NULL, `*perr` is set to an error message; it
 > should NOT be freed by the caller.
 >  
+#### mgos_cron_get_user_data
+
+```c
+void *mgos_cron_get_user_data(mgos_cron_id_t id);
+```
+> 
+> Returns user data pointer associated with the given cron job id.
+>  
 #### mgos_cron_remove
 
 ```c

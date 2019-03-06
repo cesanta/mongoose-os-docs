@@ -46,13 +46,13 @@ to be read from. It is not generally necessary to call this method directly,
 as the `mgos_imu_*_get()` calls internally schedule reads from the sensors as
 well.
 
-`bool mgos_imu_has_accelerometer()` -- This returns `true` if the IMU has an
+`bool mgos_imu_accelerometer_present()` -- This returns `true` if the IMU has an
 attached accelerometer sensor, or `false` otherwise.
 
-`bool mgos_imu_has_gyroscope()` -- This returns `true` if the IMU has an
+`bool mgos_imu_gyroscope_present()` -- This returns `true` if the IMU has an
 attached gyroscope sensor, or `false` otherwise.
 
-`bool mgos_imu_has_magnetometer()` -- This returns `true` if the IMU has an
+`bool mgos_imu_magnetometer_present()` -- This returns `true` if the IMU has an
 attached magnetometer, or `false` otherwise.
 
 ### IMU Sensor primitives
@@ -81,9 +81,9 @@ polling the sensor for the data. It returns `true` if the read succeeded, in
 error occurred, `false` is returned and the contents of `x`, `y` and `z` are
 unmodified. Note the units of the return values:
 
-*   ***magnetometer*** returns units of `microTesla`.
-*   ***accelerometer*** returns units of `m/s/s`.
-*   ***gyroscope*** returns units of `radians per second`.
+*   ***magnetometer*** returns units of `Gauss`.
+*   ***accelerometer*** returns units of `G`.
+*   ***gyroscope*** returns units of `degrees per second`.
 
 `const char *mgos_imu_*_get_name()` -- This returns a symbolic name of the
 attached sensor, which is guaranteed to be less than or equal to 10 characters
@@ -92,6 +92,14 @@ returned. If the sensor is not known, `UNKNOWN` will be returned. Otherwise,
 the chip manufacturer / type will be returned, for example `MPU9250` or
 `ADXL345` or `MAG3110`.
 
+`bool mgos_imu_*_set_orientation()` and `bool mgos_imu_*_get_orientation()` --
+Often times a 9DOF sensor will have multiple chips, whose axes do not line up
+correctly. Even within a single chip the accelerometer, gyroscope and
+magnetometer axes might not line up (for an example of this, see [MPU9250
+chapter 9.1](http://www.invensense.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf)).
+To ensure that the `x`, `y`, and `z` axes on all sensors are pointed in the same
+direction, we can set the orientation on the gyroscope and magnetometer.
+See `mgos_imu.h` for more details and an example of how to do this.
 
 ## Supported devices
 
@@ -99,16 +107,27 @@ the chip manufacturer / type will be returned, for example `MPU9250` or
 
 *   MPU9250 and MPU9255
 *   ADXL345
+*   LSM303D and LSM303DLM
+*   MMA8451
+*   LSM9DS1
+*   LSM6DSL
 
 ### Gyroscope
 
 *   MPU9250 and MPU9255
+*   L3GD20 and L3GD20H
+*   ITG3205
+*   LSM9DS1
+*   LSM6DSL
 
 ### Magnetometer
 
 *   MAG3110
 *   AK8963 (as found in MPU9250/MPU9255)
 *   AK8975
+*   LSM303D and LSM303DLM
+*   HMC5883L
+*   LSM9DS1
 
 ## Adding devices
 
@@ -205,6 +224,9 @@ static void imu_cb(void *user_data) {
 enum mgos_app_init_result mgos_app_init(void) {
   struct mgos_i2c *i2c = mgos_i2c_get_global();
   struct mgos_imu *imu = mgos_imu_create();
+  struct mgos_imu_acc_opts acc_opts;
+  struct mgos_imu_gyro_opts gyro_opts;
+  struct mgos_imu_mag_opts mag_opts;
 
   if (!i2c) {
     LOG(LL_ERROR, ("I2C bus missing, set i2c.enable=true in mos.yml"));
@@ -216,17 +238,34 @@ enum mgos_app_init_result mgos_app_init(void) {
     return false;
   }
 
-  if (!mgos_imu_accelerometer_create_i2c(imu, i2c, 0x68, ACC_MPU9250))
+  acc_opts.type = ACC_MPU9250;
+  acc_opts.scale = 16.0; // G
+  acc_opts.odr = 100;    // Hz
+  if (!mgos_imu_accelerometer_create_i2c(imu, i2c, 0x68, &acc_opts))
     LOG(LL_ERROR, ("Cannot create accelerometer on IMU"));
-  if (!mgos_imu_gyroscope_create_i2c(imu, i2c, 0x68, GYRO_MPU9250))
+
+  acc_opts.type = ACC_MPU9250;
+  acc_opts.scale = 2000; // deg/sec
+  acc_opts.odr = 100;    // Hz
+  if (!mgos_imu_gyroscope_create_i2c(imu, i2c, 0x68, &gyro_opts))
     LOG(LL_ERROR, ("Cannot create gyroscope on IMU"));
-  if (!mgos_imu_magnetometer_create_i2c(imu, i2c, 0x0C, MAG_AK8963))
+
+  mag_opts.type = MAG_AK8963;
+  mag_opts.scale = 12.0; // Gauss
+  mag_opts.odr = 10;     // Hz
+  if (!mgos_imu_magnetometer_create_i2c(imu, i2c, 0x0C, &mag_opts))
     LOG(LL_ERROR, ("Cannot create magnetometer on IMU"));
 
   mgos_set_timer(1000, true, imu_cb, imu);
   return true;
 }
 ```
+
+# Demo Code
+
+For a cool demo, take a look at my [Demo Apps](https://github.com/mongoose-os-apps/imu-demo):
+
+![Chrome Demo](docs/chrome-client.png)
 
 # Disclaimer
 
@@ -236,63 +275,30 @@ merchantability, or fitness for a particular purpose.
 
 
  ----- 
-#### mgos_imu_gyroscope_destroy
+#### set_odr
 
 ```c
-bool mgos_imu_gyroscope_destroy(struct mgos_imu *imu);
-bool mgos_imu_accelerometer_destroy(struct mgos_imu *imu);
-bool mgos_imu_magnetometer_destroy(struct mgos_imu *imu);
+float                   odr;    // Data rate, in Hz. See doc for set_odr().
+  float                   scale;  // Scale. See doc for set_scale().
+  bool                    no_rst; // Do not perform reset of the device when configuring.
+};
 ```
->  TODO(pim): Add SPI adders
-> bool mgos_imu_gyroscope_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_gyro_type type);
-> bool mgos_imu_accelerometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_acc_type type);
-> bool mgos_imu_magnetometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_mag_type type);
->  
-#### mgos_imu_accelerometer_get
+> Gyroscope type.
+#### set_odr
 
 ```c
-bool mgos_imu_accelerometer_get(struct mgos_imu *imu, float *x, float *y, float *z);
+float                  odr;    // Data rate, in Hz. See doc for set_odr().
+  float                  scale;  // Scale. See doc for set_scale().
+  bool                   no_rst; // Do not perform reset of the device when configuring.
+};
 ```
->  Return accelerometer data in units of m/s/s 
-#### mgos_imu_accelerometer_get_offset
+> Accelerometer type.
+#### set_odr
 
 ```c
-bool mgos_imu_accelerometer_get_offset(struct mgos_imu *imu, float *x, float *y, float *z);
-bool mgos_imu_accelerometer_set_offset(struct mgos_imu *imu, float x, float y, float z);
+float                  odr;    // Data rate, in Hz. See doc for set_odr().
+  float                  scale;  // Scale. See doc for set_scale().
+  bool                   no_rst; // Do not perform reset of the device when configuring.
+};
 ```
->  Get/set accelerometer offset in units of m/s/s 
-#### mgos_imu_gyroscope_get
-
-```c
-bool mgos_imu_gyroscope_get(struct mgos_imu *imu, float *x, float *y, float *z);
-```
->  Return gyroscope data in units of Rads/sec 
-#### mgos_imu_gyroscope_get_offset
-
-```c
-bool mgos_imu_gyroscope_get_offset(struct mgos_imu *imu, float *x, float *y, float *z);
-bool mgos_imu_gyroscope_set_offset(struct mgos_imu *imu, float x, float y, float z);
-```
->  Get/set gyroscope offset in units of m/s/s 
-#### mgos_imu_magnetometer_get
-
-```c
-bool mgos_imu_magnetometer_get(struct mgos_imu *imu, float *x, float *y, float *z);
-```
->  Return magnetometer data in units of microtesla (1 microtesla = 10 milligauss) 
-#### mgos_imu_gyroscope_get_name
-
-```c
-const char *mgos_imu_gyroscope_get_name(struct mgos_imu *imu);
-const char *mgos_imu_magnetometer_get_name(struct mgos_imu *imu);
-const char *mgos_imu_accelerometer_get_name(struct mgos_imu *imu);
-```
->  String representation of the sensor types, guaranteed to be le 10 characters. 
-#### mgos_imu_init
-
-```c
-bool mgos_imu_init(void);
-```
-> 
-> Initialization function for MGOS -- currently a noop.
->  
+> Magnetometer type.

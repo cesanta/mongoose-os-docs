@@ -516,15 +516,33 @@
     "lang": "js"
   },
   {
+    "name": "mgos_sys_config_save",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "doc": "\n```c\nbool mgos_sys_config_save(const struct mgos_config *cfg, bool try_once,\n                          char **msg);\n```\n> \n> Save config. Performs diff against defaults and only saves diffs.\n> Reboot is required to reload the config.\n> If try_once is set, the config will only take effect for one boot.\n> \n> If return value is false, a message may be provided in *msg.\n> If non-NULL, it must be free()d.\n> It is safe to pass a NULL `msg`\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_sys_config_save_level",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "doc": "\n```c\nbool mgos_sys_config_save_level(const struct mgos_config *cfg,\n                                enum mgos_config_level level, bool try_once,\n                                char **msg);\n```\n>  Saves given coonfig at the specified level. Performs diff against level-1. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_sys_config_load_level",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "doc": "\n```c\nbool mgos_sys_config_load_level(struct mgos_config *cfg,\n                                enum mgos_config_level level);\n```\n>  Loads config up to and including level. \n",
+    "lang": "c"
+  },
+  {
     "name": "save_cfg",
     "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
-    "doc": "\n```c\nbool save_cfg(const struct mgos_config *cfg, char **msg);\n```\n> \n> Save config. Performs diff against defaults and only saves diffs.\n> Reboot is required to reload the config.\n> If return value is false, a message may be provided in *msg.\n> If non-NULL, it must be free()d.\n> It is safe to pass a NULL `msg`\n>  \n",
+    "doc": "\n```c\nbool save_cfg(const struct mgos_config *cfg, char **msg);\n```\n>  Deprecated API, equivalent to mgos_sys_config_save(cfg, false, msg). \n",
     "lang": "c"
   },
   {
     "name": "load_config_defaults",
     "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
-    "doc": "\n```c\nbool load_config_defaults(struct mgos_config *cfg);\n```\n> \n> Reset all config values to defaults.\n>  \n",
+    "doc": "\n```c\nbool load_config_defaults(struct mgos_config *cfg);\n```\n>  Loads configs up to MGOS_CONFIG_LEVEL_USER - 1. Deprecated. \n",
     "lang": "c"
   },
   {
@@ -536,7 +554,13 @@
   {
     "name": "(*mgos_config_validator_fn)",
     "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
-    "doc": "\n```c\ntypedef bool (*mgos_config_validator_fn)(const struct mgos_config *cfg,\n                                         char **msg);\nvoid mgos_register_config_validator(mgos_config_validator_fn fn);\n```\n> \n> Register a config validator.\n> Validators will be invoked before saving config and if any of them\n> returns false, config will not be saved.\n> An error message may be *msg may be set to error message.\n> Note: if non-NULL, *msg will be freed. Remember to use strdup and asprintf.\n>  \n",
+    "doc": "\n```c\ntypedef bool (*mgos_config_validator_fn)(const struct mgos_config *cfg,\n                                         char **msg);\nvoid mgos_sys_config_register_validator(mgos_config_validator_fn fn);\n```\n> \n> Register a config validator.\n> Validators will be invoked before saving config and if any of them\n> returns false, config will not be saved.\n> An error message may be *msg may be set to error message.\n> Note: if non-NULL, *msg will be freed. Remember to use strdup and asprintf.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_config_validate",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "doc": "\n```c\nbool mgos_config_validate(const struct mgos_config *cfg, char **msg);\n```\n>  Run validators on the specified config. \n",
     "lang": "c"
   },
   {
@@ -602,13 +626,13 @@
   {
     "name": "mgos_get_fs_size",
     "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
-    "doc": "\n```c\nsize_t mgos_get_fs_size(void);\n```\n>  Get filesystem size. \n",
+    "doc": "\n```c\nsize_t mgos_get_fs_size(void);\n```\n> \n> Get filesystem size.\n> Deprecated, please use mgos_vfs_get_space_total(\"/\") instead.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_get_free_fs_size",
     "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
-    "doc": "\n```c\nsize_t mgos_get_free_fs_size(void);\n```\n>  Get filesystem free space. \n",
+    "doc": "\n```c\nsize_t mgos_get_free_fs_size(void);\n```\n> \n> Get filesystem free space.\n> Deprecated, please use mgos_vfs_get_space_free(\"/\") instead.\n>  \n",
     "lang": "c"
   },
   {
@@ -738,9 +762,9 @@
     "lang": "js"
   },
   {
-    "name": "Sys.reboot(us)",
+    "name": "Sys.reboot(ms)",
     "file": "[api_sys.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_sys.js)",
-    "doc": "\n```javascript\nSys.reboot(us)\n```\nReboot the system after `us` microseconds. Return value: none.\n",
+    "doc": "\n```javascript\nSys.reboot(ms)\n```\nReboot the system after `ms` milliseconds. Return value: none.\n",
     "lang": "js"
   },
   {
@@ -765,6 +789,12 @@
     "name": "mgos_uptime",
     "file": "[mgos_time.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_time.h)",
     "doc": "\n```c\ndouble mgos_uptime(void);\n```\n>  Get number of seconds since last reboot \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_uptime_micros",
+    "file": "[mgos_time.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_time.h)",
+    "doc": "\n```c\nint64_t mgos_uptime_micros(void);\n```\n>  Get number of microseconds since last reboot \n",
     "lang": "c"
   },
   {
@@ -1110,15 +1140,15 @@
     "lang": "c"
   },
   {
-    "name": "cs_log_set_filter",
+    "name": "cs_log_set_file_level",
     "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
-    "doc": "\n```c\nvoid cs_log_set_filter(const char *pattern);\n```\n> \n> Set log filter. NULL (a default) logs everything.\n> Otherwise, function name and file name will be tested against the given\n> pattern, and only matching messages will be printed.\n> \n> For the pattern syntax, refer to `mg_match_prefix()` in `str_util.h`.\n> \n> Example:\n> ```c\n> void foo(void) {\n>   LOG(LL_INFO, (\"hello from foo\"));\n> }\n> \n> void bar(void) {\n>   LOG(LL_INFO, (\"hello from bar\"));\n> }\n> \n> void test(void) {\n>   cs_log_set_filter(NULL);\n>   foo();\n>   bar();\n> \n>   cs_log_set_filter(\"f*\");\n>   foo();\n>   bar(); // Will NOT print anything\n> \n>   cs_log_set_filter(\"bar\");\n>   foo(); // Will NOT print anything\n>   bar();\n> }\n> ```\n>  \n",
+    "doc": "\n```c\nvoid cs_log_set_file_level(const char *file_level);\n```\n> \n> A comma-separated set of prefix=level.\n> prefix is matched against the log prefix exactly as printed, including line\n> number, but partial match is ok. Check stops on first matching entry.\n> If nothing matches, default level is used.\n> \n> Examples:\n>   main.c:=4 - everything from main C at verbose debug level.\n>   mongoose.c=1,mjs.c=1,=4 - everything at verbose debug except mg_* and mjs_*\n> \n>  \n",
     "lang": "c"
   },
   {
     "name": "cs_log_print_prefix",
     "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
-    "doc": "\n```c\nint cs_log_print_prefix(enum cs_log_level level, const char *func,\n                        const char *filename);\n```\n> \n> Helper function which prints message prefix with the given `level`, function\n> name `func` and `filename`. If message should be printed (accordingly to the\n> current log level and filter), prints the prefix and returns 1, otherwise\n> returns 0.\n> \n> Clients should typically just use `LOG()` macro.\n>  \n",
+    "doc": "\n```c\nint cs_log_print_prefix(enum cs_log_level level, const char *fname, int line);\n```\n> \n> Helper function which prints message prefix with the given `level`.\n> If message should be printed (according to the current log level\n> and filter), prints the prefix and returns 1, otherwise returns 0.\n> \n> Clients should typically just use `LOG()` macro.\n>  \n",
     "lang": "c"
   },
   {
@@ -1136,7 +1166,7 @@
   {
     "name": "LOG",
     "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
-    "doc": "\n```c\n#define LOG(l, x)                                                    \\\n  do {                                                               \\\n    if (cs_log_print_prefix(l, __func__, __FILE__)) cs_log_printf x; \\\n  } while (0)\n```\n> \n> Format and print message `x` with the given level `l`. Example:\n> \n> ```c\n> LOG(LL_INFO, (\"my info message: %d\", 123));\n> LOG(LL_DEBUG, (\"my debug message: %d\", 123));\n> ```\n>  \n",
+    "doc": "\n```c\n#define LOG(l, x)                                     \\\n  do {                                                \\\n    if (cs_log_print_prefix(l, __FILE__, __LINE__)) { \\\n      cs_log_printf x;                                \\\n    }                                                 \\\n  } while (0)\n```\n> \n> Format and print message `x` with the given level `l`. Example:\n> \n> ```c\n> LOG(LL_INFO, (\"my info message: %d\", 123));\n> LOG(LL_DEBUG, (\"my debug message: %d\", 123));\n> ```\n>  \n",
     "lang": "c"
   },
   {
@@ -1275,6 +1305,12 @@
     "name": "mg_strncmp",
     "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
     "doc": "\n```c\nint mg_strncmp(const struct mg_str str1, const struct mg_str str2, size_t n);\n```\n> \n> Like `mg_strcmp`, but compares at most `n` characters.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mg_strfree",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "doc": "\n```c\nvoid mg_strfree(struct mg_str *s);\n```\n> \n> Free the string (assuming it was heap allocated).\n>  \n",
     "lang": "c"
   },
   {
@@ -1762,6 +1798,66 @@
     "file": "[api_arduino_ssd1306.js](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306/tree/master/mjs_fs/api_arduino_ssd1306.js)",
     "doc": "\n```javascript\nmySSD1306.getCursorY()\n```\nReturn cursor Y coordinate, previously set with `setCursor()`.\n",
     "lang": "js"
+  },
+  {
+    "name": "mgos_tsl2561_create",
+    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
+    "doc": "\n```c\nTSL2561 *mgos_tsl2561_create(uint8_t addr);\n```\n> \n> Initialize Adafruit TSDL2561 library for sensor at address `addr`.  Address can be one of\n> `TSL2561_ADDR_LOW`, `TSL2561_ADDR_FLOAT`, or `TSL2561_ADDR_HIGH`.  See above and your datasheet\n> and/or your wiring guide to determine which address value to use for your application.\n> \n> Return value: opaque pointer handle to C++ TSL2561 class.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_tsl2561_begin",
+    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
+    "doc": "\n```c\nint mgos_tsl2561_begin(TSL2561 *tsl);\n```\n> \n> Checks that the sensor exists at the address it was created on and applies default settings for\n> gain and integration timing.\n> \n> Returns 1 (true) if the above actions were successful, 0 (false) otherwise.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_tsl2561_enable",
+    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
+    "doc": "\n```c\nvoid mgos_tsl2561_enable(TSL2561 *tsl);\n```\n> \n> Send a command to sensor to enable it\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_tsl2561_disable",
+    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
+    "doc": "\n```c\nvoid mgos_tsl2561_disable(TSL2561 *tsl);\n```\n> \n> Send a command to the sensor to disable it\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_tsl2561_getLuminosity",
+    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
+    "doc": "\n```c\nint mgos_tsl2561_getLuminosity(TSL2561 *tsl, int channel);\n```\n> \n> Get the luminosity of the desired channel.\n> \n> Supported channel values:\n> - 0 or `TSL2561_FULLSPECTRUM` - visible + infrared\n> - 1 or `TSL2561_INFRARED` - infrared\n> - 2 or `TSL2561_VISIBLE` - visible\n> \n> Returns -1 for any error.\n> \n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_tsl2561_getFullLuminosity",
+    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
+    "doc": "\n```c\nint mgos_tsl2561_getFullLuminosity(TSL2561 *tsl);\n```\n> \n> Return the value of both channels in a 32-bit unsigned integer.  The upper (lower)\n> 16 bits contain value of channel 1 (channel 0).\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_tsl2561_setIntegrationTime",
+    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
+    "doc": "\n```c\nvoid mgos_tsl2561_setIntegrationTime(TSL2561 *tsl, int timing);\n```\n> \n> Sets the sensor integration time.  Allowed values are:\n> - 0x00 or `TSL2561_INTEGRATIONTIME_13MS` - 13.7 ms - use w. no gain and bright light conditions\n> - 0x01 or `TSL2561_INTEGRATIONTIME_101MS` - 101 ms - use w. either gain setting and med. light conditions\n> - 0x02 or `TSL2561_INTEGRATIONTIME_402MS` - 402 ms - use w. 16x gain and low light conditions\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_tsl2561_setGain",
+    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
+    "doc": "\n```c\nvoid mgos_tsl2561_setGain(TSL2561 *tsl, int gain);\n```\n> \n> Sets the sensor gain.  Allowed values are:\n> - 0x00 or `TSL2561_GAIN_0X` - no gain, use for bright lighting conditions\n> - 0x10 or `TSL2561_GAIN_16X` - 16x gain, low light conditions\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_tsl2561_calculateLux",
+    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
+    "doc": "\n```c\nuint32_t mgos_tsl2561_calculateLux(TSL2561 *tsl, uint16_t ch0, uint16_t ch1);\n```\n> \n> Convert sensor reading into lux value.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_tsl2561_close",
+    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
+    "doc": "\n```c\nvoid mgos_tsl2561_close(TSL2561 *tsl);\n```\n> \n> Delete TSL2561 handle and its resources.\n>  \n",
+    "lang": "c"
   },
   {
     "name": "getLuminosity( p )",
@@ -3012,75 +3108,99 @@
     "lang": "c"
   },
   {
-    "name": "reset",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nuint8_t reset(void);\n```\n> Perform a 1-Wire reset cycle. Returns 1 if a device responds\n> with a presence pulse.  Returns 0 if there is no device or the\n> bus is shorted or otherwise held low for more than 250uS\n",
+    "name": "mgos_arduino_onewire_create",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nOneWire *mgos_arduino_onewire_create(uint8_t pin);\n```\n> \n> Create a OneWire object instance. Return value: an object with the methods\n> described below.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "select",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nvoid select(const uint8_t rom[8]);\n```\n> Issue a 1-Wire rom select command, you do the reset first.\n",
+    "name": "mgos_arduino_onewire_close",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nvoid mgos_arduino_onewire_close(OneWire *ow);\n```\n> \n> Destroy an `ow` instance.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "skip",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nvoid skip(void);\n```\n> Issue a 1-Wire rom skip command, to address all on bus.\n",
+    "name": "mgos_arduino_onewire_reset",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nuint8_t mgos_arduino_onewire_reset(OneWire *ow);\n```\n> \n> Reset the 1-wire bus. Usually this is needed before communicating with any\n> device.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "write",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nvoid write(uint8_t v, uint8_t power = 0);\n```\n> Write a byte. If 'power' is one then the wire is held high at\n> the end for parasitically powered devices. You are responsible\n> for eventually depowering it by calling depower() or doing\n> another read or write.\n",
+    "name": "mgos_arduino_onewire_select",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nvoid mgos_arduino_onewire_select(OneWire *ow, const uint8_t *addr);\n```\n> \n> Select a device based on its address `addr`, which is a 8-byte array.\n> After a reset, this is needed to choose which device you will use, and then\n> all communication will be with that device, until another reset.\n> \n> Example:\n> ```c\n> uint8_t addr[] = {0x28, 0xff, 0x2b, 0x45, 0x4c, 0x04, 0x00, 0x10};\n> mgos_arduino_onewire_select(myow, addr);\n> ```\n>  \n",
     "lang": "c"
   },
   {
-    "name": "read",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nuint8_t read(void);\n```\n> Read a byte.\n",
+    "name": "mgos_arduino_onewire_skip",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nvoid mgos_arduino_onewire_skip(OneWire *ow);\n```\n> \n> Skip the device selection. This only works if you have a single device, but\n> you can avoid searching and use this to immediately access your device.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "write_bit",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nvoid write_bit(uint8_t v);\n```\n> Write a bit. The bus is always left powered at the end, see\n> note in write() about that.\n",
+    "name": "mgos_arduino_onewire_write",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nvoid mgos_arduino_onewire_write(OneWire *ow, uint8_t v);\n```\n> \n> Write a byte to the onewire bus.\n> \n> Example:\n> ```c\n> // Write 0x12 to the onewire bus\n> mgos_arduino_onewire_write(myow, 0x12);\n> ```\n>  \n",
     "lang": "c"
   },
   {
-    "name": "read_bit",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nuint8_t read_bit(void);\n```\n> Read a bit.\n",
+    "name": "mgos_arduino_onewire_write_bytes",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nvoid mgos_arduino_onewire_write_bytes(OneWire *ow, const uint8_t *buf,\n                                      uint16_t count);\n```\n> \n> Write `count` bytes from the buffer `buf`. Example:\n> \n> ```c\n> // Write [0x55, 0x66, 0x77] to the onewire bus\n> const uint8_t buf[] = {0xff, 0x66, 0x77};\n> mgos_arduino_onewire_write_bytes(myow, buf, sizeof(buf));\n> ```\n>  \n",
     "lang": "c"
   },
   {
-    "name": "depower",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nvoid depower(void);\n```\n> Stop forcing power onto the bus. You only need to do this if\n> you used the 'power' flag to write() or used a write_bit() call\n> and aren't about to do another read or write. You would rather\n> not leave this powered if you don't have to, just in case\n> someone shorts your bus.\n",
+    "name": "mgos_arduino_onewire_read",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nuint8_t mgos_arduino_onewire_read(OneWire *ow);\n```\n> \n> Read a byte from the onewire bus.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "reset_search",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nvoid reset_search();\n```\n> Clear the search state so that if will start from the beginning again.\n",
+    "name": "mgos_arduino_onewire_read_bytes",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nvoid mgos_arduino_onewire_read_bytes(OneWire *ow, uint8_t *buf, uint16_t count);\n```\n> \n> Read multiple bytes from the onewire bus and write them to `buf`. The given\n> buffer should be at least `count` bytes long.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "target_search",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nvoid target_search(uint8_t family_code);\n```\n> Setup the search to find the device type 'family_code' on the next call\n> to search(*newAddr) if it is present.\n",
+    "name": "mgos_arduino_onewire_write_bit",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nvoid mgos_arduino_onewire_write_bit(OneWire *ow, uint8_t v);\n```\n> \n> Write a single bit to the onewire bus. Given `v` should be either 0 or 1.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "search",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nuint8_t search(uint8_t *newAddr, bool search_mode = true);\n```\n> Look for the next device. Returns 1 if a new address has been\n> returned. A zero might mean that the bus is shorted, there are\n> no devices, or you have already retrieved all of them.  It\n> might be a good idea to check the CRC to make sure you didn't\n> get garbage.  The order is deterministic. You will always get\n> the same devices in the same order.\n",
+    "name": "mgos_arduino_onewire_read_bit",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nuint8_t mgos_arduino_onewire_read_bit(OneWire *ow);\n```\n> \n> Read a single bit from the onewire bus. Returned value is either 0 or 1.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "crc8",
-    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
-    "doc": "\n```c\nstatic uint8_t crc8(const uint8_t *addr, uint8_t len);\n  \n private:\n  struct mgos_onewire *ow_;  // The mgos_onewire handle\n};\n```\n> Compute a Dallas Semiconductor 8 bit CRC, these are used in the\n> ROM and scratchpad registers.\n",
+    "name": "mgos_arduino_onewire_depower",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nvoid mgos_arduino_onewire_depower(OneWire *ow);\n```\n> \n> Not implemented yet.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_arduino_onewire_search",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nuint8_t mgos_arduino_onewire_search(OneWire *ow, uint8_t *newAddr,\n                                    uint8_t search_mode);\n```\n> \n> Search for the next device. The given `addr` should point to the buffer with\n> at least 8 bytes. If a device is found, `addr` is\n> filled with the device's address and 1 is returned. If no more\n> devices are found, 0 is returned.\n> `mode` is an integer: 0 means normal search, 1 means conditional search.\n> Example:\n> ```c\n> uint8_t addr[8];\n> uint8_t res = mgos_arduino_onewire_search(addr, 0);\n> if (res) {\n>   // addr contains the next device's address\n>   printf(\"Found!\");\n> } else {\n>   printf(\"Not found\");\n> }\n> ```\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_arduino_onewire_reset_search",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nvoid mgos_arduino_onewire_reset_search(OneWire *ow);\n```\n> \n> Reset a search. Next use of `mgos_arduino_onewire_search(....)` will begin\n> at the first device.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_arduino_onewire_target_search",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nvoid mgos_arduino_onewire_target_search(OneWire *ow, uint8_t family_code);\n```\n> \n> Setup the search to find the device type 'fc' (family code) on the next call\n> to `mgos_arduino_onewire_search()` if it is present.\n> \n> If no devices of the desired family are currently on the bus, then\n> device of some another type will be found by `search()`.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_arduino_onewire_crc8",
+    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
+    "doc": "\n```c\nuint8_t mgos_arduino_onewire_crc8(OneWire *ow, const uint8_t *addr,\n                                  uint8_t len);\n```\n> \n> Calculate crc8 for the given buffer `addr`, `len`.\n>  \n",
     "lang": "c"
   },
   {
@@ -3660,6 +3780,12 @@
     "lang": "c"
   },
   {
+    "name": "mgos_cron_get_user_data",
+    "file": "[mgos_cron.h](https://github.com/mongoose-os-libs/cron/tree/master/include/mgos_cron.h)",
+    "doc": "\n```c\nvoid *mgos_cron_get_user_data(mgos_cron_id_t id);\n```\n> \n> Returns user data pointer associated with the given cron job id.\n>  \n",
+    "lang": "c"
+  },
+  {
     "name": "mgos_cron_remove",
     "file": "[mgos_cron.h](https://github.com/mongoose-os-libs/cron/tree/master/include/mgos_cron.h)",
     "doc": "\n```c\nvoid mgos_cron_remove(mgos_cron_id_t id);\n```\n> \n> Removes cron entry with a given cron ID.\n>  \n",
@@ -3717,6 +3843,12 @@
     "name": "mgos_crontab_register_handler",
     "file": "[mgos_crontab.h](https://github.com/mongoose-os-libs/crontab/tree/master/include/mgos_crontab.h)",
     "doc": "\n```c\nvoid mgos_crontab_register_handler(struct mg_str action, mgos_crontab_cb cb,\n                                   void *userdata);\n```\n> \n> Add a handler for the given string action\n> \n> Example:\n> \n> ```c\n> static void my_foo_cb(struct mg_str action,\n>                       struct mg_str payload, void *userdata) {\n>   LOG(LL_INFO, (\"Crontab foo job fired! Payload: %.*s\", payload.len,\n> payload.p));\n>   (void) action;\n>   (void) userdata;\n> }\n> \n> // Somewhere else:\n> mgos_crontab_register_handler(\"foo\", my_foo_cb, NULL);\n> ```\n> \n> The code above maps action `foo` in the JSON to the callback `my_foo_cb`.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_crontab_get_next_invocation",
+    "file": "[mgos_crontab.h](https://github.com/mongoose-os-libs/crontab/tree/master/include/mgos_crontab.h)",
+    "doc": "\n```c\ntime_t mgos_crontab_get_next_invocation(mgos_crontab_job_id_t id, time_t date);\n```\n> \n> Calculate the next fire date after the specified date, using crontab ID\n> (returned by all cron RPC methods)\n>  \n",
     "lang": "c"
   },
   {
@@ -4806,15 +4938,27 @@
     "lang": "c"
   },
   {
+    "name": "mgos_i2c_setbits_reg_b",
+    "file": "[mgos_i2c.h](https://github.com/mongoose-os-libs/i2c/tree/master/include/mgos_i2c.h)",
+    "doc": "\n```c\nbool mgos_i2c_setbits_reg_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,\n                            uint8_t bitoffset, uint8_t bitlen, uint8_t value);\nbool mgos_i2c_getbits_reg_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,\n                            uint8_t bitoffset, uint8_t bitlen, uint8_t *value);\nbool mgos_i2c_setbits_reg_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,\n                            uint8_t bitoffset, uint8_t bitlen, uint16_t value);\nbool mgos_i2c_getbits_reg_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg,\n                            uint8_t bitoffset, uint8_t bitlen, uint16_t *value);\n```\n> \n> Helper to set/get a number of bits in a register `reg` on a device at\n> address `addr`.\n> - bitoffset: 0..n, is the position at which to write `value`\n>              n=7 for reg_b, n=15 for reg_w\n> - bitlen   : 1..m, number of bits to write\n>              m=8 for reg_b, m=16 for reg_w\n> - value    : the value to write there\n> \n> Invariants:\n> - value must fit in `bitlen` (ie value < 2^bitlen)\n> - bitlen+bitoffset <= register size (8 for reg_b, 16 for reg_w)\n> - bitlen cannot be 0.\n> - *conn cannot be NULL.\n> \n> The `setbits` call will write the bits to the register, the `getbits` call\n> will return the value of those bits in *value.\n> \n> Returns `true` in case of success, `false` otherwise.\n> \n> Examples (the bits set or get are between []):\n> 1) If register was 0x00 (0b00000000)\n>    mgos_i2c_setbits_reg_b(conn, addr, reg, 0, 1, 1);\n>    Register will be 0x01 (0b0000000[1])\n> 2) If register was 0xffff (0b1111111111111111)\n>    mgos_i2c_setbits_reg_w(conn, addr, reg, 14, 2, 0);\n>    Register will be 0x3fff (0b[00]11111111111111)\n> 3) If register was 0xabcd (0b1010101111001101)\n>    mgos_i2c_setbits_reg_w(conn, addr, reg, 10, 4, 5);\n>    Register will be 0x97cd (0b10[0101]1111001101)\n> 4) If register was 0xabcd (0b1010101111001101)\n>    mgos_i2c_getbits_reg_w(conn, addr, reg, 0, 2, &value);\n>    value will be 1   (0b10101011110011[01])\n>    mgos_i2c_getbits_reg_w(conn, addr, reg, 13, 3, &value);\n>    value will be 5   (0b[101]0101111001101)\n>    mgos_i2c_getbits_reg_w(conn, addr, reg, 6, 5, &value);\n>    value will be 15  (0b10101[01111]001101)\n>    mgos_i2c_getbits_reg_w(conn, addr, reg, 5, 9, &value);\n>    value will be 350 (0b10[101011110]01101)\n>  \n",
+    "lang": "c"
+  },
+  {
     "name": "mgos_i2c_close",
     "file": "[mgos_i2c.h](https://github.com/mongoose-os-libs/i2c/tree/master/include/mgos_i2c.h)",
     "doc": "\n```c\nvoid mgos_i2c_close(struct mgos_i2c *conn);\n```\n>  Close i2c connection and free resources. \n",
     "lang": "c"
   },
   {
+    "name": "mgos_i2c_get_bus",
+    "file": "[mgos_i2c.h](https://github.com/mongoose-os-libs/i2c/tree/master/include/mgos_i2c.h)",
+    "doc": "\n```c\nstruct mgos_i2c *mgos_i2c_get_bus(int bus_no);\n```\n>  Return bus object for the specified bus number. \n",
+    "lang": "c"
+  },
+  {
     "name": "mgos_i2c_get_global",
     "file": "[mgos_i2c.h](https://github.com/mongoose-os-libs/i2c/tree/master/include/mgos_i2c.h)",
-    "doc": "\n```c\nstruct mgos_i2c *mgos_i2c_get_global(void);\n```\n>  Return i2c bus handle that is set up via the sysconfig. \n",
+    "doc": "\n```c\nstruct mgos_i2c *mgos_i2c_get_global(void);\n```\n>  Return the default I2C bus. Equivalent to `mgos_i2c_get_bus(0)`. \n",
     "lang": "c"
   },
   {
@@ -4896,51 +5040,21 @@
     "lang": "c"
   },
   {
-    "name": "mgos_imu_gyroscope_destroy",
+    "name": "set_odr",
     "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nbool mgos_imu_gyroscope_destroy(struct mgos_imu *imu);\nbool mgos_imu_accelerometer_destroy(struct mgos_imu *imu);\nbool mgos_imu_magnetometer_destroy(struct mgos_imu *imu);\n```\n>  TODO(pim): Add SPI adders\n> bool mgos_imu_gyroscope_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_gyro_type type);\n> bool mgos_imu_accelerometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_acc_type type);\n> bool mgos_imu_magnetometer_create_spi(struct mgos_imu *imu, struct mgos_spi *spi, uint8_t cs_gpio, enum mgos_imu_mag_type type);\n>  \n",
+    "doc": "\n```c\nfloat                   odr;    // Data rate, in Hz. See doc for set_odr().\n  float                   scale;  // Scale. See doc for set_scale().\n  bool                    no_rst; // Do not perform reset of the device when configuring.\n};\n```\n> Gyroscope type.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_imu_accelerometer_get",
+    "name": "set_odr",
     "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nbool mgos_imu_accelerometer_get(struct mgos_imu *imu, float *x, float *y, float *z);\n```\n>  Return accelerometer data in units of m/s/s \n",
+    "doc": "\n```c\nfloat                  odr;    // Data rate, in Hz. See doc for set_odr().\n  float                  scale;  // Scale. See doc for set_scale().\n  bool                   no_rst; // Do not perform reset of the device when configuring.\n};\n```\n> Accelerometer type.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_imu_accelerometer_get_offset",
+    "name": "set_odr",
     "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nbool mgos_imu_accelerometer_get_offset(struct mgos_imu *imu, float *x, float *y, float *z);\nbool mgos_imu_accelerometer_set_offset(struct mgos_imu *imu, float x, float y, float z);\n```\n>  Get/set accelerometer offset in units of m/s/s \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_imu_gyroscope_get",
-    "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nbool mgos_imu_gyroscope_get(struct mgos_imu *imu, float *x, float *y, float *z);\n```\n>  Return gyroscope data in units of Rads/sec \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_imu_gyroscope_get_offset",
-    "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nbool mgos_imu_gyroscope_get_offset(struct mgos_imu *imu, float *x, float *y, float *z);\nbool mgos_imu_gyroscope_set_offset(struct mgos_imu *imu, float x, float y, float z);\n```\n>  Get/set gyroscope offset in units of m/s/s \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_imu_magnetometer_get",
-    "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nbool mgos_imu_magnetometer_get(struct mgos_imu *imu, float *x, float *y, float *z);\n```\n>  Return magnetometer data in units of microtesla (1 microtesla = 10 milligauss) \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_imu_gyroscope_get_name",
-    "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nconst char *mgos_imu_gyroscope_get_name(struct mgos_imu *imu);\nconst char *mgos_imu_magnetometer_get_name(struct mgos_imu *imu);\nconst char *mgos_imu_accelerometer_get_name(struct mgos_imu *imu);\n```\n>  String representation of the sensor types, guaranteed to be le 10 characters. \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_imu_init",
-    "file": "[mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h)",
-    "doc": "\n```c\nbool mgos_imu_init(void);\n```\n> \n> Initialization function for MGOS -- currently a noop.\n>  \n",
+    "doc": "\n```c\nfloat                  odr;    // Data rate, in Hz. See doc for set_odr().\n  float                  scale;  // Scale. See doc for set_scale().\n  bool                   no_rst; // Do not perform reset of the device when configuring.\n};\n```\n> Magnetometer type.\n",
     "lang": "c"
   },
   {
@@ -5724,75 +5838,99 @@
     "lang": "c"
   },
   {
-    "name": "reset",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nuint8_t reset(void);\n```\n> \n> Perform a 1-Wire reset cycle. Returns 1 if a device responds\n> with a presence pulse.  Returns 0 if there is no device or the\n> bus is shorted or otherwise held low for more than 250uS\n>      \n",
+    "name": "mgos_onewire_rmt_create",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nOnewireRmt* mgos_onewire_rmt_create(int pin, int rmt_rx, int rmt_tx);\n```\n> \n> Create a OnewireRmt object instance. Return value: an object with the methods\n> described below.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "select",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nvoid select(const uint8_t rom[8]);\n```\n> \n> Issues a 1-Wire rom select command, you do the reset first.\n>      \n",
+    "name": "mgos_onewire_rmt_close",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nvoid mgos_onewire_rmt_close(OnewireRmt *ow);\n```\n> \n> Destroy an `ow` instance.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "skip",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nvoid skip(void);\n```\n> \n> Issues a 1-Wire rom skip command, to address all on bus.\n>      \n",
+    "name": "mgos_onewire_rmt_reset",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nbool mgos_onewire_rmt_reset(OnewireRmt *ow);\n```\n> \n> Performs a 1-Wire reset cycle. Returns 1 if a device responds\n> with a presence pulse.  Returns 0 if there is no device or the\n> bus is shorted or otherwise held low for more than 250uS\n>  \n",
     "lang": "c"
   },
   {
-    "name": "write",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nvoid write(uint8_t v, uint8_t power = 0);\n    void write_bytes(const uint8_t *buf, uint16_t count, bool power = 0);\n```\n> \n> Write a byte/sequence of bytes. If 'power' is one then the wire is held high at\n> the end for parasitically powered devices. You are responsible\n> for eventually depowering it by calling depower() or doing\n> another read or write.\n>      \n",
+    "name": "mgos_onewire_rmt_crc8",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nuint8_t mgos_onewire_rmt_crc8(const uint8_t *rom, int len);\n```\n> \n> Computes a Dallas Semiconductor 8 bit CRC, these are used in the\n> ROM and scratchpad registers.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "read",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nuint8_t read(void);\n    void read_bytes(uint8_t *buf, uint16_t count);\n```\n> \n> Read a byte/sequence of bytes.\n>      \n",
+    "name": "mgos_onewire_rmt_target_setup",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nvoid mgos_onewire_rmt_target_setup(OnewireRmt *ow, const uint8_t family_code);\n```\n> \n> Setup the search to find the device type 'family_code' (family code) on the next call\n> to `mgos_onewire_rmt_next()` if it is present.\n> \n> If no devices of the desired family are currently on the bus, then\n> device of some another type will be found by `search()`.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "write_bit",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nvoid write_bit(uint8_t v);\n```\n> \n> Write a bit. The bus is always left powered at the end, see\n> note in write() about that.\n>      \n",
+    "name": "mgos_onewire_rmt_next",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nbool mgos_onewire_rmt_next(OnewireRmt *ow, uint8_t *rom, int mode);\n```\n> \n> Looks for the next device.\n> Returns 1 if a new address has been returned in the provided 8-byte array `buf`.\n> A zero might mean that the bus is shorted, there are no devices,\n> or you have already retrieved all of them.\n> It might be a good idea to check the CRC to make sure you didn't get garbage.\n> The order is deterministic. You will always get the same devices in the same order.\n> Parameter mode is not used.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "read_bit",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nuint8_t read_bit(void);\n```\n> \n> Read a bit.\n>      \n",
+    "name": "mgos_onewire_rmt_select",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nvoid mgos_onewire_rmt_select(OnewireRmt *ow, const uint8_t *rom);\n```\n> \n> Select a device based on its address `rom`, which is a 8-byte array.\n> After a reset, this is needed to choose which device you will use, and then\n> all communication will be with that device, until another reset.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "depower",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nvoid depower(void);\n```\n> \n> Stop forcing power onto the bus. You only need to do this if\n> you used the 'power' flag to write() or used a write_bit() call\n> and aren't about to do another read or write. You would rather\n> not leave this powered if you don't have to, just in case\n> someone shorts your bus.\n>      \n",
+    "name": "mgos_onewire_rmt_skip",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nvoid mgos_onewire_rmt_skip(OnewireRmt *ow);\n```\n> \n> Issues a 1-Wire rom skip command, to address all on bus.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "reset_search",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nvoid reset_search();\n```\n> \n> Clear the search state so that if will start from the beginning again.\n>      \n",
+    "name": "mgos_onewire_rmt_search_clean",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nvoid mgos_onewire_rmt_search_clean(OnewireRmt *ow);\n```\n> \n> Reset a search. Next use of `mgos_onewire_rmt_next(....)` will begin\n> at the first device.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "target_search",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nvoid target_search(uint8_t family_code);\n```\n> \n> Setup the search to find the device type 'family_code' on the next call\n> to search(*newAddr) if it is present.\n>      \n",
+    "name": "mgos_onewire_rmt_read_bit",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nbool mgos_onewire_rmt_read_bit(OnewireRmt *ow);\n```\n> \n> Reads a single bit from the onewire bus.\n> The returned value is either 0 or 1.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "search",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nuint8_t search(uint8_t *newAddr, bool search_mode = true);\n```\n> \n> Look for the next device. Returns 1 if a new address has been\n> returned. A zero might mean that the bus is shorted, there are\n> no devices, or you have already retrieved all of them.  It\n> might be a good idea to check the CRC to make sure you didn't\n> get garbage.  The order is deterministic. You will always get\n> the same devices in the same order.\n>      \n",
+    "name": "mgos_onewire_rmt_read",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nuint8_t mgos_onewire_rmt_read(OnewireRmt *ow);\n```\n> \n> Reads a byte from the onewire bus.\n>  \n",
     "lang": "c"
   },
   {
-    "name": "crc8",
-    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
-    "doc": "\n```c\nstatic uint8_t crc8(const uint8_t *addr, uint8_t len);\n```\n> \n> Compute a Dallas Semiconductor 8 bit CRC, these are used in the\n> ROM and scratchpad registers.\n>      \n",
+    "name": "mgos_onewire_rmt_read_bytes",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nvoid mgos_onewire_rmt_read_bytes(OnewireRmt *ow, uint8_t *buf, int len);\n```\n> \n> Reads multiple bytes from the onewire bus and write them to `buf`. The given\n> buffer should be at least `len` bytes long.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_onewire_rmt_write_bit",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nvoid mgos_onewire_rmt_write_bit(OnewireRmt *ow, int bit);\n```\n> \n> Writes a single bit to the onewire bus. Given `bit` should be either 0 or 1.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_onewire_rmt_write",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nvoid mgos_onewire_rmt_write(OnewireRmt *ow, const uint8_t data);\n```\n> \n> Writes a byte to the onewire bus.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_onewire_rmt_write_bytes",
+    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
+    "doc": "\n```c\nvoid mgos_onewire_rmt_write_bytes(OnewireRmt *ow, const uint8_t *buf, int len);\n```\n> \n> Writes `len` bytes from the buffer `buf`.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ota_http_start",
+    "file": "[mgos_ota_http_client.h](https://github.com/mongoose-os-libs/ota-http-client/tree/master/include/mgos_ota_http_client.h)",
+    "doc": "\n```c\nvoid mgos_ota_http_start(const char *url, const struct mgos_ota_opts *opts);\n```\n>  Start OTA update by pulling the firmware from the given URL. \n",
     "lang": "c"
   },
   {
@@ -5802,21 +5940,57 @@
     "lang": "js"
   },
   {
+    "name": "mgos_pppos_dev_get_ip_info",
+    "file": "[mgos_pppos.h](https://github.com/mongoose-os-libs/pppos/tree/master/include/mgos_pppos.h)",
+    "doc": "\n```c\nbool mgos_pppos_dev_get_ip_info(int if_instance,\n                                struct mgos_net_ip_info *ip_info);\n```\n> \n> Retrieve IP configuration of the provided instance number (which should be\n> of type `MGOS_NET_IF_TYPE_PPP`), and fill provided `ip_info` with it. Returns\n> `true` in case of success, false otherwise.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_pppos_create",
+    "file": "[mgos_pppos.h](https://github.com/mongoose-os-libs/pppos/tree/master/include/mgos_pppos.h)",
+    "doc": "\n```c\nbool mgos_pppos_create(const struct mgos_config_pppos *cfg, int if_instance);\n```\n>  Create PPPoS interface instance.\n> cfg must remain valid for the lifetime of the instance. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_pppos_connect",
+    "file": "[mgos_pppos.h](https://github.com/mongoose-os-libs/pppos/tree/master/include/mgos_pppos.h)",
+    "doc": "\n```c\nbool mgos_pppos_connect(int if_instance);\n```\n>  Initiate connection. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_pppos_disconnect",
+    "file": "[mgos_pppos.h](https://github.com/mongoose-os-libs/pppos/tree/master/include/mgos_pppos.h)",
+    "doc": "\n```c\nbool mgos_pppos_disconnect(int if_instance);\n```\n>  Disconnect interface. \n",
+    "lang": "c"
+  },
+  {
+    "name": "(*mgos_pppos_cmd_cb_t)",
+    "file": "[mgos_pppos.h](https://github.com/mongoose-os-libs/pppos/tree/master/include/mgos_pppos.h)",
+    "doc": "\n```c\ntypedef bool (*mgos_pppos_cmd_cb_t)(void *cb_arg, bool ok, struct mg_str data);\n```\n> \n> Command/sequence callback.\n> ok will be set to the command response status (OK = true, ERROR == false).\n> data will contain response payload - any data received from the modem\n> after the comamnd was sent and before OK/ERROR was received.\n> Return value should indicate whether sequence should continue: if callback\n> returns true, the sequence continued and next command is executed.\n> If the return value is false, the sequence is aborted, remaining commands\n> (if any) are not executed and sequence finalizer is run (if provided).\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_pppos_run_cmds",
+    "file": "[mgos_pppos.h](https://github.com/mongoose-os-libs/pppos/tree/master/include/mgos_pppos.h)",
+    "doc": "\n```c\nbool mgos_pppos_run_cmds(int if_instance, const struct mgos_pppos_cmd *cmds);\n```\n> \n> Send custom command sequence. This can be sent both when the interface is\n> idle as well as when connection is up. In the latter case the connectio will\n> be suspended to execute the command sequence.\n> If cb is set, it will receive command response (not including  OK/ERROR).\n> The sequence must end with an entry that has cmd set to NULL.\n> Callback on this last entry, if set, serves as a finalzier: it will be\n> invoked when the sequence ends, successfully or not (this is passed as \"ok\"\n> argument). The finalizer does not receive and data.\n> \n> mgos_pppos_run_cmds may return false if the modem is busy executing\n> another command sequence.\n> \n> Example:\n>   // Retrieve GNSS status from SimCom GPS-capable modem:\n>   const struct mgos_pppos_cmd cmds[] = {\n>       {.cmd = \"AT+CGNSPWR=1\"},  // Turn on GNSS (if not already).\n>       {.cmd = \"AT+CGNSINF\", .cb = gnsinf_cb},\n>       {.cmd = NULL},\n>   };\n>   mgos_pppos_run_cmds(0, cmds);\n> \n>   bool gnsinf_cb(void *cb_arg, bool ok, struct mg_str data) {\n>     if (!ok) return false;\n>     int run = 0, fix = 0;\n>     char time[20];\n>     float lat = 0, lon = 0, alt = 0, speed = 0, course = 0;\n>     sscanf(data.p, \"+CGNSINF: %d,%d,%18s,%f,%f,%f,%f,%f\",\n>                    &run, &fix, time, &lat, &lon, &alt, &speed, &course);\n>     if (fix) {\n>       LOG(LL_INFO, (\"lat,lon: %f,%f alt: %.3f speed: %.2f course: %.2f\",\n>                     lat, lon, alt, speed, course));\n>     } else {\n>       LOG(LL_INFO, (\"No GNSS fix yet\"));\n>     }\n>     (void) cb_arg;\n>     return true;\n>   }\n>  \n",
+    "lang": "c"
+  },
+  {
     "name": "mgos_prometheus_metrics_printf",
     "file": "[mgos_prometheus_metrics.h](https://github.com/mongoose-os-libs/prometheus-metrics/tree/master/include/mgos_prometheus_metrics.h)",
-    "doc": "\n```c\nvoid mgos_prometheus_metrics_printf(struct mg_connection *nc,\n                                    enum mgos_prometheus_metrics_type_t type,\n                                    const char *name, const char *descr,\n                                    const char *fmt, ...);\n```\n>  Output a formatted metric tuple to the network connection. For example:\n> ```c\n> uint32_t my_counter=1234;\n> mgos_prometheus_metrics_printf(nc, COUNTER, \"number_of_requests\", \"My Description\",\n>                                \"%u\", my_counter);\n> ```\n> \n> will output:\n> ```\n> # TYPE number_of_requests counter\n> # HELP number_of_requests My Description\n> number_of_requests 1234\n> ```\n>  \n",
+    "doc": "\n```c\nvoid mgos_prometheus_metrics_printf(struct mg_connection *nc,\n                                    enum mgos_prometheus_metrics_type_t type,\n                                    const char *name, const char *descr,\n                                    const char *fmt, ...);\n```\n>  Output a formatted metric tuple to the network connection. For example:\n> ```c\n> uint32_t my_counter=1234;\n> mgos_prometheus_metrics_printf(nc, COUNTER, \"number_of_requests\", \"My\n> Description\",\n>                                \"%u\", my_counter);\n> ```\n> \n> will output:\n> ```\n> # TYPE number_of_requests counter\n> # HELP number_of_requests My Description\n> number_of_requests 1234\n> ```\n>  \n",
     "lang": "c"
   },
   {
     "name": "(*mgos_prometheus_metrics_fn_t)",
     "file": "[mgos_prometheus_metrics.h](https://github.com/mongoose-os-libs/prometheus-metrics/tree/master/include/mgos_prometheus_metrics.h)",
-    "doc": "\n```c\ntypedef void (*mgos_prometheus_metrics_fn_t)(struct mg_connection *nc, void *user_data);\n```\n>  Prototype of a function which is to be called on each prometheus pull/push.\n>  \n",
+    "doc": "\n```c\ntypedef void (*mgos_prometheus_metrics_fn_t)(struct mg_connection *nc,\n                                             void *user_data);\n```\n>  Prototype of a function which is to be called on each prometheus pull/push.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_prometheus_metrics_add_handler",
     "file": "[mgos_prometheus_metrics.h](https://github.com/mongoose-os-libs/prometheus-metrics/tree/master/include/mgos_prometheus_metrics.h)",
-    "doc": "\n```c\nvoid mgos_prometheus_metrics_add_handler(mgos_prometheus_metrics_fn_t handler, void *user_data);\n```\n>  Registers a function handler, which will be called each time Prometheus\n> scrapes our HTTP /metrics endpoint. Libraries and application code can\n> register any number of handlers, which will be called one after another.\n> Example:\n> \n> ```c\n> #include \"mgos_prometheus_metrics.h\"\n> uint32_t my_counter=0;\n> \n> static void prometheus_metrics_fn(struct mg_connection *nc, void *user_data) {\n>   mgos_prometheus_metrics_printf(nc, COUNTER,\n>     \"my_counter\", \"Total things counted\",\n>     \"%u\", my_counter);\n>   (void) user_data;\n> }\n> \n> enum mgos_app_init_result mgos_app_init(void) {\n>   mgos_prometheus_metrics_add_handler(prometheus_metrics_fn, NULL);\n>   return MGOS_APP_INIT_SUCCESS;\n> }\n> ```\n>  \n",
+    "doc": "\n```c\nvoid mgos_prometheus_metrics_add_handler(mgos_prometheus_metrics_fn_t handler,\n                                         void *user_data);\n```\n>  Registers a function handler, which will be called each time Prometheus\n> scrapes our HTTP /metrics endpoint. Libraries and application code can\n> register any number of handlers, which will be called one after another.\n> Example:\n> \n> ```c\n> #include \"mgos_prometheus_metrics.h\"\n> uint32_t my_counter=0;\n> \n> static void prometheus_metrics_fn(struct mg_connection *nc, void *user_data)\n> {\n>   mgos_prometheus_metrics_printf(nc, COUNTER,\n>     \"my_counter\", \"Total things counted\",\n>     \"%u\", my_counter);\n>   (void) user_data;\n> }\n> \n> enum mgos_app_init_result mgos_app_init(void) {\n>   mgos_prometheus_metrics_add_handler(prometheus_metrics_fn, NULL);\n>   return MGOS_APP_INIT_SUCCESS;\n> }\n> ```\n>  \n",
     "lang": "c"
   },
   {
@@ -6423,6 +6597,18 @@
     "name": "mgos_vfs_umount_all",
     "file": "[mgos_vfs.h](https://github.com/mongoose-os-libs/vfs-common/tree/master/include/mgos_vfs.h)",
     "doc": "\n```c\nvoid mgos_vfs_umount_all(void);\n```\n> \n> Unmount all the filesystems, regardless of open files.\n> Done only on reboot.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_vfs_get_space_total",
+    "file": "[mgos_vfs.h](https://github.com/mongoose-os-libs/vfs-common/tree/master/include/mgos_vfs.h)",
+    "doc": "\n```c\nsize_t mgos_vfs_get_space_total(const char *path);\n```\n> \n> Get FS size of a file system at the specified mountpoint.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_vfs_get_space_free",
+    "file": "[mgos_vfs.h](https://github.com/mongoose-os-libs/vfs-common/tree/master/include/mgos_vfs.h)",
+    "doc": "\n```c\nsize_t mgos_vfs_get_space_free(const char *path);\n```\n> \n> Get free spece of a file system at the specified mountpoint.\n>  \n",
     "lang": "c"
   },
   {
