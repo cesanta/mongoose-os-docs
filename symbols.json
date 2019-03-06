@@ -1800,66 +1800,6 @@
     "lang": "js"
   },
   {
-    "name": "mgos_tsl2561_create",
-    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
-    "doc": "\n```c\nTSL2561 *mgos_tsl2561_create(uint8_t addr);\n```\n> \n> Initialize Adafruit TSDL2561 library for sensor at address `addr`.  Address can be one of\n> `TSL2561_ADDR_LOW`, `TSL2561_ADDR_FLOAT`, or `TSL2561_ADDR_HIGH`.  See above and your datasheet\n> and/or your wiring guide to determine which address value to use for your application.\n> \n> Return value: opaque pointer handle to C++ TSL2561 class.\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_tsl2561_begin",
-    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
-    "doc": "\n```c\nint mgos_tsl2561_begin(TSL2561 *tsl);\n```\n> \n> Checks that the sensor exists at the address it was created on and applies default settings for\n> gain and integration timing.\n> \n> Returns 1 (true) if the above actions were successful, 0 (false) otherwise.\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_tsl2561_enable",
-    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
-    "doc": "\n```c\nvoid mgos_tsl2561_enable(TSL2561 *tsl);\n```\n> \n> Send a command to sensor to enable it\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_tsl2561_disable",
-    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
-    "doc": "\n```c\nvoid mgos_tsl2561_disable(TSL2561 *tsl);\n```\n> \n> Send a command to the sensor to disable it\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_tsl2561_getLuminosity",
-    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
-    "doc": "\n```c\nint mgos_tsl2561_getLuminosity(TSL2561 *tsl, int channel);\n```\n> \n> Get the luminosity of the desired channel.\n> \n> Supported channel values:\n> - 0 or `TSL2561_FULLSPECTRUM` - visible + infrared\n> - 1 or `TSL2561_INFRARED` - infrared\n> - 2 or `TSL2561_VISIBLE` - visible\n> \n> Returns -1 for any error.\n> \n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_tsl2561_getFullLuminosity",
-    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
-    "doc": "\n```c\nint mgos_tsl2561_getFullLuminosity(TSL2561 *tsl);\n```\n> \n> Return the value of both channels in a 32-bit unsigned integer.  The upper (lower)\n> 16 bits contain value of channel 1 (channel 0).\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_tsl2561_setIntegrationTime",
-    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
-    "doc": "\n```c\nvoid mgos_tsl2561_setIntegrationTime(TSL2561 *tsl, int timing);\n```\n> \n> Sets the sensor integration time.  Allowed values are:\n> - 0x00 or `TSL2561_INTEGRATIONTIME_13MS` - 13.7 ms - use w. no gain and bright light conditions\n> - 0x01 or `TSL2561_INTEGRATIONTIME_101MS` - 101 ms - use w. either gain setting and med. light conditions\n> - 0x02 or `TSL2561_INTEGRATIONTIME_402MS` - 402 ms - use w. 16x gain and low light conditions\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_tsl2561_setGain",
-    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
-    "doc": "\n```c\nvoid mgos_tsl2561_setGain(TSL2561 *tsl, int gain);\n```\n> \n> Sets the sensor gain.  Allowed values are:\n> - 0x00 or `TSL2561_GAIN_0X` - no gain, use for bright lighting conditions\n> - 0x10 or `TSL2561_GAIN_16X` - 16x gain, low light conditions\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_tsl2561_calculateLux",
-    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
-    "doc": "\n```c\nuint32_t mgos_tsl2561_calculateLux(TSL2561 *tsl, uint16_t ch0, uint16_t ch1);\n```\n> \n> Convert sensor reading into lux value.\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_tsl2561_close",
-    "file": "[mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h)",
-    "doc": "\n```c\nvoid mgos_tsl2561_close(TSL2561 *tsl);\n```\n> \n> Delete TSL2561 handle and its resources.\n>  \n",
-    "lang": "c"
-  },
-  {
     "name": "getLuminosity( p )",
     "file": "[api_arduino_tsl2561.js](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/mjs_fs/api_arduino_tsl2561.js)",
     "doc": "\n```javascript\ngetLuminosity( p )\n```\n### ** Adafruit_TSL2561.TSL2561_VISIBLE **\nget visible luminosity:  channel 0 - channel 1\n",
@@ -3108,99 +3048,75 @@
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_create",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nOneWire *mgos_arduino_onewire_create(uint8_t pin);\n```\n> \n> Create a OneWire object instance. Return value: an object with the methods\n> described below.\n>  \n",
+    "name": "reset",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nuint8_t reset(void);\n```\n> Perform a 1-Wire reset cycle. Returns 1 if a device responds\n> with a presence pulse.  Returns 0 if there is no device or the\n> bus is shorted or otherwise held low for more than 250uS\n",
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_close",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nvoid mgos_arduino_onewire_close(OneWire *ow);\n```\n> \n> Destroy an `ow` instance.\n>  \n",
+    "name": "select",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nvoid select(const uint8_t rom[8]);\n```\n> Issue a 1-Wire rom select command, you do the reset first.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_reset",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nuint8_t mgos_arduino_onewire_reset(OneWire *ow);\n```\n> \n> Reset the 1-wire bus. Usually this is needed before communicating with any\n> device.\n>  \n",
+    "name": "skip",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nvoid skip(void);\n```\n> Issue a 1-Wire rom skip command, to address all on bus.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_select",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nvoid mgos_arduino_onewire_select(OneWire *ow, const uint8_t *addr);\n```\n> \n> Select a device based on its address `addr`, which is a 8-byte array.\n> After a reset, this is needed to choose which device you will use, and then\n> all communication will be with that device, until another reset.\n> \n> Example:\n> ```c\n> uint8_t addr[] = {0x28, 0xff, 0x2b, 0x45, 0x4c, 0x04, 0x00, 0x10};\n> mgos_arduino_onewire_select(myow, addr);\n> ```\n>  \n",
+    "name": "write",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nvoid write(uint8_t v, uint8_t power = 0);\n```\n> Write a byte. If 'power' is one then the wire is held high at\n> the end for parasitically powered devices. You are responsible\n> for eventually depowering it by calling depower() or doing\n> another read or write.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_skip",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nvoid mgos_arduino_onewire_skip(OneWire *ow);\n```\n> \n> Skip the device selection. This only works if you have a single device, but\n> you can avoid searching and use this to immediately access your device.\n>  \n",
+    "name": "read",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nuint8_t read(void);\n```\n> Read a byte.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_write",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nvoid mgos_arduino_onewire_write(OneWire *ow, uint8_t v);\n```\n> \n> Write a byte to the onewire bus.\n> \n> Example:\n> ```c\n> // Write 0x12 to the onewire bus\n> mgos_arduino_onewire_write(myow, 0x12);\n> ```\n>  \n",
+    "name": "write_bit",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nvoid write_bit(uint8_t v);\n```\n> Write a bit. The bus is always left powered at the end, see\n> note in write() about that.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_write_bytes",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nvoid mgos_arduino_onewire_write_bytes(OneWire *ow, const uint8_t *buf,\n                                      uint16_t count);\n```\n> \n> Write `count` bytes from the buffer `buf`. Example:\n> \n> ```c\n> // Write [0x55, 0x66, 0x77] to the onewire bus\n> const uint8_t buf[] = {0xff, 0x66, 0x77};\n> mgos_arduino_onewire_write_bytes(myow, buf, sizeof(buf));\n> ```\n>  \n",
+    "name": "read_bit",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nuint8_t read_bit(void);\n```\n> Read a bit.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_read",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nuint8_t mgos_arduino_onewire_read(OneWire *ow);\n```\n> \n> Read a byte from the onewire bus.\n>  \n",
+    "name": "depower",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nvoid depower(void);\n```\n> Stop forcing power onto the bus. You only need to do this if\n> you used the 'power' flag to write() or used a write_bit() call\n> and aren't about to do another read or write. You would rather\n> not leave this powered if you don't have to, just in case\n> someone shorts your bus.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_read_bytes",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nvoid mgos_arduino_onewire_read_bytes(OneWire *ow, uint8_t *buf, uint16_t count);\n```\n> \n> Read multiple bytes from the onewire bus and write them to `buf`. The given\n> buffer should be at least `count` bytes long.\n>  \n",
+    "name": "reset_search",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nvoid reset_search();\n```\n> Clear the search state so that if will start from the beginning again.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_write_bit",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nvoid mgos_arduino_onewire_write_bit(OneWire *ow, uint8_t v);\n```\n> \n> Write a single bit to the onewire bus. Given `v` should be either 0 or 1.\n>  \n",
+    "name": "target_search",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nvoid target_search(uint8_t family_code);\n```\n> Setup the search to find the device type 'family_code' on the next call\n> to search(*newAddr) if it is present.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_read_bit",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nuint8_t mgos_arduino_onewire_read_bit(OneWire *ow);\n```\n> \n> Read a single bit from the onewire bus. Returned value is either 0 or 1.\n>  \n",
+    "name": "search",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nuint8_t search(uint8_t *newAddr, bool search_mode = true);\n```\n> Look for the next device. Returns 1 if a new address has been\n> returned. A zero might mean that the bus is shorted, there are\n> no devices, or you have already retrieved all of them.  It\n> might be a good idea to check the CRC to make sure you didn't\n> get garbage.  The order is deterministic. You will always get\n> the same devices in the same order.\n",
     "lang": "c"
   },
   {
-    "name": "mgos_arduino_onewire_depower",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nvoid mgos_arduino_onewire_depower(OneWire *ow);\n```\n> \n> Not implemented yet.\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_arduino_onewire_search",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nuint8_t mgos_arduino_onewire_search(OneWire *ow, uint8_t *newAddr,\n                                    uint8_t search_mode);\n```\n> \n> Search for the next device. The given `addr` should point to the buffer with\n> at least 8 bytes. If a device is found, `addr` is\n> filled with the device's address and 1 is returned. If no more\n> devices are found, 0 is returned.\n> `mode` is an integer: 0 means normal search, 1 means conditional search.\n> Example:\n> ```c\n> uint8_t addr[8];\n> uint8_t res = mgos_arduino_onewire_search(addr, 0);\n> if (res) {\n>   // addr contains the next device's address\n>   printf(\"Found!\");\n> } else {\n>   printf(\"Not found\");\n> }\n> ```\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_arduino_onewire_reset_search",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nvoid mgos_arduino_onewire_reset_search(OneWire *ow);\n```\n> \n> Reset a search. Next use of `mgos_arduino_onewire_search(....)` will begin\n> at the first device.\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_arduino_onewire_target_search",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nvoid mgos_arduino_onewire_target_search(OneWire *ow, uint8_t family_code);\n```\n> \n> Setup the search to find the device type 'fc' (family code) on the next call\n> to `mgos_arduino_onewire_search()` if it is present.\n> \n> If no devices of the desired family are currently on the bus, then\n> device of some another type will be found by `search()`.\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_arduino_onewire_crc8",
-    "file": "[mgos_arduino_onewire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/mgos_arduino_onewire.h)",
-    "doc": "\n```c\nuint8_t mgos_arduino_onewire_crc8(OneWire *ow, const uint8_t *addr,\n                                  uint8_t len);\n```\n> \n> Calculate crc8 for the given buffer `addr`, `len`.\n>  \n",
+    "name": "crc8",
+    "file": "[OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h)",
+    "doc": "\n```c\nstatic uint8_t crc8(const uint8_t *addr, uint8_t len);\n  \n private:\n  struct mgos_onewire *ow_;  // The mgos_onewire handle\n};\n```\n> Compute a Dallas Semiconductor 8 bit CRC, these are used in the\n> ROM and scratchpad registers.\n",
     "lang": "c"
   },
   {
@@ -5838,93 +5754,75 @@
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_create",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nOnewireRmt* mgos_onewire_rmt_create(int pin, int rmt_rx, int rmt_tx);\n```\n> \n> Create a OnewireRmt object instance. Return value: an object with the methods\n> described below.\n>  \n",
+    "name": "reset",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nuint8_t reset(void);\n```\n> \n> Perform a 1-Wire reset cycle. Returns 1 if a device responds\n> with a presence pulse.  Returns 0 if there is no device or the\n> bus is shorted or otherwise held low for more than 250uS\n>      \n",
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_close",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nvoid mgos_onewire_rmt_close(OnewireRmt *ow);\n```\n> \n> Destroy an `ow` instance.\n>  \n",
+    "name": "select",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nvoid select(const uint8_t rom[8]);\n```\n> \n> Issues a 1-Wire rom select command, you do the reset first.\n>      \n",
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_reset",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nbool mgos_onewire_rmt_reset(OnewireRmt *ow);\n```\n> \n> Performs a 1-Wire reset cycle. Returns 1 if a device responds\n> with a presence pulse.  Returns 0 if there is no device or the\n> bus is shorted or otherwise held low for more than 250uS\n>  \n",
+    "name": "skip",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nvoid skip(void);\n```\n> \n> Issues a 1-Wire rom skip command, to address all on bus.\n>      \n",
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_crc8",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nuint8_t mgos_onewire_rmt_crc8(const uint8_t *rom, int len);\n```\n> \n> Computes a Dallas Semiconductor 8 bit CRC, these are used in the\n> ROM and scratchpad registers.\n>  \n",
+    "name": "write",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nvoid write(uint8_t v, uint8_t power = 0);\n    void write_bytes(const uint8_t *buf, uint16_t count, bool power = 0);\n```\n> \n> Write a byte/sequence of bytes. If 'power' is one then the wire is held high at\n> the end for parasitically powered devices. You are responsible\n> for eventually depowering it by calling depower() or doing\n> another read or write.\n>      \n",
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_target_setup",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nvoid mgos_onewire_rmt_target_setup(OnewireRmt *ow, const uint8_t family_code);\n```\n> \n> Setup the search to find the device type 'family_code' (family code) on the next call\n> to `mgos_onewire_rmt_next()` if it is present.\n> \n> If no devices of the desired family are currently on the bus, then\n> device of some another type will be found by `search()`.\n>  \n",
+    "name": "read",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nuint8_t read(void);\n    void read_bytes(uint8_t *buf, uint16_t count);\n```\n> \n> Read a byte/sequence of bytes.\n>      \n",
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_next",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nbool mgos_onewire_rmt_next(OnewireRmt *ow, uint8_t *rom, int mode);\n```\n> \n> Looks for the next device.\n> Returns 1 if a new address has been returned in the provided 8-byte array `buf`.\n> A zero might mean that the bus is shorted, there are no devices,\n> or you have already retrieved all of them.\n> It might be a good idea to check the CRC to make sure you didn't get garbage.\n> The order is deterministic. You will always get the same devices in the same order.\n> Parameter mode is not used.\n>  \n",
+    "name": "write_bit",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nvoid write_bit(uint8_t v);\n```\n> \n> Write a bit. The bus is always left powered at the end, see\n> note in write() about that.\n>      \n",
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_select",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nvoid mgos_onewire_rmt_select(OnewireRmt *ow, const uint8_t *rom);\n```\n> \n> Select a device based on its address `rom`, which is a 8-byte array.\n> After a reset, this is needed to choose which device you will use, and then\n> all communication will be with that device, until another reset.\n>  \n",
+    "name": "read_bit",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nuint8_t read_bit(void);\n```\n> \n> Read a bit.\n>      \n",
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_skip",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nvoid mgos_onewire_rmt_skip(OnewireRmt *ow);\n```\n> \n> Issues a 1-Wire rom skip command, to address all on bus.\n>  \n",
+    "name": "depower",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nvoid depower(void);\n```\n> \n> Stop forcing power onto the bus. You only need to do this if\n> you used the 'power' flag to write() or used a write_bit() call\n> and aren't about to do another read or write. You would rather\n> not leave this powered if you don't have to, just in case\n> someone shorts your bus.\n>      \n",
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_search_clean",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nvoid mgos_onewire_rmt_search_clean(OnewireRmt *ow);\n```\n> \n> Reset a search. Next use of `mgos_onewire_rmt_next(....)` will begin\n> at the first device.\n>  \n",
+    "name": "reset_search",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nvoid reset_search();\n```\n> \n> Clear the search state so that if will start from the beginning again.\n>      \n",
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_read_bit",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nbool mgos_onewire_rmt_read_bit(OnewireRmt *ow);\n```\n> \n> Reads a single bit from the onewire bus.\n> The returned value is either 0 or 1.\n>  \n",
+    "name": "target_search",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nvoid target_search(uint8_t family_code);\n```\n> \n> Setup the search to find the device type 'family_code' on the next call\n> to search(*newAddr) if it is present.\n>      \n",
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_read",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nuint8_t mgos_onewire_rmt_read(OnewireRmt *ow);\n```\n> \n> Reads a byte from the onewire bus.\n>  \n",
+    "name": "search",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nuint8_t search(uint8_t *newAddr, bool search_mode = true);\n```\n> \n> Look for the next device. Returns 1 if a new address has been\n> returned. A zero might mean that the bus is shorted, there are\n> no devices, or you have already retrieved all of them.  It\n> might be a good idea to check the CRC to make sure you didn't\n> get garbage.  The order is deterministic. You will always get\n> the same devices in the same order.\n>      \n",
     "lang": "c"
   },
   {
-    "name": "mgos_onewire_rmt_read_bytes",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nvoid mgos_onewire_rmt_read_bytes(OnewireRmt *ow, uint8_t *buf, int len);\n```\n> \n> Reads multiple bytes from the onewire bus and write them to `buf`. The given\n> buffer should be at least `len` bytes long.\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_onewire_rmt_write_bit",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nvoid mgos_onewire_rmt_write_bit(OnewireRmt *ow, int bit);\n```\n> \n> Writes a single bit to the onewire bus. Given `bit` should be either 0 or 1.\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_onewire_rmt_write",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nvoid mgos_onewire_rmt_write(OnewireRmt *ow, const uint8_t data);\n```\n> \n> Writes a byte to the onewire bus.\n>  \n",
-    "lang": "c"
-  },
-  {
-    "name": "mgos_onewire_rmt_write_bytes",
-    "file": "[mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h)",
-    "doc": "\n```c\nvoid mgos_onewire_rmt_write_bytes(OnewireRmt *ow, const uint8_t *buf, int len);\n```\n> \n> Writes `len` bytes from the buffer `buf`.\n>  \n",
+    "name": "crc8",
+    "file": "[OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h)",
+    "doc": "\n```c\nstatic uint8_t crc8(const uint8_t *addr, uint8_t len);\n```\n> \n> Compute a Dallas Semiconductor 8 bit CRC, these are used in the\n> ROM and scratchpad registers.\n>      \n",
     "lang": "c"
   },
   {

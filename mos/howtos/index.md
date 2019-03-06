@@ -3,3 +3,4 @@
 - [Add filesystem](fs.md)
 - [MakerFactory ESP32 board](maker-factory-esp32.md)
 - [Add FS with content](fs-flash.md)
+- [Send data to spreadsheet](trix.md)

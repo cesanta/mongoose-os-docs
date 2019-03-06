@@ -1,7 +1,7 @@
 # Adafruit TSL2561
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-tsl2561](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561) | [mgos_arduino_adafruit_tsl2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/mgos_arduino_adafruit_tsl2561.h) | &nbsp;  | [api_arduino_tsl2561.js](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/mjs_fs/api_arduino_tsl2561.js)         |
+| [mongoose-os-libs/arduino-adafruit-tsl2561](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561) | [TSL2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/TSL2561.h) | &nbsp;  | [api_arduino_tsl2561.js](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/mjs_fs/api_arduino_tsl2561.js)         |
 
 
 # Arduino Adafruit TSL2561 library for Mongoose OS
@@ -46,107 +46,41 @@ Enjoy!
 
 
  ----- 
-#### mgos_tsl2561_create
+! 
+    @file     tsl2561.h
+    @author   K. Townsend (microBuilder.eu)
 
-```c
-TSL2561 *mgos_tsl2561_create(uint8_t addr);
-```
-> 
-> Initialize Adafruit TSDL2561 library for sensor at address `addr`.  Address can be one of
-> `TSL2561_ADDR_LOW`, `TSL2561_ADDR_FLOAT`, or `TSL2561_ADDR_HIGH`.  See above and your datasheet
-> and/or your wiring guide to determine which address value to use for your application.
-> 
-> Return value: opaque pointer handle to C++ TSL2561 class.
->  
-#### mgos_tsl2561_begin
+    @section LICENSE
 
-```c
-int mgos_tsl2561_begin(TSL2561 *tsl);
-```
-> 
-> Checks that the sensor exists at the address it was created on and applies default settings for
-> gain and integration timing.
-> 
-> Returns 1 (true) if the above actions were successful, 0 (false) otherwise.
->  
-#### mgos_tsl2561_enable
+    Software License Agreement (BSD License)
 
-```c
-void mgos_tsl2561_enable(TSL2561 *tsl);
-```
-> 
-> Send a command to sensor to enable it
->  
-#### mgos_tsl2561_disable
+    Copyright (c) 2010, microBuilder SARL
+    All rights reserved.
 
-```c
-void mgos_tsl2561_disable(TSL2561 *tsl);
-```
-> 
-> Send a command to the sensor to disable it
->  
-#### mgos_tsl2561_getLuminosity
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+    1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+    2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+    3. Neither the name of the copyright holders nor the
+    names of its contributors may be used to endorse or promote products
+    derived from this software without specific prior written permission.
 
-```c
-int mgos_tsl2561_getLuminosity(TSL2561 *tsl, int channel);
-```
-> 
-> Get the luminosity of the desired channel.
-> 
-> Supported channel values:
-> - 0 or `TSL2561_FULLSPECTRUM` - visible + infrared
-> - 1 or `TSL2561_INFRARED` - infrared
-> - 2 or `TSL2561_VISIBLE` - visible
-> 
-> Returns -1 for any error.
-> 
->  
-#### mgos_tsl2561_getFullLuminosity
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ''AS IS'' AND ANY
+    EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY
+    DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+    ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-```c
-int mgos_tsl2561_getFullLuminosity(TSL2561 *tsl);
-```
-> 
-> Return the value of both channels in a 32-bit unsigned integer.  The upper (lower)
-> 16 bits contain value of channel 1 (channel 0).
->  
-#### mgos_tsl2561_setIntegrationTime
 
-```c
-void mgos_tsl2561_setIntegrationTime(TSL2561 *tsl, int timing);
-```
-> 
-> Sets the sensor integration time.  Allowed values are:
-> - 0x00 or `TSL2561_INTEGRATIONTIME_13MS` - 13.7 ms - use w. no gain and bright light conditions
-> - 0x01 or `TSL2561_INTEGRATIONTIME_101MS` - 101 ms - use w. either gain setting and med. light conditions
-> - 0x02 or `TSL2561_INTEGRATIONTIME_402MS` - 402 ms - use w. 16x gain and low light conditions
->  
-#### mgos_tsl2561_setGain
-
-```c
-void mgos_tsl2561_setGain(TSL2561 *tsl, int gain);
-```
-> 
-> Sets the sensor gain.  Allowed values are:
-> - 0x00 or `TSL2561_GAIN_0X` - no gain, use for bright lighting conditions
-> - 0x10 or `TSL2561_GAIN_16X` - 16x gain, low light conditions
->  
-#### mgos_tsl2561_calculateLux
-
-```c
-uint32_t mgos_tsl2561_calculateLux(TSL2561 *tsl, uint16_t ch0, uint16_t ch1);
-```
-> 
-> Convert sensor reading into lux value.
->  
-#### mgos_tsl2561_close
-
-```c
-void mgos_tsl2561_close(TSL2561 *tsl);
-```
-> 
-> Delete TSL2561 handle and its resources.
->  
+ ----- 
 
 ### JS API
 

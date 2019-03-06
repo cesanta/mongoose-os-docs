@@ -48,7 +48,6 @@
 <li><a href="/docs/mos/api/core/frozen.h.md">JSON</a></li>
 <li><a href="/docs/mos/api/core/cs_dbg.h.md">Logging</a></li>
 <li><a href="/docs/mos/api/core/mbuf.h.md">Membuf</a></li>
-<li><a href="/docs/mos/api/core/mgos_file_utils.h.md">mgos_file_utils.h</a></li>
 <li><a href="/docs/mos/api/core/mgos_net.h.md">Net events</a></li>
 <li><a href="/docs/mos/api/core/onewire.md">Onewire</a></li>
 <li><a href="/docs/mos/api/core/pwm.md">PWM</a></li>
@@ -59,6 +58,7 @@
 <li><a href="/docs/mos/api/core/mgos_timers.h.md">Timers</a></li>
 <li><a href="/docs/mos/api/core/mgos_uart.h.md">UART</a></li>
 <li><a href="/docs/mos/api/core/mgos_utils.h.md">Utils</a></li>
+<li><a href="/docs/mos/api/core/mgos_file_utils.h.md">mgos_file_utils.h</a></li>
 </ul>
 </div>
 <div class="tree-toggler"><i class="fa fa-fw fa-caret-right"></i>&nbsp;<b>Cloud services</b>
@@ -67,10 +67,10 @@
 <li><a href="/docs/mos/api/cloud/blynk.md">Blynk</a></li>
 <li><a href="/docs/mos/api/cloud/gcp.md">Google IoT Core</a></li>
 <li><a href="/docs/mos/api/cloud/watson.md">IBM Watson</a></li>
-<li><a href="/docs/mos/api/cloud/dash.md">mDash dashboard</a></li>
 <li><a href="/docs/mos/api/cloud/rpc-azure.md">Microsoft Azure RPC</a></li>
 <li><a href="/docs/mos/api/cloud/azure.md">Miscrosoft Azure IoT</a></li>
 <li><a href="/docs/mos/api/cloud/prometheus-metrics.md">Prometheus metrics</a></li>
+<li><a href="/docs/mos/api/cloud/dash.md">mDash dashboard</a></li>
 </ul>
 </div>
 <div class="tree-toggler"><i class="fa fa-fw fa-caret-right"></i>&nbsp;<b>Networking</b>
@@ -79,17 +79,17 @@
 <li><a href="/docs/mos/api/net/bt-common.md">BLE</a></li>
 <li><a href="/docs/mos/api/net/ca-bundle.md">Common CA certificates</a></li>
 <li><a href="/docs/mos/api/net/bt-service-config.md">Config over BLE GATT</a></li>
+<li><a href="/docs/mos/api/net/dns-sd.md">DNS-SD</a></li>
 <li><a href="/docs/mos/api/net/bt-service-debug.md">Debug over BLE GATT</a></li>
 <li><a href="/docs/mos/api/net/shadow.md">Device Shadow</a></li>
-<li><a href="/docs/mos/api/net/dns-sd.md">DNS-SD</a></li>
 <li><a href="/docs/mos/api/net/ethernet.md">Ethernet</a></li>
 <li><a href="/docs/mos/api/net/http-server.md">HTTP server</a></li>
 <li><a href="/docs/mos/api/net/ir.md">IR (infrared)</a></li>
-<li><a href="/docs/mos/api/net/mongoose.md">Mongoose network lib</a></li>
 <li><a href="/docs/mos/api/net/mqtt.md">MQTT</a></li>
-<li><a href="/docs/mos/api/net/ota-shadow.md">OTA via device shadow</a></li>
+<li><a href="/docs/mos/api/net/mongoose.md">Mongoose network lib</a></li>
 <li><a href="/docs/mos/api/net/ota-http-client.md">OTA via HTTP GET</a></li>
 <li><a href="/docs/mos/api/net/ota-http-server.md">OTA via HTTP POST</a></li>
+<li><a href="/docs/mos/api/net/ota-shadow.md">OTA via device shadow</a></li>
 <li><a href="/docs/mos/api/net/pppos.md">PPPoS</a></li>
 <li><a href="/docs/mos/api/net/sntp.md">SNTP</a></li>
 <li><a href="/docs/mos/api/net/wifi.md">WiFi</a></li>
@@ -98,14 +98,14 @@
 <div class="tree-toggler"><i class="fa fa-fw fa-caret-right"></i>&nbsp;<b>Drivers</b>
 <ul class="tree" style="display:none;">
 <li><a href="/docs/mos/api/drivers/atca.md">ATCA</a></li>
-<li><a href="/docs/mos/api/drivers/barometer.md">Barometers</a></li>
 <li><a href="/docs/mos/api/drivers/bh1730.md">BH1730 sensor</a></li>
 <li><a href="/docs/mos/api/drivers/bme280.md">BME280/BMP280</a></li>
+<li><a href="/docs/mos/api/drivers/barometer.md">Barometers</a></li>
 <li><a href="/docs/mos/api/drivers/bm222.md">Bosch BM222</a></li>
 <li><a href="/docs/mos/api/drivers/ccs811-i2c.md">CCS811 I2C</a></li>
-<li><a href="/docs/mos/api/drivers/dallas-rmt.md">Dallas RMT</a></li>
 <li><a href="/docs/mos/api/drivers/dht.md">DHT temp sensor</a></li>
 <li><a href="/docs/mos/api/drivers/ds3231.md">DS3231 I2C</a></li>
+<li><a href="/docs/mos/api/drivers/dallas-rmt.md">Dallas RMT</a></li>
 <li><a href="/docs/mos/api/drivers/esp32-touchpad.md">ESP32 touch sensor</a></li>
 <li><a href="/docs/mos/api/drivers/htu21df-i2c.md">HTU21D(F) I2C</a></li>
 <li><a href="/docs/mos/api/drivers/ili9341-spi.md">ILI9341 SPI</a></li>
@@ -116,10 +116,10 @@
 <li><a href="/docs/mos/api/drivers/neopixel.md">Neopixel</a></li>
 <li><a href="/docs/mos/api/drivers/onewire-rmt.md">Onewire RMT</a></li>
 <li><a href="/docs/mos/api/drivers/sht31-i2c.md">SHT31 I2C</a></li>
-<li><a href="/docs/mos/api/drivers/si7005.md">Si7005 sensor</a></li>
-<li><a href="/docs/mos/api/drivers/si7021-i2c.md">Si7021 I2C</a></li>
 <li><a href="/docs/mos/api/drivers/ssd1306.md">SSD1306 OLED</a></li>
 <li><a href="/docs/mos/api/drivers/stmpe610-spi.md">STMPE610 SPI</a></li>
+<li><a href="/docs/mos/api/drivers/si7005.md">Si7005 sensor</a></li>
+<li><a href="/docs/mos/api/drivers/si7021-i2c.md">Si7021 I2C</a></li>
 <li><a href="/docs/mos/api/drivers/tmp006.md">TI TMP006 temp sensor</a></li>
 <li><a href="/docs/mos/api/drivers/veml6075-i2c.md">VEML6075 I2C</a></li>
 <li><a href="/docs/mos/api/drivers/vfs-dev-ram.md">VFS (RAM)</a></li>
@@ -138,8 +138,8 @@
 <li><a href="/docs/mos/api/arduino/arduino-adafruit-ssd1306.md">Adafuit SSD1306</a></li>
 <li><a href="/docs/mos/api/arduino/arduino-compat.md">Arduino compatibility</a></li>
 <li><a href="/docs/mos/api/arduino/arduino-adafruit-bme280.md">BME280</a></li>
-<li><a href="/docs/mos/api/arduino/arduino-dallas-temperature.md">Dallas Temperature</a></li>
 <li><a href="/docs/mos/api/arduino/arduino-ds3231.md">DS3231 RTC</a></li>
+<li><a href="/docs/mos/api/arduino/arduino-dallas-temperature.md">Dallas Temperature</a></li>
 <li><a href="/docs/mos/api/arduino/arduino-onewire.md">Onewire</a></li>
 <li><a href="/docs/mos/api/arduino/arduino-md-parola.md">Parola for MAX 7219</a></li>
 <li><a href="/docs/mos/api/arduino/arduino-spi.md">SPI</a></li>
@@ -185,6 +185,7 @@
 <li><a href="/docs/mos/howtos/fs.md">Add filesystem</a></li>
 <li><a href="/docs/mos/howtos/maker-factory-esp32.md">MakerFactory ESP32 board</a></li>
 <li><a href="/docs/mos/howtos/fs-flash.md">Add FS with content</a></li>
+<li><a href="/docs/mos/howtos/trix.md">Send data to spreadsheet</a></li>
 </ul>
 </div>
 </ul>

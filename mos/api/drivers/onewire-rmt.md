@@ -1,7 +1,7 @@
 # Onewire RMT
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/onewire-rmt](https://github.com/mongoose-os-libs/onewire-rmt) | [mgos_onewire_rmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/mgos_onewire_rmt.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/onewire-rmt](https://github.com/mongoose-os-libs/onewire-rmt) | [OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h) | &nbsp;  | &nbsp;         |
 
 
 Based on https://github.com/nodemcu/nodemcu-firmware/blob/dev-esp32/components/platform/onewire.c
@@ -21,142 +21,118 @@ OnewireRmt(uint8_t pin,uint8_t rmt_rx,uint8_t rmt_tx);
 
 
  ----- 
-#### mgos_onewire_rmt_create
+#### reset
 
 ```c
-OnewireRmt* mgos_onewire_rmt_create(int pin, int rmt_rx, int rmt_tx);
+uint8_t reset(void);
 ```
 > 
-> Create a OnewireRmt object instance. Return value: an object with the methods
-> described below.
->  
-#### mgos_onewire_rmt_close
-
-```c
-void mgos_onewire_rmt_close(OnewireRmt *ow);
-```
-> 
-> Destroy an `ow` instance.
->  
-#### mgos_onewire_rmt_reset
-
-```c
-bool mgos_onewire_rmt_reset(OnewireRmt *ow);
-```
-> 
-> Performs a 1-Wire reset cycle. Returns 1 if a device responds
+> Perform a 1-Wire reset cycle. Returns 1 if a device responds
 > with a presence pulse.  Returns 0 if there is no device or the
 > bus is shorted or otherwise held low for more than 250uS
->  
-#### mgos_onewire_rmt_crc8
+>      
+#### select
 
 ```c
-uint8_t mgos_onewire_rmt_crc8(const uint8_t *rom, int len);
+void select(const uint8_t rom[8]);
 ```
 > 
-> Computes a Dallas Semiconductor 8 bit CRC, these are used in the
-> ROM and scratchpad registers.
->  
-#### mgos_onewire_rmt_target_setup
+> Issues a 1-Wire rom select command, you do the reset first.
+>      
+#### skip
 
 ```c
-void mgos_onewire_rmt_target_setup(OnewireRmt *ow, const uint8_t family_code);
-```
-> 
-> Setup the search to find the device type 'family_code' (family code) on the next call
-> to `mgos_onewire_rmt_next()` if it is present.
-> 
-> If no devices of the desired family are currently on the bus, then
-> device of some another type will be found by `search()`.
->  
-#### mgos_onewire_rmt_next
-
-```c
-bool mgos_onewire_rmt_next(OnewireRmt *ow, uint8_t *rom, int mode);
-```
-> 
-> Looks for the next device.
-> Returns 1 if a new address has been returned in the provided 8-byte array `buf`.
-> A zero might mean that the bus is shorted, there are no devices,
-> or you have already retrieved all of them.
-> It might be a good idea to check the CRC to make sure you didn't get garbage.
-> The order is deterministic. You will always get the same devices in the same order.
-> Parameter mode is not used.
->  
-#### mgos_onewire_rmt_select
-
-```c
-void mgos_onewire_rmt_select(OnewireRmt *ow, const uint8_t *rom);
-```
-> 
-> Select a device based on its address `rom`, which is a 8-byte array.
-> After a reset, this is needed to choose which device you will use, and then
-> all communication will be with that device, until another reset.
->  
-#### mgos_onewire_rmt_skip
-
-```c
-void mgos_onewire_rmt_skip(OnewireRmt *ow);
+void skip(void);
 ```
 > 
 > Issues a 1-Wire rom skip command, to address all on bus.
->  
-#### mgos_onewire_rmt_search_clean
+>      
+#### write
 
 ```c
-void mgos_onewire_rmt_search_clean(OnewireRmt *ow);
+void write(uint8_t v, uint8_t power = 0);
+    void write_bytes(const uint8_t *buf, uint16_t count, bool power = 0);
 ```
 > 
-> Reset a search. Next use of `mgos_onewire_rmt_next(....)` will begin
-> at the first device.
->  
-#### mgos_onewire_rmt_read_bit
+> Write a byte/sequence of bytes. If 'power' is one then the wire is held high at
+> the end for parasitically powered devices. You are responsible
+> for eventually depowering it by calling depower() or doing
+> another read or write.
+>      
+#### read
 
 ```c
-bool mgos_onewire_rmt_read_bit(OnewireRmt *ow);
+uint8_t read(void);
+    void read_bytes(uint8_t *buf, uint16_t count);
 ```
 > 
-> Reads a single bit from the onewire bus.
-> The returned value is either 0 or 1.
->  
-#### mgos_onewire_rmt_read
+> Read a byte/sequence of bytes.
+>      
+#### write_bit
 
 ```c
-uint8_t mgos_onewire_rmt_read(OnewireRmt *ow);
+void write_bit(uint8_t v);
 ```
 > 
-> Reads a byte from the onewire bus.
->  
-#### mgos_onewire_rmt_read_bytes
+> Write a bit. The bus is always left powered at the end, see
+> note in write() about that.
+>      
+#### read_bit
 
 ```c
-void mgos_onewire_rmt_read_bytes(OnewireRmt *ow, uint8_t *buf, int len);
+uint8_t read_bit(void);
 ```
 > 
-> Reads multiple bytes from the onewire bus and write them to `buf`. The given
-> buffer should be at least `len` bytes long.
->  
-#### mgos_onewire_rmt_write_bit
+> Read a bit.
+>      
+#### depower
 
 ```c
-void mgos_onewire_rmt_write_bit(OnewireRmt *ow, int bit);
+void depower(void);
 ```
 > 
-> Writes a single bit to the onewire bus. Given `bit` should be either 0 or 1.
->  
-#### mgos_onewire_rmt_write
+> Stop forcing power onto the bus. You only need to do this if
+> you used the 'power' flag to write() or used a write_bit() call
+> and aren't about to do another read or write. You would rather
+> not leave this powered if you don't have to, just in case
+> someone shorts your bus.
+>      
+#### reset_search
 
 ```c
-void mgos_onewire_rmt_write(OnewireRmt *ow, const uint8_t data);
+void reset_search();
 ```
 > 
-> Writes a byte to the onewire bus.
->  
-#### mgos_onewire_rmt_write_bytes
+> Clear the search state so that if will start from the beginning again.
+>      
+#### target_search
 
 ```c
-void mgos_onewire_rmt_write_bytes(OnewireRmt *ow, const uint8_t *buf, int len);
+void target_search(uint8_t family_code);
 ```
 > 
-> Writes `len` bytes from the buffer `buf`.
->  
+> Setup the search to find the device type 'family_code' on the next call
+> to search(*newAddr) if it is present.
+>      
+#### search
+
+```c
+uint8_t search(uint8_t *newAddr, bool search_mode = true);
+```
+> 
+> Look for the next device. Returns 1 if a new address has been
+> returned. A zero might mean that the bus is shorted, there are
+> no devices, or you have already retrieved all of them.  It
+> might be a good idea to check the CRC to make sure you didn't
+> get garbage.  The order is deterministic. You will always get
+> the same devices in the same order.
+>      
+#### crc8
+
+```c
+static uint8_t crc8(const uint8_t *addr, uint8_t len);
+```
+> 
+> Compute a Dallas Semiconductor 8 bit CRC, these are used in the
+> ROM and scratchpad registers.
+>      

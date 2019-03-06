@@ -9,7 +9,6 @@
 - [JSON](frozen.h.md)
 - [Logging](cs_dbg.h.md)
 - [Membuf](mbuf.h.md)
-- [mgos_file_utils.h](mgos_file_utils.h.md)
 - [Net events](mgos_net.h.md)
 - [Onewire](onewire.md)
 - [PWM](pwm.md)
@@ -20,3 +19,4 @@
 - [Timers](mgos_timers.h.md)
 - [UART](mgos_uart.h.md)
 - [Utils](mgos_utils.h.md)
+- [mgos_file_utils.h](mgos_file_utils.h.md)
