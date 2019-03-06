@@ -36,6 +36,8 @@ const char *s_url = "https://script.google.com/macros/s/xxxxxxx/exec";
 static void timer_cb(void *arg) {
   char buf[100];
   struct json_out out = JSON_OUT_BUF(buf, sizeof(buf));
+  // Data must be a JSON array. Each element of the array will be inserted into
+  // a spreadsheet cell. Here, we have only one value in an array.
   json_printf(&out, "[%d]", mgos_get_free_heap_size());
   mg_connect_http(mgos_get_mgr(), NULL, NULL, s_url, NULL, buf);
   (void) arg;
