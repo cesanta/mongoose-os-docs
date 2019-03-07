@@ -68,66 +68,66 @@ and changed using `mos` tool. To see an existing configuration,
 execute `mos config-get`. Below is the documentation for relevant entries:
 
 ```javascript
-  "tcp": {
-    "client": {                                 // Client mode settings
-      "reconnect_interval": 5,                  // Reconnection interval, seconds
-      "remote_addr": "mongoose-os.com:443",     // Server HOST:PORT
-      "tls": {                                  // TLS settings
-        "ca_cert": "ca.pem",
-        "cert": "",
-        "server_name": "mongoose-os.com"
-      },
-      "ws": {
-        "enable": true,                         // Enable websocket mode
-        "protocol": "",
-        "uri": "/uart-to-websocket/device/????????????"   // URI to connect to
-      }
-    },
-    "evict_old": true,                // On device ID conflict, evict old entry
-    "keepalive": {                    // Heartbeat settings
-      "count": 10,
-      "idle": 60,
-      "interval": 6
-    },
-    "listener": {                     // Server mode settings
-      "port": 8910,                   // Port to listen on
-      "tls": {                        // TLS settings
-        "ca_cert": "",                // CA certificate for mutual auth
-        "cert": ""                    // Server certificate
-      },
-      "ws": {
-        "enable": flashed             // Enable websocket mode
-      }
-    },
-    "rx_buf_size": 2048,              // Receive buffer size, bytes
-    "status_interval_ms": 1000,       // Status interval, milliseconds
-    "tx_buf_size": 2048               // Transmit buffer size, bytes
+"tu": {
+  "bt": {                           // BLE settings
+    "rx_buf_size": 2048,            // BLE RX buffer size
+    "tx_buf_size": 2048             // BLE TX buffer size
   },
-  "tu": {
-    "bt": {                           // BLE related section
-      "rx_buf_size": 2048,            // BLE RX buffer size
-      "tx_buf_size": 2048             // BLE TX buffer size
+  "evict_old": true,
+  "mqtt": {                         // MQTT settings
+    "enable": true,                 // Enable MQTT
+    "qos": 0,                       // MQTT publishing QoS
+    "rx_topic": "uart-bridge/rx",   // RX topic
+    "tx_topic": "uart-bridge/tx"    // TX topic
+  }
+},
+"tcp": {                            // TCP/Websocket  settings
+  "client": {                                 // Client mode
+    "reconnect_interval": 5,                  // Reconnection interval, seconds
+    "remote_addr": "mongoose-os.com:443",     // Server HOST:PORT
+    "tls": {                                  // TLS settings
+      "ca_cert": "ca.pem",
+      "cert": "",
+      "server_name": "mongoose-os.com"
     },
-    "evict_old": true,
-    "mqtt": {
-      "enable": true,                 // Enable MQTT
-      "qos": 0,                       // MQTT publishing QoS
-      "rx_topic": "uart-bridge/rx",   // RX topic
-      "tx_topic": "uart-bridge/tx"    // TX topic
+    "ws": {
+      "enable": true,                         // Enable websocket mode
+      "protocol": "",
+      "uri": "/uart-to-websocket/device/????????????"   // URI to connect to
     }
   },
-  "uart": {
-    "baud_rate": 115200,              // UART speed
-    "rx_buf_size": 1460,              // Receive buffer size, bytes
-    "rx_fc_ena": false,               // Enable flow control
-    "rx_linger_micros": 20,           // Microseconds to continue reading before sending
-    "rx_throttle_when_no_net": true,  // Throttle when no network
-    "status_interval_ms": 1000,       // Status interval, milliseconds
-    "swap_rxcts_txrts": false,        // Swap RX / CTS and TX / RTS
-    "tx_buf_size": 2048,              // Transmit buffer size
-    "tx_fc_ena": false,               // Enable TX flow control
-    "uart_no": -1                     // UART number, -1 to disable
-  }
+  "evict_old": true,                // On device ID conflict, evict old entry
+  "keepalive": {                    // Heartbeat settings
+    "count": 10,
+    "idle": 60,
+    "interval": 6
+  },
+  "listener": {                     // Server mode settings
+    "port": 8910,                   // Port to listen on
+    "tls": {                        // TLS settings
+      "ca_cert": "",                // CA certificate for mutual auth
+      "cert": ""                    // Server certificate
+    },
+    "ws": {
+      "enable": false               // Enable websocket mode
+    }
+  },
+  "rx_buf_size": 2048,              // Receive buffer size, bytes
+  "status_interval_ms": 1000,       // Status interval, milliseconds
+  "tx_buf_size": 2048               // Transmit buffer size, bytes
+},
+"uart": {                           // UART settings
+  "baud_rate": 115200,              // Baud rate
+  "rx_buf_size": 1460,              // Receive buffer size, bytes
+  "rx_fc_ena": false,               // Enable flow control
+  "rx_linger_micros": 20,           // Microseconds to continue reading before sending
+  "rx_throttle_when_no_net": true,  // Throttle when no network
+  "status_interval_ms": 1000,       // Status interval, milliseconds
+  "swap_rxcts_txrts": false,        // Swap RX / CTS and TX / RTS
+  "tx_buf_size": 2048,              // Transmit buffer size
+  "tx_fc_ena": false,               // Enable TX flow control
+  "uart_no": -1                     // UART number, -1 to disable
+}
 ```
 
 In order to change any configuration parameter, execute `mos config-set name=value`, for example:
