@@ -5,11 +5,11 @@
 - Create and empty Google spreadsheet
 - Click on Tools / Script Editor, paste the following code:
   ```javascript
-    function doPost(e) {
+  function doPost(e) {
     var doc = SpreadsheetApp.getActiveSpreadsheet();
     var sheet = doc.getSheets()[0];
-    var row = JSON.parse(e.postData.contents) || [];
-    row.unshift(new Date());  // Add timestamp
+    var row = JSON.parse(e.postData.contents) || []; // Parse POST data
+    row.unshift(new Date());        // Add timestamp as a first field
     var r = sheet.getRange(sheet.getLastRow() + 1, 1, 1, row.length);
     r.setValues([row]);
     return ContentService.createTextOutput('');
