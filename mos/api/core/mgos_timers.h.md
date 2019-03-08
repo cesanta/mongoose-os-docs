@@ -28,7 +28,7 @@ Usage example:
 
 static void my_timer_cb(void *arg) {
   bool val = mgos_gpio_toggle(mgos_sys_config_get_pins_led());
-  LOG(LL_INFO, ("uptime: %.2lf", mgos_uptime());
+  LOG(LL_INFO, ("uptime: %.2lf", mgos_uptime()));
   (void) arg;
 }
 
@@ -67,7 +67,7 @@ mgos_timer_id mgos_set_timer(int msecs, int flags, timer_callback cb,
 > ```c
 > static void my_timer_cb(void *arg) {
 >   bool val = mgos_gpio_toggle(mgos_sys_config_get_pins_led());
->   LOG(LL_INFO, ("uptime: %.2lf", mgos_uptime());
+>   LOG(LL_INFO, ("uptime: %.2lf", mgos_uptime()));
 >   (void) arg;
 > }
 > 
