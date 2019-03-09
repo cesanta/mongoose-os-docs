@@ -1,3 +1,0 @@
-- [User Guide](userguide)
-- [API Reference](api)
-- [HOWTOs](howtos)

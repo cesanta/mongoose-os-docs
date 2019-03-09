@@ -37,7 +37,7 @@ To see your mDash API tokens, login to mDash and click on "Keys" tab:
 
 ## How to send a notification from your device
 
-The API is documented at [mDash API](/docs/mos/api/cloud/dash.md).
+The API is documented at [mDash API](/docs/mongoose-os/api/cloud/dash.md).
 Below are quick examples.
 
 In C/C++:

@@ -27,9 +27,9 @@ AWS IoT is an example of such service.
 
 1. Buy hardware mentioned on the [Uart gateway page](/uart-gateway/)
 2. Connect hardware to your workstation via USB
-3. Follow steps 1,2,3 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
+3. Follow steps 1,2,3 of [mos setup](https://mongoose-os.com/docs/mongoose-os/quickstart/setup.md)
 4. In the `mos` UI, run `mos flash https://mongoose-os.com/downloads/uart-gateway/uart-gateway.zip` command
-5. Follow step 7 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
+5. Follow step 7 of [mos setup](https://mongoose-os.com/docs/mongoose-os/quickstart/setup.md)
 6. Login to the [license manager](https://license.mongoose-os.com) and buy uart-gateway licenses (one per device)
 7. Execute `mos license`
 8. Configure MQTT:
@@ -37,11 +37,11 @@ AWS IoT is an example of such service.
    ```
    mos config-set mqtt.enable=true mqtt.server=HOST:PORT tu.mqtt.enable=true
    ```
-   - For AWS, follow [AWS guide's](/docs/quickstart/cloud/aws.md) "Setup AWS IoT" and "Setup device" chapters
-   - For Google, follow [GCP guide's](/docs/quickstart/cloud/google.md) "Setup Google IoT Core" and "Setup device" chapters
-   - For Azure, follow [Azure guide's](/docs/quickstart/cloud/azure.md) "Setup Azure IoT Hub" and "Setup device" chapters
-   - For Watson, follow [Watson guide's](/docs/quickstart/cloud/watson.md) "Quick setup" chapter
-   - For [mDash](https://dash.mongoose-os.com), follow step 8 of [mos setup](https://mongoose-os.com/docs/quickstart/setup.md)
+   - For AWS, follow [AWS guide's](/docs/mongoose-os/quickstart/cloud/aws.md) "Setup AWS IoT" and "Setup device" chapters
+   - For Google, follow [GCP guide's](/docs/mongoose-os/quickstart/cloud/google.md) "Setup Google IoT Core" and "Setup device" chapters
+   - For Azure, follow [Azure guide's](/docs/mongoose-os/quickstart/cloud/azure.md) "Setup Azure IoT Hub" and "Setup device" chapters
+   - For Watson, follow [Watson guide's](/docs/mongoose-os/quickstart/cloud/watson.md) "Quick setup" chapter
+   - For [mDash](https://dash.mongoose-os.com), follow step 8 of [mos setup](https://mongoose-os.com/docs/mongoose-os/quickstart/setup.md)
 9. Connect UART: pin 25 to TX, pin 26 to RX
 
 When done, you should have your device flashed, provisioned to WiFi,

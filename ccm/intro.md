@@ -18,7 +18,7 @@ hardware modules are already pre-flashed and encrypted. However, if you
 would like to flash CCM-FIRMWARE to your own hardware module, please
 do the following:
 
-- Install `mos` tool by following steps 1,2,3 at [mos quickstart](https://mongoose-os.com/docs/quickstart/setup.md)
+- Install `mos` tool by following steps 1,2,3 at [mos quickstart](https://mongoose-os.com/docs/mongoose-os/quickstart/setup.md)
 - Connect your device to your workstation and run the following command
   to flash the CCM firmware:
   ```

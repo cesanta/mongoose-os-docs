@@ -14,7 +14,7 @@ apps:
 		echo "| [$${REPO#*/}](https://github.com/$$REPO) | $$(cat $(TMP) | perl -nle 'print $$1 if /^description: (.*)/') | $$(cat $(TMP) | perl -nle 'print $$1 if /^author: (.*)/') | " >> $(APPSMD) ;\
 		done
 
-API = mos/api
+API = mongoose-os/api
 .PHONY: sidebar.html $(API)/core $(API)
 
 CATEGORIES ?= core cloud net drivers arduino rpc misc
