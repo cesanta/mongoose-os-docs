@@ -1,6 +1,6 @@
 # Device registration
 
-**Step 1.** Complete steps 1-7 [quickstart guide](../quickstart/setup.md)
+**Step 1.** Complete steps 1-7 [quickstart guide](../mongoose-os/quickstart/setup.md)
 
 **Step 2.** Login to the https://dash.mongoose-os.com/, register a new device.
 Left Click on a "Token" link  to copy it to the clipboard.

@@ -40,10 +40,10 @@ and private MQTT servers are supported. The gateway algorithm is as follows:
    ```
    mos config-set mqtt.enable=true mqtt.server=HOST:PORT
    ```
-   - For AWS, follow [AWS guide's](/docs/mongoose-os/quickstart/cloud/aws.md) "Setup AWS IoT" and "Setup device" chapters
-   - For Google, follow [GCP guide's](/docs/mongoose-os/quickstart/cloud/google.md) "Setup Google IoT Core" and "Setup device" chapters
-   - For Azure, follow [Azure guide's](/docs/mongoose-os/quickstart/cloud/azure.md) "Setup Azure IoT Hub" and "Setup device" chapters
-   - For Watson, follow [Watson guide's](/docs/mongoose-os/quickstart/cloud/watson.md) "Quick setup" chapter
+   - For AWS, follow [AWS guide's](/docs/mongoose-os/cloud/aws.md) "Setup AWS IoT" and "Setup device" chapters
+   - For Google, follow [GCP guide's](/docs/mongoose-os/cloud/google.md) "Setup Google IoT Core" and "Setup device" chapters
+   - For Azure, follow [Azure guide's](/docs/mongoose-os/cloud/azure.md) "Setup Azure IoT Hub" and "Setup device" chapters
+   - For Watson, follow [Watson guide's](/docs/mongoose-os/cloud/watson.md) "Quick setup" chapter
    - For [mDash](https://dash.mongoose-os.com), follow step 8 of [mos setup](https://mongoose-os.com/docs/mongoose-os/quickstart/setup.md)
 
 When done, you should have your ESP32 device flashed, provisioned to WiFi,

@@ -5,7 +5,7 @@ This is a quick start tutorial for [IBM Watson IoT Platform](https://internetoft
 
 ## Quick Setup
 
-- Complete [Quickstart Guide](../../quickstart/setup.md) steps 1-7 inclusive.
+- Complete [Quickstart Guide](../quickstart/setup.md) steps 1-7 inclusive.
   As a result, your device should be connected to the Internet
 - Provision your device to IBM Watson:
   ```
