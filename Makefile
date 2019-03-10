@@ -64,5 +64,12 @@ sidebar.html: $(API)/core $(API)
 	@for C in $(CATEGORIES) ; do sort -o $(API)/$$C/index.md $(API)/$$C/index.md ; done
 	@node tools/gensidebar.js > $@
 
+
+HTMLDIR ?= ../website-miot/front/docs
+html:
+	rm -rf $(HTMLDIR)/*
+	@node tools/genhtml.js "$(HTMLDIR)" $$(find . -name \*.md)
+	cp sidebar.html $(HTMLDIR)/
+
 clean:
 	rm -rf $(LIBS) $(LIBSINDEX)
