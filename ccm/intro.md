@@ -65,6 +65,9 @@ Below is the example wiring for the CCM-EVAL and STM32 BluePill board:
 
 ### 3.1 Olimex EVB board wiring
 
+If you're using [Olimex Ethernet board](https://www.olimex.com/Products/IoT/ESP32/ESP32-EVB),
+board, please use the following wiring:
+
 | NUCLEO-F401RE             | ESP32-EVB         |
 | --------------------------+-----------------  |
 | CN10.21 / USART1_TX, PA9  | UEXT1.4 (GPIO36)  |
