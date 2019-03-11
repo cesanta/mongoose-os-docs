@@ -26,7 +26,7 @@ do the following:
   ```
 - If you're using [Olimex Ethernet board](https://www.olimex.com/Products/IoT/ESP32/ESP32-EVB), please run:
   ```
-  mos flash https://mongoose-os.com/downloads/ccm/release/CCM-WROOM-32.zip
+  mos flash https://mongoose-os.com/downloads/ccm/release/CCM-ESP32EVB.zip
   ```
 
 ## 2. Setting up network
