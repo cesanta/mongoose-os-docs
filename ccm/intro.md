@@ -69,7 +69,7 @@ If you're using [Olimex Ethernet board](https://www.olimex.com/Products/IoT/ESP3
 board, please use the following wiring:
 
 | NUCLEO-F401RE             | ESP32-EVB         |
-| --------------------------+-----------------  |
+| ------------------------- | ----------------  |
 | CN10.21 / USART1_TX, PA9  | UEXT1.4 (GPIO36)  |
 | CN10.33 / USART1_RX, PA10 | UEXT1.5 (GPIO16)  |
 | CN8.14  / nRST            | UEXT1.10 (GPIO17) |
