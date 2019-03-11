@@ -24,6 +24,10 @@ do the following:
   ```
   mos flash https://mongoose-os.com/downloads/ccm/release/CCM-WROOM-32.zip
   ```
+- If you're using [Olimex Ethernet board](https://www.olimex.com/Products/IoT/ESP32/ESP32-EVB), please run:
+  ```
+  mos flash https://mongoose-os.com/downloads/ccm/release/CCM-WROOM-32.zip
+  ```
 
 ## 2. Setting up network
   
@@ -56,6 +60,23 @@ see configuration section at the end of this document.
 Below is the example wiring for the CCM-EVAL and STM32 BluePill board:
 
 ![CCM module wiring example on STM32 BluePill](images/wiring-bluepill.png)
+
+
+
+### 3.1 Olimex EVB board wiring
+
+| NUCLEO-F401RE             | ESP32-EVB         |
+| --------------------------+-----------------  |
+| CN10.21 / USART1_TX, PA9  | UEXT1.4 (GPIO36)  |
+| CN10.33 / USART1_RX, PA10 | UEXT1.5 (GPIO16)  |
+| CN8.14  / nRST            | UEXT1.10 (GPIO17) |
+| CN8.7   / BOOT0           | UEXT1.3 (GPIO4)   |
+| CN8.5   / 3.3V            | UEXT1.1 (3.3V)    |
+| CN8.8   / GND             | UEXT1.2 (GND)     |
+
+Below is the example wiring for the CCM on Olimex EVB and STM32 Nucleo board:
+
+![CCM module wiring example on STM32 Nucleo](images/wiring-olimex.png)
 
 
 ## 4. Preparing firmware .zip file for the Host MCU
