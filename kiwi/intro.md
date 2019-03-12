@@ -31,7 +31,10 @@ and private MQTT servers are supported. The gateway algorithm is as follows:
 1. Buy an ESP32 device mentioned on the [KIWI page](/kiwi/)
 2. Connect an ESP32 device to your workstation via USB
 3. Follow steps 1,2,3 of [mos setup](https://mongoose-os.com/docs/mongoose-os/quickstart/setup.md)
-4. In the `mos` UI, run `mos flash https://mongoose-os.com/downloads/kiwi/kiwi.zip` command
+4. In the `mos` UI, run
+  ```
+  mos flash https://mongoose-os.com/downloads/kiwi/kiwi.zip
+  ```
 5. Follow step 7 of [mos setup](https://mongoose-os.com/docs/mongoose-os/quickstart/setup.md)
 6. Login to the [license manager](https://license.mongoose-os.com) and buy KIWI licenses (one per device)
 7. Execute `mos license`
