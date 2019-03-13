@@ -22,7 +22,7 @@ do the following:
 - Connect your device to your workstation and run the following command
   to flash the CCM firmware:
   ```
-  mos flash https://mongoose-os.com/downloads/ccm/release/CCM-WROOM-32.zip
+  mos flash https://mongoose-os.com/downloads/ccm/release/CCM-WROOM32.zip
   ```
 - If you're using [Olimex Ethernet board](https://www.olimex.com/Products/IoT/ESP32/ESP32-EVB), please run:
   ```
