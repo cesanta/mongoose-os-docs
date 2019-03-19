@@ -1,22 +1,8 @@
 # Licensing
 
-CCM-MOD and CCM-EVAL hardware modules are shipped with all functionality
-unrestricted. CCM-FIRMWARE is distributed in the software form, unlicensed,
-where some functionality is restricted. A device which is flashed with
-the CCM-FIRMWARE, can be licensed to "unlock" full functionality.
-The summary is below:
-
-
-|  Functionality  | Unlicensed  | Licensed |
-| --------------- | ----------- | -------- |
-| Over-the-air update (OTA) | OTA only from [mDash](https://mongoose-os.com/docs/mdash/intro.md) | OTA from anywhere
-| Cloud services supported | Only [mDash](https://mongoose-os.com/docs/mdash/intro.md) | mDash, AWS, Azure, Google, Watson, private MQTT |
-
-## Licensing process
-
-- Make sure that `rpc-service-ota` library is used by your app
 - Login to the [Mongoose License Manager](https://license.mongoose-os.com)
-- Buy any number of licenses you need. IMPORTANT: choose "ccm" license type
+- Buy any number of "ccm" licenses you need. IMPORTANT: choose "ccm" license type:
+  ![CCM license type](images/license-type.png)
 - If your device is connected to your workstation over USB, run:
   ```
   mos license
