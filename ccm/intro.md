@@ -12,12 +12,6 @@ product. Below is the summary of the provided functionality:
 
 ## 1. Setting up hardware
 
-NOTE: this step is NOT REQUIRED if you buy the CCM module 
-via the [order form](https://mongoose-os.com/order-ccm.html), since the
-hardware modules are already pre-flashed and encrypted. However, if you
-would like to flash CCM-FIRMWARE to your own hardware module, please
-do the following:
-
 - Install `mos` tool by following steps 1,2,3 at [mos quickstart](https://mongoose-os.com/docs/mongoose-os/quickstart/setup.md)
 - Connect your device to your workstation and run the following command
   to flash the CCM firmware:
@@ -27,6 +21,11 @@ do the following:
 - If you're using [Olimex Ethernet board](https://www.olimex.com/Products/IoT/ESP32/ESP32-EVB), please run:
   ```
   mos flash https://mongoose-os.com/downloads/ccm/release/CCM-ESP32EVB.zip
+  ```
+- Login to the [license manager](https://license.mongoose-os.com) and buy CCM licenses (one per device)
+- Execute
+  ```
+  mos license
   ```
 
 ## 2. Setting up network
