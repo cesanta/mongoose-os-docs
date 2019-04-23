@@ -111,6 +111,8 @@ See `mgos_imu.h` for more details and an example of how to do this.
 *   MMA8451
 *   LSM9DS1
 *   LSM6DSL
+*   MPU6000 and MPU6050
+*   ICM20948
 
 ### Gyroscope
 
@@ -119,6 +121,8 @@ See `mgos_imu.h` for more details and an example of how to do this.
 *   ITG3205
 *   LSM9DS1
 *   LSM6DSL
+*   MPU6000 and MPU6050
+*   ICM20948
 
 ### Magnetometer
 
@@ -128,6 +132,7 @@ See `mgos_imu.h` for more details and an example of how to do this.
 *   LSM303D and LSM303DLM
 *   HMC5883L
 *   LSM9DS1
+*   ICM20948
 
 ## Adding devices
 
@@ -244,9 +249,9 @@ enum mgos_app_init_result mgos_app_init(void) {
   if (!mgos_imu_accelerometer_create_i2c(imu, i2c, 0x68, &acc_opts))
     LOG(LL_ERROR, ("Cannot create accelerometer on IMU"));
 
-  acc_opts.type = ACC_MPU9250;
-  acc_opts.scale = 2000; // deg/sec
-  acc_opts.odr = 100;    // Hz
+  gyro_opts.type = GYRO_MPU9250;
+  gyro_opts.scale = 2000; // deg/sec
+  gyro_opts.odr = 100;    // Hz
   if (!mgos_imu_gyroscope_create_i2c(imu, i2c, 0x68, &gyro_opts))
     LOG(LL_ERROR, ("Cannot create gyroscope on IMU"));
 

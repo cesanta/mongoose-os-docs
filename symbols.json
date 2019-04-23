@@ -438,6 +438,12 @@
     "lang": "js"
   },
   {
+    "name": "_IRAM_STR_LIT",
+    "file": "[mgos_iram.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_iram.h)",
+    "doc": "\n```c\n#define _IRAM_STR_LIT(a) #a\n#define _IRAM_STR(a) _IRAM_STR_LIT(a)\n```\n> \n> Provides the IRAM macro that creates unique sections under .text\n> so that unused functions can be GC'd.\n>  \n",
+    "lang": "c"
+  },
+  {
     "name": "MGOS_EVENT_BASE",
     "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_net.h)",
     "doc": "\n```c\n#define MGOS_EVENT_GRP_NET MGOS_EVENT_BASE('N', 'E', 'T')\n```\n> \n> Event group which should be given to `mgos_event_add_group_handler()`\n> in order to subscribe to network events.\n> \n> Example:\n> ```c\n> static void my_net_ev_handler(int ev, void *evd, void *arg) {\n>   if (ev == MGOS_NET_EV_IP_ACQUIRED) {\n>     LOG(LL_INFO, (\"Just got IP!\"));\n>     // Fetch something very useful from somewhere\n>   }\n>   (void) evd;\n>   (void) arg;\n> }\n> \n> // Somewhere else:\n> mgos_event_add_group_handler(MGOS_EVENT_GRP_NET, my_net_ev_handler, NULL);\n> ```\n>  \n",

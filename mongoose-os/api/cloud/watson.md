@@ -5,7 +5,7 @@
 
 
 
-See [IBM Watson tutorial](https://mongoose-os.com/docs/mongoose-os/quickstart/cloud/watson.md)
+See [IBM Watson tutorial](https://mongoose-os.com/docs/quickstart/cloud/watson.md)
 
 
  ----- 
