@@ -128,7 +128,7 @@ network, gets the IP configuration, and synchronises time with SNTP server:
 - Login to the mDash at https://mdash.net/. 
 - Click on "Add device" button. That'll create a new device:
 - Click on a gears icon to trigger device management dialog.
-![](images/qs7.png)
+![](images/qs7.11.png)
 - Click on a "Token" link to copy the device's access token to the clipboard:
 ![](images/qs7.1.png)
 
