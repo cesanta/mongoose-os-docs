@@ -1,7 +1,7 @@
 # App
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_app.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_app.h) | [mgos_app.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_app.c)  | &nbsp;         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_app.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_app.h) | [mgos_app.c](https://github.com/cesanta/mongoose-os/tree/master/src/mgos_app.c)  | &nbsp;         |
 
 
 Definitions for the user-defined app entry point, `mgos_app_init()`.

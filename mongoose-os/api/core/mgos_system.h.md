@@ -1,7 +1,7 @@
 # System
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h) | [mgos_system.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_system.c)  | [api_sys.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_sys.js)         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h) | [mgos_system.c](https://github.com/cesanta/mongoose-os/tree/master/src/mgos_system.c)  | [api_sys.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_sys.js)         |
 
 
 HAL that needs to be implemented for each hardware platform.
@@ -83,7 +83,7 @@ void mgos_wdt_disable(void);
 #### mgos_system_restart
 
 ```c
-void mgos_system_restart(void);
+void mgos_system_restart(void) __attribute__((noreturn));
 ```
 >  Restart system 
 #### mgos_msleep

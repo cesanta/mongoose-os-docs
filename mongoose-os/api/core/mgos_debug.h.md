@@ -1,7 +1,7 @@
 # Debug (UART)
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_debug.h) | [mgos_debug.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_debug.c)  | [api_log.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_log.js)         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_debug.h) | [mgos_debug.c](https://github.com/cesanta/mongoose-os/tree/master/src/mgos_debug.c)  | [api_log.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_log.js)         |
 
 #### mgos_debug_write
 

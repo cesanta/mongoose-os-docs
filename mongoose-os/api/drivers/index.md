@@ -4,7 +4,7 @@
 - [Barometers](barometer.md)
 - [Bosch BM222](bm222.md)
 - [CCS811 I2C](ccs811-i2c.md)
-- [DHT temp sensor](dht.md)
+- [DHT](dht.md)
 - [DS3231 I2C](ds3231.md)
 - [Dallas RMT](dallas-rmt.md)
 - [ESP32 touch sensor](esp32-touchpad.md)

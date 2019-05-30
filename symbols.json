@@ -1,25 +1,25 @@
 [
   {
     "name": "mgos_app_init",
-    "file": "[mgos_app.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_app.h)",
+    "file": "[mgos_app.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_app.h)",
     "doc": "\n```c\nenum mgos_app_init_result mgos_app_init(void);\n```\n> \n> User app init function.\n> A weak stub is provided in `mgos_app_init.c`, which can be overridden.\n> \n> Example of a user-defined init function:\n> ```c\n> #include \"mgos_app.h\"\n> \n> enum mgos_app_init_result mgos_app_init(void) {\n>   if (!my_super_duper_hardware_init()) {\n>     LOG(LL_ERROR, (\"something went bad\"));\n>     return MGOS_APP_INIT_ERROR;\n>   }\n>   LOG(LL_INFO, (\"my app initialised\"));\n>   return MGOS_APP_INIT_SUCCESS;\n> }\n> ```\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_app_preinit",
-    "file": "[mgos_app.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_app.h)",
+    "file": "[mgos_app.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_app.h)",
     "doc": "\n```c\nvoid mgos_app_preinit(void);\n```\n> \n> An early init hook, for apps that want to take control early\n> in the init process. How early? very, very early. If the platform\n> uses RTOS, it is not running yet. Dynamic memory allocation is not\n> safe. Networking is not running. The only safe thing to do is to\n> communicate to mg_app_init something via global variables or shut\n> down the processor and go (back) to sleep.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_bitbang_write_bits",
-    "file": "[mgos_bitbang.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_bitbang.h)",
+    "file": "[mgos_bitbang.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_bitbang.h)",
     "doc": "\n```c\nvoid mgos_bitbang_write_bits(int gpio, enum mgos_delay_unit delay_unit, int t0h,\n                             int t0l, int t1h, int t1l, const uint8_t *data,\n                             size_t len);\n```\n> \n> Bit bang GPIO pin `gpio`. `len` bytes from `data` are sent to the specified\n> pin bit by bit. Sending each bit consists of a \"high\" and \"low\" phases,\n> length of which is determined by the specified timing parameters.\n> \n> ```\n>  +-----+\n>  |     |\n> -+     +-------\n> \n>  tXh   tXl\n> ```\n> \n> `t0h` and `t0l` specify timings if the bit being transmitted is 0,\n> `t1h` and `t1l` specify the same for the case where the bit is 1.\n> If any of these is < 0, the corresponding phase is skipped.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_bitbang_write_bits_js",
-    "file": "[mgos_bitbang.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_bitbang.h)",
+    "file": "[mgos_bitbang.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_bitbang.h)",
     "doc": "\n```c\nvoid mgos_bitbang_write_bits_js(int gpio, enum mgos_delay_unit delay_unit,\n                                uint32_t t, const uint8_t *data, size_t len);\n```\n> \n> This function is a wrapper for `mgos_bitbang_write_bits()`.\n> It has smaller number of arguments (less than 6) and therefore could be\n> FFI-ed to JavaScript. Essentially, it just packs all time patterns\n> into a single value `t`.\n>  \n",
     "lang": "c"
   },
@@ -31,55 +31,55 @@
   },
   {
     "name": "mgos_debug_write",
-    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_debug.h)",
+    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_debug.h)",
     "doc": "\n```c\nvoid mgos_debug_write(int fd, const void *buf, size_t len);\n```\n> \n> Write debug info `buf`, `len` to the given file descriptor `fd`.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_debug_flush",
-    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_debug.h)",
+    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_debug.h)",
     "doc": "\n```c\nvoid mgos_debug_flush(void);\n```\n> \n> Flush debug UARTs, both stdout and stderr.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_set_stdout_uart",
-    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_debug.h)",
+    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_debug.h)",
     "doc": "\n```c\nenum mgos_init_result mgos_set_stdout_uart(int uart_no);\n```\n>  Set UART for stdout. Negative value disables stdout. \n",
     "lang": "c"
   },
   {
     "name": "mgos_set_stderr_uart",
-    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_debug.h)",
+    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_debug.h)",
     "doc": "\n```c\nenum mgos_init_result mgos_set_stderr_uart(int uart_no);\n```\n>  Set UART for stderr. Negative value disables stderr. \n",
     "lang": "c"
   },
   {
     "name": "mgos_get_stdout_uart",
-    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_debug.h)",
+    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_debug.h)",
     "doc": "\n```c\nint mgos_get_stdout_uart(void);\n```\n>  Get stdout UART number; -1 indicates that stdout is disabled. \n",
     "lang": "c"
   },
   {
     "name": "mgos_get_stderr_uart",
-    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_debug.h)",
+    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_debug.h)",
     "doc": "\n```c\nint mgos_get_stderr_uart(void);\n```\n>  Get stderr UART number; -1 indicates that stderr is disabled. \n",
     "lang": "c"
   },
   {
     "name": "mgos_debug_suspend_uart",
-    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_debug.h)",
+    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_debug.h)",
     "doc": "\n```c\nvoid mgos_debug_suspend_uart(void);\n```\n> \n> Suspend UART output (both stdout and stderr); see\n> `mgos_debug_resume_uart()`. Nested suspension is supported: UART needs to be\n> resumed as many times as it was suspended.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_debug_resume_uart",
-    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_debug.h)",
+    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_debug.h)",
     "doc": "\n```c\nvoid mgos_debug_resume_uart(void);\n```\n> \n> Resume previously suspended UART output, see `mgos_debug_suspend_uart()`.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_debug_uart_is_suspended",
-    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_debug.h)",
+    "file": "[mgos_debug.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_debug.h)",
     "doc": "\n```c\nbool mgos_debug_uart_is_suspended(void);\n```\n> \n> Returns whether UART output is suspended at the moment.\n>  \n",
     "lang": "c"
   },
@@ -121,49 +121,49 @@
   },
   {
     "name": "MGOS_EVENT_BASE",
-    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h)",
+    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_event.h)",
     "doc": "\n```c\n#define MGOS_EVENT_BASE(a, b, c) ((a) << 24 | (b) << 16 | (c) << 8)\n```\n> \n> Macro to generate unique base event number.\n> A library can use the last byte (LSB) to create up to 256 unique\n> events (see enum below on how Mongoose OS core defines its events).\n> A library should call mgos_event_register_base() in order to claim\n> it and prevent event number conflicts.\n>  \n",
     "lang": "c"
   },
   {
     "name": "MGOS_EVENT_BASE",
-    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h)",
+    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_event.h)",
     "doc": "\n```c\n#define MGOS_EVENT_SYS MGOS_EVENT_BASE('M', 'O', 'S')\n```\n> \n> These events are registered by the MGOS core.\n> Other events could be registered by the external libraries.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_event_register_base",
-    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h)",
+    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_event.h)",
     "doc": "\n```c\nbool mgos_event_register_base(int base_event_number, const char *name);\n```\n> \n> Register a base event number in order to prevent event number conflicts.\n> Use `MGOS_EVENT_BASE()` macro to get `base_event_number`; `name` is an\n> arbitrary name of the module who registers the base number.\n> \n> Example:\n> ```c\n> #define MY_EVENT_BASE MGOS_EVENT_BASE('F', 'O', 'O')\n> \n> enum my_event {\n>   MY_EVENT_AAA = MY_EVENT_BASE,\n>   MY_EVENT_BBB,\n>   MY_EVENT_CCC,\n> };\n> \n> // And somewhere else:\n> mgos_event_register_base(MY_EVENT_BASE, \"my module foo\");\n> ```\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_event_trigger",
-    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h)",
+    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_event.h)",
     "doc": "\n```c\nint mgos_event_trigger(int ev, void *ev_data);\n```\n>  Trigger an event `ev` with the event data `ev_data`. Return number of event\n> handlers invoked. \n",
     "lang": "c"
   },
   {
     "name": "(*mgos_event_handler_t)",
-    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h)",
+    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_event.h)",
     "doc": "\n```c\ntypedef void (*mgos_event_handler_t)(int ev, void *ev_data, void *userdata);\n```\n>  Event handler signature. \n",
     "lang": "c"
   },
   {
     "name": "mgos_event_add_handler",
-    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h)",
+    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_event.h)",
     "doc": "\n```c\nbool mgos_event_add_handler(int ev, mgos_event_handler_t cb, void *userdata);\n```\n> \n> Add an event handler. Return true on success, false on error (e.g. OOM).\n> \n> Example:\n> ```c\n> static void system_restart_cb(int ev, void *ev_data, void *userdata) {\n>   LOG(LL_INFO, (\"Going to reboot!\"));\n>   (void) ev;\n>   (void) ev_data;\n>   (void) userdata;\n> }\n> \n> // And somewhere else:\n> mgos_event_add_handler(MGOS_EVENT_REBOOT, system_restart_cb, NULL);\n> ```\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_event_add_group_handler",
-    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h)",
+    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_event.h)",
     "doc": "\n```c\nbool mgos_event_add_group_handler(int evgrp, mgos_event_handler_t cb,\n                                  void *userdata);\n```\n> \n> Like `mgos_event_add_handler()`, but subscribes on all events in the given\n> group `evgrp`. Event group includes all events from `evgrp & ~0xff` to\n> `evgrp | 0xff`.\n> \n> Example:\n> ```c\n> static void sys_event_cb(int ev, void *ev_data, void *userdata) {\n>   LOG(LL_INFO, (\"Got system event %d\", ev));\n>   (void) ev;\n>   (void) ev_data;\n>   (void) userdata;\n> }\n> \n> // And somewhere else:\n> mgos_event_add_handler(MGOS_EVENT_SYS, sys_event_cb, NULL);\n> ```\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_event_remove_handler",
-    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_event.h)",
+    "file": "[mgos_event.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_event.h)",
     "doc": "\n```c\nbool mgos_event_remove_handler(int ev, mgos_event_handler_t cb, void *userdata);\nbool mgos_event_remove_group_handler(int evgrp, mgos_event_handler_t cb,\n                                     void *userdata);\n```\n> \n> Remove an event handler.\n> Both cb and userdata must match the initial add invocation.\n> Returns true if a handler was found and removed, false if there was no\n> such handler in the first place.\n>  \n",
     "lang": "c"
   },
@@ -241,127 +241,127 @@
   },
   {
     "name": "mgos_file_copy",
-    "file": "[mgos_file_utils.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_file_utils.h)",
+    "file": "[mgos_file_utils.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_file_utils.h)",
     "doc": "\n```c\nbool mgos_file_copy(const char *from, const char *to);\n```\n>  Copy a file \n",
     "lang": "c"
   },
   {
     "name": "mgos_file_digest",
-    "file": "[mgos_file_utils.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_file_utils.h)",
+    "file": "[mgos_file_utils.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_file_utils.h)",
     "doc": "\n```c\nbool mgos_file_digest(const char *fname, mbedtls_md_type_t dt, uint8_t *digest);\n```\n>  Compute file's digest. *digest must have enough space for the digest type. \n",
     "lang": "c"
   },
   {
     "name": "mgos_file_copy_if_different",
-    "file": "[mgos_file_utils.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_file_utils.h)",
+    "file": "[mgos_file_utils.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_file_utils.h)",
     "doc": "\n```c\nbool mgos_file_copy_if_different(const char *from, const char *to);\n```\n>  Copy the file if target does not exist or is different. \n",
     "lang": "c"
   },
   {
     "name": "(*mgos_gpio_int_handler_f)",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\ntypedef void (*mgos_gpio_int_handler_f)(int pin, void *arg);\n```\n>  GPIO interrupt handler signature. \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_set_mode",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_set_mode(int pin, enum mgos_gpio_mode mode);\n```\n>  Set mode - input or output. \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_set_pull",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_set_pull(int pin, enum mgos_gpio_pull_type pull);\n```\n>  Set pull-up or pull-down type. \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_setup_input",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_setup_input(int pin, enum mgos_gpio_pull_type pull);\n```\n>  Sets up a pin as an input and confiures pull-up or pull-down. \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_setup_output",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_setup_output(int pin, bool level);\n```\n> \n> Sets up pin output while avoiding spurious transitions:\n> desired output level is configured first, then mode.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_read",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_read(int pin);\n```\n>  Read pin input level. \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_write",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nvoid mgos_gpio_write(int pin, bool level);\n```\n>  Set pin's output level. \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_toggle",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_toggle(int pin);\n```\n>  Flip output pin value. Returns value that was written. \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_read_out",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_read_out(int pin);\n```\n>  Read the value of the output register. \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_set_int_handler",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_set_int_handler(int pin, enum mgos_gpio_int_mode mode,\n                               mgos_gpio_int_handler_f cb, void *arg);\n```\n> \n> Install a GPIO interrupt handler.\n> \n> This will invoke handler on the main task, which makes it possible to use\n> any functions but may delay servicing of the interrupt. If lower latency\n> is required, use `mgos_gpio_set_int_handler_isr`, but you'll need to\n> understand the implications, which are platform-specific.\n> \n> Interrupt is automatically cleared once upon triggering.\n> Then it is disabled until the handler gets a chance to run, at which point\n> it is re-enabled. At this point it may re-trigger immediately if the\n> interrupt condition arose again while the handler was pending or running.\n> Handler may use `mgos_gpio_clear_int` to explicitly clear the condition.\n> \n> Note that this will not enable the interrupt, this must be done explicitly\n> with `mgos_gpio_enable_int()`.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_set_int_handler_isr",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_set_int_handler_isr(int pin, enum mgos_gpio_int_mode mode,\n                                   mgos_gpio_int_handler_f cb, void *arg);\n```\n> \n> Same as mgos_gpio_set_int_handler but invokes handler in ISR context,\n> without the overhead of a context switch. GPIO interrupts are disabled while\n> the handler is running.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_enable_int",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_enable_int(int pin);\n```\n>  Enable interrupt on the specified pin. \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_disable_int",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_disable_int(int pin);\n```\n>  Disables interrupt (without removing the handler). \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_clear_int",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nvoid mgos_gpio_clear_int(int pin);\n```\n>  Clears a GPIO interrupt flag. \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_remove_int_handler",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nvoid mgos_gpio_remove_int_handler(int pin, mgos_gpio_int_handler_f *old_cb,\n                                  void **old_arg);\n```\n> \n> Removes a previosuly set interrupt handler.\n> \n> If `cb` and `arg` are not NULL, they will contain previous handler and arg.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_set_button_handler",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_set_button_handler(int pin, enum mgos_gpio_pull_type pull_type,\n                                  enum mgos_gpio_int_mode int_mode,\n                                  int debounce_ms, mgos_gpio_int_handler_f cb,\n                                  void *arg);\n```\n> \n> Handle a button on the specified pin.\n> \n> Configures the pin for input with specified pull-up and performs debouncing:\n> upon first triggering user's callback is invoked immediately but further\n> interrupts are inhibited for the following debounce_ms millseconds.\n> \n> Typically 50 ms of debouncing time is sufficient.\n> int_mode is one of the `MGOS_GPIO_INT_EDGE_*` values and will specify whether\n> the handler triggers when button is pressed, released or both.\n> Which is which depends on how the button is wired: if the normal state is\n> pull-up (typical), then `MGOS_GPIO_INT_EDGE_NEG` is press and\n> `_POS` is release.\n> \n> Calling with `cb` = NULL will remove a previously installed handler.\n> \n> Note: implicitly enables the interrupt.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_blink",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nbool mgos_gpio_blink(int pin, int on_ms, int off_ms);\n```\n> \n> A utility function that takes care of blinking an LED.\n> The pin must be configured as output first.\n> On (output \"1\") and off (\"0\") times are specified in milliseconds.\n> Set to (0, 0) to disable.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_gpio_str",
-    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_gpio.h)",
+    "file": "[mgos_gpio.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_gpio.h)",
     "doc": "\n```c\nconst char *mgos_gpio_str(int pin_def, char buf[8]);\n```\n>  String representation of pin number.\n> Will return \"PA5\" or \"PK3\" for platforms that have port banks. \n",
     "lang": "c"
   },
@@ -439,43 +439,43 @@
   },
   {
     "name": "_IRAM_STR_LIT",
-    "file": "[mgos_iram.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_iram.h)",
+    "file": "[mgos_iram.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_iram.h)",
     "doc": "\n```c\n#define _IRAM_STR_LIT(a) #a\n#define _IRAM_STR(a) _IRAM_STR_LIT(a)\n```\n> \n> Provides the IRAM macro that creates unique sections under .text\n> so that unused functions can be GC'd.\n>  \n",
     "lang": "c"
   },
   {
     "name": "MGOS_EVENT_BASE",
-    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_net.h)",
+    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_net.h)",
     "doc": "\n```c\n#define MGOS_EVENT_GRP_NET MGOS_EVENT_BASE('N', 'E', 'T')\n```\n> \n> Event group which should be given to `mgos_event_add_group_handler()`\n> in order to subscribe to network events.\n> \n> Example:\n> ```c\n> static void my_net_ev_handler(int ev, void *evd, void *arg) {\n>   if (ev == MGOS_NET_EV_IP_ACQUIRED) {\n>     LOG(LL_INFO, (\"Just got IP!\"));\n>     // Fetch something very useful from somewhere\n>   }\n>   (void) evd;\n>   (void) arg;\n> }\n> \n> // Somewhere else:\n> mgos_event_add_group_handler(MGOS_EVENT_GRP_NET, my_net_ev_handler, NULL);\n> ```\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_net_get_ip_info",
-    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_net.h)",
+    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_net.h)",
     "doc": "\n```c\nbool mgos_net_get_ip_info(enum mgos_net_if_type if_type, int if_instance,\n                          struct mgos_net_ip_info *ip_info);\n```\n> \n> Retrieve IP configuration of the provided interface type and instance\n> number, and fill provided `ip_info` with it. Returns `true` in case of\n> success, false otherwise.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_net_ip_to_str",
-    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_net.h)",
+    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_net.h)",
     "doc": "\n```c\nchar *mgos_net_ip_to_str(const struct sockaddr_in *sin, char *out);\n```\n> \n> Converts address to dotted-quad NUL-terminated string.\n> `out` must be at least 16 bytes long.\n> Returns the out pointer.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_net_str_to_ip",
-    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_net.h)",
+    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_net.h)",
     "doc": "\n```c\nbool mgos_net_str_to_ip(const char *ips, struct sockaddr_in *sin);\n```\n> \n> Parses dotted-quad NUL-terminated string into an IPv4 address.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_net_str_to_ip_n",
-    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_net.h)",
+    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_net.h)",
     "doc": "\n```c\nbool mgos_net_str_to_ip_n(const struct mg_str ips, struct sockaddr_in *sin);\n```\n> \n> Parses dotted-quad NUL-terminated string into an IPv4 address.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_get_nameserver",
-    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_net.h)",
+    "file": "[mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_net.h)",
     "doc": "\n```c\nchar *mgos_get_nameserver(void);\n```\n> \n> Returns nameserver address. The caller should `free()` it. Returns NULL\n> in case of no DNS.\n>  \n",
     "lang": "c"
   },
@@ -523,73 +523,73 @@
   },
   {
     "name": "mgos_sys_config_save",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\nbool mgos_sys_config_save(const struct mgos_config *cfg, bool try_once,\n                          char **msg);\n```\n> \n> Save config. Performs diff against defaults and only saves diffs.\n> Reboot is required to reload the config.\n> If try_once is set, the config will only take effect for one boot.\n> \n> If return value is false, a message may be provided in *msg.\n> If non-NULL, it must be free()d.\n> It is safe to pass a NULL `msg`\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_sys_config_save_level",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\nbool mgos_sys_config_save_level(const struct mgos_config *cfg,\n                                enum mgos_config_level level, bool try_once,\n                                char **msg);\n```\n>  Saves given coonfig at the specified level. Performs diff against level-1. \n",
     "lang": "c"
   },
   {
     "name": "mgos_sys_config_load_level",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\nbool mgos_sys_config_load_level(struct mgos_config *cfg,\n                                enum mgos_config_level level);\n```\n>  Loads config up to and including level. \n",
     "lang": "c"
   },
   {
     "name": "save_cfg",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\nbool save_cfg(const struct mgos_config *cfg, char **msg);\n```\n>  Deprecated API, equivalent to mgos_sys_config_save(cfg, false, msg). \n",
     "lang": "c"
   },
   {
     "name": "load_config_defaults",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\nbool load_config_defaults(struct mgos_config *cfg);\n```\n>  Loads configs up to MGOS_CONFIG_LEVEL_USER - 1. Deprecated. \n",
     "lang": "c"
   },
   {
     "name": "mgos_config_reset",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\nvoid mgos_config_reset(int level);\n```\n> \n> Reset config down to and including |level|.\n> 0 - defaults, 1-8 - vendor levels, 9 - user.\n> mgos_config_reset(MGOS_CONFIG_LEVEL_USER) will wipe user settings.\n>  \n",
     "lang": "c"
   },
   {
     "name": "(*mgos_config_validator_fn)",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\ntypedef bool (*mgos_config_validator_fn)(const struct mgos_config *cfg,\n                                         char **msg);\nvoid mgos_sys_config_register_validator(mgos_config_validator_fn fn);\n```\n> \n> Register a config validator.\n> Validators will be invoked before saving config and if any of them\n> returns false, config will not be saved.\n> An error message may be *msg may be set to error message.\n> Note: if non-NULL, *msg will be freed. Remember to use strdup and asprintf.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_config_validate",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\nbool mgos_config_validate(const struct mgos_config *cfg, char **msg);\n```\n>  Run validators on the specified config. \n",
     "lang": "c"
   },
   {
     "name": "mgos_expand_mac_address_placeholders",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\nvoid mgos_expand_mac_address_placeholders(char *str);\n```\n>  Expands question marks in \"str\" with digits from the MAC address. \n",
     "lang": "c"
   },
   {
     "name": "mgos_config_apply",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\nbool mgos_config_apply(const char *sys_config_subset_json, bool save);\n```\n>  Apply a subset of system configuration. Return true on success. \n",
     "lang": "c"
   },
   {
     "name": "mgos_config_apply_s",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\nbool mgos_config_apply_s(const struct mg_str, bool save);\n```\n>  Same as mgos_config_apply but uses mg_str \n",
     "lang": "c"
   },
   {
     "name": "mgos_sys_config_parse_sub",
-    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_sys_config.h)",
+    "file": "[mgos_sys_config.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_sys_config.h)",
     "doc": "\n```c\nbool mgos_sys_config_parse_sub(const struct mg_str json, const char *section,\n                               void *cfg);\n```\n> \n> Parse a subsection of sys config, e.g. just \"spi\".\n> cfg must point to the subsection's struct.\n> Example:\n> ```\n>   struct mgos_config_spi cfg;\n>   const struct mg_str json_cfg = MG_MK_STR(\"{\\\"unit_no\\\": 1}\");\n>   memset(&cfg, 0, sizeof(cfg));\n>   mgos_sys_config_parse_sub(json_cfg, \"spi\", cfg);\n> ```\n>  \n",
     "lang": "c"
   },
@@ -607,139 +607,139 @@
   },
   {
     "name": "mgos_get_heap_size",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nsize_t mgos_get_heap_size(void);\n```\n>  Get system memory size. \n",
     "lang": "c"
   },
   {
     "name": "mgos_get_free_heap_size",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nsize_t mgos_get_free_heap_size(void);\n```\n>  Get system free memory. \n",
     "lang": "c"
   },
   {
     "name": "mgos_get_min_free_heap_size",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nsize_t mgos_get_min_free_heap_size(void);\n```\n>  Get minimal watermark of the system free memory. \n",
     "lang": "c"
   },
   {
     "name": "mgos_get_fs_memory_usage",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nsize_t mgos_get_fs_memory_usage(void);\n```\n>  Get filesystem memory usage \n",
     "lang": "c"
   },
   {
     "name": "mgos_get_fs_size",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nsize_t mgos_get_fs_size(void);\n```\n> \n> Get filesystem size.\n> Deprecated, please use mgos_vfs_get_space_total(\"/\") instead.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_get_free_fs_size",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nsize_t mgos_get_free_fs_size(void);\n```\n> \n> Get filesystem free space.\n> Deprecated, please use mgos_vfs_get_space_free(\"/\") instead.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_fs_gc",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_fs_gc(void);\n```\n>  Garbage-collect filesystem \n",
     "lang": "c"
   },
   {
     "name": "mgos_wdt_feed",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_wdt_feed(void);\n```\n>  Feed watchdog \n",
     "lang": "c"
   },
   {
     "name": "mgos_wdt_set_timeout",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_wdt_set_timeout(int secs);\n```\n>  Set watchdog timeout\n",
     "lang": "c"
   },
   {
     "name": "mgos_wdt_enable",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_wdt_enable(void);\n```\n>  Enable watchdog \n",
     "lang": "c"
   },
   {
     "name": "mgos_wdt_disable",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_wdt_disable(void);\n```\n>  Disable watchdog \n",
     "lang": "c"
   },
   {
     "name": "mgos_system_restart",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
-    "doc": "\n```c\nvoid mgos_system_restart(void);\n```\n>  Restart system \n",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
+    "doc": "\n```c\nvoid mgos_system_restart(void) __attribute__((noreturn));\n```\n>  Restart system \n",
     "lang": "c"
   },
   {
     "name": "mgos_msleep",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_msleep(uint32_t msecs);\n```\n>  Delay given number of milliseconds \n",
     "lang": "c"
   },
   {
     "name": "mgos_usleep",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_usleep(uint32_t usecs);\n```\n>  Delay given number of microseconds \n",
     "lang": "c"
   },
   {
     "name": "mgos_ints_disable",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_ints_disable(void);\n```\n>  Disable interrupts \n",
     "lang": "c"
   },
   {
     "name": "mgos_ints_enable",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_ints_enable(void);\n```\n>  Enable interrupts \n",
     "lang": "c"
   },
   {
     "name": "(*mgos_cb_t)",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\ntypedef void (*mgos_cb_t)(void *arg);\n```\n>  Callback for `mgos_invoke_cb()` \n",
     "lang": "c"
   },
   {
     "name": "mgos_invoke_cb",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nbool mgos_invoke_cb(mgos_cb_t cb, void *arg, bool from_isr);\n```\n> \n> Invoke a callback in the main MGOS event loop.\n> Returns true if the callback has been scheduled for execution.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_get_cpu_freq",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nuint32_t mgos_get_cpu_freq(void);\n```\n>  Get the CPU frequency in Hz \n",
     "lang": "c"
   },
   {
     "name": "mgos_rlock_create",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nstruct mgos_rlock_type *mgos_rlock_create(void);\n```\n>  Create a recursive lock. \n",
     "lang": "c"
   },
   {
     "name": "mgos_rlock",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_rlock(struct mgos_rlock_type *l);\n```\n>  Acquire a recursive lock. \n",
     "lang": "c"
   },
   {
     "name": "mgos_runlock",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_runlock(struct mgos_rlock_type *l);\n```\n>  Release a recursive lock. \n",
     "lang": "c"
   },
   {
     "name": "mgos_rlock_destroy",
-    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_system.h)",
+    "file": "[mgos_system.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_system.h)",
     "doc": "\n```c\nvoid mgos_rlock_destroy(struct mgos_rlock_type *l);\n```\n>  Destroy a recursive lock. \n",
     "lang": "c"
   },
@@ -793,61 +793,61 @@
   },
   {
     "name": "mgos_uptime",
-    "file": "[mgos_time.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_time.h)",
+    "file": "[mgos_time.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_time.h)",
     "doc": "\n```c\ndouble mgos_uptime(void);\n```\n>  Get number of seconds since last reboot \n",
     "lang": "c"
   },
   {
     "name": "mgos_uptime_micros",
-    "file": "[mgos_time.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_time.h)",
+    "file": "[mgos_time.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_time.h)",
     "doc": "\n```c\nint64_t mgos_uptime_micros(void);\n```\n>  Get number of microseconds since last reboot \n",
     "lang": "c"
   },
   {
     "name": "mgos_strftime",
-    "file": "[mgos_time.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_time.h)",
+    "file": "[mgos_time.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_time.h)",
     "doc": "\n```c\nint mgos_strftime(char *s, int size, char *fmt, int time);\n```\n> \n> Format `time` according to a `strftime()`-conformant format.\n> Write the result into the `s,size` buffer. Return resulting string length.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_settimeofday",
-    "file": "[mgos_time.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_time.h)",
+    "file": "[mgos_time.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_time.h)",
     "doc": "\n```c\nint mgos_settimeofday(double time, struct timezone *tz);\n```\n> \n> Like standard `settimeofday()`, but uses `double` seconds value instead of\n> `struct timeval *tv`. If time was changed successfully, emits an event\n> `MGOS_EVENT_TIME_CHANGED`.\n>  \n",
     "lang": "c"
   },
   {
     "name": "(*timer_callback)",
-    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_timers.h)",
+    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_timers.h)",
     "doc": "\n```c\ntypedef void (*timer_callback)(void *param);\n```\n>  Timer callback \n",
     "lang": "c"
   },
   {
     "name": "mgos_set_timer",
-    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_timers.h)",
+    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_timers.h)",
     "doc": "\n```c\nmgos_timer_id mgos_set_timer(int msecs, int flags, timer_callback cb,\n                             void *cb_arg);\n```\n> \n> Setup a timer with `msecs` timeout and `cb` as a callback.\n> \n> `flags` is a bitmask, currently there's only one flag available:\n> `MGOS_TIMER_REPEAT` (see above). `arg` is a parameter to pass to `cb`.\n> Return numeric timer ID.\n> \n> Note that this is a software timer, with fairly low accuracy and high jitter.\n> However, number of software timers is not limited.\n> If you need intervals < 10ms, use mgos_set_hw_timer.\n> \n> Example:\n> ```c\n> static void my_timer_cb(void *arg) {\n>   bool val = mgos_gpio_toggle(mgos_sys_config_get_pins_led());\n>   LOG(LL_INFO, (\"uptime: %.2lf\", mgos_uptime()));\n>   (void) arg;\n> }\n> \n> enum mgos_app_init_result mgos_app_init(void) {\n>   mgos_set_timer(1000, MGOS_TIMER_REPEAT, my_timer_cb, NULL);\n>   return MGOS_APP_INIT_SUCCESS;\n> }\n> ```\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_set_hw_timer",
-    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_timers.h)",
+    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_timers.h)",
     "doc": "\n```c\nmgos_timer_id mgos_set_hw_timer(int usecs, int flags, timer_callback cb,\n                                void *cb_arg);\n```\n> \n> Setup a hardware timer with `usecs` timeout and `cb` as a callback.\n> \n> This is similar to mgos_set_timer, but can be used for shorter intervals\n> (note that time unit is microseconds).\n> \n> Number of hardware timers is limited (ESP8266: 1, ESP32: 4, CC32xx: 4).\n> \n> Callback is executed in ISR context, with all the implications of that.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_clear_timer",
-    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_timers.h)",
+    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_timers.h)",
     "doc": "\n```c\nvoid mgos_clear_timer(mgos_timer_id id);\n```\n> \n> Disable timer with a given timer ID.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_uptime",
-    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_timers.h)",
+    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_timers.h)",
     "doc": "\n```c\ndouble mgos_uptime(void);\n```\n>  Get number of seconds since last reboot \n",
     "lang": "c"
   },
   {
     "name": "mgos_strftime",
-    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_timers.h)",
+    "file": "[mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_timers.h)",
     "doc": "\n```c\nint mgos_strftime(char *s, int size, char *fmt, int time);\n```\n> \n> Format `time` according to a `strftime()`-conformant format.\n> Write the result into the `s,size` buffer. Return resulting string length.\n>  \n",
     "lang": "c"
   },
@@ -877,97 +877,97 @@
   },
   {
     "name": "mgos_uart_configure",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nbool mgos_uart_configure(int uart_no, const struct mgos_uart_config *cfg);\n```\n> \n> Apply given UART configuration.\n> \n> Example:\n> ```c\n> int uart_no = 0;\n> \n> struct mgos_uart_config ucfg;\n> mgos_uart_config_set_defaults(uart_no, &ucfg);\n> \n> ucfg.baud_rate = 115200;\n> ucfg.rx_buf_size = 1500;\n> ucfg.tx_buf_size = 1500;\n> \n> if (!mgos_uart_configure(uart_no, &ucfg)) {\n>   LOG(LL_ERROR, (\"Failed to configure UART%d\", uart_no));\n> }\n> ```\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_config_set_defaults",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nvoid mgos_uart_config_set_defaults(int uart_no, struct mgos_uart_config *cfg);\n```\n> \n> Fill provided `cfg` structure with the default values. See example above.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_config_get",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nbool mgos_uart_config_get(int uart_no, struct mgos_uart_config *cfg);\n```\n> \n> Fill provided `cfg` structure with the current UART config.\n> Returns false if the specified UART has not bee configured yet.\n>  \n",
     "lang": "c"
   },
   {
     "name": "(*mgos_uart_dispatcher_t)",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\ntypedef void (*mgos_uart_dispatcher_t)(int uart_no, void *arg);\n```\n>  UART dispatcher signature, see `mgos_uart_set_dispatcher()` \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_set_dispatcher",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nvoid mgos_uart_set_dispatcher(int uart_no, mgos_uart_dispatcher_t cb,\n                              void *arg);\n```\n> \n> Set UART dispatcher: a callback which gets called when there is data in the\n> input buffer or space available in the output buffer.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_write",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nsize_t mgos_uart_write(int uart_no, const void *buf, size_t len);\n```\n> \n> Write data to the UART.\n> Note: if there is enough space in the output buffer, the call will return\n> immediately, otherwise it will wait for buffer to drain.\n> If you want the call to not block, check mgos_uart_write_avail() first.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_write_avail",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nsize_t mgos_uart_write_avail(int uart_no);\n```\n>  Returns amount of space availabe in the output buffer. \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_printf",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nint mgos_uart_printf(int uart_no, const char *fmt, ...);\n```\n> \n> Write data to UART, printf style.\n> Note: currently this requires that data is fully rendered in memory before\n> sending. There is no fixed limit as heap allocation is used, but be careful\n> when printing longer strings.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_read",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nsize_t mgos_uart_read(int uart_no, void *buf, size_t len);\n```\n> \n> Read data from UART input buffer.\n> Note: unlike write, read will not block if there are not enough bytes in the\n> input buffer.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_read_mbuf",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nsize_t mgos_uart_read_mbuf(int uart_no, struct mbuf *mb, size_t len);\n```\n>  Like `mgos_uart_read`, but reads into an mbuf. \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_read_avail",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nsize_t mgos_uart_read_avail(int uart_no);\n```\n>  Returns the number of bytes available for reading. \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_set_rx_enabled",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nvoid mgos_uart_set_rx_enabled(int uart_no, bool enabled);\n```\n>  Controls whether UART receiver is enabled. \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_is_rx_enabled",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nbool mgos_uart_is_rx_enabled(int uart_no);\n```\n>  Returns whether UART receiver is enabled. \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_flush",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nvoid mgos_uart_flush(int uart_no);\n```\n>  Flush the UART output buffer - waits for data to be sent. \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_schedule_dispatcher",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nvoid mgos_uart_schedule_dispatcher(int uart_no, bool from_isr);\n```\n>  Schedule a call to dispatcher on the next `mongoose_poll` \n",
     "lang": "c"
   },
   {
     "name": "mgos_uart_get_stats",
-    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h)",
+    "file": "[mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h)",
     "doc": "\n```c\nconst struct mgos_uart_stats *mgos_uart_get_stats(int uart_no);\n```\n>  Get UART statistics \n",
     "lang": "c"
   },
@@ -1027,13 +1027,13 @@
   },
   {
     "name": "mgos_system_restart_after",
-    "file": "[mgos_utils.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_utils.h)",
+    "file": "[mgos_utils.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_utils.h)",
     "doc": "\n```c\nvoid mgos_system_restart_after(int delay_ms);\n```\n>  Restart system after the specified number of milliseconds \n",
     "lang": "c"
   },
   {
     "name": "mgos_rand_range",
-    "file": "[mgos_utils.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_utils.h)",
+    "file": "[mgos_utils.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_utils.h)",
     "doc": "\n```c\nfloat mgos_rand_range(float from, float to);\n```\n>  Return random number in a given range. \n",
     "lang": "c"
   },
@@ -1141,199 +1141,199 @@
   },
   {
     "name": "cs_log_set_level",
-    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
+    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/include/cs_dbg.h)",
     "doc": "\n```c\nvoid cs_log_set_level(enum cs_log_level level);\n```\n> \n> Set max log level to print; messages with the level above the given one will\n> not be printed.\n>  \n",
     "lang": "c"
   },
   {
     "name": "cs_log_set_file_level",
-    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
+    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/include/cs_dbg.h)",
     "doc": "\n```c\nvoid cs_log_set_file_level(const char *file_level);\n```\n> \n> A comma-separated set of prefix=level.\n> prefix is matched against the log prefix exactly as printed, including line\n> number, but partial match is ok. Check stops on first matching entry.\n> If nothing matches, default level is used.\n> \n> Examples:\n>   main.c:=4 - everything from main C at verbose debug level.\n>   mongoose.c=1,mjs.c=1,=4 - everything at verbose debug except mg_* and mjs_*\n> \n>  \n",
     "lang": "c"
   },
   {
     "name": "cs_log_print_prefix",
-    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
+    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/include/cs_dbg.h)",
     "doc": "\n```c\nint cs_log_print_prefix(enum cs_log_level level, const char *fname, int line);\n```\n> \n> Helper function which prints message prefix with the given `level`.\n> If message should be printed (according to the current log level\n> and filter), prints the prefix and returns 1, otherwise returns 0.\n> \n> Clients should typically just use `LOG()` macro.\n>  \n",
     "lang": "c"
   },
   {
     "name": "cs_log_set_file",
-    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
+    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/include/cs_dbg.h)",
     "doc": "\n```c\nvoid cs_log_set_file(FILE *file);\n```\n> \n> Set file to write logs into. If `NULL`, logs go to `stderr`.\n>  \n",
     "lang": "c"
   },
   {
     "name": "cs_log_printf",
-    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
+    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/include/cs_dbg.h)",
     "doc": "\n```c\nvoid cs_log_printf(const char *fmt, ...) PRINTF_LIKE(1, 2);\n```\n> \n> Prints log to the current log file, appends \"\\n\" in the end and flushes the\n> stream.\n>  \n",
     "lang": "c"
   },
   {
     "name": "LOG",
-    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
+    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/include/cs_dbg.h)",
     "doc": "\n```c\n#define LOG(l, x)                                     \\\n  do {                                                \\\n    if (cs_log_print_prefix(l, __FILE__, __LINE__)) { \\\n      cs_log_printf x;                                \\\n    }                                                 \\\n  } while (0)\n```\n> \n> Format and print message `x` with the given level `l`. Example:\n> \n> ```c\n> LOG(LL_INFO, (\"my info message: %d\", 123));\n> LOG(LL_DEBUG, (\"my debug message: %d\", 123));\n> ```\n>  \n",
     "lang": "c"
   },
   {
     "name": "DBG",
-    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
+    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/include/cs_dbg.h)",
     "doc": "\n```c\n#define DBG(x) LOG(LL_VERBOSE_DEBUG, x)\n```\n> \n> Shortcut for `LOG(LL_VERBOSE_DEBUG, (...))`\n>  \n",
     "lang": "c"
   },
   {
     "name": "DBG",
-    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
+    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/include/cs_dbg.h)",
     "doc": "\n```c\n#define DBG(x)\n```\n>  NDEBUG \n",
     "lang": "c"
   },
   {
     "name": "LOG",
-    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/cs_dbg.h)",
+    "file": "[cs_dbg.h](https://github.com/cesanta/mongoose-os/tree/master/include/cs_dbg.h)",
     "doc": "\n```c\n#define LOG(l, x)\n#define DBG(x)\n```\n>  CS_ENABLE_STDIO \n",
     "lang": "c"
   },
   {
     "name": "mbuf_init",
-    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/include/mbuf.h)",
     "doc": "\n```c\nvoid mbuf_init(struct mbuf *, size_t initial_capacity);\n```\n> \n> Initialises an Mbuf.\n> `initial_capacity` specifies the initial capacity of the mbuf.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mbuf_free",
-    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/include/mbuf.h)",
     "doc": "\n```c\nvoid mbuf_free(struct mbuf *);\n```\n>  Frees the space allocated for the mbuffer and resets the mbuf structure. \n",
     "lang": "c"
   },
   {
     "name": "mbuf_append",
-    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/include/mbuf.h)",
     "doc": "\n```c\nsize_t mbuf_append(struct mbuf *, const void *data, size_t data_size);\n```\n> \n> Appends data to the Mbuf.\n> \n> Returns the number of bytes appended or 0 if out of memory.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mbuf_append_and_free",
-    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/include/mbuf.h)",
     "doc": "\n```c\nsize_t mbuf_append_and_free(struct mbuf *, void *data, size_t data_size);\n```\n> \n> Appends data to the Mbuf and frees it (data must be heap-allocated).\n> \n> Returns the number of bytes appended or 0 if out of memory.\n> data is freed irrespective of return value.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mbuf_insert",
-    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/include/mbuf.h)",
     "doc": "\n```c\nsize_t mbuf_insert(struct mbuf *, size_t, const void *, size_t);\n```\n> \n> Inserts data at a specified offset in the Mbuf.\n> \n> Existing data will be shifted forwards and the buffer will\n> be grown if necessary.\n> Returns the number of bytes inserted.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mbuf_remove",
-    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/include/mbuf.h)",
     "doc": "\n```c\nvoid mbuf_remove(struct mbuf *, size_t data_size);\n```\n>  Removes `data_size` bytes from the beginning of the buffer. \n",
     "lang": "c"
   },
   {
     "name": "mbuf_resize",
-    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/include/mbuf.h)",
     "doc": "\n```c\nvoid mbuf_resize(struct mbuf *, size_t new_size);\n```\n> \n> Resizes an Mbuf.\n> \n> If `new_size` is smaller than buffer's `len`, the\n> resize is not performed.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mbuf_move",
-    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/include/mbuf.h)",
     "doc": "\n```c\nvoid mbuf_move(struct mbuf *from, struct mbuf *to);\n```\n>  Moves the state from one mbuf to the other. \n",
     "lang": "c"
   },
   {
     "name": "mbuf_clear",
-    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/include/mbuf.h)",
     "doc": "\n```c\nvoid mbuf_clear(struct mbuf *);\n```\n>  Removes all the data from mbuf (if any). \n",
     "lang": "c"
   },
   {
     "name": "mbuf_trim",
-    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mbuf.h)",
+    "file": "[mbuf.h](https://github.com/cesanta/mongoose-os/tree/master/include/mbuf.h)",
     "doc": "\n```c\nvoid mbuf_trim(struct mbuf *);\n```\n>  Shrinks an Mbuf by resizing its `size` to `len`. \n",
     "lang": "c"
   },
   {
     "name": "mg_mk_str",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nstruct mg_str mg_mk_str(const char *s);\n```\n> \n> Helper function for creating mg_str struct from plain C string.\n> `NULL` is allowed and becomes `{NULL, 0}`.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mg_mk_str_n",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nstruct mg_str mg_mk_str_n(const char *s, size_t len);\n```\n> \n> Like `mg_mk_str`, but takes string length explicitly.\n>  \n",
     "lang": "c"
   },
   {
     "name": "MG_MK_STR",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\n#define MG_MK_STR(str_literal) \\\n  { str_literal, sizeof(str_literal) - 1 }\n#define MG_MK_STR_N(str_literal, len) \\\n  { str_literal, len }\n#define MG_NULL_STR \\\n  { NULL, 0 }\n```\n>  Macro for initializing mg_str. \n",
     "lang": "c"
   },
   {
     "name": "mg_vcmp",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nint mg_vcmp(const struct mg_str *str2, const char *str1);\n```\n> \n> Cross-platform version of `strcmp()` where where first string is\n> specified by `struct mg_str`.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mg_vcasecmp",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nint mg_vcasecmp(const struct mg_str *str2, const char *str1);\n```\n> \n> Cross-platform version of `strncasecmp()` where first string is\n> specified by `struct mg_str`.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mg_strdup",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nstruct mg_str mg_strdup(const struct mg_str s);\n```\n>  Creates a copy of s (heap-allocated). \n",
     "lang": "c"
   },
   {
     "name": "mg_strdup_nul",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nstruct mg_str mg_strdup_nul(const struct mg_str s);\n```\n> \n> Creates a copy of s (heap-allocated).\n> Resulting string is NUL-terminated (but NUL is not included in len).\n>  \n",
     "lang": "c"
   },
   {
     "name": "mg_strchr",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nconst char *mg_strchr(const struct mg_str s, int c);\n```\n> \n> Locates character in a string.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mg_strcmp",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nint mg_strcmp(const struct mg_str str1, const struct mg_str str2);\n```\n> \n> Compare two `mg_str`s; return value is the same as `strcmp`.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mg_strncmp",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nint mg_strncmp(const struct mg_str str1, const struct mg_str str2, size_t n);\n```\n> \n> Like `mg_strcmp`, but compares at most `n` characters.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mg_strfree",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nvoid mg_strfree(struct mg_str *s);\n```\n> \n> Free the string (assuming it was heap allocated).\n>  \n",
     "lang": "c"
   },
   {
     "name": "mg_strstr",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nconst char *mg_strstr(const struct mg_str haystack, const struct mg_str needle);\n```\n> \n> Finds the first occurrence of a substring `needle` in the `haystack`.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mg_strstrip",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nstruct mg_str mg_strstrip(struct mg_str s);\n```\n>  Strip whitespace at the start and the end of s \n",
     "lang": "c"
   },
   {
     "name": "mg_str_starts_with",
-    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mg_str.h)",
+    "file": "[mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h)",
     "doc": "\n```c\nint mg_str_starts_with(struct mg_str s, struct mg_str prefix);\n```\n>  Returns 1 if s starts with the given prefix. \n",
     "lang": "c"
   },
@@ -4176,6 +4176,12 @@
     "lang": "js"
   },
   {
+    "name": "_read",
+    "file": "[mgos_dht.h](https://github.com/mongoose-os-libs/dht/tree/master/include/mgos_dht.h)",
+    "doc": "\n```c\nuint32_t read;                 // calls to _read()\n  uint32_t read_success;         // successful _read()\n  uint32_t read_success_cached;  // calls to _read() which were cached\n  // Note: read_errors := read - read_success - read_success_cached\n  double read_success_usecs;     // time spent in successful uncached _read()\n};\n```\n> value of mg_time() upon last call to _read()\n",
+    "lang": "c"
+  },
+  {
     "name": "mgos_dht_create",
     "file": "[mgos_dht.h](https://github.com/mongoose-os-libs/dht/tree/master/include/mgos_dht.h)",
     "doc": "\n```c\nstruct mgos_dht *mgos_dht_create(int pin, enum dht_type type);\n```\n>  Initialise DHT sensor. Return an opaque DHT handle, or `NULL` on error. \n",
@@ -4197,6 +4203,12 @@
     "name": "mgos_dht_get_humidity",
     "file": "[mgos_dht.h](https://github.com/mongoose-os-libs/dht/tree/master/include/mgos_dht.h)",
     "doc": "\n```c\nfloat mgos_dht_get_humidity(struct mgos_dht *dht);\n```\n>  Return humidity in % or 'NAN' on failure. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_dht_getStats",
+    "file": "[mgos_dht.h](https://github.com/mongoose-os-libs/dht/tree/master/include/mgos_dht.h)",
+    "doc": "\n```c\nbool mgos_dht_getStats(struct mgos_dht *dht, struct mgos_dht_stats *stats);\n```\n> \n> Returns the running statistics on the sensor interaction, the user provides\n> a pointer to a `struct mgos_dht_stats` object, which is filled in by this\n> call.\n> \n> Upon success, true is returned. Otherwise, false is returned, in which case\n> the contents of `stats` is undetermined.\n>  \n",
     "lang": "c"
   },
   {

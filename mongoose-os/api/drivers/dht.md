@@ -1,4 +1,4 @@
-# DHT temp sensor
+# DHT
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
 | [mongoose-os-libs/dht](https://github.com/mongoose-os-libs/dht) | [mgos_dht.h](https://github.com/mongoose-os-libs/dht/tree/master/include/mgos_dht.h) | &nbsp;  | [api_dht.js](https://github.com/mongoose-os-libs/dht/tree/master/mjs_fs/api_dht.js)         |
@@ -17,6 +17,17 @@ See https://learn.adafruit.com/dht/overview for more information.
  
 
  ----- 
+#### _read
+
+```c
+uint32_t read;                 // calls to _read()
+  uint32_t read_success;         // successful _read()
+  uint32_t read_success_cached;  // calls to _read() which were cached
+  // Note: read_errors := read - read_success - read_success_cached
+  double read_success_usecs;     // time spent in successful uncached _read()
+};
+```
+> value of mg_time() upon last call to _read()
 #### mgos_dht_create
 
 ```c
@@ -41,6 +52,19 @@ float mgos_dht_get_temp(struct mgos_dht *dht);
 float mgos_dht_get_humidity(struct mgos_dht *dht);
 ```
 >  Return humidity in % or 'NAN' on failure. 
+#### mgos_dht_getStats
+
+```c
+bool mgos_dht_getStats(struct mgos_dht *dht, struct mgos_dht_stats *stats);
+```
+> 
+> Returns the running statistics on the sensor interaction, the user provides
+> a pointer to a `struct mgos_dht_stats` object, which is filled in by this
+> call.
+> 
+> Upon success, true is returned. Otherwise, false is returned, in which case
+> the contents of `stats` is undetermined.
+>  
 
 ### JS API
 

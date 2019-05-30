@@ -1,7 +1,7 @@
 # Net events
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_net.h) | [mgos_net.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_net.c)  | [api_net.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_net.js)         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_net.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_net.h) | [mgos_net.c](https://github.com/cesanta/mongoose-os/tree/master/src/mgos_net.c)  | [api_net.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_net.js)         |
 
 
 Low-level network configuration API.

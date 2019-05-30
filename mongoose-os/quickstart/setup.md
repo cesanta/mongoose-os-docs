@@ -7,7 +7,7 @@ updatable, remotely manageable, secure, configurable product.
   <div class="col-md-4">
     <div><a href="#1-download-and-install-mos-tool">1. Download and install [1min]</a></div>
     <div><a href="#2-start-mos-tool">2. Start mos tool [0 min]</a></div>
-    <div><a href="#3-usb-to-serial-drivers">3. Install drivers if needed [2 min]</a></div>
+    <div><a href="#3-usb-to-serial-drivers">3. Install drivers [2 min]</a></div>
     <div><a href="#4-create-new-app">4. Create new app [1 min]</a></div>
   </div>
   <div class="col-md-4">
@@ -17,10 +17,8 @@ updatable, remotely manageable, secure, configurable product.
     <div><a href="#8-add-device-to-the-mdash-management-dashboard">8. Register on mDash [1 min]</a></div>
   </div>
   <div class="col-md-4">
-    <div><a href="#9-enable-mobile-app">9. Enable mobile app [1 min]</a></div>
-    <div><a href="#10-control-your-device-from-the-mobile-app">10. Control from mobile [2 min]</a></div>
-    <div><a href="#11-make-changes-to-the-firmware">11. Change firmware [2 min]</a></div>
-    <div><a href="#12-update-firmware-over-the-air">12. OTA update firmware [2 min]</a></div>
+    <div><a href="#9-make-changes-to-the-firmware">9. Change firmware [2 min]</a></div>
+    <div><a href="#10-update-firmware-over-the-air">10. Update over-the-air [2 min]</a></div>
   </div>
 </div>
 
@@ -127,72 +125,30 @@ network, gets the IP configuration, and synchronises time with SNTP server:
 
 ## 8. Add device to the mDash management dashboard
 
-- Login to the mDash at https://dash.mongoose-os.com/. 
-- Click on "Add new device" button. That'll create a new device.
+- Login to the mDash at https://mdash.net/. 
+- Click on "Add device" button. That'll create a new device:
+- Click on a gears icon to trigger device management dialog.
+![](images/qs7.png)
 - Click on a "Token" link to copy the device's access token to the clipboard:
-
-![](/docs/mdash/dash8.png)
+![](images/qs7.1.png)
 
 - Go back to the mos tool, type command (change TOKEN to your copied token) and press enter:
   ```
-  mos config-set dash.enable=true dash.token=TOKEN
+  mos mdash-setup d1 TOKEN
   ```
 
-![](images/qs8.png)
-
-Notice that the device started to print messages `{"uptime":XX,"on":false}`
-to the serial console. It sends this message to the dashboard, reporting
-its state to the device shadow
-([read more about device shadows](/docs/mdash/shadow.md)).
-
-Notice that the device became online on mDash, and how the device shadow
-updates every second, incrementing its version number:
-
-![](images/qs9.png)
-
-
-Click on the "+" sign to expand the shadow. Scroll it down and see how
-the reported "uptime" metric updates every second. "Uptime" is the amount
-of time since the last power-on or reboot:
+The `d1` in a command above is device ID.
+A device should start to print messages `{"uptime":XX,"on":false}`
+to the serial console, and become online:
 
 ![](images/qs10.png)
 
-Click on a device name to see a detailed management console for the device:
-general information, real-time notifications, configuration editor, file
+Click on a gears icons to see a management dialong for a device:
+general information, configuration editor, file
 editor, device shadow editor, and an RPC service call window. We won't study
 all these management tools now though, so proceed to the next step.
 
-## 9. Enable mobile app
-
-Click on the "Mobile app" menu, and click on a checkbox to enable mobile app.
-Enter your email address in the text box and press on "Send invitation" button:
-
-![](images/qs11.png)
-
-On your mobile phone, open you inbox, open an email from mDash:
-
-![](images/qs12.png)
-
-
-## 10. Control your device from the mobile app
-
-Click on the link in the invitation email. This will bring you immediately
-to the PWA (Progressive Web App). It is available only for those who has
-the link, because the app access token is embedded inside the link.
-
-Notice how the reported device state is displayed on the mobile app.
-An `uptime` metric is displayed as a read-only value. An `on` value,
-however, is rendered as a toggle button:
-
-![](images/qs14.png)
-
-Pressing the button turns is on, changes the device shadow key `on` from `false`
-to `true`, and lights on an LED on a device:
-
-![](images/qs13.png)
-
-
-## 11. Make changes to the firmware
+## 9. Make changes to the firmware
 
 Click on the folder icon on the bottom left corner. That opens a system
 file browser in the current app directory. Open `fs/init.js` in your
@@ -200,25 +156,35 @@ favorite editor:
 
 ![](images/qs14.png)
 
-Change `LED on` to `MY LED on` and save:
+Paste this code snippet, that sends an MQTT message every second:
 
-![](images/qs14.1.png)
+```javascript
+load('api_timer.js');
+load('api_mqtt.js');
+
+Timer.set(1000, Timer.REPEAT, function() {
+	let ok = MQTT.pub('test/topic', 'hello from an updated firmware');
+	print('mqtt message sent?', ok);
+}, null);
+```
 
 Then, rebuild the firmware with `mos build`.
 
 
-## 12. Update firmware over-the-air
+## 10. Update firmware over-the-air
 
 Now let's update our device with the new firmware over the air.
 
-Go to the mDash, click on "Devices" top menu item to see the device list.
-Select a device, click on "OTA update selected" button, then click on
-"Choose firmware .zip file":
+Go to the mDash, click on the firmware update icon:
 
-![mDash list, zip file selector](images/qs15.png)
+![mdash firmware update icon](images/qs15.png)
 
-Navigate to the freshly built `fw.zip` file, then notice how the
-progress bar appears showing the OTA progress:
+A file dialog should appear. In the file dialog, navigate to the
+`app1/build` directory, and choose `fw.zip` file:
+
+![mDash list, zip file selector](images/qs15.1.png)
+
+Notice how the progress bar appears showing the OTA progress:
 
 ![OTA progress on mDash](images/qs16.png)
 

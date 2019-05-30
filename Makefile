@@ -22,9 +22,11 @@ clean-generated:
 	@for C in $(CATEGORIES) ; do rm -rf $(API)/$$C; mkdir $(API)/$$C; touch $(API)/$$C/index.md ; done
 
 
+LIBS ?= /tmp/libs
+LIBSINDEX ?= /tmp/libs.txt
 DEV ?= ../cesanta.com
-INC ?= $(DEV)/fw/include
-MJS ?= $(DEV)/mos_libs/mjs
+INC ?= ../mongoose-os/include
+
 $(API)/core: clean-generated
 	@echo '[]' > symbols.json
 	@(cd $(INC) && ls *.h) | while read F; do node tools/genapi.js $@/$$F.md cesanta/mongoose-os $(INC)/$$F >> $@/index.md; done
@@ -33,9 +35,6 @@ $(API)/core: clean-generated
 	@node tools/genapi.js $@/mbuf.h.md cesanta/mongoose-os $(DEV)/common/mbuf.h >> $@/index.md
 	@node tools/genapi.js $@/mg_str.h.md cesanta/mongoose-os $(DEV)/common/mg_str.h >> $@/index.md
 
-
-LIBS ?= /tmp/libs
-LIBSINDEX ?= /tmp/libs.txt
 $(API):
 	@test -f $(LIBSINDEX) || curl -s https://api.github.com/orgs/mongoose-os-libs/repos?per_page=200 | perl -nle 'print $$1 if /"full_name": "(.*)"/' | sort > $(LIBSINDEX)
 	@mkdir -p $(LIBS)

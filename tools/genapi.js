@@ -79,12 +79,12 @@ let jsLink = '&nbsp;';
 
 if (repoName == 'cesanta/mongoose-os') {
   const cBase = hBase.replace(/.h$/, '.c');
-  hLink = `[${hBase}](${repoURL}/tree/master/fw/include/${hBase})`;
-  cLink = `[${cBase}](${repoURL}/tree/master/fw/src/${cBase})`;
+  hLink = `[${hBase}](${repoURL}/tree/master/include/${hBase})`;
+  cLink = `[${cBase}](${repoURL}/tree/master/src/${cBase})`;
   const jsBase = jsmap[hBase];
   if (jsBase) {
     jsLink = `[${jsBase}](${mjsURL}/tree/master/fs/${jsBase})`;
-    jsFile = `${hFile.replace(/[^\/]+$/, '')}../../mos_libs/mjs/fs/${jsBase}`;
+    jsFile = `/tmp/libs/mjs/fs/${jsBase}`;
   }
 } else if (repoName == 'cesanta/frozen') {
   const cBase = hBase.replace(/.h$/, '.c');

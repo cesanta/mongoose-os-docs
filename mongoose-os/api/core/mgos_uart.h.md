@@ -1,7 +1,7 @@
 # UART
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/fw/include/mgos_uart.h) | [mgos_uart.c](https://github.com/cesanta/mongoose-os/tree/master/fw/src/mgos_uart.c)  | [api_uart.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_uart.js)         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_uart.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_uart.h) | [mgos_uart.c](https://github.com/cesanta/mongoose-os/tree/master/src/mgos_uart.c)  | [api_uart.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_uart.js)         |
 
 
 See https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter
