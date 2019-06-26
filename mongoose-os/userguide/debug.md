@@ -77,8 +77,11 @@ Then from your apps' directory, do
 
 Heap log analyser is a tool developed by the Mongoose OS team. It is used
 for detecting memory leaks, and does it in a visual way, allowing to
-quickly pinpoint the place where a leak is happening. In order to use
-the heap log viewer, follow the steps below:
+quickly pinpoint the place where a leak is happening.
+
+ESP8266 is the only device this is supported on.
+
+In order to use the heap log viewer, follow the steps below:
 
 ### Enable heap log tracing
 
