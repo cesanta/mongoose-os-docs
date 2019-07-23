@@ -7,7 +7,7 @@ HTMLDIR ?= ../website-miot/front/docs
 .PHONY: sidebar.html $(API)/core $(API)
 
 
-all: sidebar.html # apps
+all: sync sidebar.html # apps
 
 list:
 	curl -s https://api.github.com/orgs/mongoose-os-libs/repos?per_page=200 |\
