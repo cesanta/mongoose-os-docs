@@ -8,7 +8,7 @@ const f = (dir, depth) => {
   md.split('\n').forEach((line) => {
     const m = line.match(/\[(.+)\]\((.+)\)/);
     if (!m) return;
-    const link = dir.replace(/^./, '/docs');
+    const link = '/docs/' + dir;  // dir.replace(/^./, '/docs');
     if (m[2].match(/.md$/)) {
       a.push(`<li><a href="${link}/${m[2]}">${m[1]}</a></li>`);
     } else {
@@ -22,4 +22,4 @@ const f = (dir, depth) => {
   a.push('</ul>');
   return a;
 };
-console.log(f('.', 0, '').join('\n'));
+console.log(f('mongoose-os', 0, '').join('\n'));

@@ -5568,6 +5568,12 @@
     "lang": "c"
   },
   {
+    "name": "mgos_mqtt_global_disconnect",
+    "file": "[mgos_mqtt.h](https://github.com/mongoose-os-libs/mqtt/tree/master/include/mgos_mqtt.h)",
+    "doc": "\n```c\nvoid mgos_mqtt_global_disconnect(void);\n```\n> \n> Disconnect from and/or stop trying to connect to MQTT server\n> until mgos_mqtt_global_connect() is called.\n>  \n",
+    "lang": "c"
+  },
+  {
     "name": "mgos_mqtt_global_is_connected",
     "file": "[mgos_mqtt.h](https://github.com/mongoose-os-libs/mqtt/tree/master/include/mgos_mqtt.h)",
     "doc": "\n```c\nbool mgos_mqtt_global_is_connected(void);\n```\n>  Returns true if MQTT connection is up, false otherwise. \n",
@@ -5576,13 +5582,13 @@
   {
     "name": "mgos_mqtt_pub",
     "file": "[mgos_mqtt.h](https://github.com/mongoose-os-libs/mqtt/tree/master/include/mgos_mqtt.h)",
-    "doc": "\n```c\nbool mgos_mqtt_pub(const char *topic, const void *message, size_t len, int qos,\n                   bool retain);\n```\n> \n> Publish message to the configured MQTT server, to the given MQTT topic.\n> Return value will be true if there is a connection to the server and the\n> message has been queued for sending. In case of QoS 1 return value does\n> not indicate that PUBACK has been received; there is currently no way to\n> check for that.\n>  \n",
+    "doc": "\n```c\nuint16_t mgos_mqtt_pub(const char *topic, const void *message, size_t len,\n                       int qos, bool retain);\n```\n> \n> Publish message to the configured MQTT server, to the given MQTT topic.\n> Return value will be the packet id (> 0) if there is a connection to the\n> server and the message has been queued for sending. In case no connection is\n> available, 0 is returned. In case of QoS 1 return value does not indicate\n> that PUBACK has been received; there is currently no way to check for that.\n>  \n",
     "lang": "c"
   },
   {
     "name": "mgos_mqtt_pubf",
     "file": "[mgos_mqtt.h](https://github.com/mongoose-os-libs/mqtt/tree/master/include/mgos_mqtt.h)",
-    "doc": "\n```c\nbool mgos_mqtt_pubf(const char *topic, int qos, bool retain,\n                    const char *json_fmt, ...);\nbool mgos_mqtt_pubv(const char *topic, int qos, bool retain,\n                    const char *json_fmt, va_list ap);\n```\n>  Variant of mgos_mqtt_pub for publishing a JSON-formatted string \n",
+    "doc": "\n```c\nuint16_t mgos_mqtt_pubf(const char *topic, int qos, bool retain,\n                        const char *json_fmt, ...);\nuint16_t mgos_mqtt_pubv(const char *topic, int qos, bool retain,\n                        const char *json_fmt, va_list ap);\n```\n>  Variant of mgos_mqtt_pub for publishing a JSON-formatted string \n",
     "lang": "c"
   },
   {

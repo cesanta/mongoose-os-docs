@@ -1,31 +1,24 @@
-all: sidebar.html # apps
-
-APPSMD = quickstart/apps.md
-TMP = /tmp/.tmp.mos.yml
-apps:
-	curl -s https://api.github.com/orgs/mongoose-os-apps/repos?per_page=200 |\
-		perl -nle 'print $$1 if /"full_name": "(.*)"/' > /tmp/repos.txt
-	echo '# Example apps' > $(APPSMD)
-	echo '|  GitHub repo  | Description | Author |' >> $(APPSMD)
-	echo '|  ----  | ----------- | --- |' >> $(APPSMD)
-	sort /tmp/repos.txt | while read REPO ; do \
-		curl -s https://raw.githubusercontent.com/$$REPO/master/mos.yml > $(TMP); \
-		echo $$REPO ; \
-		echo "| [$${REPO#*/}](https://github.com/$$REPO) | $$(cat $(TMP) | perl -nle 'print $$1 if /^description: (.*)/') | $$(cat $(TMP) | perl -nle 'print $$1 if /^author: (.*)/') | " >> $(APPSMD) ;\
-		done
-
 API = mongoose-os/api
+CATEGORIES ?= core cloud net drivers arduino rpc misc
+DEV ?= ../cesanta.com
+INC ?= ../mongoose-os/include
+HTMLDIR ?= ../website-miot/front/docs
+
 .PHONY: sidebar.html $(API)/core $(API)
 
-CATEGORIES ?= core cloud net drivers arduino rpc misc
+
+all: sidebar.html # apps
+
+list:
+	curl -s https://api.github.com/orgs/mongoose-os-libs/repos?per_page=200 |\
+		perl -nle 'print $$1 if /"full_name": "(.*)"/' > $@.txt
+
+sync: list
+	@for REPO in $$(cat list.txt) ; do test -d $$REPO && (cd $$REPO && git pull) || (mkdir -p $$(dirname $$REPO) ; cd $$(dirname $$REPO); git clone git@github.com:$$REPO.git); done
+
 clean-generated:
 	@for C in $(CATEGORIES) ; do rm -rf $(API)/$$C; mkdir $(API)/$$C; touch $(API)/$$C/index.md ; done
 
-
-LIBS ?= /tmp/libs
-LIBSINDEX ?= /tmp/libs.txt
-DEV ?= ../cesanta.com
-INC ?= ../mongoose-os/include
 
 $(API)/core: clean-generated
 	@echo '[]' > symbols.json
@@ -36,17 +29,8 @@ $(API)/core: clean-generated
 	@node tools/genapi.js $@/mg_str.h.md cesanta/mongoose-os $(DEV)/common/mg_str.h >> $@/index.md
 
 $(API):
-	@test -f $(LIBSINDEX) || curl -s https://api.github.com/orgs/mongoose-os-libs/repos?per_page=200 | perl -nle 'print $$1 if /"full_name": "(.*)"/' | sort > $(LIBSINDEX)
-	@mkdir -p $(LIBS)
-	@cat $(LIBSINDEX) | while read REPO ; \
-		do echo $$REPO; \
-		BR=$$(basename $$REPO); \
-		if test -d $(DEV)/mos_libs/$$BR; then \
-			R=$(DEV)/mos_libs/$$BR; \
-		else \
-			R=$(LIBS)/$$BR; \
-			test -d $$R && (cd $$R && git pull --quiet) || git clone --quiet https://github.com/$$REPO $$R; \
-		fi; \
+	@for REPO in mongoose-os-libs/* ; do \
+		echo $$REPO; BR=$$(basename $$REPO); R=$$REPO; \
 		CATEGORY=$$(perl -ne 'print $$1 if /docs:(.+?):(.+?)/' $$R/mos.yml); \
 		test -z "$$CATEGORY" && CATEGORY=misc && echo "  github.com/$$REPO is missing docs:tag!"; \
 		TITLE=$$(perl -ne 'print $$2 if /docs:(.+?):(.+?)\s*$$/' $$R/mos.yml); \
@@ -64,11 +48,7 @@ sidebar.html: $(API)/core $(API)
 	@node tools/gensidebar.js > $@
 
 
-HTMLDIR ?= ../website-miot/front/docs
 html:
 	rm -rf $(HTMLDIR)/*
 	@node tools/genhtml.js "$(HTMLDIR)" $$(find . -name \*.md)
 	cp sidebar.html $(HTMLDIR)/
-
-clean:
-	rm -rf $(LIBS) $(LIBSINDEX)

@@ -84,7 +84,7 @@ if (repoName == 'cesanta/mongoose-os') {
   const jsBase = jsmap[hBase];
   if (jsBase) {
     jsLink = `[${jsBase}](${mjsURL}/tree/master/fs/${jsBase})`;
-    jsFile = `/tmp/libs/mjs/fs/${jsBase}`;
+    jsFile = `mongoose-os-libs/mjs/fs/${jsBase}`;
   }
 } else if (repoName == 'cesanta/frozen') {
   const cBase = hBase.replace(/.h$/, '.c');

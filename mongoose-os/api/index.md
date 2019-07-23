@@ -3,5 +3,5 @@
 - [Networking](net)
 - [Drivers](drivers)
 - [Arduino compat](arduino)
-- [RPC remote management](rpc)
+- [RPC](rpc)
 - [Misc](misc)
