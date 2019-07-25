@@ -152,7 +152,7 @@ Anything over **6MB** (half the space of the remaining **12MB** available after 
 
 And even if you have only a little amount of extra space, it will be better to add this as an additional file system, because if you increase the standard file system, you only may use half of the remaining space, for the reasons explained above.
 
-## 6. Troubleshooting
+## 7. Troubleshooting
 
 If you have already stored a file system in the older LFS version 1, this won't work out of the box like described above. In this case you may set
 
