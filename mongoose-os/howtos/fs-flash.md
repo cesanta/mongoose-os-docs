@@ -101,16 +101,17 @@ build_vars:
 ```
 The first line should already exist as you have created the file system according to the mentioned HowTo. Perhaps the name may differ and you used ```fs_ext``` instead of ```data```- but this won't play a big role. As you see, you have to enter the path of the created image file under the ```src=```entry, and the name of the file system under ```ptn```. As mentioned, you may exchange ```data```found here with ```fs_ext```in your own version. But be aware that the second parameter of the entry ```ESP_IDF_EXTRA_PARTITION``` has allways to be ```data``` no matter what the name is you've chosen for your file system.
 
-After these settings you have to tell the system to mount the file system whwn booting - so you have to enter the following lines (if using another platform than ESP32 as in this example you have to look which parameters are valid in the particular case):
+After these settings you have to tell the system to mount the file system whwn booting - so you have to enter the following lines (if using another platform than ESP32 as in this example you have to look which parameters are valid in the particular case), for this use, you'll have to inlcude the library [fstab](https://github.com/mongoose-os-libs/fstab):
 
 ```yaml
 config_schema:
-  - ["sys.mount.path", "/mnt"]
-  - ["sys.mount.dev_type", "esp32part"]
-  - ["sys.mount.dev_opts", "{\"label\": \"data\"}"]
-  - ["sys.mount.fs_type", "LFS"]
+  - ["fstab.fs0.dev", "data"]
+  - ["fstab.fs0.type", "LFS"]
+  - ["fstab.fs0.opts", '{"bs": 4096}']
+  - ["fstab.fs0.path", "/mnt"]
+  - ["fstab.fs0.create", false]
 ```
-Under ```fs_type``` you have to enter which file system type is used - this depends on the cretaed file systems in the first place. So in this example the file system type ```LFS``` (Little File System) is chosen for a bigger partition because it's way faster than ```SPIFFS``` and handles big file systems quite well. But as it wastes a lot of space, you should use ```SPIFFS```for smaller filesystems.
+Under ```fstab.fs0.type``` you have to enter which file system type is used - this depends on the cretaed file systems in the first place. So in this example the file system type ```LFS``` (Little File System) is chosen for a bigger partition because it's way faster than ```SPIFFS``` and handles big file systems quite well. But as it wastes a lot of space, you should use ```SPIFFS```for smaller filesystems. The entry ```fstab.fs0.create``` has to be set to ```false```, if not, the system will create a new on on start - so your existing data won't be used in the file system, because the new file system will be empty.
 
 If you want to use ```LFS```, you have to include the appropriate library in the configuration file:
 
@@ -150,3 +151,13 @@ The explanation: Simply setting the value of ```FLASH_SIZE``` and ```FS_SIZE``` 
 Anything over **6MB** (half the space of the remaining **12MB** available after subtraction of **4MB** needed by the system from the **16MB** total) led to build process errors. In addition, the standard file system is formatted with [```SPIFFS```](http://bit.ly/2uZ92Tn), which leads to long processing times for large partitions, which sometimes even cause the watchdog to be activated. For this reason, it is recommended to use the file system [```LFS```](https://github.com/ARMmbed/littlefs) ("Little File System"), but this must then be set up as an additional file system.
 
 And even if you have only a little amount of extra space, it will be better to add this as an additional file system, because if you increase the standard file system, you only may use half of the remaining space, for the reasons explained above.
+
+## 6. Troubleshooting
+
+If you have already stored a file system in the older LFS version 1, this won't work out of the box like described above. In this case you may set
+
+```yaml
+cdefs:
+  MGOS_LFS1_COMPAT: 1
+```
+in the ```mos.yml``` file, so the driver will be compatible with the old version. But this is only a solution to perhaps convert old data, in daily use, the newer version is the better choice.
