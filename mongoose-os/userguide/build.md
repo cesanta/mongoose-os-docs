@@ -56,7 +56,7 @@ author: Joe Bloggs <joe@bloggs.net>
 List of Makefile variables that are passed to the architecture-specific
 Makefile when an app is getting built. See next section for a build process
 deep-dive. An example of arch-specific Makefile is:
-[fw/platforms/esp32/Makefile.build](https://github.com/cesanta/mongoose-os/blob/master/fw/platforms/esp32/Makefile.build).
+[platforms/esp32/Makefile.build](https://github.com/cesanta/mongoose-os/blob/master/platforms/esp32/Makefile.build).
 The others are in the respective directories: `fw/platforms/*/Makefile.build`.
 
 The example below changes ESP32 SDK configuration by disabling brownout detection:
@@ -328,7 +328,7 @@ libs:
   with the FFI JS wrappers.
 - Build / test `myapp` until it works.
 - See example libraries at
-  https://mongoose-os.com/docs/reference/api.html#hardware
+  https://mongoose-os.com/docs/mongoose-os/api/arduino/arduino-adafruit-ads1x15.md
 
 ## Contributing an app or library
 
@@ -344,6 +344,6 @@ please follow these steps:
     - If it is a port of an Arduino library, make sure you include `arduino-compat` library in `mos.yml` file, see [arduino-adafruit-ssd1306 lib](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306/blob/master/mos.yml) for an example
     - See https://github.com/mongoose-os-libs/blynk for the reference
     - Consider contributing an example app that uses your library
-- [Start a new discussion on forum](https://forum.mongoose-os.com/post/discussion/mongoose-iot) with a subject `New contribution: ...`,
+- [Start a new discussion on forum](https://community.mongoose-os.com/) with a subject `New contribution: ...`,
 	show a link to your code on GitHub / Bitbucket / whatever, or
 	attach a zip file with the app sources.
