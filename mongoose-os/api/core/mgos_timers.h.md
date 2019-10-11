@@ -145,7 +145,7 @@ Timer.set(1000, Timer.REPEAT, function() {
 ```javascript
 Timer.now()
 ```
-Return current time as double value (in secounds), UNIX epoch (seconds since 1970).
+Return current time as double value, UNIX epoch (seconds since 1970).
 #### Timer.del
 
 ```javascript

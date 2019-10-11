@@ -2,7 +2,7 @@ API = mongoose-os/api
 CATEGORIES ?= core cloud net drivers arduino rpc misc
 DEV ?= ../cesanta.com
 INC ?= ../mongoose-os/include
-HTMLDIR ?= ../website-miot/front/docs
+HTMLDIR ?= ../websites/front/docs
 
 .PHONY: sidebar.html $(API)/core $(API)
 
