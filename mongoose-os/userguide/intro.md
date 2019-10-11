@@ -66,11 +66,10 @@ networking API, etc, will be covered further down.
 The Mongoose OS core lives at
 [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) on GitHub:
 
-- [common/](https://github.com/cesanta/mongoose-os/tree/master/common) - various utility functions
-- [fw/src/](https://github.com/cesanta/mongoose-os/tree/master/fw/src) - cross-platform API
-- [fw/platforms/](https://github.com/cesanta/mongoose-os/tree/master/fw/platforms) - platform-specific code
-- [frozen/](https://github.com/cesanta/mongoose-os/tree/master/frozen) - JSON parser/emitter
-- [mongoose/](https://github.com/cesanta/mongoose-os/tree/master/mongoose) - networking code
+- [src/](https://github.com/cesanta/mongoose-os/tree/master/src) - cross-platform API
+- [src/common/](https://github.com/cesanta/mongoose-os/tree/master/src/common) - various utility functions
+- [src/frozen/](https://github.com/cesanta/mongoose-os/tree/master/src/frozen) - JSON parser/emitter
+- [platforms/](https://github.com/cesanta/mongoose-os/tree/master/platforms) - platform-specific code
 
 The bulk of the functionality, however, is split into libraries. Each library
 is a separate GitHub repository, collected under the
@@ -96,7 +95,7 @@ documentation page. The content is generate from the README.md and header files.
 ## Boot process
 
 The boot process is driven by a cross-platform
-[mgos_init.c](https://github.com/cesanta/mongoose-os/blob/master/fw/src/mgos_init.c).
+[mgos_init.c](https://github.com/cesanta/mongoose-os/blob/master/src/mgos_init.c).
 In short, the subsystems are initialised in the following order:
 
 Native SDK init, GPIO, configuration, WiFi, platform-specific init,
@@ -189,7 +188,7 @@ function defined in `mgos_mongoose.h`.
 
 Note that `mgos_` API, as well as `mg_` API, is cross-platform. A firmware
 written with that API only, is portable between supported architectures,
-as demonstrated by many [example apps](https://mongoose-os/docs/reference/apps.html).
+as demonstrated by many [example apps](https://github.com/mongoose-os-apps).
 However, the native SDK API is not in any way hidden and is fully available.
 For example, one could fire extra FreeRTOS tasks on platforms whose SDK
 use FreeRTOS. The price to pay is loss of portability.

@@ -127,7 +127,7 @@ Note 2: Sample config is very permissive and is only
   suitable for development and testing, NOT for production deployments. Please refer to 
   Microchip's manual and other documentation to come up with more secure
   configuration (we may be able to assist with that too - ask a question
-  on [our forum](http://forum.cesanta.com)).
+  on [our forum](https://community.mongoose-os.com/)).
 
 2. Generate a cert and key as normal. An example below shows a self-signed 
   certificate, but of course it doesn't have to be. The importnat thing is
