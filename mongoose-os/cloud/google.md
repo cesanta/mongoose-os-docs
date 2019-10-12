@@ -65,7 +65,7 @@ mos gcp-iot-setup --gcp-project YOUR_PROJECT_ID --gcp-region europe-west1 --gcp-
 ```
 This command performs certificate management for you, and
 onboards your device on a cloud. If your device has an
-[Atmel ECC508A](http://www.atmel.com/devices/ATECC508A.aspx) secure element
+[Atmel ECC508A](https://www.microchip.com/wwwproducts/en/ATECC508A) secure element
 attached, Mongoose OS automatically uses ECC508A chip for TLS
 and keeps your credentials securely stored.
 

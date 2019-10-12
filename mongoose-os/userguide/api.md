@@ -12,7 +12,6 @@
 | [arduino-compat](https://github.com/mongoose-os-libs/arduino-compat) | Arduino compatibility | mongoose-os | 
 | [arduino-dallas-temperature](https://github.com/mongoose-os-libs/arduino-dallas-temperature) | Arduino DallasTemperature library | mongoose-os | 
 | [arduino-ds3231](https://github.com/mongoose-os-libs/arduino-ds3231) | Arduino DS3231 library | djzxz | 
-| [arduino-md-max72xx](https://github.com/mongoose-os-libs/arduino-md-max72xx) | Port of md-max72xx as a mongoose-os lib | mongoose-os | 
 | [arduino-md-parola](https://github.com/mongoose-os-libs/arduino-md-parola) | Parola text effects library for MAX 7219 | mongoose-os | 
 | [arduino-onewire](https://github.com/mongoose-os-libs/arduino-onewire) | Arduino OneWire library | mongoose-os | 
 | [arduino-pololu-vl53l0x](https://github.com/mongoose-os-libs/arduino-pololu-vl53l0x) | Arduino pololu VL53L0X library | dcato <daisuke.cato@gmail.com> | 
@@ -56,6 +55,7 @@
 | [jstore](https://github.com/mongoose-os-libs/jstore) | JSON Store | mongoose-os | 
 | [location](https://github.com/mongoose-os-libs/location) | Location library | mongoose-os | 
 | [mcp9808-i2c](https://github.com/mongoose-os-libs/mcp9808-i2c) | Mongoose OS library implementing an I2C driver for MCP9808 | Pim van Pelt <pim@google.com> | 
+| [md-max72xx](https://github.com/mongoose-os-libs/md-max72xx) | Port of md-max72xx as a mongoose-os lib | mongoose-os | 
 | [mjs](https://github.com/mongoose-os-libs/mjs) | JavaScript engine | mongoose-os | 
 | [mongoose](https://github.com/mongoose-os-libs/mongoose) | Mongoose Embedded Web Server Library | mongoose-os | 
 | [mq135](https://github.com/mongoose-os-libs/mq135) | MQ135 gas sensor support | mf.aoudia@gmail.com | 

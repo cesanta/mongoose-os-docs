@@ -36,7 +36,7 @@ state. This table provides a summary:
 | ------------------ |--------------------------------------------------------|
 | bare bones ESP8266 |  flash via UART:  `GPIO15 LOW, GPIO0 LOW, GPIO2 HIGH`<br> boot from flash: `GPIO15 LOW, GPIO0 HIGH, GPIO2 HIGH`<br> boot from SD: `GPIO15 HIGH` |
 | bare bones ESP32 |  flash via UART:  `GPIO0 LOW`<br> boot from flash: `GPIO0 HIGH`|
-| CC3200 launchpad   | connect J8 to SOP2 (see [guide](http://energia.nu/cc3200guide/))  |
+| CC3200 launchpad   | connect J8 to SOP2 (see [guide](https://energia.nu/guide/install/cc3200-guide/))  |
 
 ## Versioning
 

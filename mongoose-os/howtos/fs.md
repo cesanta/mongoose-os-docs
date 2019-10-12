@@ -107,8 +107,8 @@ $ mos config-set http.document_root=/mnt
 
 Typical ESP32 modules have 4M flash. Code size is bigger, there is approximately 400K available after all the system stuff. Let's add a 256K file system.
 
-ESP32 uses [partition tables](http://esp-idf.readthedocs.io/en/latest/api-guides/partition-tables.html) for allocating flash space, we will need to add a partition and recompile firmware.
-Check out or download the [default app](https://github.com/mongoose-os-apps/default), edit the [mos.yml](https://github.com/mongoose-os-apps/default/blob/master/mos.yml) file and edit the esp32-specific section:
+ESP32 uses [partition tables](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/partition-tables.html) for allocating flash space, we will need to add a partition and recompile firmware.
+Check out or download the [default app](https://github.com/mongoose-os-apps/demo-js), edit the [mos.yml](https://github.com/mongoose-os-apps/demo-js/blob/master/mos.yml) file and edit the esp32-specific section:
 
 ```yaml
   - when: mos.platform == "esp32"
