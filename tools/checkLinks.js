@@ -26,6 +26,10 @@ function addURL(url, fn) {
 	for (var i = 0; i!=SKIP.length; ++i) {
 		if (url === SKIP[i]) {return}
 	}
+
+	if (url.match(/forum.mongoose-os.com/)) {
+		addError('wrong forum', url, "")
+	}
 	if (store[url]) {
 		store[url][fn] += 1
 	} else {
