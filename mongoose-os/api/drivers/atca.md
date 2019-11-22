@@ -14,6 +14,6 @@ implemented.
 #### mbedtls_atca_is_available
 
 ```c
-bool mbedtls_atca_is_available();
+int mbedtls_atca_is_available(void);
 ```
 >  Invoked from mbedTLS during ECDH phase of the handshake. 

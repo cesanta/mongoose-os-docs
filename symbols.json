@@ -3248,7 +3248,7 @@
   {
     "name": "mbedtls_atca_is_available",
     "file": "[mgos_atca.h](https://github.com/mongoose-os-libs/atca/tree/master/include/mgos_atca.h)",
-    "doc": "\n```c\nbool mbedtls_atca_is_available();\n```\n>  Invoked from mbedTLS during ECDH phase of the handshake. \n",
+    "doc": "\n```c\nint mbedtls_atca_is_available(void);\n```\n>  Invoked from mbedTLS during ECDH phase of the handshake. \n",
     "lang": "c"
   },
   {
@@ -6074,7 +6074,7 @@
   {
     "name": "RPC.call(dst, method, args, callback)",
     "file": "[api_rpc.js](https://github.com/mongoose-os-libs/rpc-common/tree/master/mjs_fs/api_rpc.js)",
-    "doc": "\n```javascript\nRPC.call(dst, method, args, callback)\n```\nCall remote or local RPC service.\nReturn value: true in case of success, false otherwise.\n\nIf `dst` is empty, connected server is implied. `method` is a string\nlike \"MyMethod\", `callback` is a callback function which takes the following\narguments: res (results object), err_code (0 means success, or error code\notherwise), err_msg (error messasge for non-0 error code), userdata. Example:\n\n```javascript\nRPC.call(RPC.LOCAL, 'Config.Save', {reboot: true}, function (resp, ud) {\n  print('Response:', JSON.stringify(resp));\n}, null);\n```\n",
+    "doc": "\n```javascript\nRPC.call(dst, method, args, callback)\n```\nCall remote or local RPC service.\nReturn value: true in case of success, false otherwise.\n\nIf `dst` is empty, connected server is implied. `method` is a string\nlike \"MyMethod\", `callback` is a callback function which takes the following\narguments: res (results object), err_code (0 means success, or error code\notherwise), err_msg (error messasge for non-0 error code), userdata. Example:\n\n```javascript\nRPC.call(RPC.LOCAL, 'Config.Save', {reboot: true}, function (resp, err_code, err_msg, ud) {\n  if (err_code !== 0) {\n    print(\"Error: (\" + JSON.stringify(err_code) + ') ' + err_msg);\n  } else {\n    print('Result: ' + JSON.stringify(result));\n  }\n}, null);\n```\n",
     "lang": "js"
   },
   {

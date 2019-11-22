@@ -134,7 +134,7 @@ network, gets the IP configuration, and synchronises time with SNTP server:
 
 - Go back to the mos tool, type command (change TOKEN to your copied token) and press enter:
   ```
-  mos mdash-setup d1 TOKEN
+  mos config-set dash.enable=true dash.token=TOKEN
   ```
 
 The `d1` in a command above is device ID.

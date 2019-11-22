@@ -282,7 +282,11 @@ arguments: res (results object), err_code (0 means success, or error code
 otherwise), err_msg (error messasge for non-0 error code), userdata. Example:
 
 ```javascript
-RPC.call(RPC.LOCAL, 'Config.Save', {reboot: true}, function (resp, ud) {
-  print('Response:', JSON.stringify(resp));
+RPC.call(RPC.LOCAL, 'Config.Save', {reboot: true}, function (resp, err_code, err_msg, ud) {
+  if (err_code !== 0) {
+    print("Error: (" + JSON.stringify(err_code) + ') ' + err_msg);
+  } else {
+    print('Result: ' + JSON.stringify(result));
+  }
 }, null);
 ```

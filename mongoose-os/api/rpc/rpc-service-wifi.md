@@ -26,5 +26,19 @@ Example usage:
 ]
 </code></pre>
 
+### Authentication ENUM mapping
+
+From mgos_wifi.h
+```
+enum mgos_wifi_auth_mode {
+  MGOS_WIFI_AUTH_MODE_OPEN = 0,
+  MGOS_WIFI_AUTH_MODE_WEP = 1,
+  MGOS_WIFI_AUTH_MODE_WPA_PSK = 2,
+  MGOS_WIFI_AUTH_MODE_WPA2_PSK = 3,
+  MGOS_WIFI_AUTH_MODE_WPA_WPA2_PSK = 4,
+  MGOS_WIFI_AUTH_MODE_WPA2_ENTERPRISE = 5,
+};
+```
+
 
  ----- 
