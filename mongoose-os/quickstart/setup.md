@@ -137,9 +137,7 @@ network, gets the IP configuration, and synchronises time with SNTP server:
   mos config-set dash.enable=true dash.token=TOKEN
   ```
 
-The `d1` in a command above is device ID.
-A device should start to print messages `{"uptime":XX,"on":false}`
-to the serial console, and become online:
+A device should start to print messages to the serial console:
 
 ![](images/qs10.png)
 
