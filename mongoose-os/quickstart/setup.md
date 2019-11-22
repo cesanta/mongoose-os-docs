@@ -137,7 +137,7 @@ network, gets the IP configuration, and synchronises time with SNTP server:
   mos config-set dash.enable=true dash.token=TOKEN
   ```
 
-A device should start to print messages to the serial console:
+A device should become online ("green") on a dashboard:
 
 ![](images/qs10.png)
 
