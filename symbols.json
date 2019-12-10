@@ -374,13 +374,13 @@
   {
     "name": "GPIO.set_pull(pin, pull_type)",
     "file": "[api_gpio.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_gpio.js)",
-    "doc": "\n```javascript\nGPIO.set_pull(pin, pull_type)\n```\nSet GPIO pin pull type.\n`pull_type` can be either `GPIO.PULL_NONE`, `GPIO.PULL_UP`, or `GPIO.PULL_DOWN`.\n",
+    "doc": "\n```javascript\nGPIO.set_pull(pin, pull_type)\n```\nSet GPIO pin pull type.\n`pull_type` can be either `GPIO.PULL_NONE`, `GPIO.PULL_UP`, or\n`GPIO.PULL_DOWN`.\n",
     "lang": "js"
   },
   {
     "name": "GPIO.setup_input(pin, pull_type)",
     "file": "[api_gpio.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_gpio.js)",
-    "doc": "\n```javascript\nGPIO.setup_input(pin, pull_type)\n```\nSetup pin as input and configure pull type.\n`pull_type` can be either `GPIO.PULL_NONE`, `GPIO.PULL_UP`, or `GPIO.PULL_DOWN`.\n",
+    "doc": "\n```javascript\nGPIO.setup_input(pin, pull_type)\n```\nSetup pin as input and configure pull type.\n`pull_type` can be either `GPIO.PULL_NONE`, `GPIO.PULL_UP`, or\n`GPIO.PULL_DOWN`.\n",
     "lang": "js"
   },
   {
@@ -434,7 +434,7 @@
   {
     "name": "GPIO.set_button_handler(pin, pull, intmode, period, handler)",
     "file": "[api_gpio.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_gpio.js)",
-    "doc": "\n```javascript\nGPIO.set_button_handler(pin, pull, intmode, period, handler)\n```\nInstall\nGPIO button handler. `pull` is pull type, `intmode` is interrupt mode,\n`period` is debounce interval in milliseconds, handler is a function that\nreceives pin number.\nReturn value: 1 in case of success, 0 otherwise.\nExample:\n```javascript\nGPIO.set_button_handler(pin, GPIO.PULL_UP, GPIO.INT_EDGE_NEG, 200, function(x) {\n  print('Button press, pin: ', x);\n}, null);\n```\n",
+    "doc": "\n```javascript\nGPIO.set_button_handler(pin, pull, intmode, period, handler)\n```\nInstall\nGPIO button handler. `pull` is pull type, `intmode` is interrupt mode,\n`period` is debounce interval in milliseconds, handler is a function that\nreceives pin number.\nReturn value: 1 in case of success, 0 otherwise.\nExample:\n```javascript\nGPIO.set_button_handler(pin, GPIO.PULL_UP, GPIO.INT_EDGE_NEG, 200,\nfunction(x) {\n  print('Button press, pin: ', x);\n}, null);\n```\n",
     "lang": "js"
   },
   {
@@ -1368,6 +1368,78 @@
     "lang": "js"
   },
   {
+    "name": "mgos_ads1x1x_create",
+    "file": "[mgos_ads1x1x.h](https://github.com/mongoose-os-libs/ads1x1x-i2c/tree/master/include/mgos_ads1x1x.h)",
+    "doc": "\n```c\nstruct mgos_ads1x1x *mgos_ads1x1x_create(struct mgos_i2c *i2c, uint8_t i2caddr, enum mgos_ads1x1x_type type);\n```\n> \n> Initialize a ADS1X1X on the I2C bus `i2c` at address specified in `i2caddr`\n> parameter (default ADS1X1X is on address 0x48). The device will be polled for\n> validity, upon success a new `struct mgos_ads1x1x` is allocated and\n> returned. If the device could not be found, NULL is returned.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ads1x1x_destroy",
+    "file": "[mgos_ads1x1x.h](https://github.com/mongoose-os-libs/ads1x1x-i2c/tree/master/include/mgos_ads1x1x.h)",
+    "doc": "\n```c\nbool mgos_ads1x1x_destroy(struct mgos_ads1x1x **dev);\n```\n> \n> Destroy the data structure associated with a ADS1X1X device. The reference\n> to the pointer of the `struct mgos_ads1x1x` has to be provided, and upon\n> successful destruction, its associated memory will be freed and the pointer\n> set to NULL and true will be returned.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ads1x1x_set_fsr",
+    "file": "[mgos_ads1x1x.h](https://github.com/mongoose-os-libs/ads1x1x-i2c/tree/master/include/mgos_ads1x1x.h)",
+    "doc": "\n```c\nbool mgos_ads1x1x_set_fsr(struct mgos_ads1x1x *dev, enum mgos_ads1x1x_fsr fsr);\nbool mgos_ads1x1x_get_fsr(struct mgos_ads1x1x *dev, enum mgos_ads1x1x_fsr *fsr);\n```\n>  Get or Set the Full Scale Range (FSR). All chips in the ADS1X1X family support\n> the same settings. By default, 2.048V is used.\n> \n> Note: ADS1x13 does not support this, and always has an FSR of 2.048V.\n> \n> Returns true on success, false otherwise.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ads1x1x_set_dr",
+    "file": "[mgos_ads1x1x.h](https://github.com/mongoose-os-libs/ads1x1x-i2c/tree/master/include/mgos_ads1x1x.h)",
+    "doc": "\n```c\nbool mgos_ads1x1x_set_dr(struct mgos_ads1x1x *dev, enum mgos_ads1x1x_dr dr);\nbool mgos_ads1x1x_get_dr(struct mgos_ads1x1x *dev, enum mgos_ads1x1x_dr *dr);\n```\n>  Get or Set the Data Rate (in Samples per Second). If the supplied `dr`\n> argument cannot be set on the chip, false is returned. Otherwise, the\n> supplied `dr` is set. By default, ADS101X sets 1600SPS, ADS111X sets 128SPS.\n> \n> Returns true on success, false otherwise.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ads1x1x_read",
+    "file": "[mgos_ads1x1x.h](https://github.com/mongoose-os-libs/ads1x1x-i2c/tree/master/include/mgos_ads1x1x.h)",
+    "doc": "\n```c\nbool mgos_ads1x1x_read(struct mgos_ads1x1x *dev, uint8_t chan, int16_t *result);\n```\n>  Read a channel from the ADC and return the read value in `result`. If the\n> channel was invalid, or an error occurred, false is returned and the result\n> cannot be relied upon.\n> \n> Returns true on success, false otherwise.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ads1x1x_read_diff",
+    "file": "[mgos_ads1x1x.h](https://github.com/mongoose-os-libs/ads1x1x-i2c/tree/master/include/mgos_ads1x1x.h)",
+    "doc": "\n```c\nbool mgos_ads1x1x_read_diff(struct mgos_ads1x1x *dev, uint8_t chanP, uint8_t chanN, int16_t *result);\n```\n>  Read a 2-channel differential from the ADC and return the read value in `result`.\n> If the channel pair invalid, or an error occurred, false is returned and the\n> result cannot be relied upon. Upon success, true is returned.\n> \n> Note: This is only available on ADS1X15 chips.\n>       Valid chanP/chanN pairs are : 0/1, 0/3, 1/3, 2/3.\n> \n> Returns true on success, false otherwise.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_apds9960_create",
+    "file": "[mgos_apds9960.h](https://github.com/mongoose-os-libs/apds9960-i2c/tree/master/include/mgos_apds9960.h)",
+    "doc": "\n```c\nstruct mgos_apds9960 *mgos_apds9960_create(struct mgos_i2c *i2c, uint8_t i2caddr);\n```\n> \n> Initialize a APDS9960 on the I2C bus `i2c` at address specified in `i2caddr`\n> parameter (default APDS9960 is on address 0x39). The sensor will be polled for\n> validity, upon success a new `struct mgos_apds9960` is allocated and\n> returned. If the device could not be found, NULL is returned.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_apds9960_destroy",
+    "file": "[mgos_apds9960.h](https://github.com/mongoose-os-libs/apds9960-i2c/tree/master/include/mgos_apds9960.h)",
+    "doc": "\n```c\nvoid mgos_apds9960_destroy(struct mgos_apds9960 **sensor);\n```\n> \n> Destroy the data structure associated with a APDS9960 device. The reference\n> to the pointer of the `struct mgos_apds9960` has to be provided, and upon\n> successful destruction, its associated memory will be freed and the pointer\n> set to NULL.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_apds9960_set_callback_light",
+    "file": "[mgos_apds9960.h](https://github.com/mongoose-os-libs/apds9960-i2c/tree/master/include/mgos_apds9960.h)",
+    "doc": "\n```c\nbool mgos_apds9960_set_callback_light(struct mgos_apds9960 *sensor, uint16_t low_threshold, uint16_t high_threshold, mgos_apds9960_light_event_t handler);\nbool mgos_apds9960_set_callback_proximity(struct mgos_apds9960 *sensor, uint8_t low_threshold, uint8_t high_threshold, mgos_apds9960_proximity_event_t handler);\nbool mgos_apds9960_set_callback_gesture(struct mgos_apds9960 *sensor, mgos_apds9960_gesture_event_t handler);\n```\n> \n> Install an interrupt (see `mos.yml` key `apds9960.irq_pin`), and when the\n> interrupt is asserted, call a callback for `light`, `proximity` and/or\n> `gesture` events.\n> \n> For light: `low_threshold` and `high_threshold` arguments determine between\n> which values on the `clear` (ambient) light channel an interrupt is generated.\n> \n> For proximity: `low_threshold` and `high_threshold` arguments determine between\n> which values on the `proximity` channel an interrupt is generated. Note: high\n> values are closer to the sensor, low values are further away.\n> \n> Returns true on success, or false otherwise.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_apds9960_read_light",
+    "file": "[mgos_apds9960.h](https://github.com/mongoose-os-libs/apds9960-i2c/tree/master/include/mgos_apds9960.h)",
+    "doc": "\n```c\nbool mgos_apds9960_read_light(struct mgos_apds9960 *sensor, uint16_t *clear, uint16_t *red, uint16_t *green, uint16_t *blue);\n```\n> \n> Read the clear (ambient), red, green, and blue light values from the sensor.\n> Lower values mean less light was detected. The arguments clear, red, green\n> and blue may be NULL, in which case they are not polled from the sensor.\n> Returns true on success, or false otherwise. If false is returned, the\n> values of clear, red, green and blue cannot be used.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_apds9960_read_proximity",
+    "file": "[mgos_apds9960.h](https://github.com/mongoose-os-libs/apds9960-i2c/tree/master/include/mgos_apds9960.h)",
+    "doc": "\n```c\nbool mgos_apds9960_read_proximity(struct mgos_apds9960 *sensor, uint8_t *proximity);\n```\n> \n> Read the proximity value from the sensor. Lower values mean further away,\n> higher values mean closer to the sensor.\n> Returns true on success, or false otherwise. If false is returned, the\n> value of proximity cannot be used.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_apds9960_is_gesture_available",
+    "file": "[mgos_apds9960.h](https://github.com/mongoose-os-libs/apds9960-i2c/tree/master/include/mgos_apds9960.h)",
+    "doc": "\n```c\nbool mgos_apds9960_is_gesture_available(struct mgos_apds9960 *sensor);\n```\n> \n> Return true if the gesture sensor has available data in its FIFO buffer.\n>  \n",
+    "lang": "c"
+  },
+  {
     "name": "Adafruit_ADS1015.create(i2cAddress)",
     "file": "[api_ads1015.js](https://github.com/mongoose-os-libs/arduino-adafruit-ads1x15/tree/master/mjs_fs/api_ads1015.js)",
     "doc": "\n```javascript\nAdafruit_ADS1015.create(i2cAddress)\n```\nCreate an ADS1015 instance: an object with the methods described below.\n`i2cAddress` is an I2C address of the ADS1015.\n",
@@ -1492,6 +1564,36 @@
     "file": "[api_arduino_bme280.js](https://github.com/mongoose-os-libs/arduino-adafruit-bme280/tree/master/mjs_fs/api_arduino_bme280.js)",
     "doc": "\n```javascript\nmyBME.seaLevelForAltitude(alt, pres)\n```\nReturns the pressure at sea level in hPa\ncalculated from the specified altitude `alt` (in meters),\nand atmospheric pressure `pres` (in hPa)\nor `Adafruit_BME280.RES_FAIL` in case of a failure.\nhttp://www.adafruit.com/datasheets/BST-BMP180-DS000-09.pdf, P.17\n",
     "lang": "js"
+  },
+  {
+    "name": "writeRAMCommand",
+    "file": "[Adafruit_EPD.h](https://github.com/mongoose-os-libs/arduino-adafruit-epd/tree/master/include/Adafruit_EPD.h)",
+    "doc": "\n```c\nvirtual uint8_t writeRAMCommand(uint8_t index) = 0;\n```\n> ************************************************************************\n",
+    "lang": "c"
+  },
+  {
+    "name": "setRAMAddress",
+    "file": "[Adafruit_EPD.h](https://github.com/mongoose-os-libs/arduino-adafruit-epd/tree/master/include/Adafruit_EPD.h)",
+    "doc": "\n```c\nvirtual void setRAMAddress(uint16_t x, uint16_t y) = 0;\n```\n> ************************************************************************\n",
+    "lang": "c"
+  },
+  {
+    "name": "powerUp",
+    "file": "[Adafruit_EPD.h](https://github.com/mongoose-os-libs/arduino-adafruit-epd/tree/master/include/Adafruit_EPD.h)",
+    "doc": "\n```c\nvirtual void powerUp(void) = 0;\n```\n> ************************************************************************\n",
+    "lang": "c"
+  },
+  {
+    "name": "update",
+    "file": "[Adafruit_EPD.h](https://github.com/mongoose-os-libs/arduino-adafruit-epd/tree/master/include/Adafruit_EPD.h)",
+    "doc": "\n```c\nvirtual void update(void) = 0;\n```\n> ************************************************************************\n",
+    "lang": "c"
+  },
+  {
+    "name": "powerDown",
+    "file": "[Adafruit_EPD.h](https://github.com/mongoose-os-libs/arduino-adafruit-epd/tree/master/include/Adafruit_EPD.h)",
+    "doc": "\n```c\nvirtual void powerDown(void) = 0;\n  void hardwareReset(void);\n```\n> ************************************************************************\n",
+    "lang": "c"
   },
   {
     "name": "drawPixel",
@@ -3606,6 +3708,12 @@
     "lang": "js"
   },
   {
+    "name": "bitmap.getPixel(x, y)",
+    "file": "[api_bmp.js](https://github.com/mongoose-os-libs/bmp-loader/tree/master/mjs_fs/api_bmp.js)",
+    "doc": "\n```javascript\nbitmap.getPixel(x, y)\n```\nReturns pixel's RGB value at pos x,y\n",
+    "lang": "js"
+  },
+  {
     "name": "(sizeof",
     "file": "[mgos_bt.h](https://github.com/mongoose-os-libs/bt-common/tree/master/include/mgos_bt.h)",
     "doc": "\n```c\n#define MGOS_BT_ADDR_STR_LEN (sizeof(struct mgos_bt_addr) * 3 + 2 /* type */)\n#define MGOS_BT_UUID_STR_LEN (sizeof(struct mgos_bt_uuid) * 3)\n#define MGOS_BT_DEV_NAME_LEN 32\n```\n>  Each byte is transformed into 3 bytes: \"XX:\", and last byte into \"XX\\0\" \n",
@@ -4698,6 +4806,12 @@
     "lang": "js"
   },
   {
+    "name": "(",
+    "file": "[FreeRTOSConfigCommon.h](https://github.com/mongoose-os-libs/freertos/tree/master/include/FreeRTOSConfigCommon.h)",
+    "doc": "\n```c\n#define configTICK_RATE_HZ ((TickType_t) 100)\n#define configUSE_NEWLIB_REENTRANT 0\n#define configMINIMAL_STACK_SIZE 256 /* x 4 = 1024 */\n#define configMAX_PRIORITIES 25\n#define configUSE_PREEMPTION 1\n#define configUSE_IDLE_HOOK 0\n#define configUSE_TICK_HOOK 0\n#define configUSE_16_BIT_TICKS 0\n```\n> no_extern_c_check\n",
+    "lang": "c"
+  },
+  {
     "name": "mgos_gcp_is_connected",
     "file": "[mgos_gcp.h](https://github.com/mongoose-os-libs/gcp/tree/master/include/mgos_gcp.h)",
     "doc": "\n```c\nbool mgos_gcp_is_connected(void);\n```\n>  Returns true if GCP connection is up, false otherwise. \n",
@@ -4992,6 +5106,114 @@
     "lang": "c"
   },
   {
+    "name": "mgos_ina219_create",
+    "file": "[mgos_ina219.h](https://github.com/mongoose-os-libs/ina219-i2c/tree/master/include/mgos_ina219.h)",
+    "doc": "\n```c\nstruct mgos_ina219 *mgos_ina219_create(struct mgos_i2c *i2c, uint8_t i2caddr);\n```\n> \n> Initialize a INA219 on the I2C bus `i2c` at address specified in `i2caddr`\n> parameter (default INA219 is on address 0x40). The sensor will be polled for\n> validity, upon success a new `struct mgos_ina219` is allocated and\n> returned. If the device could not be found, NULL is returned.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina219_destroy",
+    "file": "[mgos_ina219.h](https://github.com/mongoose-os-libs/ina219-i2c/tree/master/include/mgos_ina219.h)",
+    "doc": "\n```c\nvoid mgos_ina219_destroy(struct mgos_ina219 **sensor);\n```\n> \n> Destroy the data structure associated with a INA219 device. The reference\n> to the pointer of the `struct mgos_ina219` has to be provided, and upon\n> successful destruction, its associated memory will be freed and the pointer\n> set to NULL.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina219_get_bus_voltage",
+    "file": "[mgos_ina219.h](https://github.com/mongoose-os-libs/ina219-i2c/tree/master/include/mgos_ina219.h)",
+    "doc": "\n```c\nbool mgos_ina219_get_bus_voltage(struct mgos_ina219 *sensor, float *volts);\n```\n>  Measure the bus voltage on the device. Return the measured voltage in `*volts`,\n> in units of Volts.\n> Returns true on success and false on failure, in which case `*volts` is unspecified.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina219_get_shunt_voltage",
+    "file": "[mgos_ina219.h](https://github.com/mongoose-os-libs/ina219-i2c/tree/master/include/mgos_ina219.h)",
+    "doc": "\n```c\nbool mgos_ina219_get_shunt_voltage(struct mgos_ina219 *sensor, float *volts);\n```\n>  Measure the shunt voltage on the device. Return the measured voltage in `*volts`,\n> in units of Volts.\n> Returns true on success and false on failure, in which case `*volts` is unspecified.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina219_set_shunt_resistance",
+    "file": "[mgos_ina219.h](https://github.com/mongoose-os-libs/ina219-i2c/tree/master/include/mgos_ina219.h)",
+    "doc": "\n```c\nbool mgos_ina219_set_shunt_resistance(struct mgos_ina219 *sensor, float ohms);\n```\n>  Set the shunt resistor value in units of Ohms.\n> Typical values is ohms=0.100 (which yields a 3.2A range on the current sensor).\n> Returns true on success and false on failure.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina219_get_shunt_resistance",
+    "file": "[mgos_ina219.h](https://github.com/mongoose-os-libs/ina219-i2c/tree/master/include/mgos_ina219.h)",
+    "doc": "\n```c\nbool mgos_ina219_get_shunt_resistance(struct mgos_ina219 *sensor, float *ohms);\n```\n>  Get the shunt resistor value in units of Ohms.\n> Returns true on success and false on failure, in which case `*ohms` is unspecified.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina226_create",
+    "file": "[mgos_ina226.h](https://github.com/mongoose-os-libs/ina226-i2c/tree/master/include/mgos_ina226.h)",
+    "doc": "\n```c\nstruct mgos_ina226 *mgos_ina226_create(struct mgos_i2c *i2c, uint8_t i2caddr);\n```\n> \n> Initialize a INA226 on the I2C bus `i2c` at address specified in `i2caddr`\n> parameter (default INA226 is on address 0x40). The sensor will be polled for\n> validity, upon success a new `struct mgos_ina226` is allocated and\n> returned. If the device could not be found, NULL is returned.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina226_destroy",
+    "file": "[mgos_ina226.h](https://github.com/mongoose-os-libs/ina226-i2c/tree/master/include/mgos_ina226.h)",
+    "doc": "\n```c\nvoid mgos_ina226_destroy(struct mgos_ina226 **sensor);\n```\n> \n> Destroy the data structure associated with a INA226 device. The reference\n> to the pointer of the `struct mgos_ina226` has to be provided, and upon\n> successful destruction, its associated memory will be freed and the pointer\n> set to NULL.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina226_get_bus_voltage",
+    "file": "[mgos_ina226.h](https://github.com/mongoose-os-libs/ina226-i2c/tree/master/include/mgos_ina226.h)",
+    "doc": "\n```c\nbool mgos_ina226_get_bus_voltage(struct mgos_ina226 *sensor, float *volts);\n```\n>  Measure the bus voltage on the device. Return the measured voltage in `*volts`,\n> in units of Volts.\n> Returns true on success and false on failure, in which case `*volts` is unspecified.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina226_get_shunt_voltage",
+    "file": "[mgos_ina226.h](https://github.com/mongoose-os-libs/ina226-i2c/tree/master/include/mgos_ina226.h)",
+    "doc": "\n```c\nbool mgos_ina226_get_shunt_voltage(struct mgos_ina226 *sensor, float *volts);\n```\n>  Measure the shunt voltage on the device. Return the measured voltage in `*volts`,\n> in units of Volts.\n> Returns true on success and false on failure, in which case `*volts` is unspecified.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina226_set_shunt_resistance",
+    "file": "[mgos_ina226.h](https://github.com/mongoose-os-libs/ina226-i2c/tree/master/include/mgos_ina226.h)",
+    "doc": "\n```c\nbool mgos_ina226_set_shunt_resistance(struct mgos_ina226 *sensor, float ohms);\n```\n>  Set the shunt resistor value in units of Ohms.\n> Typical values is ohms=0.100 (which yields a 3.2A range on the current sensor).\n> Returns true on success and false on failure.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina226_get_shunt_resistance",
+    "file": "[mgos_ina226.h](https://github.com/mongoose-os-libs/ina226-i2c/tree/master/include/mgos_ina226.h)",
+    "doc": "\n```c\nbool mgos_ina226_get_shunt_resistance(struct mgos_ina226 *sensor, float *ohms);\n```\n>  Get the shunt resistor value in units of Ohms.\n> Returns true on success and false on failure, in which case `*ohms` is unspecified.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina3221_create",
+    "file": "[mgos_ina3221.h](https://github.com/mongoose-os-libs/ina3221-i2c/tree/master/include/mgos_ina3221.h)",
+    "doc": "\n```c\nstruct mgos_ina3221 *mgos_ina3221_create(struct mgos_i2c *i2c, uint8_t i2caddr);\n```\n> \n> Initialize a INA3221 on the I2C bus `i2c` at address specified in `i2caddr`\n> parameter (default INA3221 is on address 0x40). The sensor will be polled for\n> validity, upon success a new `struct mgos_ina3221` is allocated and\n> returned. If the device could not be found, NULL is returned.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina3221_destroy",
+    "file": "[mgos_ina3221.h](https://github.com/mongoose-os-libs/ina3221-i2c/tree/master/include/mgos_ina3221.h)",
+    "doc": "\n```c\nvoid mgos_ina3221_destroy(struct mgos_ina3221 **sensor);\n```\n> \n> Destroy the data structure associated with a INA3221 device. The reference\n> to the pointer of the `struct mgos_ina3221` has to be provided, and upon\n> successful destruction, its associated memory will be freed and the pointer\n> set to NULL.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina3221_get_bus_voltage",
+    "file": "[mgos_ina3221.h](https://github.com/mongoose-os-libs/ina3221-i2c/tree/master/include/mgos_ina3221.h)",
+    "doc": "\n```c\nbool mgos_ina3221_get_bus_voltage(struct mgos_ina3221 *sensor, uint8_t chan, float *volts);\n```\n>  Measure the bus voltage on channel `chan` (which can be 1, 2, or 3). Return the\n> measured voltage in `*volts`, in units of Volts.\n> Returns true on success and false on failure, in which case `*volts` is unspecified.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina3221_get_shunt_voltage",
+    "file": "[mgos_ina3221.h](https://github.com/mongoose-os-libs/ina3221-i2c/tree/master/include/mgos_ina3221.h)",
+    "doc": "\n```c\nbool mgos_ina3221_get_shunt_voltage(struct mgos_ina3221 *sensor, uint8_t chan, float *volts);\n```\n>  Measure the shunt voltage on channel `chan` (which can be 1, 2, or 3). Return the\n> measured voltage in `*volts`, in units of Volts.\n> Returns true on success and false on failure, in which case `*volts` is unspecified.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina3221_set_shunt_resistance",
+    "file": "[mgos_ina3221.h](https://github.com/mongoose-os-libs/ina3221-i2c/tree/master/include/mgos_ina3221.h)",
+    "doc": "\n```c\nbool mgos_ina3221_set_shunt_resistance(struct mgos_ina3221 *sensor, uint8_t chan, float ohms);\n```\n>  Set the shunt resistor value in units of Ohms on channel `chan` (which can be 1, 2 or 3).\n> Typical values is ohms=0.100 (which yields a 1.6A range on the current sensor).\n> Returns true on success and false on failure.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_ina3221_get_shunt_resistance",
+    "file": "[mgos_ina3221.h](https://github.com/mongoose-os-libs/ina3221-i2c/tree/master/include/mgos_ina3221.h)",
+    "doc": "\n```c\nbool mgos_ina3221_get_shunt_resistance(struct mgos_ina3221 *sensor, uint8_t chan, float *ohms);\n```\n>  Get the shunt resistor value in units of Ohms on channel `chan` (which can be 1, 2 or 3).\n> Returns true on success and false on failure, in which case `*ohms` is unspecified.\n>  \n",
+    "lang": "c"
+  },
+  {
     "name": "mgos_irrecv_nec_create",
     "file": "[mgos_ir.h](https://github.com/mongoose-os-libs/ir/tree/master/include/mgos_ir.h)",
     "doc": "\n```c\nstruct mgos_irrecv_nec_s *mgos_irrecv_nec_create(\n  int pin,\n  void (*cb)(int, void *),\n  void *userdata\n);\n```\n> \n> Create an object instance of IR receiver for NEC protocol.\n> Return value: an object with the methods described below.\n>  \n",
@@ -5115,6 +5337,78 @@
     "name": "mgos_location_get",
     "file": "[mgos_location.h](https://github.com/mongoose-os-libs/location/tree/master/include/mgos_location.h)",
     "doc": "\n```c\nbool mgos_location_get(struct mgos_location_lat_lon *loc);\n```\n> \n> Fills provided `loc` with the device location data (currently device just\n> uses values from the config), see `struct mgos_location_lat_lon`. Returns\n> `true` on success, `false` otherwise.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_max7219_create",
+    "file": "[mgos_max7219.h](https://github.com/mongoose-os-libs/max7219-spi/tree/master/include/mgos_max7219.h)",
+    "doc": "\n```c\nstruct mgos_max7219 *mgos_max7219_create(struct mgos_spi *spi, uint8_t cs_index);\n```\n> \n> Initialize a MAX7219 on the SPI bus `spi` using the chipselect specified in\n> `cs_index` parameter (see `spi.cs*_gpio`). Upon success a new\n> `struct mgos_max7219` is  allocated and returned.\n> If the device could not be found or initialized, NULL is returned.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_max7219_destroy",
+    "file": "[mgos_max7219.h](https://github.com/mongoose-os-libs/max7219-spi/tree/master/include/mgos_max7219.h)",
+    "doc": "\n```c\nbool mgos_max7219_destroy(struct mgos_max7219 **dev);\n```\n> \n> Destroy the data structure associated with a MAX7219 device. The reference\n> to the pointer of the `struct mgos_max7219` has to be provided, and upon\n> successful destruction, its associated memory will be freed and the pointer\n> set to NULL and true will be returned.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_max7219_set_num_devices",
+    "file": "[mgos_max7219.h](https://github.com/mongoose-os-libs/max7219-spi/tree/master/include/mgos_max7219.h)",
+    "doc": "\n```c\nbool mgos_max7219_set_num_devices(struct mgos_max7219 *dev, uint8_t num_devices);\n```\n> \n> Set the number of devices in the daisychain (1 or more).\n> Returns true on success or false on failure.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_max7219_set_intensity",
+    "file": "[mgos_max7219.h](https://github.com/mongoose-os-libs/max7219-spi/tree/master/include/mgos_max7219.h)",
+    "doc": "\n```c\nbool mgos_max7219_set_intensity(struct mgos_max7219 *dev, uint8_t intensity);\n```\n> \n> Set display intensity (brightness) as a value from 0..15.\n> Returns true on success or false on failure.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_max7219_set_mode",
+    "file": "[mgos_max7219.h](https://github.com/mongoose-os-libs/max7219-spi/tree/master/include/mgos_max7219.h)",
+    "doc": "\n```c\nbool mgos_max7219_set_mode(struct mgos_max7219 *dev, bool codeB_enabled);\n```\n>  Set display mode, either 'raw' or 'digit':\n> - codeB_enabled: set 'false' for 'raw', or 'true' to enable 7-segment digits.\n> Returns true on success or false on failure.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_max7219_write_raw",
+    "file": "[mgos_max7219.h](https://github.com/mongoose-os-libs/max7219-spi/tree/master/include/mgos_max7219.h)",
+    "doc": "\n```c\nbool mgos_max7219_write_raw(struct mgos_max7219 *dev, uint8_t deviceno, uint8_t digit, uint8_t value);\n```\n> \n> Set display digit at position `digit` with a `value`\n> - deviceno: device to adddress, between 0 and num_devices-1;\n> - digit: must be between [0, 7]\n> - value: can be between [0, 255]\n> Returns true on success or false on failure.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_max7219_write_digit",
+    "file": "[mgos_max7219.h](https://github.com/mongoose-os-libs/max7219-spi/tree/master/include/mgos_max7219.h)",
+    "doc": "\n```c\nbool mgos_max7219_write_digit(struct mgos_max7219 *dev, uint8_t deviceno, uint8_t digit, uint8_t value);\n```\n> \n> Set display digit at position `digit` with an 7-segment character `value`\n> - deviceno: device to adddress, between 0 and num_devices-1;\n> - digit: must be between [0, 7]\n> - value: must be between [0, 15]:\n>          0-9 for numbers, , 10='-', 11='E', 12='H', 13='L', 14='P', 15=' '\n>          called Code B decoding.\n> Returns true on success or false on failure.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_max7219_write_line",
+    "file": "[mgos_max7219.h](https://github.com/mongoose-os-libs/max7219-spi/tree/master/include/mgos_max7219.h)",
+    "doc": "\n```c\nbool mgos_max7219_write_line(struct mgos_max7219 *dev, uint8_t digit, uint8_t *value);\n```\n> \n> Write a line of values at position `digit` across all connected devices.\n> - digit: must be between [0, 7]\n> - value: An array of exactly num_devices bytes.\n> \n> Note: If the device is in mode codeB, the values should be between [0, 15].\n> \n> Returns true on success or false on failure.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mcp23008_create",
+    "file": "[mgos_mcp23xxx.h](https://github.com/mongoose-os-libs/mcp23xxx/tree/master/include/mgos_mcp23xxx.h)",
+    "doc": "\n```c\nstruct mgos_mcp23xxx *mgos_mcp23008_create(struct mgos_i2c *i2c, uint8_t i2caddr, int int_gpio);\nstruct mgos_mcp23xxx *mgos_mcp23017_create(struct mgos_i2c *i2c, uint8_t i2caddr, int int_gpio);\n```\n> \n> Initialize a MCP230XX on the I2C bus `i2c` at address specified in `i2caddr`\n> parameter (default MCP230XX is on address 0x20). The device will be polled for\n> validity, upon success a new `struct mgos_mcp23xxx` is allocated and\n> returned. If the device could not be found, NULL is returned.\n> To install an interrupt handler for the chip, set int_gpio to any valid GPIO\n> pin. Set it to -1 to disable interrupts.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mcp23xxx_destroy",
+    "file": "[mgos_mcp23xxx.h](https://github.com/mongoose-os-libs/mcp23xxx/tree/master/include/mgos_mcp23xxx.h)",
+    "doc": "\n```c\nbool mgos_mcp23xxx_destroy(struct mgos_mcp23xxx **dev);\n```\n> \n> Destroy the data structure associated with a MCP230XX device. The reference\n> to the pointer of the `struct mgos_mcp23xxx` has to be provided, and upon\n> successful destruction, its associated memory will be freed and the pointer\n> set to NULL and true will be returned.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mcp23xxx_print_state",
+    "file": "[mgos_mcp23xxx.h](https://github.com/mongoose-os-libs/mcp23xxx/tree/master/include/mgos_mcp23xxx.h)",
+    "doc": "\n```c\nbool mgos_mcp23xxx_print_state(struct mgos_mcp23xxx *dev);\n```\n>  Emit a logline with the pin and io register stat\n> Return true if the driver could read from the chip, false otherwise.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mcp23xxx_gpio_set_mode",
+    "file": "[mgos_mcp23xxx.h](https://github.com/mongoose-os-libs/mcp23xxx/tree/master/include/mgos_mcp23xxx.h)",
+    "doc": "\n```c\nbool mgos_mcp23xxx_gpio_set_mode(struct mgos_mcp23xxx *dev, int pin, enum mgos_gpio_mode mode);\nbool mgos_mcp23xxx_gpio_set_pull(struct mgos_mcp23xxx *dev, int pin, enum mgos_gpio_pull_type pull);\nbool mgos_mcp23xxx_gpio_setup_output(struct mgos_mcp23xxx *dev, int pin, bool level);\nbool mgos_mcp23xxx_gpio_setup_input(struct mgos_mcp23xxx *dev, int pin, enum mgos_gpio_pull_type pull_type);\nbool mgos_mcp23xxx_gpio_read(struct mgos_mcp23xxx *dev, int pin);\nvoid mgos_mcp23xxx_gpio_write(struct mgos_mcp23xxx *dev, int pin, bool level);\nbool mgos_mcp23xxx_gpio_toggle(struct mgos_mcp23xxx *dev, int pin);\n```\n>  These follow `mgos_gpio.h` definitions. \n",
     "lang": "c"
   },
   {
@@ -5433,6 +5727,528 @@
     "name": "copyColumn",
     "file": "[MD_MAX72xx.h](https://github.com/mongoose-os-libs/md-max72xx/tree/master/include/MD_MAX72xx.h)",
     "doc": "\n```c\nbool copyColumn(uint8_t buf, uint8_t cSrc, uint8_t cDest);// copy a row from Src to Dest\n};\n```\n> copy a row from Src to Dest\n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mdash_set_label",
+    "file": "[mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h)",
+    "doc": "\n```c\nvoid mgos_mdash_set_label(const char *label);\n```\n>  set a device label \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mdash_widget_toggle_create",
+    "file": "[mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h)",
+    "doc": "\n```c\nstruct mgos_mdash_widget *mgos_mdash_widget_toggle_create(const char *title,\n                                                          const char *key);\n```\n>  {\"type\": \"toggle\", \"title\": \"Switch LED on/off\", \"key\": \"led\"} \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mdash_widget_value_create",
+    "file": "[mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h)",
+    "doc": "\n```c\nstruct mgos_mdash_widget *mgos_mdash_widget_value_create(const char *title,\n                                                         const char *key);\n```\n>  {\"type\": \"value\", \"title\": \"free RAM:\", \"key\": \"ram\"} \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mdash_widget_button_create",
+    "file": "[mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h)",
+    "doc": "\n```c\nstruct mgos_mdash_widget *mgos_mdash_widget_button_create(const char *title,\n                                                          const char *method,\n                                                          const char *params,\n                                                          const char *icon);\n```\n>  {\"type\": \"button\", \"title\": \"reboot\", \"icon\": \"fa-power-off\", \"method\":\n>    \"Sys.Reboot\", \"params\": {}} \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mdash_widget_input_create",
+    "file": "[mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h)",
+    "doc": "\n```c\nstruct mgos_mdash_widget *mgos_mdash_widget_input_create(const char *title,\n                                                         const char *key);\n```\n>  {\"type\": \"input\", \"icon\": \"fa-save\", title: \"Set LED pin\", \"key\": \"pin\"} \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mdash_widget_free",
+    "file": "[mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h)",
+    "doc": "\n```c\nvoid mgos_mdash_widget_free(struct mgos_mdash_widget **widget);\n```\n>  free the widget \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mdash_create_ui",
+    "file": "[mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h)",
+    "doc": "\n```c\nbool mgos_mdash_create_ui(const struct mgos_mdash_widgets *widgets);\n```\n>  create the mDash UI \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mdash_widgets_create",
+    "file": "[mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h)",
+    "doc": "\n```c\nstruct mgos_mdash_widgets *mgos_mdash_widgets_create(size_t max_count);\n```\n>  create the widgets holder \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mdash_widgets_create_from_config",
+    "file": "[mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h)",
+    "doc": "\n```c\nbool mgos_mdash_widgets_create_from_config(struct mgos_mdash_widgets **widgets);\n```\n>  create the widgets from config \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mdash_widgets_add_widget",
+    "file": "[mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h)",
+    "doc": "\n```c\nvoid mgos_mdash_widgets_add_widget(struct mgos_mdash_widgets *widgets,\n                                   struct mgos_mdash_widget *widget);\n```\n>  add a widget \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_mdash_widgets_free",
+    "file": "[mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h)",
+    "doc": "\n```c\nvoid mgos_mdash_widgets_free(struct mgos_mdash_widgets *widgets);\n```\n>  free the widgets holder \n",
+    "lang": "c"
+  },
+  {
+    "name": "defined",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\n#if defined(__TINYC__) && (defined(__linux) || defined(__linux__))\n/* TODO: Work around \"error: include file 'sys\\utime.h' when compiling with tcc on Linux */\n#define MINIZ_NO_TIME\n#endif\n```\n> #define MINIZ_NO_MALLOC \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_free",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nvoid mz_free(void *p);\n```\n>  mz_free() internally uses the MZ_FREE() macro (which by default calls free() unless you've modified the MZ_MALLOC macro) to release a block allocated from the heap. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_adler32",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_ulong mz_adler32(mz_ulong adler, const unsigned char *ptr, size_t buf_len);\n```\n>  mz_adler32() returns the initial adler-32 value to use when called with ptr==NULL. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_crc32",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_ulong mz_crc32(mz_ulong crc, const unsigned char *ptr, size_t buf_len);\n```\n>  mz_crc32() returns the initial CRC-32 value to use when called with ptr==NULL. \n",
+    "lang": "c"
+  },
+  {
+    "name": "(*mz_alloc_func)",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\ntypedef void *(*mz_alloc_func)(void *opaque, size_t items, size_t size);\ntypedef void (*mz_free_func)(void *opaque, void *address);\ntypedef void *(*mz_realloc_func)(void *opaque, void *address, size_t items, size_t size);\n```\n>  Heap allocation callbacks.\n> Note that mz_alloc_func parameter types purpsosely differ from zlib's: items/size is size_t, not unsigned long. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_version",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nconst char *mz_version(void);\n```\n>  Returns the version string of miniz.c. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_deflateInit",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_deflateInit(mz_streamp pStream, int level);\n```\n>   MZ_MEM_ERROR on out of memory. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_deflateInit2",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_deflateInit2(mz_streamp pStream, int level, int method, int window_bits, int mem_level, int strategy);\n```\n>    mem_level must be between [1, 9] (it's checked but ignored by miniz.c) \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_deflateReset",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_deflateReset(mz_streamp pStream);\n```\n>  Quickly resets a compressor without having to reallocate anything. Same as calling mz_deflateEnd() followed by mz_deflateInit()/mz_deflateInit2(). \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_deflate",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_deflate(mz_streamp pStream, int flush);\n```\n>    MZ_BUF_ERROR if no forward progress is possible because the input and/or output buffers are empty. (Fill up the input buffer or free up some output space and try again.) \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_deflateEnd",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_deflateEnd(mz_streamp pStream);\n```\n>   MZ_STREAM_ERROR if the stream is bogus. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_deflateBound",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_ulong mz_deflateBound(mz_streamp pStream, mz_ulong source_len);\n```\n>  mz_deflateBound() returns a (very) conservative upper bound on the amount of data that could be generated by deflate(), assuming flush is set to only MZ_NO_FLUSH or MZ_FINISH. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_compress",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_compress(unsigned char *pDest, mz_ulong *pDest_len, const unsigned char *pSource, mz_ulong source_len);\nint mz_compress2(unsigned char *pDest, mz_ulong *pDest_len, const unsigned char *pSource, mz_ulong source_len, int level);\n```\n>  Returns MZ_OK on success, or one of the error codes from mz_deflate() on failure. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_compressBound",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_ulong mz_compressBound(mz_ulong source_len);\n```\n>  mz_compressBound() returns a (very) conservative upper bound on the amount of data that could be generated by calling mz_compress(). \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_inflateInit",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_inflateInit(mz_streamp pStream);\n```\n>  Initializes a decompressor. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_inflateInit2",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_inflateInit2(mz_streamp pStream, int window_bits);\n```\n>  window_bits must be MZ_DEFAULT_WINDOW_BITS (to parse zlib header/footer) or -MZ_DEFAULT_WINDOW_BITS (raw deflate). \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_inflate",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_inflate(mz_streamp pStream, int flush);\n```\n>    with more input data, or with more room in the output buffer (except when using single call decompression, described above). \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_inflateEnd",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_inflateEnd(mz_streamp pStream);\n```\n>  Deinitializes a decompressor. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_uncompress",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_uncompress(unsigned char *pDest, mz_ulong *pDest_len, const unsigned char *pSource, mz_ulong source_len);\n```\n>  Returns MZ_OK on success, or one of the error codes from mz_inflate() on failure. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_error",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nconst char *mz_error(int err);\n```\n>  Returns a string description of the specified error code, or NULL if the error code is invalid. \n",
+    "lang": "c"
+  },
+  {
+    "name": "tdefl_compress_mem_to_heap",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nvoid *tdefl_compress_mem_to_heap(const void *pSrc_buf, size_t src_buf_len, size_t *pOut_len, int flags);\n```\n>   The caller must free() the returned block when it's no longer needed. \n",
+    "lang": "c"
+  },
+  {
+    "name": "tdefl_compress_mem_to_mem",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nsize_t tdefl_compress_mem_to_mem(void *pOut_buf, size_t out_buf_len, const void *pSrc_buf, size_t src_buf_len, int flags);\n```\n>  Returns 0 on failure. \n",
+    "lang": "c"
+  },
+  {
+    "name": "tdefl_write_image_to_png_file_in_memory_ex",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nvoid *tdefl_write_image_to_png_file_in_memory_ex(const void *pImage, int w, int h, int num_chans, size_t *pLen_out, mz_uint level, mz_bool flip);\nvoid *tdefl_write_image_to_png_file_in_memory(const void *pImage, int w, int h, int num_chans, size_t *pLen_out);\n```\n>   The caller must mz_free() the returned heap block (which will typically be larger than *pLen_out) when it's no longer needed. \n",
+    "lang": "c"
+  },
+  {
+    "name": "(*tdefl_put_buf_func_ptr)",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\ntypedef mz_bool (*tdefl_put_buf_func_ptr)(const void *pBuf, int len, void *pUser);\n```\n>  Output stream interface. The compressor uses this interface to write compressed data. It'll typically be called TDEFL_OUT_BUF_SIZE at a time. \n",
+    "lang": "c"
+  },
+  {
+    "name": "tdefl_compress_mem_to_output",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool tdefl_compress_mem_to_output(const void *pBuf, size_t buf_len, tdefl_put_buf_func_ptr pPut_buf_func, void *pPut_buf_user, int flags);\n```\n>  tdefl_compress_mem_to_output() compresses a block to an output stream. The above helpers use this function internally. \n",
+    "lang": "c"
+  },
+  {
+    "name": "tdefl_init",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\ntdefl_status tdefl_init(tdefl_compressor *d, tdefl_put_buf_func_ptr pPut_buf_func, void *pPut_buf_user, int flags);\n```\n>  flags: See the above enums (TDEFL_HUFFMAN_ONLY, TDEFL_WRITE_ZLIB_HEADER, etc.) \n",
+    "lang": "c"
+  },
+  {
+    "name": "tdefl_compress",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\ntdefl_status tdefl_compress(tdefl_compressor *d, const void *pIn_buf, size_t *pIn_buf_size, void *pOut_buf, size_t *pOut_buf_size, tdefl_flush flush);\n```\n>  Compresses a block of data, consuming as much of the specified input buffer as possible, and writing as much compressed data to the specified output buffer as possible. \n",
+    "lang": "c"
+  },
+  {
+    "name": "tdefl_compress_buffer",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\ntdefl_status tdefl_compress_buffer(tdefl_compressor *d, const void *pIn_buf, size_t in_buf_size, tdefl_flush flush);\n```\n>  tdefl_compress_buffer() always consumes the entire input buffer. \n",
+    "lang": "c"
+  },
+  {
+    "name": "tdefl_create_comp_flags_from_zip_params",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_uint tdefl_create_comp_flags_from_zip_params(int level, int window_bits, int strategy);\n```\n>  strategy may be either MZ_DEFAULT_STRATEGY, MZ_FILTERED, MZ_HUFFMAN_ONLY, MZ_RLE, or MZ_FIXED \n",
+    "lang": "c"
+  },
+  {
+    "name": "tdefl_compressor_alloc",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\ntdefl_compressor *tdefl_compressor_alloc();\nvoid tdefl_compressor_free(tdefl_compressor *pComp);\n```\n>  structure size and allocation mechanism. \n",
+    "lang": "c"
+  },
+  {
+    "name": "tinfl_decompress_mem_to_heap",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nvoid *tinfl_decompress_mem_to_heap(const void *pSrc_buf, size_t src_buf_len, size_t *pOut_len, int flags);\n```\n>   The caller must call mz_free() on the returned block when it's no longer needed. \n",
+    "lang": "c"
+  },
+  {
+    "name": "((size_t)",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\n#define TINFL_DECOMPRESS_MEM_TO_MEM_FAILED ((size_t)(-1))\nsize_t tinfl_decompress_mem_to_mem(void *pOut_buf, size_t out_buf_len, const void *pSrc_buf, size_t src_buf_len, int flags);\n```\n>  Returns TINFL_DECOMPRESS_MEM_TO_MEM_FAILED on failure, or the number of bytes written on success. \n",
+    "lang": "c"
+  },
+  {
+    "name": "(*tinfl_put_buf_func_ptr)",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\ntypedef int (*tinfl_put_buf_func_ptr)(const void *pBuf, int len, void *pUser);\nint tinfl_decompress_mem_to_callback(const void *pIn_buf, size_t *pIn_buf_size, tinfl_put_buf_func_ptr pPut_buf_func, void *pPut_buf_user, int flags);\n```\n>  Returns 1 on success or 0 on failure. \n",
+    "lang": "c"
+  },
+  {
+    "name": "tinfl_decompressor_alloc",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\ntinfl_decompressor *tinfl_decompressor_alloc();\nvoid tinfl_decompressor_free(tinfl_decompressor *pDecomp);\n```\n>  structure size and allocation mechanism. \n",
+    "lang": "c"
+  },
+  {
+    "name": "tinfl_init",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\n#define tinfl_init(r)     \\\n    do                    \\\n    {                     \\\n        (r)->m_state = 0; \\\n    }                     \\\n    MZ_MACRO_END\n#define tinfl_get_adler32(r) (r)->m_check_adler32\n```\n>  Initializes the decompressor to its initial state. \n",
+    "lang": "c"
+  },
+  {
+    "name": "tinfl_decompress",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\ntinfl_status tinfl_decompress(tinfl_decompressor *r, const mz_uint8 *pIn_buf_next, size_t *pIn_buf_size, mz_uint8 *pOut_buf_start, mz_uint8 *pOut_buf_next, size_t *pOut_buf_size, const mz_uint32 decomp_flags);\n```\n>  This is a universal API, i.e. it can be used as a building block to build any desired higher level decompression API. In the limit case, it can be called once per every byte input or output. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_init",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_init(mz_zip_archive *pZip, mz_uint64 size, mz_uint flags);\n```\n>  These functions read and validate the archive's central directory. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_init_file",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_init_file(mz_zip_archive *pZip, const char *pFilename, mz_uint32 flags);\nmz_bool mz_zip_reader_init_file_v2(mz_zip_archive *pZip, const char *pFilename, mz_uint flags, mz_uint64 file_start_ofs, mz_uint64 archive_size);\n```\n>  actual_archive_size is the true total size of the archive, which may be smaller than the file's actual size on disk. If zero the entire file is treated as the archive. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_init_cfile",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_init_cfile(mz_zip_archive *pZip, MZ_FILE *pFile, mz_uint64 archive_size, mz_uint flags);\n#endif\n```\n>  The FILE will NOT be closed when mz_zip_reader_end() is called. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_end",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_end(mz_zip_archive *pZip);\n```\n>  Ends archive reading, freeing all allocations, and closing the input archive file if mz_zip_reader_init_file() was used. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_zero_struct",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nvoid mz_zip_zero_struct(mz_zip_archive *pZip);\n```\n>  Important: This must be done before passing the struct to any mz_zip functions. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_get_num_files",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_uint mz_zip_reader_get_num_files(mz_zip_archive *pZip);\n```\n>  Returns the total number of files in the archive. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_read_archive_data",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nsize_t mz_zip_read_archive_data(mz_zip_archive *pZip, mz_uint64 file_ofs, void *pBuf, size_t n);\n```\n>  Reads n bytes of raw archive data, starting at file offset file_ofs, to pBuf. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_locate_file",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_zip_locate_file(mz_zip_archive *pZip, const char *pName, const char *pComment, mz_uint flags);\n/* Returns MZ_FALSE if the file cannot be found. */\nmz_bool mz_zip_locate_file_v2(mz_zip_archive *pZip, const char *pName, const char *pComment, mz_uint flags, mz_uint32 *pIndex);\n```\n>  Returns -1 if the file cannot be found. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_set_last_error",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_zip_error mz_zip_set_last_error(mz_zip_archive *pZip, mz_zip_error err_num);\nmz_zip_error mz_zip_peek_last_error(mz_zip_archive *pZip);\nmz_zip_error mz_zip_clear_last_error(mz_zip_archive *pZip);\nmz_zip_error mz_zip_get_last_error(mz_zip_archive *pZip);\nconst char *mz_zip_get_error_string(mz_zip_error mz_err);\n```\n>  Note that the m_last_error functionality is not thread safe. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_is_file_a_directory",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_is_file_a_directory(mz_zip_archive *pZip, mz_uint file_index);\n```\n>  MZ_TRUE if the archive file entry is a directory entry. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_is_file_encrypted",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_is_file_encrypted(mz_zip_archive *pZip, mz_uint file_index);\n```\n>  MZ_TRUE if the file is encrypted/strong encrypted. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_is_file_supported",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_is_file_supported(mz_zip_archive *pZip, mz_uint file_index);\n```\n>  MZ_TRUE if the compression method is supported, and the file is not encrypted, and the file is not a compressed patch file. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_get_filename",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_uint mz_zip_reader_get_filename(mz_zip_archive *pZip, mz_uint file_index, char *pFilename, mz_uint filename_buf_size);\n```\n>  Returns the number of bytes written to pFilename, or if filename_buf_size is 0 this function returns the number of bytes needed to fully store the filename. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_locate_file",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nint mz_zip_reader_locate_file(mz_zip_archive *pZip, const char *pName, const char *pComment, mz_uint flags);\nint mz_zip_reader_locate_file_v2(mz_zip_archive *pZip, const char *pName, const char *pComment, mz_uint flags, mz_uint32 *file_index);\n```\n>  Returns -1 if the file cannot be found. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_file_stat",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_file_stat(mz_zip_archive *pZip, mz_uint file_index, mz_zip_archive_file_stat *pStat);\n```\n>  Returns detailed information about an archive file entry. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_is_zip64",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_is_zip64(mz_zip_archive *pZip);\n```\n>  A file is considered zip64 if it contained a zip64 end of central directory marker, or if it contained any zip64 extended file information fields in the central directory. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_get_central_dir_size",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nsize_t mz_zip_get_central_dir_size(mz_zip_archive *pZip);\n```\n>  The current max supported size is <= MZ_UINT32_MAX. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_extract_to_mem_no_alloc",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_extract_to_mem_no_alloc(mz_zip_archive *pZip, mz_uint file_index, void *pBuf, size_t buf_size, mz_uint flags, void *pUser_read_buf, size_t user_read_buf_size);\nmz_bool mz_zip_reader_extract_file_to_mem_no_alloc(mz_zip_archive *pZip, const char *pFilename, void *pBuf, size_t buf_size, mz_uint flags, void *pUser_read_buf, size_t user_read_buf_size);\n```\n>  There must be at least enough room on the stack to store the inflator's state (~34KB or so). \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_extract_to_mem",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_extract_to_mem(mz_zip_archive *pZip, mz_uint file_index, void *pBuf, size_t buf_size, mz_uint flags);\nmz_bool mz_zip_reader_extract_file_to_mem(mz_zip_archive *pZip, const char *pFilename, void *pBuf, size_t buf_size, mz_uint flags);\n```\n>  Extracts a archive file to a memory buffer. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_extract_to_heap",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nvoid *mz_zip_reader_extract_to_heap(mz_zip_archive *pZip, mz_uint file_index, size_t *pSize, mz_uint flags);\nvoid *mz_zip_reader_extract_file_to_heap(mz_zip_archive *pZip, const char *pFilename, size_t *pSize, mz_uint flags);\n```\n>  Returns NULL and sets the last error on failure. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_extract_to_callback",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_extract_to_callback(mz_zip_archive *pZip, mz_uint file_index, mz_file_write_func pCallback, void *pOpaque, mz_uint flags);\nmz_bool mz_zip_reader_extract_file_to_callback(mz_zip_archive *pZip, const char *pFilename, mz_file_write_func pCallback, void *pOpaque, mz_uint flags);\n```\n>  Extracts a archive file using a callback function to output the file's data. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_extract_iter_new",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_zip_reader_extract_iter_state* mz_zip_reader_extract_iter_new(mz_zip_archive *pZip, mz_uint file_index, mz_uint flags);\nmz_zip_reader_extract_iter_state* mz_zip_reader_extract_file_iter_new(mz_zip_archive *pZip, const char *pFilename, mz_uint flags);\nsize_t mz_zip_reader_extract_iter_read(mz_zip_reader_extract_iter_state* pState, void* pvBuf, size_t buf_size);\nmz_bool mz_zip_reader_extract_iter_free(mz_zip_reader_extract_iter_state* pState);\n```\n>  Extract a file iteratively \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_extract_to_file",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_extract_to_file(mz_zip_archive *pZip, mz_uint file_index, const char *pDst_filename, mz_uint flags);\nmz_bool mz_zip_reader_extract_file_to_file(mz_zip_archive *pZip, const char *pArchive_filename, const char *pDst_filename, mz_uint flags);\n```\n>  This function only extracts files, not archive directory records. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_reader_extract_to_cfile",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_reader_extract_to_cfile(mz_zip_archive *pZip, mz_uint file_index, MZ_FILE *File, mz_uint flags);\nmz_bool mz_zip_reader_extract_file_to_cfile(mz_zip_archive *pZip, const char *pArchive_filename, MZ_FILE *pFile, mz_uint flags);\n#endif\n```\n>  Extracts a archive file starting at the current position in the destination FILE stream. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_validate_file",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_validate_file(mz_zip_archive *pZip, mz_uint file_index, mz_uint flags);\n```\n>  It also validates that each file can be successfully uncompressed unless the MZ_ZIP_FLAG_VALIDATE_HEADERS_ONLY is specified. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_validate_archive",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_validate_archive(mz_zip_archive *pZip, mz_uint flags);\n```\n>  Validates an entire archive by calling mz_zip_validate_file() on each file. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_validate_mem_archive",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_validate_mem_archive(const void *pMem, size_t size, mz_uint flags, mz_zip_error *pErr);\nmz_bool mz_zip_validate_file_archive(const char *pFilename, mz_uint flags, mz_zip_error *pErr);\n```\n>  Misc utils/helpers, valid for ZIP reading or writing \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_end",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_end(mz_zip_archive *pZip);\n```\n>  Universal end function - calls either mz_zip_reader_end() or mz_zip_writer_end(). \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_writer_init",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_writer_init(mz_zip_archive *pZip, mz_uint64 existing_size);\nmz_bool mz_zip_writer_init_v2(mz_zip_archive *pZip, mz_uint64 existing_size, mz_uint flags);\n```\n> The output is streamable, i.e. file_ofs in mz_file_write_func always increases only by n\n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_writer_init_from_reader",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_writer_init_from_reader(mz_zip_archive *pZip, const char *pFilename);\nmz_bool mz_zip_writer_init_from_reader_v2(mz_zip_archive *pZip, const char *pFilename, mz_uint flags);\n```\n>  the archive is finalized the file's central directory will be hosed. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_writer_add_mem",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_writer_add_mem(mz_zip_archive *pZip, const char *pArchive_name, const void *pBuf, size_t buf_size, mz_uint level_and_flags);\n```\n>  level_and_flags - compression level (0-10, see MZ_BEST_SPEED, MZ_BEST_COMPRESSION, etc.) logically OR'd with zero or more mz_zip_flags, or just set to MZ_DEFAULT_COMPRESSION. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_writer_add_mem_ex",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_writer_add_mem_ex(mz_zip_archive *pZip, const char *pArchive_name, const void *pBuf, size_t buf_size, const void *pComment, mz_uint16 comment_size, mz_uint level_and_flags,\n                                 mz_uint64 uncomp_size, mz_uint32 uncomp_crc32);\n```\n>  uncomp_size/uncomp_crc32 are only used if the MZ_ZIP_FLAG_COMPRESSED_DATA flag is specified. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_writer_add_file",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_writer_add_file(mz_zip_archive *pZip, const char *pArchive_name, const char *pSrc_filename, const void *pComment, mz_uint16 comment_size, mz_uint level_and_flags);\n```\n>  level_and_flags - compression level (0-10, see MZ_BEST_SPEED, MZ_BEST_COMPRESSION, etc.) logically OR'd with zero or more mz_zip_flags, or just set to MZ_DEFAULT_COMPRESSION. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_writer_add_cfile",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_writer_add_cfile(mz_zip_archive *pZip, const char *pArchive_name, MZ_FILE *pSrc_file, mz_uint64 size_to_add,\n                                const MZ_TIME_T *pFile_time, const void *pComment, mz_uint16 comment_size, mz_uint level_and_flags, const char *user_extra_data_local, mz_uint user_extra_data_local_len,\n                                const char *user_extra_data_central, mz_uint user_extra_data_central_len);\n#endif\n```\n>  Like mz_zip_writer_add_file(), except the file data is read from the specified FILE stream. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_writer_add_from_zip_reader",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_writer_add_from_zip_reader(mz_zip_archive *pZip, mz_zip_archive *pSource_zip, mz_uint src_file_index);\n```\n>  This function fully clones the source file's compressed data (no recompression), along with its full filename, extra data (it may add or modify the zip64 local header extra data field), and the optional descriptor following the compressed data. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_writer_finalize_archive",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_writer_finalize_archive(mz_zip_archive *pZip);\n```\n>  An archive must be manually finalized by calling this function for it to be valid. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_writer_finalize_heap_archive",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_writer_finalize_heap_archive(mz_zip_archive *pZip, void **ppBuf, size_t *pSize);\n```\n>  The heap block will be allocated using the mz_zip_archive's alloc/realloc callbacks. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_writer_end",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_writer_end(mz_zip_archive *pZip);\n```\n>  Note for the archive to be valid, it *must* have been finalized before ending (this function will not do it for you). \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_add_mem_to_archive_file_in_place",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nmz_bool mz_zip_add_mem_to_archive_file_in_place(const char *pZip_filename, const char *pArchive_name, const void *pBuf, size_t buf_size, const void *pComment, mz_uint16 comment_size, mz_uint level_and_flags);\nmz_bool mz_zip_add_mem_to_archive_file_in_place_v2(const char *pZip_filename, const char *pArchive_name, const void *pBuf, size_t buf_size, const void *pComment, mz_uint16 comment_size, mz_uint level_and_flags, mz_zip_error *pErr);\n```\n>  TODO: Perhaps add an option to leave the existing central dir in place in case the add dies? We could then truncate the file (so the old central dir would be at the end) if something goes wrong. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mz_zip_extract_archive_file_to_heap",
+    "file": "[miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h)",
+    "doc": "\n```c\nvoid *mz_zip_extract_archive_file_to_heap(const char *pZip_filename, const char *pArchive_name, size_t *pSize, mz_uint flags);\nvoid *mz_zip_extract_archive_file_to_heap_v2(const char *pZip_filename, const char *pArchive_name, const char *pComment, size_t *pSize, mz_uint flags, mz_zip_error *pErr);\n```\n>  Returns NULL on failure. \n",
     "lang": "c"
   },
   {
@@ -5862,6 +6678,30 @@
     "lang": "js"
   },
   {
+    "name": "mgos_pcf8574_create",
+    "file": "[mgos_pcf857x.h](https://github.com/mongoose-os-libs/pcf857x-i2c/tree/master/include/mgos_pcf857x.h)",
+    "doc": "\n```c\nstruct mgos_pcf857x *mgos_pcf8574_create(struct mgos_i2c *i2c, uint8_t i2caddr, int int_gpio);\nstruct mgos_pcf857x *mgos_pcf8575_create(struct mgos_i2c *i2c, uint8_t i2caddr, int int_gpio);\n```\n> \n> Initialize a PCF857X on the I2C bus `i2c` at address specified in `i2caddr`\n> parameter (default PCF857X is on address 0x20). The device will be polled for\n> validity, upon success a new `struct mgos_pcf857x` is allocated and\n> returned. If the device could not be found, NULL is returned.\n> To install an interrupt handler for the chip, set int_gpio to any valid GPIO\n> pin. Set it to -1 to disable interrupts.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_pcf857x_destroy",
+    "file": "[mgos_pcf857x.h](https://github.com/mongoose-os-libs/pcf857x-i2c/tree/master/include/mgos_pcf857x.h)",
+    "doc": "\n```c\nbool mgos_pcf857x_destroy(struct mgos_pcf857x **dev);\n```\n> \n> Destroy the data structure associated with a PCF857X device. The reference\n> to the pointer of the `struct mgos_pcf857x` has to be provided, and upon\n> successful destruction, its associated memory will be freed and the pointer\n> set to NULL and true will be returned.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_pcf857x_print_state",
+    "file": "[mgos_pcf857x.h](https://github.com/mongoose-os-libs/pcf857x-i2c/tree/master/include/mgos_pcf857x.h)",
+    "doc": "\n```c\nvoid mgos_pcf857x_print_state(struct mgos_pcf857x *dev);\n```\n>  Emit a logline with the pin and io register stat\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_pcf857x_gpio_set_mode",
+    "file": "[mgos_pcf857x.h](https://github.com/mongoose-os-libs/pcf857x-i2c/tree/master/include/mgos_pcf857x.h)",
+    "doc": "\n```c\nbool mgos_pcf857x_gpio_set_mode(struct mgos_pcf857x *dev, int pin, enum mgos_gpio_mode mode);\nbool mgos_pcf857x_gpio_setup_output(struct mgos_pcf857x *dev, int pin, bool level);\nbool mgos_pcf857x_gpio_setup_input(struct mgos_pcf857x *dev, int pin, enum mgos_gpio_pull_type pull_type);\nbool mgos_pcf857x_gpio_read(struct mgos_pcf857x *dev, int pin);\nvoid mgos_pcf857x_gpio_write(struct mgos_pcf857x *dev, int pin, bool level);\nbool mgos_pcf857x_gpio_toggle(struct mgos_pcf857x *dev, int pin);\n```\n>  These follow `mgos_gpio.h` definitions. \n",
+    "lang": "c"
+  },
+  {
     "name": "mgos_pppos_dev_get_ip_info",
     "file": "[mgos_pppos.h](https://github.com/mongoose-os-libs/pppos/tree/master/include/mgos_pppos.h)",
     "doc": "\n```c\nbool mgos_pppos_dev_get_ip_info(int if_instance,\n                                struct mgos_net_ip_info *ip_info);\n```\n> \n> Retrieve IP configuration of the provided instance number (which should be\n> of type `MGOS_NET_IF_TYPE_PPP`), and fill provided `ip_info` with it. Returns\n> `true` in case of success, false otherwise.\n>  \n",
@@ -5919,6 +6759,30 @@
     "name": "mgos_prometheus_metrics_push",
     "file": "[mgos_prometheus_metrics.h](https://github.com/mongoose-os-libs/prometheus-metrics/tree/master/include/mgos_prometheus_metrics.h)",
     "doc": "\n```c\nvoid mgos_prometheus_metrics_push(const char *job, const char *instance);\n```\n>  Perform an HTTP POST request against the Prometheus Pushgateway specified in\n> the flag prometheus.pushgateway in mos.yml, using 'job' and 'instance'.\n> The job argument is mandatory, but instance can be passed NULL.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_provision_set_cur_state",
+    "file": "[mgos_provision.h](https://github.com/mongoose-os-libs/provision/tree/master/include/mgos_provision.h)",
+    "doc": "\n```c\nvoid mgos_provision_set_cur_state(int new_state);\n```\n>  Set new current provisioning state.\n> This will update max state if it is greater than current value, thus\n> advancing the provisioning process. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_provision_set_max_state",
+    "file": "[mgos_provision.h](https://github.com/mongoose-os-libs/provision/tree/master/include/mgos_provision.h)",
+    "doc": "\n```c\nvoid mgos_provision_set_max_state(int new_state);\n```\n>  Set new max provisioning state directly. If the target state is less than\n> the configured state, it will start the reset timer.\n> This can be used to rewind the provisioning process. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_provision_get_cur_state",
+    "file": "[mgos_provision.h](https://github.com/mongoose-os-libs/provision/tree/master/include/mgos_provision.h)",
+    "doc": "\n```c\nint mgos_provision_get_cur_state(void);\n```\n>  Get current provisioning state. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_provision_get_max_state",
+    "file": "[mgos_provision.h](https://github.com/mongoose-os-libs/provision/tree/master/include/mgos_provision.h)",
+    "doc": "\n```c\nint mgos_provision_get_max_state(void);\n```\n>  Get maximum provisioning state. \n",
     "lang": "c"
   },
   {
@@ -6500,7 +7364,7 @@
   {
     "name": "mgos_vfs_mount",
     "file": "[mgos_vfs.h](https://github.com/mongoose-os-libs/vfs-common/tree/master/include/mgos_vfs.h)",
-    "doc": "\n```c\nbool mgos_vfs_mount(const char *path, const char *dev_type,\n                    const char *dev_opts, const char *fs_type,\n                    const char *fs_opts);\n```\n> \n> Mount a filesystem.\n> First a device is created with given type and options and then filesystem\n> is mounted from it and attached to the VFS at a given path.\n> Path must start with a \"/\" and consist of one component, e.g. \"/mnt\".\n> Nested mounts are not currently supported, so \"/mnt/foo\" is not ok.\n> Device and filesystem types must've been previosly registered and options\n> have device and filesystem-specific format and usually are JSON objects.\n>  \n",
+    "doc": "\n```c\nbool mgos_vfs_mount(const char *path, const char *dev_type,\n                    const char *dev_opts, const char *fs_type,\n                    const char *fs_opts);\n```\n> \n> Mount a filesystem.\n> First a device is created with given type and options and then filesystem\n> is mounted from it and attached to the VFS at a given path.\n> Path must start with a \"/\" and consist of one component, e.g. \"/mnt\".\n> Nested mounts are not currently supported, so \"/mnt/foo\" is not ok.\n> Device and filesystem types must've been previosly registered and options\n> have device and filesystem-specific format and usually are JSON objects.\n> If device type is NULL, device will be probed for known FS types.\n>  \n",
     "lang": "c"
   },
   {
@@ -6555,6 +7419,24 @@
     "name": "mgos_vfs_open",
     "file": "[mgos_vfs.h](https://github.com/mongoose-os-libs/vfs-common/tree/master/include/mgos_vfs.h)",
     "doc": "\n```c\nint mgos_vfs_open(const char *filename, int flags, int mode);\nint mgos_vfs_close(int vfd);\nssize_t mgos_vfs_read(int vfd, void *dst, size_t len);\nssize_t mgos_vfs_write(int vfd, const void *src, size_t len);\nint mgos_vfs_stat(const char *path, struct stat *st);\nint mgos_vfs_fstat(int vfd, struct stat *st);\noff_t mgos_vfs_lseek(int vfd, off_t offset, int whence);\nint mgos_vfs_unlink(const char *path);\nint mgos_vfs_rename(const char *src, const char *dst);\n#if MG_ENABLE_DIRECTORY_LISTING\nDIR *mgos_vfs_opendir(const char *path);\nstruct dirent *mgos_vfs_readdir(DIR *pdir);\nint mgos_vfs_closedir(DIR *pdir);\n#endif\n```\n>  libc API \n",
+    "lang": "c"
+  },
+  {
+    "name": "w25xxx_remap_block",
+    "file": "[mgos_vfs_dev_w25xxx.h](https://github.com/mongoose-os-libs/vfs-dev-w25xxx/tree/master/include/mgos_vfs_dev_w25xxx.h)",
+    "doc": "\n```c\nbool w25xxx_remap_block(struct mgos_vfs_dev *dev, size_t bad_off,\n                        size_t good_off);\n```\n> \n> Adds a bad block lookup table entry.\n> NB: Both offsets are raw, with no bb_reserve correction.\n>  \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_vfs_fs_lfs_probe",
+    "file": "[mgos_vfs_fs_lfs.h](https://github.com/mongoose-os-libs/vfs-fs-lfs/tree/master/include/mgos_vfs_fs_lfs.h)",
+    "doc": "\n```c\nbool mgos_vfs_fs_lfs_probe(struct mgos_vfs_dev *dev);\n```\n>  Returns true if the device contains a SPIFFS filesystem. \n",
+    "lang": "c"
+  },
+  {
+    "name": "mgos_vfs_fs_spiffs_probe",
+    "file": "[mgos_vfs_fs_spiffs.h](https://github.com/mongoose-os-libs/vfs-fs-spiffs/tree/master/include/mgos_vfs_fs_spiffs.h)",
+    "doc": "\n```c\nbool mgos_vfs_fs_spiffs_probe(struct mgos_vfs_dev *dev);\n```\n>  Returns true if the device contains a SPIFFS filesystem. \n",
     "lang": "c"
   },
   {

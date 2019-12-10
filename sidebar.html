@@ -96,9 +96,13 @@
 </div>
 <div class="tree-toggler"><i class="fa fa-fw fa-caret-right"></i>&nbsp;<b>Drivers</b>
 <ul class="tree" style="display:none;">
+<li><a href="/docs/mongoose-os/api/drivers/ads1x1x-i2c.md">ADS1X1X I2C</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/ads7843-spi.md">ADS7843/XPT2046 SPI</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/apds9960-i2c.md">APDS9960 I2C</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/atca.md">ATCA</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/bh1730.md">BH1730 sensor</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/bme280.md">BME280/BMP280</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/bq27421.md">BQ27421</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/barometer.md">Barometers</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/bm222.md">Bosch BM222</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/ccs811-i2c.md">CCS811 I2C</a></li>
@@ -109,11 +113,18 @@
 <li><a href="/docs/mongoose-os/api/drivers/htu21df-i2c.md">HTU21D(F) I2C</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/ili9341-spi.md">ILI9341 SPI</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/imu.md">IMU</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/ina219-i2c.md">INA219 I2C</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/ina226-i2c.md">INA226 I2C</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/ina3221-i2c.md">INA3221 I2C</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/wifi-ism43xxx.md">Inventek ISM43xxx WiFi</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/max7219-spi.md">MAX7219 I2C</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/md-max72xx.md">MAX72xx LED matrix</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/mcp23xxx.md">MCP23XXX I2C</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/mcp9808-i2c.md">MCP9808 I2C</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/mq135.md">MQ135 gas sensor</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/neopixel.md">Neopixel</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/onewire-rmt.md">Onewire RMT</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/pcf857x-i2c.md">PCF857X I2C</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/sht31-i2c.md">SHT31 I2C</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/ssd1306.md">SSD1306 OLED</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/stmpe610-spi.md">STMPE610 SPI</a></li>
@@ -121,10 +132,15 @@
 <li><a href="/docs/mongoose-os/api/drivers/si7021-i2c.md">Si7021 I2C</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/tmp006.md">TI TMP006 temp sensor</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/veml6075-i2c.md">VEML6075 I2C</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/vfs-fs-lfs.md">VFS (LittleFS)</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/vfs-dev-ram.md">VFS (RAM)</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/vfs-dev-spi-flash.md">VFS (SPI NOR Flash)</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/vfs-fs-spiffs.md">VFS (SPIFFS)</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/vfs-dev-w25xxx.md">VFS (Winbond W25XXX)</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/vfs-dev-part.md">VFS (another device)</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/vfs-dev-encr.md">VFS (encryption)</a></li>
 <li><a href="/docs/mongoose-os/api/drivers/vfs-common.md">VFS</a></li>
+<li><a href="/docs/mongoose-os/api/drivers/bh1750.md">bh1750 I2C</a></li>
 </ul>
 </div>
 <div class="tree-toggler"><i class="fa fa-fw fa-caret-right"></i>&nbsp;<b>Arduino compat</b>
@@ -153,6 +169,7 @@
 <li><a href="/docs/mongoose-os/api/rpc/rpc-gatts.md">RPC over BLE GATT</a></li>
 <li><a href="/docs/mongoose-os/api/rpc/rpc-mqtt.md">RPC over MQTT</a></li>
 <li><a href="/docs/mongoose-os/api/rpc/rpc-uart.md">RPC over UART</a></li>
+<li><a href="/docs/mongoose-os/api/rpc/rpc-udp.md">RPC over UDP</a></li>
 <li><a href="/docs/mongoose-os/api/rpc/rpc-service-atca.md">Service - ATCA</a></li>
 <li><a href="/docs/mongoose-os/api/rpc/rpc-service-config.md">Service - Config</a></li>
 <li><a href="/docs/mongoose-os/api/rpc/rpc-service-cron.md">Service - Cron</a></li>
@@ -168,11 +185,26 @@
 <ul class="tree" style="display:none;">
 <li><a href="/docs/mongoose-os/api/misc/cron.md">Cron</a></li>
 <li><a href="/docs/mongoose-os/api/misc/crontab.md">Crontab</a></li>
+<li><a href="/docs/mongoose-os/api/misc/provision.md">Device Provisioning</a></li>
 <li><a href="/docs/mongoose-os/api/misc/location.md">Device location (lat/lon)</a></li>
+<li><a href="/docs/mongoose-os/api/misc/fstab.md">Devtab/Fstab</a></li>
 <li><a href="/docs/mongoose-os/api/misc/file-logger.md">File logger</a></li>
 <li><a href="/docs/mongoose-os/api/misc/jstore.md">JSON store</a></li>
 <li><a href="/docs/mongoose-os/api/misc/mjs.md">MJS JavaScript engine</a></li>
+<li><a href="/docs/mongoose-os/api/misc/miniz.md">Miniz compression</a></li>
 <li><a href="/docs/mongoose-os/api/misc/sensor-utils.md">Sensor utilities</a></li>
+<li><a href="/docs/mongoose-os/api/misc/wifi-setup-web-ui.md">WebUI</a></li>
+<li><a href="/docs/mongoose-os/api/misc/bme680.md">bme680</a></li>
+<li><a href="/docs/mongoose-os/api/misc/bmp-loader.md">bmp-loader</a></li>
+<li><a href="/docs/mongoose-os/api/misc/boards.md">boards</a></li>
+<li><a href="/docs/mongoose-os/api/misc/ds18b20.md">ds18b20</a></li>
+<li><a href="/docs/mongoose-os/api/misc/freertos.md">freertos</a></li>
+<li><a href="/docs/mongoose-os/api/misc/lolin-button.md">lolin-button</a></li>
+<li><a href="/docs/mongoose-os/api/misc/lwip.md">lwip</a></li>
+<li><a href="/docs/mongoose-os/api/misc/mbedtls.md">mbedtls</a></li>
+<li><a href="/docs/mongoose-os/api/misc/mdash-api.md">mdash-api</a></li>
+<li><a href="/docs/mongoose-os/api/misc/prometheus-sensors.md">prometheus-sensors</a></li>
+<li><a href="/docs/mongoose-os/api/misc/rpc-gcp.md">rpc-gcp</a></li>
 </ul>
 </div>
 </ul>

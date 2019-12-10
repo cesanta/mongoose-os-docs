@@ -3,6 +3,7 @@
 - [RPC over BLE GATT](rpc-gatts.md)
 - [RPC over MQTT](rpc-mqtt.md)
 - [RPC over UART](rpc-uart.md)
+- [RPC over UDP](rpc-udp.md)
 - [Service - ATCA](rpc-service-atca.md)
 - [Service - Config](rpc-service-config.md)
 - [Service - Cron](rpc-service-cron.md)

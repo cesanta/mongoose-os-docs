@@ -7,6 +7,12 @@
 
 
  ----- 
+#### mgos_vfs_fs_spiffs_probe
+
+```c
+bool mgos_vfs_fs_spiffs_probe(struct mgos_vfs_dev *dev);
+```
+>  Returns true if the device contains a SPIFFS filesystem. 
 #### mgos_vfs_fs_spiffs_enc_name
 
 ```c

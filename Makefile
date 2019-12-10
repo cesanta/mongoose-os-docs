@@ -9,11 +9,14 @@ HTMLDIR ?= ../websites/front/docs
 
 all: sync sidebar.html # apps
 
-list:
-	curl -s https://api.github.com/orgs/mongoose-os-libs/repos?per_page=200 |\
-		perl -nle 'print $$1 if /"full_name": "(.*)"/' > $@.txt
+LIBREPOS ?= https://api.github.com/orgs/mongoose-os-libs/repos
+list.txt:
+	P=0; rm -rf /tmp/xx ; while true; do \
+		curl -s "$(LIBREPOS)?page=$$P" | perl -nle 'print $$1 if /"full_name": "(.*)"/' > /tmp/x ; \
+		test -s /tmp/x || break; echo "got page $$P"; cat /tmp/x >> /tmp/xx ; P=$$(($$P+1)); done ; \
+		cat /tmp/xx | sort > $@
 
-sync: list
+sync: list.txt
 	@for REPO in $$(cat list.txt) ; do test -d $$REPO && (cd $$REPO && git pull) || (mkdir -p $$(dirname $$REPO) ; cd $$(dirname $$REPO); git clone git@github.com:$$REPO.git); done
 
 clean-generated:

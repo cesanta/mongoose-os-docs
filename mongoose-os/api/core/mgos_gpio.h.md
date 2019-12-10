@@ -184,14 +184,16 @@ Set GPIO pin mode.
 GPIO.set_pull(pin, pull_type)
 ```
 Set GPIO pin pull type.
-`pull_type` can be either `GPIO.PULL_NONE`, `GPIO.PULL_UP`, or `GPIO.PULL_DOWN`.
+`pull_type` can be either `GPIO.PULL_NONE`, `GPIO.PULL_UP`, or
+`GPIO.PULL_DOWN`.
 #### GPIO.setup_input
 
 ```javascript
 GPIO.setup_input(pin, pull_type)
 ```
 Setup pin as input and configure pull type.
-`pull_type` can be either `GPIO.PULL_NONE`, `GPIO.PULL_UP`, or `GPIO.PULL_DOWN`.
+`pull_type` can be either `GPIO.PULL_NONE`, `GPIO.PULL_UP`, or
+`GPIO.PULL_DOWN`.
 #### GPIO.setup_output
 
 ```javascript
@@ -272,7 +274,8 @@ receives pin number.
 Return value: 1 in case of success, 0 otherwise.
 Example:
 ```javascript
-GPIO.set_button_handler(pin, GPIO.PULL_UP, GPIO.INT_EDGE_NEG, 200, function(x) {
+GPIO.set_button_handler(pin, GPIO.PULL_UP, GPIO.INT_EDGE_NEG, 200,
+function(x) {
   print('Button press, pin: ', x);
 }, null);
 ```
