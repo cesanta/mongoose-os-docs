@@ -46,6 +46,6 @@ Below is the list of closed-source libraries and their restrictions.
 | [ota-common](https://github.com/mongoose-os-libs/ota-common) | OTA only from [mDash](https://mongoose-os.com/docs/mdash/intro.md) |
 | [ota-http-client](https://github.com/mongoose-os-libs/ota-http-client) | OTA only from [mDash](https://mongoose-os.com/docs/mdash/intro.md) |
 | [ota-http-server](https://github.com/mongoose-os-libs/ota-http-server) | No restrictions |
-| [ota-aws-shadow](https://github.com/mongoose-os-libs/ota-aws-shadow) | OTA only from [mDash](https://mongoose-os.com/docs/mdash/intro.md) |
+| [ota-shadow](https://github.com/mongoose-os-libs/ota-shadow) | OTA only from [mDash](https://mongoose-os.com/docs/mdash/intro.md) |
 | [cron](https://github.com/mongoose-os-libs/cron) | 3 cron tasks max |
 | [crontab](https://github.com/mongoose-os-libs/crontab) | 3 crontab entries max |

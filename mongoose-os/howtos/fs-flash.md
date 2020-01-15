@@ -132,7 +132,7 @@ This will use the mounted file system as DOCROOT for the web werver as well.
 So this is it! With these steps taken, after the next flash build process the image file will be integrated into the ```fw.zip```package and flashed to the device. No futher action necessary. So using this method enables you to create firmware packages with addtional file systems which might be installed also via OTA without the need of individually handling the setup up of the file system.
 
 ## 6. Some Remarks and Hints
-This example is based on the challenge to fully use the flash memory of an [ODROID-GO](http://bit.ly/2v31Khq), a kind of "GameBoy like" designed device (ESP32, 16MB Flash, 4MB PSRAM).
+This example is based on the challenge to fully use the flash memory of an [ODROID-GO](https://www.hardkernel.com/shop/odroid-go/), a kind of "GameBoy like" designed device (ESP32, 16MB Flash, 4MB PSRAM).
 
 So why not just define the standard filesystem bigger just like shown below if you have 16MB available?
 
@@ -148,7 +148,7 @@ build_vars:
 ```
 The explanation: Simply setting the value of ```FLASH_SIZE``` and ```FS_SIZE``` to higher values using all the space was not just like this possible, because it will lead to a division of the flash (because of the OTA architecture, I assume) and you can only use half of it.
 
-Anything over **6MB** (half the space of the remaining **12MB** available after subtraction of **4MB** needed by the system from the **16MB** total) led to build process errors. In addition, the standard file system is formatted with [```SPIFFS```](http://bit.ly/2uZ92Tn), which leads to long processing times for large partitions, which sometimes even cause the watchdog to be activated. For this reason, it is recommended to use the file system [```LFS```](https://github.com/ARMmbed/littlefs) ("Little File System"), but this must then be set up as an additional file system.
+Anything over **6MB** (half the space of the remaining **12MB** available after subtraction of **4MB** needed by the system from the **16MB** total) led to build process errors. In addition, the standard file system is formatted with [```SPIFFS```](https://docs.espressif.com/projects/esp-idf/en/latest/api-reference/storage/spiffs.html), which leads to long processing times for large partitions, which sometimes even cause the watchdog to be activated. For this reason, it is recommended to use the file system [```LFS```](https://github.com/ARMmbed/littlefs) ("Little File System"), but this must then be set up as an additional file system.
 
 And even if you have only a little amount of extra space, it will be better to add this as an additional file system, because if you increase the standard file system, you only may use half of the remaining space, for the reasons explained above.
 

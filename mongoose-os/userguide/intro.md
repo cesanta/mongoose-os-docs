@@ -210,7 +210,7 @@ are what is available for the application code.
 | minimal+mjs | 160k | 229k |  Minimal + [mJS JavaScript engine](https://github.com/cesanta/mjs) |
 | minimal+aws | 133k | 230k |  Minimal + AWS IoT support |
 | minimal+gcp | 159k |  230k |  Minimal + Google IoT Core support |
-| js-demo | 304k | 225k | A [default JS demo app](https://github.com/mongoose-os-apps/default). Includes HTTP, MQTT, WebSocket, mDNS networking, RPC subsystem, AWS IoT, Google IoT Core, JavaScript, I2C, SPI, PWM, ADC, and more - see [js-demo-bundle](https://github.com/mongoose-os-libs/js-demo-bundle) library |
+| js-demo | 304k | 225k | A [default JS demo app](https://github.com/mongoose-os-apps/demo-js). Includes HTTP, MQTT, WebSocket, mDNS networking, RPC subsystem, AWS IoT, Google IoT Core, JavaScript, I2C, SPI, PWM, ADC, and more - see [js-demo-bundle](https://github.com/mongoose-os-libs/js-demo-bundle) library |
 
 
 <!--

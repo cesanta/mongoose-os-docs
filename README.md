@@ -43,7 +43,7 @@ a baseline for your own commercial product! See usage guide video:
 
 #### Other resources
 
-- [Developer forum](https://forum.mongoose-os.com/)
+- [Developer forum](https://community.mongoose-os.com/)
 - [Developer chat](https://gitter.im/cesanta/mongoose-os)
 - [Youtube video tutorials](https://www.youtube.com/channel/UCZ9lQ7b-4bDbLOLpKwjpSAw/videos)
 

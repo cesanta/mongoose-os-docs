@@ -8,6 +8,10 @@ const hBase = (hFile || '').replace(/.+\//, '');
 let menuTitle = process.argv[6] || hBase;
 const readmeMD = process.argv[7];
 const symbols = [];
+function p (msg) {
+	process.stderr.write(JSON.stringify(msg)+"\n")
+}
+p(`>jsFile ${jsFile}<`)
 
 const ignoreHeaders = {
   'mgos.h': 1,
@@ -72,33 +76,38 @@ md += `# ${menuTitle}\n`;
 // ------------------------------------------------ Add GitHub links table
 const repoURL = `https://github.com/${repoName}`;
 const repoLink = `[${repoName}](${repoURL})`;
-const mjsURL = 'http://github.com/mongoose-os-libs/mjs';
+const mjsURL = 'https://github.com/mongoose-os-libs/mjs';
 let hLink = '&nbsp;';
 let cLink = '&nbsp;';
 let jsLink = '&nbsp;';
 
 if (repoName == 'cesanta/mongoose-os') {
+	p("one")
   const cBase = hBase.replace(/.h$/, '.c');
-  hLink = `[${hBase}](${repoURL}/tree/master/include/${hBase})`;
-  cLink = `[${cBase}](${repoURL}/tree/master/src/${cBase})`;
+  hLink = `[${hBase}](${repoURL}/blob/master/include/${hBase})`;
+  cLink = `[${cBase}](${repoURL}/blob/master/src/${cBase})`;
   const jsBase = jsmap[hBase];
   if (jsBase) {
-    jsLink = `[${jsBase}](${mjsURL}/tree/master/fs/${jsBase})`;
+    jsLink = `[${jsBase}](${mjsURL}/blob/master/fs/${jsBase})`;
     jsFile = `mongoose-os-libs/mjs/fs/${jsBase}`;
   }
 } else if (repoName == 'cesanta/frozen') {
+	p("too")
   const cBase = hBase.replace(/.h$/, '.c');
-  hLink = `[${hBase}](${repoURL}/tree/master/${hBase})`;
-  cLink = `[${cBase}](${repoURL}/tree/master/${cBase})`;
+  hLink = `[${hBase}](${repoURL}/blob/master/${hBase})`;
+  cLink = `[${cBase}](${repoURL}/blob/master/${cBase})`;
 } else {
-  hLink = `[${hBase}](${repoURL}/tree/master/include/${hBase})`;
+	p("three")
+  // want hBase to have a value, else leave the link blank
+  hLink = hBase ? `[${hBase}](${repoURL}/blob/master/include/${hBase})` : hLink;
   // const cBase = hBase.replace(/.h$/, '.c');
-  // cLink = `[src/](${repoURL}/tree/master/src/)`;
+  // cLink = `[src/](${repoURL}/blob/master/src/)`;
   const jsBase = jsFile.replace(/.*\//, '');
   if (jsBase) {
-    jsLink = `[${jsBase}](${repoURL}/tree/master/mjs_fs/${jsBase})`;
+    jsLink = `[${jsBase}](${repoURL}/blob/master/mjs_fs/${jsBase})`;
   }
 }
+
 // md += '### Github repo links\n';
 md += '| Github Repo | C Header | C source  | JS source |\n';
 md += '| ----------- | -------- | --------  | ----------------- |\n';
@@ -112,6 +121,8 @@ if (readmeMD) {
 
 // ------------------------------------------------  Add C/C++ API
 const re = /^\s*(((\s*\/\/.*\n)+)|(\/\*([^\*]|\*[^\/])*\*\/))/;
+//process.stderr.write(JSON.stringify(process.env))
+//process.stderr.write("\n\n")
 const source = hFile ? fs.readFileSync(hFile, 'utf-8') : '';
 const m = source.replace(re, '').match(re);
 if (m) md += `${stripComments(m[1])}\n\n ----- \n`;

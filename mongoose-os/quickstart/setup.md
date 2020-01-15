@@ -63,9 +63,9 @@ The most usual reason for this is a missing USB-to-Serial driver. Below are
 the links to the driver installation pages. Install the driver, and re-insert
 your device into the USB. 
 
-- [Silabs drivers](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx) for Espressif boards
+- [Silabs drivers](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers) for Espressif boards
 - [CH43x drivers](https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver) for Espressif boards
-- [FTDI drivers](http://www.ftdichip.com/Drivers/VCP.htm) for CC3200, CC3220
+- [FTDI drivers](https://www.ftdichip.com/Drivers/VCP.htm) for CC3200, CC3220
 
 In a "Choose port" dropdown, at least one port must appear.
 

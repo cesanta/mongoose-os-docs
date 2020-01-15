@@ -42,7 +42,7 @@ Therefore here are the rules of thumb:
   [quick start guide](/docs/mongoose-os/quickstart/develop-in-c.md#create-custom-cofiguration-section)
 - If you want to override some system default setting, for example
   a default UART speed, also use `config_schema` and add overrides there,
-  see [example](https://github.com/mongoose-os-apps/default/blob/c4e2acbb5fec8d151b0d74fa12f9f1791f08edeb/mos.yml#L23-L25) 
+  see [example](https://github.com/mongoose-os-apps/demo-js/blob/c4e2acbb5fec8d151b0d74fa12f9f1791f08edeb/mos.yml#L23-L25) 
 - If you want to put some unique information on each firmware, for example
   a unique ID, and optionally protect it from further modification, use any of the layers 1 through 8, e.g. `conf5.json`.
 - `conf9.json` should never be included in the firmware, or it will override user's settings during OTA.
