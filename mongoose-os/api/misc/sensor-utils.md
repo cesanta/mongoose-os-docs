@@ -1,7 +1,7 @@
 # Sensor utilities
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/sensor-utils](https://github.com/mongoose-os-libs/sensor-utils) | [](https://github.com/mongoose-os-libs/sensor-utils/tree/master/include/) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/sensor-utils](https://github.com/mongoose-os-libs/sensor-utils) | &nbsp; | &nbsp;  | &nbsp;         |
 
 
 

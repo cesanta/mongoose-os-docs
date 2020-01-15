@@ -1,7 +1,7 @@
 # DS3231 RTC
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-ds3231](https://github.com/mongoose-os-libs/arduino-ds3231) | [](https://github.com/mongoose-os-libs/arduino-ds3231/tree/master/include/) | &nbsp;  | [api_ds3231.js](https://github.com/mongoose-os-libs/arduino-ds3231/tree/master/mjs_fs/api_ds3231.js)         |
+| [mongoose-os-libs/arduino-ds3231](https://github.com/mongoose-os-libs/arduino-ds3231) | &nbsp; | &nbsp;  | [api_ds3231.js](https://github.com/mongoose-os-libs/arduino-ds3231/blob/master/mjs_fs/api_ds3231.js)         |
 
 Arduino DS3231 High Precision Real Time Clock (RTC) library for Mongoose OS
 =========

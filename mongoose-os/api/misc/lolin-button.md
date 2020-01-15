@@ -1,7 +1,7 @@
 # lolin-button
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/lolin-button](https://github.com/mongoose-os-libs/lolin-button) | [mgos_lolin_button.h](https://github.com/mongoose-os-libs/lolin-button/tree/master/include/mgos_lolin_button.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/lolin-button](https://github.com/mongoose-os-libs/lolin-button) | [mgos_lolin_button.h](https://github.com/mongoose-os-libs/lolin-button/blob/master/include/mgos_lolin_button.h) | &nbsp;  | &nbsp;         |
 
 
 

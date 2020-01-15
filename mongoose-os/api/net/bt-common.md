@@ -1,7 +1,7 @@
 # BLE
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/bt-common](https://github.com/mongoose-os-libs/bt-common) | [mgos_bt.h](https://github.com/mongoose-os-libs/bt-common/tree/master/include/mgos_bt.h) | &nbsp;  | [api_bt_gap.js](https://github.com/mongoose-os-libs/bt-common/tree/master/mjs_fs/api_bt_gap.js)         |
+| [mongoose-os-libs/bt-common](https://github.com/mongoose-os-libs/bt-common) | [mgos_bt.h](https://github.com/mongoose-os-libs/bt-common/blob/master/include/mgos_bt.h) | &nbsp;  | [api_bt_gap.js](https://github.com/mongoose-os-libs/bt-common/blob/master/mjs_fs/api_bt_gap.js)         |
 
 
 

@@ -1,7 +1,7 @@
 # mdash-api
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/mdash-api](https://github.com/mongoose-os-libs/mdash-api) | [mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/tree/master/include/mgos_mdash_api.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/mdash-api](https://github.com/mongoose-os-libs/mdash-api) | [mgos_mdash_api.h](https://github.com/mongoose-os-libs/mdash-api/blob/master/include/mgos_mdash_api.h) | &nbsp;  | &nbsp;         |
 
 
 

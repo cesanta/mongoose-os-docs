@@ -1,7 +1,7 @@
 # Dallas RMT
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/dallas-rmt](https://github.com/mongoose-os-libs/dallas-rmt) | [DallasRmt.h](https://github.com/mongoose-os-libs/dallas-rmt/tree/master/include/DallasRmt.h) | &nbsp;  | [api_dallas_rmt.js](https://github.com/mongoose-os-libs/dallas-rmt/tree/master/mjs_fs/api_dallas_rmt.js)         |
+| [mongoose-os-libs/dallas-rmt](https://github.com/mongoose-os-libs/dallas-rmt) | [DallasRmt.h](https://github.com/mongoose-os-libs/dallas-rmt/blob/master/include/DallasRmt.h) | &nbsp;  | [api_dallas_rmt.js](https://github.com/mongoose-os-libs/dallas-rmt/blob/master/mjs_fs/api_dallas_rmt.js)         |
 
 
 The library uses the `onewire-rmt` library. 

@@ -1,7 +1,7 @@
 # RPC over UDP
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-udp](https://github.com/mongoose-os-libs/rpc-udp) | [mgos_rpc_channel_udp.h](https://github.com/mongoose-os-libs/rpc-udp/tree/master/include/mgos_rpc_channel_udp.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/rpc-udp](https://github.com/mongoose-os-libs/rpc-udp) | [mgos_rpc_channel_udp.h](https://github.com/mongoose-os-libs/rpc-udp/blob/master/include/mgos_rpc_channel_udp.h) | &nbsp;  | &nbsp;         |
 
 
 

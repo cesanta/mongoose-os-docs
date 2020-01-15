@@ -1,7 +1,7 @@
 # Amazon IoT
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/aws](https://github.com/mongoose-os-libs/aws) | [mgos_aws_greengrass.h](https://github.com/mongoose-os-libs/aws/tree/master/include/mgos_aws_greengrass.h) | &nbsp;  | [api_aws.js](https://github.com/mongoose-os-libs/aws/tree/master/mjs_fs/api_aws.js)         |
+| [mongoose-os-libs/aws](https://github.com/mongoose-os-libs/aws) | [mgos_aws_greengrass.h](https://github.com/mongoose-os-libs/aws/blob/master/include/mgos_aws_greengrass.h) | &nbsp;  | [api_aws.js](https://github.com/mongoose-os-libs/aws/blob/master/mjs_fs/api_aws.js)         |
 
 
 

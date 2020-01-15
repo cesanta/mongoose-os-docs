@@ -1,7 +1,7 @@
 # IL0373 SPIIL0398 SPIIL91874 SPISSD1608 SPISSD1675 SPI
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-epd](https://github.com/mongoose-os-libs/arduino-adafruit-epd) | [Adafruit_EPD.h](https://github.com/mongoose-os-libs/arduino-adafruit-epd/tree/master/include/Adafruit_EPD.h) | &nbsp;  | [api_arduino_adafruit_epd.js](https://github.com/mongoose-os-libs/arduino-adafruit-epd/tree/master/mjs_fs/api_arduino_adafruit_epd.js)         |
+| [mongoose-os-libs/arduino-adafruit-epd](https://github.com/mongoose-os-libs/arduino-adafruit-epd) | [Adafruit_EPD.h](https://github.com/mongoose-os-libs/arduino-adafruit-epd/blob/master/include/Adafruit_EPD.h) | &nbsp;  | [api_arduino_adafruit_epd.js](https://github.com/mongoose-os-libs/arduino-adafruit-epd/blob/master/mjs_fs/api_arduino_adafruit_epd.js)         |
 
 
 

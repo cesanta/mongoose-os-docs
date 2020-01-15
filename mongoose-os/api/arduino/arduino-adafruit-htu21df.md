@@ -1,7 +1,7 @@
 # Adafruit HTU21D-F
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-htu21df](https://github.com/mongoose-os-libs/arduino-adafruit-htu21df) | [](https://github.com/mongoose-os-libs/arduino-adafruit-htu21df/tree/master/include/) | &nbsp;  | [api_arduino_htu21df.js](https://github.com/mongoose-os-libs/arduino-adafruit-htu21df/tree/master/mjs_fs/api_arduino_htu21df.js)         |
+| [mongoose-os-libs/arduino-adafruit-htu21df](https://github.com/mongoose-os-libs/arduino-adafruit-htu21df) | &nbsp; | &nbsp;  | [api_arduino_htu21df.js](https://github.com/mongoose-os-libs/arduino-adafruit-htu21df/blob/master/mjs_fs/api_arduino_htu21df.js)         |
 
 
 # Arduino Adafruit HTU21D(D) library for Mongoose OS

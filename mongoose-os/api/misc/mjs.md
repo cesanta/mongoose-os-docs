@@ -1,7 +1,7 @@
 # MJS JavaScript engine
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/mjs](https://github.com/mongoose-os-libs/mjs) | [mos_mjs.h](https://github.com/mongoose-os-libs/mjs/tree/master/include/mos_mjs.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/mjs](https://github.com/mongoose-os-libs/mjs) | [mos_mjs.h](https://github.com/mongoose-os-libs/mjs/blob/master/include/mos_mjs.h) | &nbsp;  | &nbsp;         |
 
 
 

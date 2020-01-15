@@ -1,7 +1,7 @@
 # Adafruit ADS1015
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-ads1x15](https://github.com/mongoose-os-libs/arduino-adafruit-ads1x15) | [](https://github.com/mongoose-os-libs/arduino-adafruit-ads1x15/tree/master/include/) | &nbsp;  | [api_ads1015.js](https://github.com/mongoose-os-libs/arduino-adafruit-ads1x15/tree/master/mjs_fs/api_ads1015.js)         |
+| [mongoose-os-libs/arduino-adafruit-ads1x15](https://github.com/mongoose-os-libs/arduino-adafruit-ads1x15) | &nbsp; | &nbsp;  | [api_ads1015.js](https://github.com/mongoose-os-libs/arduino-adafruit-ads1x15/blob/master/mjs_fs/api_ads1015.js)         |
 
 Arduino Adafruit ADS1015 12-BiT/ADS1115 16-Bit ADC - 4 Channel with Programmable Gain Amplifier library for Mongoose OS
 =========

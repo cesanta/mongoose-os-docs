@@ -1,7 +1,7 @@
 # Arduino compatibility
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-compat](https://github.com/mongoose-os-libs/arduino-compat) | [Arduino.h](https://github.com/mongoose-os-libs/arduino-compat/tree/master/include/Arduino.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/arduino-compat](https://github.com/mongoose-os-libs/arduino-compat) | [Arduino.h](https://github.com/mongoose-os-libs/arduino-compat/blob/master/include/Arduino.h) | &nbsp;  | &nbsp;         |
 
 
 

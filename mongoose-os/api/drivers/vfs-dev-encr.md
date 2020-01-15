@@ -1,7 +1,7 @@
 # VFS (encryption)
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/vfs-dev-encr](https://github.com/mongoose-os-libs/vfs-dev-encr) | [mgos_vfs_dev_encr.h](https://github.com/mongoose-os-libs/vfs-dev-encr/tree/master/include/mgos_vfs_dev_encr.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/vfs-dev-encr](https://github.com/mongoose-os-libs/vfs-dev-encr) | [mgos_vfs_dev_encr.h](https://github.com/mongoose-os-libs/vfs-dev-encr/blob/master/include/mgos_vfs_dev_encr.h) | &nbsp;  | &nbsp;         |
 
 
 

@@ -1,7 +1,7 @@
 # Onewire
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-onewire](https://github.com/mongoose-os-libs/arduino-onewire) | [OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/include/OneWire.h) | &nbsp;  | [api_arduino_onewire.js](https://github.com/mongoose-os-libs/arduino-onewire/tree/master/mjs_fs/api_arduino_onewire.js)         |
+| [mongoose-os-libs/arduino-onewire](https://github.com/mongoose-os-libs/arduino-onewire) | [OneWire.h](https://github.com/mongoose-os-libs/arduino-onewire/blob/master/include/OneWire.h) | &nbsp;  | [api_arduino_onewire.js](https://github.com/mongoose-os-libs/arduino-onewire/blob/master/mjs_fs/api_arduino_onewire.js)         |
 
 
 

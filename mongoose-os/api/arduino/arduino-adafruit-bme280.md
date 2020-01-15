@@ -1,7 +1,7 @@
 # BME280
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-bme280](https://github.com/mongoose-os-libs/arduino-adafruit-bme280) | [Adafruit_BME280.h](https://github.com/mongoose-os-libs/arduino-adafruit-bme280/tree/master/include/Adafruit_BME280.h) | &nbsp;  | [api_arduino_bme280.js](https://github.com/mongoose-os-libs/arduino-adafruit-bme280/tree/master/mjs_fs/api_arduino_bme280.js)         |
+| [mongoose-os-libs/arduino-adafruit-bme280](https://github.com/mongoose-os-libs/arduino-adafruit-bme280) | [Adafruit_BME280.h](https://github.com/mongoose-os-libs/arduino-adafruit-bme280/blob/master/include/Adafruit_BME280.h) | &nbsp;  | [api_arduino_bme280.js](https://github.com/mongoose-os-libs/arduino-adafruit-bme280/blob/master/mjs_fs/api_arduino_bme280.js)         |
 
 
 

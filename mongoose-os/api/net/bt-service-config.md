@@ -1,7 +1,7 @@
 # Config over BLE GATT
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/bt-service-config](https://github.com/mongoose-os-libs/bt-service-config) | [](https://github.com/mongoose-os-libs/bt-service-config/tree/master/include/) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/bt-service-config](https://github.com/mongoose-os-libs/bt-service-config) | &nbsp; | &nbsp;  | &nbsp;         |
 
 
 

@@ -1,7 +1,7 @@
 # Google IoT Core
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/gcp](https://github.com/mongoose-os-libs/gcp) | [mgos_gcp.h](https://github.com/mongoose-os-libs/gcp/tree/master/include/mgos_gcp.h) | &nbsp;  | [api_gcp.js](https://github.com/mongoose-os-libs/gcp/tree/master/mjs_fs/api_gcp.js)         |
+| [mongoose-os-libs/gcp](https://github.com/mongoose-os-libs/gcp) | [mgos_gcp.h](https://github.com/mongoose-os-libs/gcp/blob/master/include/mgos_gcp.h) | &nbsp;  | [api_gcp.js](https://github.com/mongoose-os-libs/gcp/blob/master/mjs_fs/api_gcp.js)         |
 
 
 

@@ -1,7 +1,7 @@
 # Miniz compression
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/miniz](https://github.com/mongoose-os-libs/miniz) | [miniz.h](https://github.com/mongoose-os-libs/miniz/tree/master/include/miniz.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/miniz](https://github.com/mongoose-os-libs/miniz) | [miniz.h](https://github.com/mongoose-os-libs/miniz/blob/master/include/miniz.h) | &nbsp;  | &nbsp;         |
 
 
 

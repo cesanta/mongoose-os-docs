@@ -1,7 +1,7 @@
 # Blynk
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/blynk](https://github.com/mongoose-os-libs/blynk) | [mgos_blynk.h](https://github.com/mongoose-os-libs/blynk/tree/master/include/mgos_blynk.h) | &nbsp;  | [api_blynk.js](https://github.com/mongoose-os-libs/blynk/tree/master/mjs_fs/api_blynk.js)         |
+| [mongoose-os-libs/blynk](https://github.com/mongoose-os-libs/blynk) | [mgos_blynk.h](https://github.com/mongoose-os-libs/blynk/blob/master/include/mgos_blynk.h) | &nbsp;  | [api_blynk.js](https://github.com/mongoose-os-libs/blynk/blob/master/mjs_fs/api_blynk.js)         |
 
 
 

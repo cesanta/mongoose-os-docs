@@ -1,7 +1,7 @@
 # Service - OTA
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-ota](https://github.com/mongoose-os-libs/rpc-service-ota) | [mgos_rpc_service_ota.h](https://github.com/mongoose-os-libs/rpc-service-ota/tree/master/include/mgos_rpc_service_ota.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/rpc-service-ota](https://github.com/mongoose-os-libs/rpc-service-ota) | [mgos_rpc_service_ota.h](https://github.com/mongoose-os-libs/rpc-service-ota/blob/master/include/mgos_rpc_service_ota.h) | &nbsp;  | &nbsp;         |
 
 
 

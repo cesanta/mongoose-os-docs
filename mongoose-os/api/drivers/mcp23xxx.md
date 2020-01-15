@@ -1,7 +1,7 @@
 # MCP23XXX I2C
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/mcp23xxx](https://github.com/mongoose-os-libs/mcp23xxx) | [mgos_mcp23xxx.h](https://github.com/mongoose-os-libs/mcp23xxx/tree/master/include/mgos_mcp23xxx.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/mcp23xxx](https://github.com/mongoose-os-libs/mcp23xxx) | [mgos_mcp23xxx.h](https://github.com/mongoose-os-libs/mcp23xxx/blob/master/include/mgos_mcp23xxx.h) | &nbsp;  | &nbsp;         |
 
 
 

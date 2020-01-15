@@ -1,7 +1,7 @@
 # Mongoose network lib
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/mongoose](https://github.com/mongoose-os-libs/mongoose) | [mgos_mongoose.h](https://github.com/mongoose-os-libs/mongoose/tree/master/include/mgos_mongoose.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/mongoose](https://github.com/mongoose-os-libs/mongoose) | [mgos_mongoose.h](https://github.com/mongoose-os-libs/mongoose/blob/master/include/mgos_mongoose.h) | &nbsp;  | &nbsp;         |
 
 
 

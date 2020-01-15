@@ -1,7 +1,7 @@
 # I2C
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/i2c](https://github.com/mongoose-os-libs/i2c) | [mgos_i2c.h](https://github.com/mongoose-os-libs/i2c/tree/master/include/mgos_i2c.h) | &nbsp;  | [api_i2c.js](https://github.com/mongoose-os-libs/i2c/tree/master/mjs_fs/api_i2c.js)         |
+| [mongoose-os-libs/i2c](https://github.com/mongoose-os-libs/i2c) | [mgos_i2c.h](https://github.com/mongoose-os-libs/i2c/blob/master/include/mgos_i2c.h) | &nbsp;  | [api_i2c.js](https://github.com/mongoose-os-libs/i2c/blob/master/mjs_fs/api_i2c.js)         |
 
 This library adds I2C master support for the Mongoose OS. See default pin
 mapping in the yml file for your platform: `mos_<PLATFORM>.yml`.

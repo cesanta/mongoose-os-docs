@@ -1,7 +1,7 @@
 # VFS (LittleFS)
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/vfs-fs-lfs](https://github.com/mongoose-os-libs/vfs-fs-lfs) | [mgos_vfs_fs_lfs.h](https://github.com/mongoose-os-libs/vfs-fs-lfs/tree/master/include/mgos_vfs_fs_lfs.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/vfs-fs-lfs](https://github.com/mongoose-os-libs/vfs-fs-lfs) | [mgos_vfs_fs_lfs.h](https://github.com/mongoose-os-libs/vfs-fs-lfs/blob/master/include/mgos_vfs_fs_lfs.h) | &nbsp;  | &nbsp;         |
 
 
 

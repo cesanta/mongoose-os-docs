@@ -1,7 +1,7 @@
 # prometheus-sensors
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/prometheus-sensors](https://github.com/mongoose-os-libs/prometheus-sensors) | [mgos_prometheus_sensors.h](https://github.com/mongoose-os-libs/prometheus-sensors/tree/master/include/mgos_prometheus_sensors.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/prometheus-sensors](https://github.com/mongoose-os-libs/prometheus-sensors) | [mgos_prometheus_sensors.h](https://github.com/mongoose-os-libs/prometheus-sensors/blob/master/include/mgos_prometheus_sensors.h) | &nbsp;  | &nbsp;         |
 
 
 

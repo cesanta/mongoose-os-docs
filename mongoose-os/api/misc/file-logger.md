@@ -1,7 +1,7 @@
 # File logger
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/file-logger](https://github.com/mongoose-os-libs/file-logger) | [](https://github.com/mongoose-os-libs/file-logger/tree/master/include/) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/file-logger](https://github.com/mongoose-os-libs/file-logger) | &nbsp; | &nbsp;  | &nbsp;         |
 
 
 

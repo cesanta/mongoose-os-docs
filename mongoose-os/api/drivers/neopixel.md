@@ -1,7 +1,7 @@
 # Neopixel
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/neopixel](https://github.com/mongoose-os-libs/neopixel) | [mgos_neopixel.h](https://github.com/mongoose-os-libs/neopixel/tree/master/include/mgos_neopixel.h) | &nbsp;  | [api_neopixel.js](https://github.com/mongoose-os-libs/neopixel/tree/master/mjs_fs/api_neopixel.js)         |
+| [mongoose-os-libs/neopixel](https://github.com/mongoose-os-libs/neopixel) | [mgos_neopixel.h](https://github.com/mongoose-os-libs/neopixel/blob/master/include/mgos_neopixel.h) | &nbsp;  | [api_neopixel.js](https://github.com/mongoose-os-libs/neopixel/blob/master/mjs_fs/api_neopixel.js)         |
 
 
 

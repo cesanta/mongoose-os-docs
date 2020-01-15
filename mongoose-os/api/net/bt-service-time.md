@@ -1,7 +1,7 @@
 # BLE Current Time Service
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/bt-service-time](https://github.com/mongoose-os-libs/bt-service-time) | [](https://github.com/mongoose-os-libs/bt-service-time/tree/master/include/) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/bt-service-time](https://github.com/mongoose-os-libs/bt-service-time) | &nbsp; | &nbsp;  | &nbsp;         |
 
 
 

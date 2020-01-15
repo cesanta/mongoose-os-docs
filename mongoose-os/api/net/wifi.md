@@ -1,7 +1,7 @@
 # WiFi
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/wifi](https://github.com/mongoose-os-libs/wifi) | [mgos_wifi.h](https://github.com/mongoose-os-libs/wifi/tree/master/include/mgos_wifi.h) | &nbsp;  | [api_wifi.js](https://github.com/mongoose-os-libs/wifi/tree/master/mjs_fs/api_wifi.js)         |
+| [mongoose-os-libs/wifi](https://github.com/mongoose-os-libs/wifi) | [mgos_wifi.h](https://github.com/mongoose-os-libs/wifi/blob/master/include/mgos_wifi.h) | &nbsp;  | [api_wifi.js](https://github.com/mongoose-os-libs/wifi/blob/master/mjs_fs/api_wifi.js)         |
 
 
 

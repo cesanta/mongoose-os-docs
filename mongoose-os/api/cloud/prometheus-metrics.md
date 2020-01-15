@@ -1,7 +1,7 @@
 # Prometheus metrics
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/prometheus-metrics](https://github.com/mongoose-os-libs/prometheus-metrics) | [mgos_prometheus_metrics.h](https://github.com/mongoose-os-libs/prometheus-metrics/tree/master/include/mgos_prometheus_metrics.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/prometheus-metrics](https://github.com/mongoose-os-libs/prometheus-metrics) | [mgos_prometheus_metrics.h](https://github.com/mongoose-os-libs/prometheus-metrics/blob/master/include/mgos_prometheus_metrics.h) | &nbsp;  | &nbsp;         |
 
 
 

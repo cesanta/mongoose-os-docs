@@ -1,7 +1,7 @@
 # Service - GPIO
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-gpio](https://github.com/mongoose-os-libs/rpc-service-gpio) | [mgos_gpio_service.h](https://github.com/mongoose-os-libs/rpc-service-gpio/tree/master/include/mgos_gpio_service.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/rpc-service-gpio](https://github.com/mongoose-os-libs/rpc-service-gpio) | [mgos_gpio_service.h](https://github.com/mongoose-os-libs/rpc-service-gpio/blob/master/include/mgos_gpio_service.h) | &nbsp;  | &nbsp;         |
 
 
 

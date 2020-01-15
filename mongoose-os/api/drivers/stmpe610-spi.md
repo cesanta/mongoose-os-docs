@@ -1,7 +1,7 @@
 # STMPE610 SPI
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/stmpe610-spi](https://github.com/mongoose-os-libs/stmpe610-spi) | [mgos_stmpe610.h](https://github.com/mongoose-os-libs/stmpe610-spi/tree/master/include/mgos_stmpe610.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/stmpe610-spi](https://github.com/mongoose-os-libs/stmpe610-spi) | [mgos_stmpe610.h](https://github.com/mongoose-os-libs/stmpe610-spi/blob/master/include/mgos_stmpe610.h) | &nbsp;  | &nbsp;         |
 
 
 Mongoose native SPI driver for STMP610E

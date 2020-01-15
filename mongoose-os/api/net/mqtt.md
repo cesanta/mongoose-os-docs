@@ -1,7 +1,7 @@
 # MQTT
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/mqtt](https://github.com/mongoose-os-libs/mqtt) | [mgos_mqtt.h](https://github.com/mongoose-os-libs/mqtt/tree/master/include/mgos_mqtt.h) | &nbsp;  | [api_mqtt.js](https://github.com/mongoose-os-libs/mqtt/tree/master/mjs_fs/api_mqtt.js)         |
+| [mongoose-os-libs/mqtt](https://github.com/mongoose-os-libs/mqtt) | [mgos_mqtt.h](https://github.com/mongoose-os-libs/mqtt/blob/master/include/mgos_mqtt.h) | &nbsp;  | [api_mqtt.js](https://github.com/mongoose-os-libs/mqtt/blob/master/mjs_fs/api_mqtt.js)         |
 
 
 

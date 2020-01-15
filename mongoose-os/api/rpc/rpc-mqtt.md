@@ -1,7 +1,7 @@
 # RPC over MQTT
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-mqtt](https://github.com/mongoose-os-libs/rpc-mqtt) | [mgos_rpc_channel_mqtt.h](https://github.com/mongoose-os-libs/rpc-mqtt/tree/master/include/mgos_rpc_channel_mqtt.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/rpc-mqtt](https://github.com/mongoose-os-libs/rpc-mqtt) | [mgos_rpc_channel_mqtt.h](https://github.com/mongoose-os-libs/rpc-mqtt/blob/master/include/mgos_rpc_channel_mqtt.h) | &nbsp;  | &nbsp;         |
 
 
 

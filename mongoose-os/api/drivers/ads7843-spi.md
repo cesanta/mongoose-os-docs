@@ -1,7 +1,7 @@
 # ADS7843/XPT2046 SPI
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ads7843-spi](https://github.com/mongoose-os-libs/ads7843-spi) | [mgos_ads7843.h](https://github.com/mongoose-os-libs/ads7843-spi/tree/master/include/mgos_ads7843.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/ads7843-spi](https://github.com/mongoose-os-libs/ads7843-spi) | [mgos_ads7843.h](https://github.com/mongoose-os-libs/ads7843-spi/blob/master/include/mgos_ads7843.h) | &nbsp;  | &nbsp;         |
 
 
 Mongoose native SPI driver for ADS7843/XPT2046 Touch Screen Controller

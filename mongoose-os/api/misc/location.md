@@ -1,7 +1,7 @@
 # Device location (lat/lon)
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/location](https://github.com/mongoose-os-libs/location) | [mgos_location.h](https://github.com/mongoose-os-libs/location/tree/master/include/mgos_location.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/location](https://github.com/mongoose-os-libs/location) | [mgos_location.h](https://github.com/mongoose-os-libs/location/blob/master/include/mgos_location.h) | &nbsp;  | &nbsp;         |
 
 
 

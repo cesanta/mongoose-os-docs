@@ -1,7 +1,7 @@
 # Adafuit SSD1306
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-ssd1306](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306) | [Adafruit_SSD1306.h](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306/tree/master/include/Adafruit_SSD1306.h) | &nbsp;  | [api_arduino_ssd1306.js](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306/tree/master/mjs_fs/api_arduino_ssd1306.js)         |
+| [mongoose-os-libs/arduino-adafruit-ssd1306](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306) | [Adafruit_SSD1306.h](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306/blob/master/include/Adafruit_SSD1306.h) | &nbsp;  | [api_arduino_ssd1306.js](https://github.com/mongoose-os-libs/arduino-adafruit-ssd1306/blob/master/mjs_fs/api_arduino_ssd1306.js)         |
 
 
 

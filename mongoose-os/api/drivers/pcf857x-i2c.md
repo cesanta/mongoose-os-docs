@@ -1,7 +1,7 @@
 # PCF857X I2C
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/pcf857x-i2c](https://github.com/mongoose-os-libs/pcf857x-i2c) | [mgos_pcf857x.h](https://github.com/mongoose-os-libs/pcf857x-i2c/tree/master/include/mgos_pcf857x.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/pcf857x-i2c](https://github.com/mongoose-os-libs/pcf857x-i2c) | [mgos_pcf857x.h](https://github.com/mongoose-os-libs/pcf857x-i2c/blob/master/include/mgos_pcf857x.h) | &nbsp;  | &nbsp;         |
 
 
 

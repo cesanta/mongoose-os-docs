@@ -1,7 +1,7 @@
 # Device Provisioning
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/provision](https://github.com/mongoose-os-libs/provision) | [mgos_provision.h](https://github.com/mongoose-os-libs/provision/tree/master/include/mgos_provision.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/provision](https://github.com/mongoose-os-libs/provision) | [mgos_provision.h](https://github.com/mongoose-os-libs/provision/blob/master/include/mgos_provision.h) | &nbsp;  | &nbsp;         |
 
 
 

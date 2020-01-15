@@ -1,7 +1,7 @@
 # mDash dashboard
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/dash](https://github.com/mongoose-os-libs/dash) | [mgos_dash.h](https://github.com/mongoose-os-libs/dash/tree/master/include/mgos_dash.h) | &nbsp;  | [api_dash.js](https://github.com/mongoose-os-libs/dash/tree/master/mjs_fs/api_dash.js)         |
+| [mongoose-os-libs/dash](https://github.com/mongoose-os-libs/dash) | [mgos_dash.h](https://github.com/mongoose-os-libs/dash/blob/master/include/mgos_dash.h) | &nbsp;  | [api_dash.js](https://github.com/mongoose-os-libs/dash/blob/master/mjs_fs/api_dash.js)         |
 
 
 

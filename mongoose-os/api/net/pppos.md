@@ -1,7 +1,7 @@
 # PPPoS
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/pppos](https://github.com/mongoose-os-libs/pppos) | [mgos_pppos.h](https://github.com/mongoose-os-libs/pppos/tree/master/include/mgos_pppos.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/pppos](https://github.com/mongoose-os-libs/pppos) | [mgos_pppos.h](https://github.com/mongoose-os-libs/pppos/blob/master/include/mgos_pppos.h) | &nbsp;  | &nbsp;         |
 
 
 

@@ -1,7 +1,7 @@
 # Service - I2C
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-i2c](https://github.com/mongoose-os-libs/rpc-service-i2c) | [mgos_i2c_service.h](https://github.com/mongoose-os-libs/rpc-service-i2c/tree/master/include/mgos_i2c_service.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/rpc-service-i2c](https://github.com/mongoose-os-libs/rpc-service-i2c) | [mgos_i2c_service.h](https://github.com/mongoose-os-libs/rpc-service-i2c/blob/master/include/mgos_i2c_service.h) | &nbsp;  | &nbsp;         |
 
 
 

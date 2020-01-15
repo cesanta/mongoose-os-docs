@@ -1,7 +1,7 @@
 # Microsoft Azure RPC
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-azure](https://github.com/mongoose-os-libs/rpc-azure) | [](https://github.com/mongoose-os-libs/rpc-azure/tree/master/include/) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/rpc-azure](https://github.com/mongoose-os-libs/rpc-azure) | &nbsp; | &nbsp;  | &nbsp;         |
 
 
 

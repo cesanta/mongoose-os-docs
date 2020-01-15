@@ -1,7 +1,7 @@
 # Service - FS
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-fs](https://github.com/mongoose-os-libs/rpc-service-fs) | [mgos_service_filesystem.h](https://github.com/mongoose-os-libs/rpc-service-fs/tree/master/include/mgos_service_filesystem.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/rpc-service-fs](https://github.com/mongoose-os-libs/rpc-service-fs) | [mgos_service_filesystem.h](https://github.com/mongoose-os-libs/rpc-service-fs/blob/master/include/mgos_service_filesystem.h) | &nbsp;  | &nbsp;         |
 
 
 

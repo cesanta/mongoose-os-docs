@@ -1,7 +1,7 @@
 # IBM Watson
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/watson](https://github.com/mongoose-os-libs/watson) | [mgos_watson.h](https://github.com/mongoose-os-libs/watson/tree/master/include/mgos_watson.h) | &nbsp;  | [api_watson.js](https://github.com/mongoose-os-libs/watson/tree/master/mjs_fs/api_watson.js)         |
+| [mongoose-os-libs/watson](https://github.com/mongoose-os-libs/watson) | [mgos_watson.h](https://github.com/mongoose-os-libs/watson/blob/master/include/mgos_watson.h) | &nbsp;  | [api_watson.js](https://github.com/mongoose-os-libs/watson/blob/master/mjs_fs/api_watson.js)         |
 
 
 

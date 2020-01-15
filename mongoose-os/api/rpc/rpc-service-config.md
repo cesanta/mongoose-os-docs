@@ -1,7 +1,7 @@
 # Service - Config
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-config](https://github.com/mongoose-os-libs/rpc-service-config) | [mgos_service_config.h](https://github.com/mongoose-os-libs/rpc-service-config/tree/master/include/mgos_service_config.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/rpc-service-config](https://github.com/mongoose-os-libs/rpc-service-config) | [mgos_service_config.h](https://github.com/mongoose-os-libs/rpc-service-config/blob/master/include/mgos_service_config.h) | &nbsp;  | &nbsp;         |
 
 
 

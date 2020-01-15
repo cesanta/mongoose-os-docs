@@ -1,7 +1,7 @@
 # mgos_file_utils.h
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_file_utils.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_file_utils.h) | [mgos_file_utils.c](https://github.com/cesanta/mongoose-os/tree/master/src/mgos_file_utils.c)  | &nbsp;         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_file_utils.h](https://github.com/cesanta/mongoose-os/blob/master/include/mgos_file_utils.h) | [mgos_file_utils.c](https://github.com/cesanta/mongoose-os/blob/master/src/mgos_file_utils.c)  | &nbsp;         |
 
 #### mgos_file_copy
 

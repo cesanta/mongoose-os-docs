@@ -1,7 +1,7 @@
 # Adafruit TSL2561
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-tsl2561](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561) | [TSL2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/include/TSL2561.h) | &nbsp;  | [api_arduino_tsl2561.js](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/tree/master/mjs_fs/api_arduino_tsl2561.js)         |
+| [mongoose-os-libs/arduino-adafruit-tsl2561](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561) | [TSL2561.h](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/blob/master/include/TSL2561.h) | &nbsp;  | [api_arduino_tsl2561.js](https://github.com/mongoose-os-libs/arduino-adafruit-tsl2561/blob/master/mjs_fs/api_arduino_tsl2561.js)         |
 
 
 # Arduino Adafruit TSL2561 library for Mongoose OS

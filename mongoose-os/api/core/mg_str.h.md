@@ -1,7 +1,7 @@
 # String
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mg_str.h](https://github.com/cesanta/mongoose-os/tree/master/include/mg_str.h) | [mg_str.c](https://github.com/cesanta/mongoose-os/tree/master/src/mg_str.c)  | &nbsp;         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mg_str.h](https://github.com/cesanta/mongoose-os/blob/master/include/mg_str.h) | [mg_str.c](https://github.com/cesanta/mongoose-os/blob/master/src/mg_str.c)  | &nbsp;         |
 
 #### mg_mk_str
 
@@ -87,6 +87,14 @@ int mg_strncmp(const struct mg_str str1, const struct mg_str str2, size_t n);
 ```
 > 
 > Like `mg_strcmp`, but compares at most `n` characters.
+>  
+#### mg_strcasecmp
+
+```c
+int mg_strcasecmp(const struct mg_str str1, const struct mg_str str2);
+```
+> 
+> Compare two `mg_str`s ignoreing case; return value is the same as `strcmp`.
 >  
 #### mg_strfree
 

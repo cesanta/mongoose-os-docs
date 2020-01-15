@@ -1,7 +1,7 @@
 # HTU21D(F) I2C
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/htu21df-i2c](https://github.com/mongoose-os-libs/htu21df-i2c) | [mgos_htu21df.h](https://github.com/mongoose-os-libs/htu21df-i2c/tree/master/include/mgos_htu21df.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/htu21df-i2c](https://github.com/mongoose-os-libs/htu21df-i2c) | [mgos_htu21df.h](https://github.com/mongoose-os-libs/htu21df-i2c/blob/master/include/mgos_htu21df.h) | &nbsp;  | &nbsp;         |
 
 
 

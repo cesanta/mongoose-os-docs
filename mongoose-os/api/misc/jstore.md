@@ -1,7 +1,7 @@
 # JSON store
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/jstore](https://github.com/mongoose-os-libs/jstore) | [mgos_jstore.h](https://github.com/mongoose-os-libs/jstore/tree/master/include/mgos_jstore.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/jstore](https://github.com/mongoose-os-libs/jstore) | [mgos_jstore.h](https://github.com/mongoose-os-libs/jstore/blob/master/include/mgos_jstore.h) | &nbsp;  | &nbsp;         |
 
 
 

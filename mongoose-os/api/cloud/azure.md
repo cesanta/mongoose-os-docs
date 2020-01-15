@@ -1,7 +1,7 @@
 # Miscrosoft Azure IoT
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/azure](https://github.com/mongoose-os-libs/azure) | [mgos_azure.h](https://github.com/mongoose-os-libs/azure/tree/master/include/mgos_azure.h) | &nbsp;  | [api_azure.js](https://github.com/mongoose-os-libs/azure/tree/master/mjs_fs/api_azure.js)         |
+| [mongoose-os-libs/azure](https://github.com/mongoose-os-libs/azure) | [mgos_azure.h](https://github.com/mongoose-os-libs/azure/blob/master/include/mgos_azure.h) | &nbsp;  | [api_azure.js](https://github.com/mongoose-os-libs/azure/blob/master/mjs_fs/api_azure.js)         |
 
 
 

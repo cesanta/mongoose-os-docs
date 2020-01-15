@@ -1,7 +1,7 @@
 # Onewire
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/onewire](https://github.com/mongoose-os-libs/onewire) | [mgos_onewire.h](https://github.com/mongoose-os-libs/onewire/tree/master/include/mgos_onewire.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/onewire](https://github.com/mongoose-os-libs/onewire) | [mgos_onewire.h](https://github.com/mongoose-os-libs/onewire/blob/master/include/mgos_onewire.h) | &nbsp;  | &nbsp;         |
 
 This library provides support for
 [1-wire](https://en.wikipedia.org/wiki/1-Wire) protocol for Mongoose OS.

@@ -1,7 +1,7 @@
 # Timers
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_timers.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_timers.h) | [mgos_timers.c](https://github.com/cesanta/mongoose-os/tree/master/src/mgos_timers.c)  | [api_timer.js](http://github.com/mongoose-os-libs/mjs/tree/master/fs/api_timer.js)         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_timers.h](https://github.com/cesanta/mongoose-os/blob/master/include/mgos_timers.h) | [mgos_timers.c](https://github.com/cesanta/mongoose-os/blob/master/src/mgos_timers.c)  | [api_timer.js](https://github.com/mongoose-os-libs/mjs/blob/master/fs/api_timer.js)         |
 
 
 Mongoose OS supports two types of timers: software timers and hardware

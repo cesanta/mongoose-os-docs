@@ -1,7 +1,7 @@
 # mgos_iram.h
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_iram.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_iram.h) | [mgos_iram.c](https://github.com/cesanta/mongoose-os/tree/master/src/mgos_iram.c)  | &nbsp;         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_iram.h](https://github.com/cesanta/mongoose-os/blob/master/include/mgos_iram.h) | [mgos_iram.c](https://github.com/cesanta/mongoose-os/blob/master/src/mgos_iram.c)  | &nbsp;         |
 
 #### _IRAM_STR_LIT
 

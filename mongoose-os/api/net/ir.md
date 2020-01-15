@@ -1,7 +1,7 @@
 # IR (infrared)
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ir](https://github.com/mongoose-os-libs/ir) | [mgos_ir.h](https://github.com/mongoose-os-libs/ir/tree/master/include/mgos_ir.h) | &nbsp;  | [api_ir.js](https://github.com/mongoose-os-libs/ir/tree/master/mjs_fs/api_ir.js)         |
+| [mongoose-os-libs/ir](https://github.com/mongoose-os-libs/ir) | [mgos_ir.h](https://github.com/mongoose-os-libs/ir/blob/master/include/mgos_ir.h) | &nbsp;  | [api_ir.js](https://github.com/mongoose-os-libs/ir/blob/master/mjs_fs/api_ir.js)         |
 
 
 

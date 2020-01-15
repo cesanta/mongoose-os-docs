@@ -1,7 +1,7 @@
 # Wire
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-wire](https://github.com/mongoose-os-libs/arduino-wire) | [Wire.h](https://github.com/mongoose-os-libs/arduino-wire/tree/master/include/Wire.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/arduino-wire](https://github.com/mongoose-os-libs/arduino-wire) | [Wire.h](https://github.com/mongoose-os-libs/arduino-wire/blob/master/include/Wire.h) | &nbsp;  | &nbsp;         |
 
 
 

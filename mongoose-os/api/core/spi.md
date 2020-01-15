@@ -1,7 +1,7 @@
 # SPI
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/spi](https://github.com/mongoose-os-libs/spi) | [mgos_spi.h](https://github.com/mongoose-os-libs/spi/tree/master/include/mgos_spi.h) | &nbsp;  | [api_spi.js](https://github.com/mongoose-os-libs/spi/tree/master/mjs_fs/api_spi.js)         |
+| [mongoose-os-libs/spi](https://github.com/mongoose-os-libs/spi) | [mgos_spi.h](https://github.com/mongoose-os-libs/spi/blob/master/include/mgos_spi.h) | &nbsp;  | [api_spi.js](https://github.com/mongoose-os-libs/spi/blob/master/mjs_fs/api_spi.js)         |
 
 This library provides SPI ([Serial Peripheral Interface](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface)) support for Mongoose OS.
 

@@ -1,7 +1,7 @@
 # ADS1X1X I2C
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ads1x1x-i2c](https://github.com/mongoose-os-libs/ads1x1x-i2c) | [mgos_ads1x1x.h](https://github.com/mongoose-os-libs/ads1x1x-i2c/tree/master/include/mgos_ads1x1x.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/ads1x1x-i2c](https://github.com/mongoose-os-libs/ads1x1x-i2c) | [mgos_ads1x1x.h](https://github.com/mongoose-os-libs/ads1x1x-i2c/blob/master/include/mgos_ads1x1x.h) | &nbsp;  | &nbsp;         |
 
 
 

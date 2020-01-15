@@ -1,7 +1,7 @@
 # MAX7219 I2C
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/max7219-spi](https://github.com/mongoose-os-libs/max7219-spi) | [mgos_max7219.h](https://github.com/mongoose-os-libs/max7219-spi/tree/master/include/mgos_max7219.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/max7219-spi](https://github.com/mongoose-os-libs/max7219-spi) | [mgos_max7219.h](https://github.com/mongoose-os-libs/max7219-spi/blob/master/include/mgos_max7219.h) | &nbsp;  | &nbsp;         |
 
 
 

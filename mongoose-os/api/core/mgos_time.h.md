@@ -1,7 +1,7 @@
 # Time
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_time.h](https://github.com/cesanta/mongoose-os/tree/master/include/mgos_time.h) | [mgos_time.c](https://github.com/cesanta/mongoose-os/tree/master/src/mgos_time.c)  | &nbsp;         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [mgos_time.h](https://github.com/cesanta/mongoose-os/blob/master/include/mgos_time.h) | [mgos_time.c](https://github.com/cesanta/mongoose-os/blob/master/src/mgos_time.c)  | &nbsp;         |
 
 #### mgos_uptime
 

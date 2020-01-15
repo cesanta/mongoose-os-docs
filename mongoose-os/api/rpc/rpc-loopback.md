@@ -1,7 +1,7 @@
 # RPC loopback
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-loopback](https://github.com/mongoose-os-libs/rpc-loopback) | [mg_rpc_channel_loopback.h](https://github.com/mongoose-os-libs/rpc-loopback/tree/master/include/mg_rpc_channel_loopback.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/rpc-loopback](https://github.com/mongoose-os-libs/rpc-loopback) | [mg_rpc_channel_loopback.h](https://github.com/mongoose-os-libs/rpc-loopback/blob/master/include/mg_rpc_channel_loopback.h) | &nbsp;  | &nbsp;         |
 
 
 

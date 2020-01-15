@@ -1,7 +1,7 @@
 # Service - GATT client
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-service-gattc](https://github.com/mongoose-os-libs/rpc-service-gattc) | [](https://github.com/mongoose-os-libs/rpc-service-gattc/tree/master/include/) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/rpc-service-gattc](https://github.com/mongoose-os-libs/rpc-service-gattc) | &nbsp; | &nbsp;  | &nbsp;         |
 
 
 

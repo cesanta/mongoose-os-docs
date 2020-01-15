@@ -1,7 +1,7 @@
 # IMU
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/imu](https://github.com/mongoose-os-libs/imu) | [mgos_imu.h](https://github.com/mongoose-os-libs/imu/tree/master/include/mgos_imu.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/imu](https://github.com/mongoose-os-libs/imu) | [mgos_imu.h](https://github.com/mongoose-os-libs/imu/blob/master/include/mgos_imu.h) | &nbsp;  | &nbsp;         |
 
 
 

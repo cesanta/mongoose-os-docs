@@ -1,7 +1,7 @@
 # VFS
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/vfs-common](https://github.com/mongoose-os-libs/vfs-common) | [mgos_vfs.h](https://github.com/mongoose-os-libs/vfs-common/tree/master/include/mgos_vfs.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/vfs-common](https://github.com/mongoose-os-libs/vfs-common) | [mgos_vfs.h](https://github.com/mongoose-os-libs/vfs-common/blob/master/include/mgos_vfs.h) | &nbsp;  | &nbsp;         |
 
 VFS subsystem multiplexes calls to libc file API methods such as open,
 read, write and close between (potentially) several filesystems attached

@@ -1,7 +1,7 @@
 # OTA via device shadow
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ota-shadow](https://github.com/mongoose-os-libs/ota-shadow) | [](https://github.com/mongoose-os-libs/ota-shadow/tree/master/include/) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/ota-shadow](https://github.com/mongoose-os-libs/ota-shadow) | &nbsp; | &nbsp;  | &nbsp;         |
 
 
 

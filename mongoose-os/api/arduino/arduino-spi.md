@@ -1,7 +1,7 @@
 # SPI
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-spi](https://github.com/mongoose-os-libs/arduino-spi) | [SPI.h](https://github.com/mongoose-os-libs/arduino-spi/tree/master/include/SPI.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/arduino-spi](https://github.com/mongoose-os-libs/arduino-spi) | [SPI.h](https://github.com/mongoose-os-libs/arduino-spi/blob/master/include/SPI.h) | &nbsp;  | &nbsp;         |
 
 
 

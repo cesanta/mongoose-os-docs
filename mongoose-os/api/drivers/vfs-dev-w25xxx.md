@@ -1,7 +1,7 @@
 # VFS (Winbond W25XXX)
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/vfs-dev-w25xxx](https://github.com/mongoose-os-libs/vfs-dev-w25xxx) | [mgos_vfs_dev_w25xxx.h](https://github.com/mongoose-os-libs/vfs-dev-w25xxx/tree/master/include/mgos_vfs_dev_w25xxx.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/vfs-dev-w25xxx](https://github.com/mongoose-os-libs/vfs-dev-w25xxx) | [mgos_vfs_dev_w25xxx.h](https://github.com/mongoose-os-libs/vfs-dev-w25xxx/blob/master/include/mgos_vfs_dev_w25xxx.h) | &nbsp;  | &nbsp;         |
 
 
 

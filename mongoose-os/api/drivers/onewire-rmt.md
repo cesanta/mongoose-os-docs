@@ -1,7 +1,7 @@
 # Onewire RMT
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/onewire-rmt](https://github.com/mongoose-os-libs/onewire-rmt) | [OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/tree/master/include/OnewireRmt.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/onewire-rmt](https://github.com/mongoose-os-libs/onewire-rmt) | [OnewireRmt.h](https://github.com/mongoose-os-libs/onewire-rmt/blob/master/include/OnewireRmt.h) | &nbsp;  | &nbsp;         |
 
 
 Based on https://github.com/nodemcu/nodemcu-firmware/blob/dev-esp32/components/platform/onewire.c

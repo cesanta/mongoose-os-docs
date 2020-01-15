@@ -1,7 +1,7 @@
 # SNTP
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/sntp](https://github.com/mongoose-os-libs/sntp) | [](https://github.com/mongoose-os-libs/sntp/tree/master/include/) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/sntp](https://github.com/mongoose-os-libs/sntp) | &nbsp; | &nbsp;  | &nbsp;         |
 
 
 

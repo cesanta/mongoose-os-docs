@@ -1,7 +1,7 @@
 # Adafuit GFX
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-adafruit-gfx](https://github.com/mongoose-os-libs/arduino-adafruit-gfx) | [Adafruit_GFX.h](https://github.com/mongoose-os-libs/arduino-adafruit-gfx/tree/master/include/Adafruit_GFX.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/arduino-adafruit-gfx](https://github.com/mongoose-os-libs/arduino-adafruit-gfx) | [Adafruit_GFX.h](https://github.com/mongoose-os-libs/arduino-adafruit-gfx/blob/master/include/Adafruit_GFX.h) | &nbsp;  | &nbsp;         |
 
 
 

@@ -1,7 +1,7 @@
 # ADC
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/adc](https://github.com/mongoose-os-libs/adc) | [mgos_adc.h](https://github.com/mongoose-os-libs/adc/tree/master/include/mgos_adc.h) | &nbsp;  | [api_adc.js](https://github.com/mongoose-os-libs/adc/tree/master/mjs_fs/api_adc.js)         |
+| [mongoose-os-libs/adc](https://github.com/mongoose-os-libs/adc) | [mgos_adc.h](https://github.com/mongoose-os-libs/adc/blob/master/include/mgos_adc.h) | &nbsp;  | [api_adc.js](https://github.com/mongoose-os-libs/adc/blob/master/mjs_fs/api_adc.js)         |
 
 This library implements a [analog-to-digital conversion](https://en.wikipedia.org/wiki/Analog-to-digital_converter) for Mongoose OS.
 

@@ -1,7 +1,7 @@
 # ESP32 touch sensor
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/esp32-touchpad](https://github.com/mongoose-os-libs/esp32-touchpad) | [](https://github.com/mongoose-os-libs/esp32-touchpad/tree/master/include/) | &nbsp;  | [api_esp32_touchpad.js](https://github.com/mongoose-os-libs/esp32-touchpad/tree/master/mjs_fs/api_esp32_touchpad.js)         |
+| [mongoose-os-libs/esp32-touchpad](https://github.com/mongoose-os-libs/esp32-touchpad) | &nbsp; | &nbsp;  | [api_esp32_touchpad.js](https://github.com/mongoose-os-libs/esp32-touchpad/blob/master/mjs_fs/api_esp32_touchpad.js)         |
 
 
 

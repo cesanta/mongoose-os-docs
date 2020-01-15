@@ -1,7 +1,7 @@
 # Device Shadow
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/shadow](https://github.com/mongoose-os-libs/shadow) | [mgos_shadow.h](https://github.com/mongoose-os-libs/shadow/tree/master/include/mgos_shadow.h) | &nbsp;  | [api_shadow.js](https://github.com/mongoose-os-libs/shadow/tree/master/mjs_fs/api_shadow.js)         |
+| [mongoose-os-libs/shadow](https://github.com/mongoose-os-libs/shadow) | [mgos_shadow.h](https://github.com/mongoose-os-libs/shadow/blob/master/include/mgos_shadow.h) | &nbsp;  | [api_shadow.js](https://github.com/mongoose-os-libs/shadow/blob/master/mjs_fs/api_shadow.js)         |
 
 
 

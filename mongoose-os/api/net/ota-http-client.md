@@ -1,7 +1,7 @@
 # OTA via HTTP GET
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ota-http-client](https://github.com/mongoose-os-libs/ota-http-client) | [mgos_ota_http_client.h](https://github.com/mongoose-os-libs/ota-http-client/tree/master/include/mgos_ota_http_client.h) | &nbsp;  | [api_ota.js](https://github.com/mongoose-os-libs/ota-http-client/tree/master/mjs_fs/api_ota.js)         |
+| [mongoose-os-libs/ota-http-client](https://github.com/mongoose-os-libs/ota-http-client) | [mgos_ota_http_client.h](https://github.com/mongoose-os-libs/ota-http-client/blob/master/include/mgos_ota_http_client.h) | &nbsp;  | [api_ota.js](https://github.com/mongoose-os-libs/ota-http-client/blob/master/mjs_fs/api_ota.js)         |
 
 
 

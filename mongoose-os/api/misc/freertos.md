@@ -1,7 +1,7 @@
 # freertos
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/freertos](https://github.com/mongoose-os-libs/freertos) | [FreeRTOSConfigCommon.h](https://github.com/mongoose-os-libs/freertos/tree/master/include/FreeRTOSConfigCommon.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/freertos](https://github.com/mongoose-os-libs/freertos) | [FreeRTOSConfigCommon.h](https://github.com/mongoose-os-libs/freertos/blob/master/include/FreeRTOSConfigCommon.h) | &nbsp;  | &nbsp;         |
 
 
 

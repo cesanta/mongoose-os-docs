@@ -1,7 +1,7 @@
 # VFS (another device)
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/vfs-dev-part](https://github.com/mongoose-os-libs/vfs-dev-part) | [mgos_vfs_dev_part.h](https://github.com/mongoose-os-libs/vfs-dev-part/tree/master/include/mgos_vfs_dev_part.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/vfs-dev-part](https://github.com/mongoose-os-libs/vfs-dev-part) | [mgos_vfs_dev_part.h](https://github.com/mongoose-os-libs/vfs-dev-part/blob/master/include/mgos_vfs_dev_part.h) | &nbsp;  | &nbsp;         |
 
 
 

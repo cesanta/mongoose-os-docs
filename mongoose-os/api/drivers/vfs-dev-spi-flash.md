@@ -1,7 +1,7 @@
 # VFS (SPI NOR Flash)
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/vfs-dev-spi-flash](https://github.com/mongoose-os-libs/vfs-dev-spi-flash) | [mgos_vfs_dev_spi_flash.h](https://github.com/mongoose-os-libs/vfs-dev-spi-flash/tree/master/include/mgos_vfs_dev_spi_flash.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/vfs-dev-spi-flash](https://github.com/mongoose-os-libs/vfs-dev-spi-flash) | [mgos_vfs_dev_spi_flash.h](https://github.com/mongoose-os-libs/vfs-dev-spi-flash/blob/master/include/mgos_vfs_dev_spi_flash.h) | &nbsp;  | &nbsp;         |
 
 
 

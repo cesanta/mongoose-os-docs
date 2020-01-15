@@ -1,7 +1,7 @@
 # ILI9341 SPI
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ili9341-spi](https://github.com/mongoose-os-libs/ili9341-spi) | [mgos_ili9341.h](https://github.com/mongoose-os-libs/ili9341-spi/tree/master/include/mgos_ili9341.h) | &nbsp;  | [api_ili9341_spi.js](https://github.com/mongoose-os-libs/ili9341-spi/tree/master/mjs_fs/api_ili9341_spi.js)         |
+| [mongoose-os-libs/ili9341-spi](https://github.com/mongoose-os-libs/ili9341-spi) | [mgos_ili9341.h](https://github.com/mongoose-os-libs/ili9341-spi/blob/master/include/mgos_ili9341.h) | &nbsp;  | [api_ili9341_spi.js](https://github.com/mongoose-os-libs/ili9341-spi/blob/master/mjs_fs/api_ili9341_spi.js)         |
 
 
 

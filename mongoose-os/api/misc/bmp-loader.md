@@ -1,7 +1,7 @@
 # bmp-loader
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/bmp-loader](https://github.com/mongoose-os-libs/bmp-loader) | [mgos_bmp_loader.h](https://github.com/mongoose-os-libs/bmp-loader/tree/master/include/mgos_bmp_loader.h) | &nbsp;  | [api_bmp.js](https://github.com/mongoose-os-libs/bmp-loader/tree/master/mjs_fs/api_bmp.js)         |
+| [mongoose-os-libs/bmp-loader](https://github.com/mongoose-os-libs/bmp-loader) | [mgos_bmp_loader.h](https://github.com/mongoose-os-libs/bmp-loader/blob/master/include/mgos_bmp_loader.h) | &nbsp;  | [api_bmp.js](https://github.com/mongoose-os-libs/bmp-loader/blob/master/mjs_fs/api_bmp.js)         |
 
 
 

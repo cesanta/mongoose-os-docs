@@ -1,7 +1,7 @@
 # Barometers
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/barometer](https://github.com/mongoose-os-libs/barometer) | [mgos_barometer.h](https://github.com/mongoose-os-libs/barometer/tree/master/include/mgos_barometer.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/barometer](https://github.com/mongoose-os-libs/barometer) | [mgos_barometer.h](https://github.com/mongoose-os-libs/barometer/blob/master/include/mgos_barometer.h) | &nbsp;  | &nbsp;         |
 
 
 

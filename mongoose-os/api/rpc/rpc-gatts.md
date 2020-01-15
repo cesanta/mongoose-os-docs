@@ -1,7 +1,7 @@
 # RPC over BLE GATT
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-gatts](https://github.com/mongoose-os-libs/rpc-gatts) | [](https://github.com/mongoose-os-libs/rpc-gatts/tree/master/include/) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/rpc-gatts](https://github.com/mongoose-os-libs/rpc-gatts) | &nbsp; | &nbsp;  | &nbsp;         |
 
 
 

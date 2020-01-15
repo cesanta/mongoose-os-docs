@@ -1,7 +1,7 @@
 # Dallas Temperature
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/arduino-dallas-temperature](https://github.com/mongoose-os-libs/arduino-dallas-temperature) | [DallasTemperature.h](https://github.com/mongoose-os-libs/arduino-dallas-temperature/tree/master/include/DallasTemperature.h) | &nbsp;  | [api_arduino_dallas_temp.js](https://github.com/mongoose-os-libs/arduino-dallas-temperature/tree/master/mjs_fs/api_arduino_dallas_temp.js)         |
+| [mongoose-os-libs/arduino-dallas-temperature](https://github.com/mongoose-os-libs/arduino-dallas-temperature) | [DallasTemperature.h](https://github.com/mongoose-os-libs/arduino-dallas-temperature/blob/master/include/DallasTemperature.h) | &nbsp;  | [api_arduino_dallas_temp.js](https://github.com/mongoose-os-libs/arduino-dallas-temperature/blob/master/mjs_fs/api_arduino_dallas_temp.js)         |
 
 
 

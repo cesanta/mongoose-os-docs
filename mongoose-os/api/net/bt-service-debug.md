@@ -1,7 +1,7 @@
 # Debug over BLE GATT
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/bt-service-debug](https://github.com/mongoose-os-libs/bt-service-debug) | [](https://github.com/mongoose-os-libs/bt-service-debug/tree/master/include/) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/bt-service-debug](https://github.com/mongoose-os-libs/bt-service-debug) | &nbsp; | &nbsp;  | &nbsp;         |
 
 
 

@@ -1,7 +1,7 @@
 # INA226 I2C
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/ina226-i2c](https://github.com/mongoose-os-libs/ina226-i2c) | [mgos_ina226.h](https://github.com/mongoose-os-libs/ina226-i2c/tree/master/include/mgos_ina226.h) | &nbsp;  | &nbsp;         |
+| [mongoose-os-libs/ina226-i2c](https://github.com/mongoose-os-libs/ina226-i2c) | [mgos_ina226.h](https://github.com/mongoose-os-libs/ina226-i2c/blob/master/include/mgos_ina226.h) | &nbsp;  | &nbsp;         |
 
 
 
