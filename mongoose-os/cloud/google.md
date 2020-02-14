@@ -177,3 +177,89 @@ select "text" view, and check the JSON string that is sent by device.
 
 See https://mongoose-os.com/blog/mongoose-os-google-iot-ecc508a/ on
 how to use ATECC508A crypto chip with Mongoose OS and Google IoT Core.
+
+## Sending debug logs to stackdriver
+
+It may be very useful for remote debugging to be able to see a device's logs in Stackdriver. To do so you need to configure the debug.stdout_topic / debug.stderr_topic fields, add a topic in Google IoT, create a cloud function that listens to the topic and writes a new log entry that you can watch live in Stackdriver. We'll be using the topic name of 'debug', and associating both debug and error logs with it, but you can use whatever you like!
+
+*** Warning *** This may incur a *lot* of storage and processing costs running full debug through the cloud functions and storage. Proceed at own risk.
+
+### Configure device
+
+It's recommended to set it via a config{7/8/9}.json file that you load onto the device, or you can simply configure the device via mos tool:
+```mos call Config.Set '{"config": {"debug": {"stdout_topic": "/devices/{YOURDEVICEID}/events/debug", "stderr_topic": "/devices/{YOURDEVICEID}/events/debug"}}}'```
+Replace {YOURDEVICEID} with the ID of the device.
+
+### Add a topic
+- Log into your cloud console, navigate to IoT core and choose your registry.
+- Click add/edit topics
+- There's an add topic and subfolder button, click that
+- Choose 'add topic' from the popup
+- Fill the topic and subfolder fields with 'debug'
+- Go back to the add/edit topics screen, scroll down and click update
+
+### Create a Firebase cloud function
+We presume you know how to use firebase cloud functions, and we'll be assuming you have a local functions folder that you're editing and uploading. Here's some docu if you need to get up to speed: https://firebase.google.com/docs/functions/get-started
+
+This is our function to intercept the debug topic and write a meaningful log result to Stackdriver.
+```
+var functions = require('firebase-functions');
+const {Logging} = require('@google-cloud/logging');
+
+// create the Stackdriver Logging client
+const logging = new Logging({
+	projectId: process.env.GCLOUD_PROJECT,
+});
+
+// start cloud function
+
+exports.deviceLog =
+	functions.pubsub.topic('debug').onPublish((message) => {
+
+		//console.log("message received: ", message);
+
+		const log = logging.log('debug-logs');
+		const metadata = {
+			// Set the Cloud IoT Device you are writing a log for
+			// you extract the required device info from the PubSub attributes
+			resource: {
+				type: 'cloudiot_device',
+				labels: {
+					project_id: message.attributes.projectId,
+					device_num_id: message.attributes.deviceNumId,
+					device_registry_id: message.attributes.deviceRegistryId,
+					location: message.attributes.location,
+				}
+			},
+			labels: {
+				// note device_id is not part of the monitored resource, but you can
+				// include it as another log label
+				device_id: message.attributes.deviceId,
+			}
+		};
+
+		let buff = new Buffer(message.data, 'base64');
+		let text = buff.toString('ascii');
+		//console.log("data: ", text);
+
+		let textArray = text.split("|");
+		if (textArray[0].substr(-1) === "2"){
+			metadata['severity'] = 'ERROR';
+		} else {
+			metadata['severity'] = 'DEBUG';
+		}
+
+		// write the log entryto Stackdriver Logging
+		const entry = log.entry(metadata, textArray[1]);
+		return log.write(entry);
+	});
+
+```
+Deploy that function and then go to the Stackdriver console, and drill down to the function to check that it's executing without errors.
+
+### View the logs
+Within Stackdriver click the resource filter and choose Cloud IoT Device, and you can either choose all device num or a specific (Google ID) device to see the nicely formatted debug logs.
+
+
+
+
