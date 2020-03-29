@@ -53,7 +53,7 @@ Write data to the I2C device. Arguments:
 ```javascript
 {
   "addr: 31,              // Required. Device address.
-  "data_hext": "1f3c6a"   // Required. Hex-encoded data to write
+  "data_hex": "1f3c6a"   // Required. Hex-encoded data to write
 }
 ```
 
