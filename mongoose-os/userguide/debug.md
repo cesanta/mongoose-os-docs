@@ -119,4 +119,4 @@ go build
 Point your browser at http://localhost:8910/ and press "connect".
 This should give you a pretty picture like this:
 
-![](images/heaplog1.png)
+[![Image of heap use over time](images/heaplog1.png)](images/heaplog1.png)
