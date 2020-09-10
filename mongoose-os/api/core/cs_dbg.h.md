@@ -1,7 +1,7 @@
 # Logging
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [cs_dbg.h](https://github.com/cesanta/mongoose-os/blob/master/include/cs_dbg.h) | [cs_dbg.c](https://github.com/cesanta/mongoose-os/blob/master/src/cs_dbg.c)  | &nbsp;         |
+| [cesanta/mongoose-os](https://github.com/cesanta/mongoose-os) | [cs_dbg.h](https://github.com/cesanta/mongoose-os/blob/master/include/common/cs_dbg.h) | [cs_dbg.c](https://github.com/cesanta/mongoose/blob/master/src/common/cs_dbg.c)  | &nbsp;         |
 
 #### cs_log_set_level
 
