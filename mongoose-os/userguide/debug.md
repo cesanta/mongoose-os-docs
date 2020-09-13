@@ -70,7 +70,7 @@ Then clone the `mongoose-os` repo:
 <pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="100"><code>git clone https://github.com/cesanta/mongoose-os</code></pre>
 
 Then from your apps' directory, do
-<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-20"><code>make -C PATH_TO_MONGOOSE_OS_REPO/fw/platforms/esp8266 debug_coredump \
+<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-20"><code>make -C PATH_TO_MONGOOSE_OS_REPO/platforms/esp8266 debug_coredump \
   CONSOLE_LOG=$(pwd)/console.log ELF_FILE=$(ls $PWD/build/objs/fw.elf)</code></pre>
 
 ## Running a heap log analyser
