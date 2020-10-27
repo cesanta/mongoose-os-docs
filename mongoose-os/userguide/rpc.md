@@ -94,7 +94,11 @@ Here is how you can call it:
 3</code></pre>
 
 #### Via RESTful call, if a device is in the local network:
-<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2"><code>curl -d '{"a":1, "b": 2}' 192.168.0.206/rpc/Sum
+<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2"><code>curl http://192.168.0.206/rpc/Sum -d '{"a":1, "b": 2}'
+3</code></pre>
+
+#### Via GET request, if a device is in the local network:
+<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2"><code>curl 'http://192.168.0.206/rpc/Sum?a=1&b=2' 
 3</code></pre>
 
 #### Via an MQTT server, talking to an device idendified by its ID esp32_6732ac:
