@@ -36,6 +36,29 @@ an old license string is returned by the License Manager
 but the number of available licenses is not decreased.
 Thus a device, once licensed, is licensed permanently.
 
+### Important note regarding conf1.json
+While running `mos license` you may receive an error regarding STA SSID, ie: 
+```
+Setting new configuration (level 1)...
+Error: /private/tmp/mos-latest-20200904-44646-wpkm4w/mos-7d543c623dcc1987bede975488c3d41837253b05/cli/dev/dev_conn_impl.go:171: remote error -1: error saving config: STA SSID must be between 1 and 31 chars
+```
+
+The solution is to put a conf1.json file on the device that has some basic wifi details, which could be fake, they just need to be populated!
+
+conf1.json contents:
+```
+{
+    "wifi": {
+        "sta": {
+            "enable": true,
+            "ssid": "placeholder",
+            "pass": "complexPassword"
+        }
+    }
+}
+```
+Put the file on your device with `mos put conf1.json`, then run `mos license` again.
+
 
 ## Libraries with restrictions
 
@@ -49,3 +72,5 @@ Below is the list of closed-source libraries and their restrictions.
 | [ota-shadow](https://github.com/mongoose-os-libs/ota-shadow) | OTA only from [mDash](https://mongoose-os.com/docs/mdash/intro.md) |
 | [cron](https://github.com/mongoose-os-libs/cron) | 3 cron tasks max |
 | [crontab](https://github.com/mongoose-os-libs/crontab) | 3 crontab entries max |
+
+
