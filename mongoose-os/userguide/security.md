@@ -383,11 +383,19 @@ example of `rpc_acl.json` file:
 
 ```
 [
+  {"method": "FS.*", "ch_type": "GCP", "acl":"*"}
+  {"method": "SYS.*", "ch_type": "WS_in", "acl":"*"}
   {"method": "FS.*", "acl": "+user1,-user2"},
   {"method": "*", "acl": "-*"}
 ]
 ```
-
+Note, you can optionally specify communication channel based ACLs via the 'ch_type' parameter. If in doubt what your desired channel is referred to, send a RPC call to the device and look for a log line similar to `mgos_rpc.c:389          Called 'RPC.List' via 'WS_in', ACL: '*'`. Generally the human friendly variable is specified in each rpc library, ie for GCP it looks like: 
+```
+static const char *mgos_rpc_channel_gcp_get_type(struct mg_rpc_channel *ch) {
+  (void) ch;
+  return "GCP";
+}
+```
 ### Disable RPC for given transport
 
 If the transport is disabled, that's it!
