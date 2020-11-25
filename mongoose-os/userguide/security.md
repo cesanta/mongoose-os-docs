@@ -137,7 +137,7 @@ Note 2: Sample config is very permissive and is only
   on [our forum](https://community.mongoose-os.com/)).
 
 2. Generate a cert and key as normal. An example below shows a self-signed 
-  certificate, but of course it doesn't have to be. The importnat thing is
+  certificate, but of course it doesn't have to be. The important thing is
   that it's a ECDSA certificate using P256 curve, since that is what the chip
   supports.
 
@@ -299,7 +299,7 @@ server. If a device connects to an MQTT server, it acts as a network client.
 
 Avoid running a network server on your device for the following reasons:
 
-- It is easy to DoS the device by creading many network connections. Say,
+- It is easy to DoS the device by creating many network connections. Say,
   a device has 40k of free RAM, and each connection takes 10k, then 4
   connections is enough for the denial of service
 - A device must implement authentication and authorisation mechanisms that
@@ -331,7 +331,7 @@ hardware platform it is, amount of free RAM, toggling GPIO - it is all RPC.
 
 When a new device is flashed, it is in a default state when all RPCs
 are allowed for everybody. Several mechanisms are
-avalable to restrict the access to RPC services:
+available to restrict the access to RPC services:
 
 - Enable authentication - which users are allowed
 - Enable authorisation - what allowed users can do
