@@ -62,6 +62,13 @@ mos esp32-efuse-get
 
 A device with encryption enabled should show `flash_crypt_cnt      : 0x01`
 
+If you really wanted to specify the encryption key, possibly your use case is easier with a shared key, you need to set the fuses directly
+```
+mos esp32-efuse-set flash_encryption_key=0x0000000000000000000000000000000000000000000000000000000000000000 flash_encryption_key.RD=1 flash_encryption_key.RD=1 flash_crypt_cnt=1 flash_crypt_cnt.WD=1 JTAG_disable=1 download_dis_encrypt=1 download_dis_decrypt=1 download_dis_cache=1 flash_crypt_config=0xf
+```
+Substitute an appropriate hex string for the key parameter, ie 0xdabf6bcfcab9d642f22c240e7eda58acf54d305b373990f27ab8241d557a99a8
+
+
 ## ATECC608A crypto chip
 
 Often, IoT boards provide no built-in flash protection mechanism.
