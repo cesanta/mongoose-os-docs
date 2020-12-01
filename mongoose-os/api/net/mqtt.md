@@ -50,6 +50,9 @@ The MQTT library adds `mqtt` section to the device configuration:
   "user": "",                   // MQTT user name, if MQTT auth is used
   "will_message": "",           // MQTT last will message
   "will_topic": ""              // MQTT last will topic
+  
+  "cloud_events": true,         // Trigger cloud events when connected / disconnected"
+  "debug_use_log_level": false, // Use the original cs_log_level enum instead of stdout/stderr flag
 }
 ```
 
