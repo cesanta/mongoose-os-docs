@@ -44,7 +44,7 @@ to add support for other channels. `mos` tool provides an easy way to call
 device's RPC services over the serial connection or over the network.
 Alternatively, RPC services can be invoked programmatically.
 
-That means, you can write a function in C or JavaSciprt,
+That means, you can write a function in C or JavaScript,
 and call it remotely via multiple protocols. Example: 
 an RPC service `Sum` that adds two numbers `a` and `b`:
 
