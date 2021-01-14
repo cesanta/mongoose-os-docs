@@ -39,7 +39,7 @@ Saving and rebooting...</code></pre>
 ```javascript
 {
   "factory_reset_gpio": -1,   // Used to reset the device. Hold this pin down and reboot to reset
-  "filter": "mg_,*mqtt*",     // Log filter. Prefix match glob for source file or function name
+  "file_level": "",           // Filename and function name prefix match, ie `debug.file_level=mgos_vfs=2,mgos_event.c=2,mg_=2,=3` 
   "level": 2,                 // Log verbosity level
   "mbedtls_level": 0,         // Log verbosity level for TLS library
   "mg_mgr_hexdump_file": "",  // Set to "-" to hexdump network packets
@@ -58,6 +58,9 @@ Notes:
 - If you connect to your device using via Websocket, as `ws://IP_ADDR/rpc`,
   then `mos` tool automatically sets the `debug.udp_log_addr` to the correct
   value and you don't need to set it up manually.
+- file_level is a comma separated list of string prefixes, which could be a full or partial start of word match. 
+  The number argument sets the maximum log level that will be accepted by files/functions matching it. 
+  You can put a 'match all' with a null string and a log level, ie "=3" will match everything and set it to 3 (INFO)
 
 ## Analysing core dumps
 
