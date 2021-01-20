@@ -139,3 +139,48 @@ at IP address 192.168.1.4 using `mos` tool in a command line mode:
   31
 ]</code></pre>
 
+### RPC Authentication via mos cli
+
+If you have enabled RPC authentication (ie auth_domain / auth_file / acl_file), then the easiest way to authenticate is via the rpc-creds argument to the mos tool:
+<pre class="command-line language-bash" data-user="chris" data-host="localhost" data-output="2-100"><code>mos --port ws://192.168.1.4/rpc --rpc-creds=@myusercreds.txt call I2C.Scan
+</code></pre>
+Where myusercreds.txt is your file containing simple auth formatted user:pass, ie ```johncitizen:plaintextpassword```
+
+### RPC Authentication via code
+
+Mongoose OS RPC authentication is quite basic, and is vulnerable to replay attacks as the TC field is not incremented. However it enforces basic authentication that is not plaintext, and the intention is you're communicating via a secure TLS channel like MQTT or HTTPS.
+
+There are theoretically two ways to provide htdigest authentication, you can send a RPC command without auth and the system will reply with an error that contains a system generated nonce for you to use as input to your authentication reply. OR you can simply provide authentication with your original request, and since that works and is less traffic let's focus on that.
+
+This is what a correctly formatted authenticated request looks like:
+```
+{"src":"mos","id":1602514363591,"method":"Config.Get","auth":{"realm":"myproduct","username":"serialUser",
+    "nonce":1611048949,"cnonce":313273957,"response":"66e9cdd290e93ef623b1f415f10e62a7"}
+```
+
+There is good documentation on HTDIGEST auth here: https://en.wikipedia.org/wiki/Digest_access_authentication
+
+The short version of how it applies to the Mongoose implementation is:
+```
+  let id = Date.now();
+  let cmd = {"src":"rpc","id":id,"method":"Config.Get","params":{}};
+  let cnonce = new Date().getTime(); 
+  let nonce = nonce; // we're creating the request, otherwise take this from the error response
+  let digestURI = {method = "dummy_method", path = "dummy_uri"}; //yes, this is hardcoded in MGOS 
+
+  // Combine everything
+  let HA1 = md5(user + ":" + realm + ":" + pass); // supply your credentials
+  let HA2 = md5(digestURI.method + ":" + digestURI.path);
+  let combined = HA1 + ":" + nonce + ":" + nc + ":" + cnonce + ":" + "auth" + ":" + HA2;
+  let response = md5(combined);
+  
+  // Add it to the command
+  cmd['auth'] = {"realm": realm, "username": user, "nonce": nonce, "cnonce": cnonce, "response": response};
+  
+  let textToSendToDevice = JSON.stringify(cmd); // transform from JSON to text
+  ws.send(textToSendToDevice); // using a websocket instance 
+  
+```
+Note: Advise using websockets as it skips CORS cross site issues you'd otherwise bump into in the browser
+
+
