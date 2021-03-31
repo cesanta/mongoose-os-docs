@@ -1,7 +1,7 @@
 # RPC core
 | Github Repo | C Header | C source  | JS source |
 | ----------- | -------- | --------  | ----------------- |
-| [mongoose-os-libs/rpc-common](https://github.com/mongoose-os-libs/rpc-common) | [mg_rpc.h](https://github.com/mongoose-os-libs/rpc-common/blob/master/include/mg_rpc.h) | &nbsp;  | [api_rpc.js](https://github.com/mongoose-os-libs/rpc-common/blob/master/mjs_fs/api_rpc.js)         |
+| [mongoose-os-libs/rpc-common](https://github.com/mongoose-os-libs/rpc-common) | [mgos_rpc.h](https://github.com/mongoose-os-libs/rpc-common/blob/master/include/mg_rpc.h) | &nbsp;  | [api_rpc.js](https://github.com/mongoose-os-libs/rpc-common/blob/master/mjs_fs/api_rpc.js)         |
 
 
 
