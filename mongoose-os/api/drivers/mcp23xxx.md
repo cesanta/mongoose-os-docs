@@ -6,7 +6,7 @@
 
 
 A Mongoose library for MCP23XXX, a popular and cheap set of GPIO extenders using
-either I2C (MCP32**0**XX) or SPI (MCP32**S**XX)
+either I2C (MCP23**0**XX) or SPI (MCP23**S**XX)
 The MCP23008 is an 8-port device, and the MCP23017 is a 16-port device, but they are
 otherwise identical.
 
