@@ -36,6 +36,23 @@ an old license string is returned by the License Manager
 but the number of available licenses is not decreased.
 Thus a device, once licensed, is licensed permanently.
 
+## API
+
+- You'll need your secret key from the portal
+- At a high level, send a POST request to https://license.mongoose-os.com/api/v1/license with your secret key and a JSON formatted object containing the device information
+- You can obtain the device information from a Sys.GetUID RPC call to the device
+- 'pid' maps to 'type', 'uid' maps to 'device_id', 'app' stays the same
+- Sample CURL call:
+```
+curl --location --request POST 'https://license.mongoose-os.com/api/v1/license' \
+--header 'Authorization: Bearer xxxxxxe2977b746c753e40b4599555' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "type": "mos",
+  "device_id": "0fxxxxxxxxa6a555",
+  "app": "myappsname"
+}'
+```
 
 ## Libraries with restrictions
 
