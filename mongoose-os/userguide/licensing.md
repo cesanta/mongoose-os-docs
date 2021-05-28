@@ -45,11 +45,11 @@ Thus a device, once licensed, is licensed permanently.
 - Sample CURL call:
 ```
 curl --location --request POST 'https://license.mongoose-os.com/api/v1/license' \
---header 'Authorization: Bearer 6db682e2977b746c753e40b4599555' \
+--header 'Authorization: Bearer xxxxxxe2977b746c753e40b4599555' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "type": "mos",
-  "device_id": "0f9c93b555a6a555",
+  "device_id": "0fxxxxxxxxa6a555",
   "app": "myappsname"
 }'
 ```
