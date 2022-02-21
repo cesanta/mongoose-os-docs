@@ -63,7 +63,7 @@ mgos_timer_id mgos_set_timer(int msecs, int flags, timer_callback cb,
 > However, number of software timers is not limited.
 > If you need intervals < 10ms, use mgos_set_hw_timer.
 > 
-> Example:
+> Basic example:
 > ```c
 > static void my_timer_cb(void *arg) {
 >   bool val = mgos_gpio_toggle(mgos_sys_config_get_pins_led());
@@ -73,6 +73,19 @@ mgos_timer_id mgos_set_timer(int msecs, int flags, timer_callback cb,
 > 
 > enum mgos_app_init_result mgos_app_init(void) {
 >   mgos_set_timer(1000, MGOS_TIMER_REPEAT, my_timer_cb, NULL);
+>   return MGOS_APP_INIT_SUCCESS;
+> }
+> ```
+> Example passing unsigned int as an argument to void *
+> ```c
+> static void my_timer_cb(void *arg) {
+>   uint16_t conn_id = (uintptr_t) arg;
+>   LOG(LL_INFO, ("my_timer_cb value: %u", conn_id));
+> }
+> 
+> enum mgos_app_init_result mgos_app_init(void) {
+>   uint16_t conn_id = 99;
+>   mgos_set_timer(15000, 0, my_timer_cb, (void *) (uintptr_t) conn_id);
 >   return MGOS_APP_INIT_SUCCESS;
 > }
 > ```
