@@ -79,7 +79,7 @@ mgos_timer_id mgos_set_timer(int msecs, int flags, timer_callback cb,
 > Example passing unsigned int as an argument to void *
 > ```c
 > static void my_timer_cb(void *arg) {
->   uint16_t conn_id = (intptr_t) arg;
+>   uint16_t conn_id = (uintptr_t) arg;
 >   LOG(LL_INFO, ("my_timer_cb value: %u", conn_id));
 > }
 > 
