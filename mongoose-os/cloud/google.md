@@ -48,7 +48,7 @@ gcloud iot registries create iot-registry --region europe-west1 --event-notifica
 
 ## Setup device
 
-- Pick one of the supported devices. We suggest to choose from [recommended devboards](../devboards.md)
+- Pick one of the supported devices. We suggest to choose from [recommended devboards](../quickstart/devboards.md)
 - Connect your device to your workstation via USB
 - Complete [Quickstart Guide](../quickstart/setup.md) steps 1-7 inclusive.
   As a result, your device should be connected to the Internet
